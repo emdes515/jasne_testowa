@@ -30,6 +30,26 @@ export function loadMathCurriculum(): Promise<MathDataBundle> {
   return pending;
 }
 
+type MathRozCurriculumModule = typeof import('./mathRozCurriculumData');
+
+let loadedRoz: MathRozCurriculumModule | null = null;
+let pendingRoz: Promise<MathRozCurriculumModule> | null = null;
+
+/** Kurs rozszerzony to osobna paczka – pobierana dopiero po wejściu w Matematykę Rozszerzoną. */
+export function loadMathRozCurriculum(): Promise<MathRozCurriculumModule> {
+  if (loadedRoz) return Promise.resolve(loadedRoz);
+  if (!pendingRoz) {
+    pendingRoz = import('./mathRozCurriculumData').then(mod => {
+      loadedRoz = mod;
+      return mod;
+    }).catch(err => {
+      pendingRoz = null;
+      throw err;
+    });
+  }
+  return pendingRoz;
+}
+
 /** Dostęp synchroniczny – null, dopóki dane nie zostały pobrane. */
 export function getMathCurriculumIfLoaded(): MathDataBundle | null {
   return loadedBundle;

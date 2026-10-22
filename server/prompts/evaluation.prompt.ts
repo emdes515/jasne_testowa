@@ -367,6 +367,8 @@ export interface BuildEvaluationUserPromptParams {
   subQuestions?: string[];
   keyCriterion: string;
   aiTutorRubric?: { criterion_1_point?: string; criterion_2_points?: string };
+  rubricStages?: { points: number; label: string; criterion: string }[];
+  zeroRules?: string[];
   attemptCount: number;
   cleanAnswer: string;
   hasImage: boolean;
@@ -381,10 +383,19 @@ export function buildEvaluationUserPrompt(params: BuildEvaluationUserPromptParam
     subQuestions,
     keyCriterion,
     aiTutorRubric,
+    rubricStages,
+    zeroRules,
     attemptCount,
     cleanAnswer,
     hasImage,
   } = params;
+
+  const stagesBlock = rubricStages && rubricStages.length > 0 ? `
+[ETAPY ROZWIĄZANIA WG ZASAD OCENIANIA CKE – PUNKTUJ WYŁĄCZNIE TYMI PROGAMI]
+0 pkt – brak niewielkiego postępu albo brak rozwiązania.
+${rubricStages.map(stage => `${stage.points} pkt – ${stage.criterion}`).join('\n')}
+${zeroRules && zeroRules.length > 0 ? `Reguły zerujące z klucza CKE:\n${zeroRules.map(rule => `- ${rule}`).join('\n')}\n` : ''}Przyznaj liczbę punktów najwyższego etapu, który uczeń faktycznie osiągnął (score musi być równy 0 albo jednej z wartości powyżej). Dodaj pole "stageReached" z tą samą liczbą punktów, a w "errors" wskaż, czego brakuje do następnego etapu.
+` : '';
 
   return `[DANE ZADANIA]
 Typ zadania: ${taskType || 'Zadanie maturalne otwarte'}
@@ -399,7 +410,7 @@ ${aiTutorRubric ? `
 [DEDYKOWANE KRYTERIA PUNKTACJI MATURALNEJ DLA TEGO ZADANIA]
 - 1 PUNKT (Zasadniczy postęp): ${aiTutorRubric.criterion_1_point}
 - 2 PUNKTY (Pełny dowód i wniosek): ${aiTutorRubric.criterion_2_points}
-` : ''}
+` : ''}${stagesBlock}
 
 [PRÓBA UCZNIA - PRÓBA NR ${attemptCount}]
 ${cleanAnswer ? `Komentarz tekstowy ucznia: "${cleanAnswer}"\n` : ''}${hasImage ? 'DOŁĄCZONO OBRAZ WIRTUALNEJ TABLICY: Odczytaj dokładnie pismo odręczne ucznia z żółtych linii na tablicy (znak po znaku, uwzględniając polskie pismo) i umieść je w polu transcription.' : ''}`;

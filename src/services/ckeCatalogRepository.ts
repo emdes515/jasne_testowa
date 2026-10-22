@@ -38,6 +38,7 @@ export interface CkeFormulaItem {
   cke_page?: string;
   pageNumber?: number | string;
   diagram?: MathDiagramData | PlotData | NumberLineData;
+  level?: 'PP' | 'PR';
 }
 
 export interface CkeFormulaTopic {

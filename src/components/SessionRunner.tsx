@@ -59,6 +59,7 @@ import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
 import { WritingWorkspace } from './writing/WritingWorkspace';
 import { AiTutorScanOverlay } from './AiTutorScanOverlay';
+import { RubricSelfAssessment } from './RubricSelfAssessment';
 import { MathPlot } from './MathPlot';
 import { MathDiagram } from './MathDiagram';
 import { NumberLineDiagram } from './NumberLineDiagram';
@@ -70,7 +71,7 @@ import { showToast } from '../lib/toast';
 import { recordAiTokenUsage } from '../services/aiUsageTracker';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
 import { getCkeFormulas, getCkeFormulaTopics } from '../services/ckeCatalogRepository';
-import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS } from '../data/ckeFormulasData';
+import { withLocalCkeFormulas, withLocalCkeFormulaTopics } from '../data/ckeFormulasData';
 import { getPolishLessonDocument } from '../data/polishCurriculumData';
 import { getPolishBookSummary } from '../data/polish/polishBookSummaries';
 import { getPolishBentoConceptsForLesson } from '../data/polish/polishBentoConcepts';
@@ -1252,8 +1253,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const isTrueFalseTask = currentTask?.type === 'TRUE_FALSE';
   const isTwoPartTask = currentTask?.type === 'TWO_PART' || Boolean(currentTask?.part_1 && currentTask?.part_2);
   const isOpenTask = (
-    currentTask?.type === 'OPEN_PROOF' || 
-    currentTask?.type === 'OPEN_TASK' || 
+    currentTask?.type === 'OPEN_PROOF' ||
+    currentTask?.type === 'OPEN_CALCULATION' ||
+    currentTask?.type === 'OPEN_TASK' ||
     currentTask?.type === 'OPEN_GENERAL' ||
     currentTask?.type === 'OPEN' ||
     currentTask?.type === 'OPEN_SHORT' ||
@@ -1946,7 +1948,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
     // 3. Wzbogacenie o oficjalne tablice CKE dla danego działu (jeśli matematyka)
     if (!isPolishSession && matchedCkeTopicId) {
-      const ckeList = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
+      const ckeList = withLocalCkeFormulas(getCkeFormulas());
       const matchingCke = [...ckeList.filter(item => item.topicId === matchedCkeTopicId)];
       const searchContext = `${departmentBadgeLabel} ${moduleBadgeName || ''} ${lessonTitleClean || rawLessonTitle || ''}`.toLowerCase();
 
@@ -1986,8 +1988,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
   // Dostępne tematy CKE do filtrowania w widoku "Wszystkie działy CKE"
   const availableCkeTopics = useMemo(() => {
-    const fromRepo = getCkeFormulaTopics();
-    return fromRepo.length > 1 ? fromRepo : CKE_FORMULA_TOPICS;
+    return withLocalCkeFormulaTopics(getCkeFormulaTopics());
   }, []);
 
   // Filtrowane wzory w drawerze (wspiera wyszukiwanie i filtrowanie działów CKE)
@@ -1995,7 +1996,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     const query = formulaSearchQuery.trim().toLowerCase();
 
     if (formulaViewMode === 'all' && !isPolishSession) {
-      const ckeList = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
+      const ckeList = withLocalCkeFormulas(getCkeFormulas());
       return ckeList
         .filter(item => {
           // Filtr działu CKE
@@ -2966,6 +2967,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           subjectId: isEnglishSession ? 'jezyk-angielski' : (isPolishSession ? 'jezyk-polski' : undefined),
           maxPoints: targetPts,
           ai_tutor_rubric: currentTask?.ai_tutor_rubric,
+          rubric_stages: currentTask?.rubric_stages,
+          zero_rules: currentTask?.zero_rules,
           attemptCount: 1,
           mode: 'grade'
         })
@@ -3010,6 +3013,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     // przeglądarki (klucz VITE_OPENROUTER_API_KEY trafiał do publicznego bundla).
     // Każde zapytanie do modelu przechodzi przez backend: /api/ai-tutor,
     // /api/evaluate-task, /api/generate-task.
+
+    // Zadania z etapami CKE nie są oceniane heurystyką słów kluczowych – zostaje ponowienie albo samoocena etapami.
+    if (!evalData && Array.isArray(currentTask?.rubric_stages) && currentTask.rubric_stages.length > 0) {
+      aiEvaluationUnavailableRef.current = true;
+    }
 
     // If server AI evaluation didn't succeed, generate resilient offline rubric evaluation
     if (!evalData && !aiEvaluationUnavailableRef.current) {
@@ -3276,6 +3284,40 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         handleScanAnimationComplete();
       }
     }, 750);
+  };
+
+  // Samoocena etapami CKE: wybrany próg punktowy przechodzi tę samą ścieżkę co ocena egzaminatora AI
+  const handleRubricSelfAssessment = (points: number) => {
+    const stages = currentTask?.rubric_stages || [];
+    if (isEvaluated || isTutorScanning || stages.length === 0) return;
+    const maxPts = currentTask?.points || stages[stages.length - 1].points;
+    const reached = stages.filter((s: any) => s.points <= points);
+    const next = stages.find((s: any) => s.points > points);
+
+    setEvaluationUnavailable(false);
+    setIsApproximateEvaluation(false);
+    pendingEvalDataRef.current = {
+      score: points,
+      maxPoints: maxPts,
+      isPassed: points > 0,
+      gradeTitle: `${points} / ${maxPts} PKT – samoocena według etapów CKE`,
+      summary: points === maxPts
+        ? 'Pełne rozwiązanie według zasad oceniania CKE.'
+        : reached.length > 0 ? `Osiągnięty etap: ${reached[reached.length - 1].label}.` : 'Nie masz jeszcze żadnego etapu – zacznij od pierwszego kroku ze wzorcowego rozwiązania.',
+      mentorComment: next
+        ? `Do progu ${next.points} pkt brakuje: ${next.criterion}`
+        : 'Masz komplet punktów. Porównaj jeszcze zapis ze wzorcowym rozwiązaniem – egzaminator sprawdza też uzasadnienia.',
+      strengths: reached.map((s: any) => s.criterion),
+      errors: next ? [next.criterion] : [],
+      ckeFeedback: 'Samoocena według etapów z zasad oceniania CKE.',
+      suggestion: currentTask?.zero_rules?.[0] || '',
+      hintForNextAttempt: '',
+      selfAssessed: true,
+      // Uczciwe „0 pkt” w samoocenie nie zabiera serca – inaczej opłacałoby się zawyżać wynik.
+      wasDeducted: false
+    };
+    triggerHaptic('light');
+    handleScanAnimationComplete();
   };
 
   // Called when the scanning animation has smoothly finished
@@ -5915,6 +5957,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               mode={(isPolishSession || isEnglishSession) ? 'text' : 'math'}
             />
 
+            {!isEvaluated && !isTutorScanning && Array.isArray(currentTask?.rubric_stages) && currentTask.rubric_stages.length > 0 && (
+              <RubricSelfAssessment
+                key={String(currentTask?.id || '')}
+                stages={currentTask.rubric_stages}
+                zeroRules={currentTask?.zero_rules}
+                maxPoints={currentTask?.points || currentTask.rubric_stages[currentTask.rubric_stages.length - 1].points}
+                onConfirm={handleRubricSelfAssessment}
+              />
+            )}
+
             {/* AI Tutor Scanning State (pulsujący gradient bursztynowy) */}
             {isTutorScanning && (
               <motion.div
@@ -7745,7 +7797,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <p className="text-sm font-bold text-amber-200">Egzaminator AI jest chwilowo niedostępny</p>
                 <p className="mt-0.5 text-xs leading-relaxed text-amber-100/70">
                   Twoja odpowiedź <span className="font-semibold">nie została oceniona</span> i nie stracisz za nią serca.
-                  Spróbuj ponownie za moment.
+                  {Array.isArray(currentTask?.rubric_stages) && currentTask.rubric_stages.length > 0
+                    ? ' Możesz spróbować ponownie albo ocenić się sam etapami CKE.'
+                    : ' Spróbuj ponownie za moment.'}
                 </p>
                 <div className="flex items-center gap-2 mt-2.5">
                   <button

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { X, Search, BookOpen, AlertTriangle, Compass, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem, type CkeFormulaSubItem } from '../services/ckeCatalogRepository';
-import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS } from '../data/ckeFormulasData';
+import { CKE_FORMULAS_DATA, withLocalCkeFormulas, withLocalCkeFormulaTopics } from '../data/ckeFormulasData';
 import { MathRenderer } from './MathRenderer';
 import { toFormulaBoxContent } from '../lib/formulaBox';
 import { MathPlot } from './MathPlot';
@@ -29,8 +29,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
   const isCatalogLoaded = useCkeCatalogs();
 
   const availableTopics = useMemo(() => {
-    const remote = getCkeFormulaTopics();
-    return remote.length > 1 ? remote : CKE_FORMULA_TOPICS;
+    return withLocalCkeFormulaTopics(getCkeFormulaTopics());
   }, [isCatalogLoaded]);
 
   // Close on Escape key
@@ -91,7 +90,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
   // Filtered formulas
   const filteredFormulas = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
-    const source = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
+    const source = withLocalCkeFormulas(getCkeFormulas());
 
     return source.filter((item: CkeFormulaItem) => {
       // Topic match
@@ -276,9 +275,16 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                       <h3 className="font-bold text-text-strong text-sm sm:text-base leading-snug">
                         {item.title}
                       </h3>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-text-accent bg-jasne/10 border border-primary/20 px-2 py-0.5 rounded-full shrink-0">
-                        {item.topicName}
-                      </span>
+                      <div className="flex flex-col items-end gap-1 shrink-0">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-text-accent bg-jasne/10 border border-primary/20 px-2 py-0.5 rounded-full">
+                          {item.topicName}
+                        </span>
+                        {item.level === 'PR' && (
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/40 px-2 py-0.5 rounded-full">
+                            Rozszerzenie
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     {/* Główny Wzór KaTeX o wysokim kontraście */}

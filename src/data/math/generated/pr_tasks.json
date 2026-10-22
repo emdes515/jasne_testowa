@@ -1,0 +1,3326 @@
+[
+ {
+  "id": "mat-pr-5-1-01",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Suma rozwiązań ze wzoru Viète’a",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 9x + 4 = 0$ ma dwa różne rozwiązania $x_1$ i $x_2$. Suma $x_1 + x_2$ jest równa",
+  "options": [
+   "$9$",
+   "$-9$",
+   "$4$",
+   "$-4$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** $\\Delta = (-9)^2 - 4 \\cdot 1 \\cdot 4 = 65 > 0$, więc rozwiązania istnieją i wolno użyć wzorów Viète’a.\n\n**Krok 2:** $x_1 + x_2 = -\\frac{b}{a}$, gdzie $a = 1$ i $b = -9$, więc $x_1 + x_2 = 9$.\n\n**Pułapka CKE:** W sumie rozwiązań jest minus: $-\\frac{b}{a}$. Bez niego dostajesz liczbę przeciwną.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-02",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Kiedy wolno użyć wzorów Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Suma rozwiązań równania $x^2 + 6x + 6 = 0$ jest równa $-6$.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Iloczyn rozwiązań równania $-2x^2 + 7x + 5 = 0$ jest równy $-\\frac{5}{2}$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "PP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $\\Delta = 12 > 0$, więc rozwiązania istnieją i $x_1 + x_2 = -6$.\n\n**Krok 2:** Stwierdzenie 2: $\\Delta > 0$ i $x_1 x_2 = \\frac{c}{a} = -\\frac{5}{2}$.\n\n**Pułapka CKE:** Zanim użyjesz wzorów Viète’a, sprawdź $\\Delta$. Przy $\\Delta < 0$ wzór „policzy” sumę rozwiązań, których nie ma.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-03",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Równanie o danej sumie i iloczynie rozwiązań",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczby $x_1$ i $x_2$ spełniają warunki $x_1 + x_2 = -2$ oraz $x_1 \\cdot x_2 = -8$. Liczby te są rozwiązaniami równania",
+  "options": [
+   "$x^2 + 2x + 8 = 0$",
+   "$x^2 - 2x - 8 = 0$",
+   "$x^2 - 2x + 8 = 0$",
+   "$x^2 + 2x - 8 = 0$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** Dla $a = 1$ wzory Viète’a dają $b = -(x_1 + x_2) = 2$ oraz $c = x_1 x_2 = -8$.\n\n**Krok 2:** Szukane równanie: $x^2 + 2x - 8 = 0$. Sprawdzenie: jego rozwiązania to $-4$ i $2$.\n\n**Pułapka CKE:** Współczynnik $b$ to suma rozwiązań ze ZMIENIONYM znakiem: $b = -(x_1 + x_2)$.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-04",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami bez ich obliczania",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Równanie $x^2 - 7x + 6 = 0$ ma dwa różne rozwiązania $x_1$, $x_2$. Nie obliczając tych rozwiązań, oblicz wartość wyrażenia $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$. Zapisz obliczenia.",
+  "correct_answer": "$\\frac{37}{36}$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie wzorów Viète’a: $x_1 + x_2 = 7$, $x_1 x_2 = 6$ (przy $\\Delta = 25 > 0$)."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Obliczenie wartości wyrażenia: $\\frac{37}{36}$."
+   }
+  ],
+  "scoring_key": "1 pkt – Zapisanie wzorów Viète’a: $x_1 + x_2 = 7$, $x_1 x_2 = 6$ (przy $\\Delta = 25 > 0$).\n2 pkt – Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n3 pkt – Obliczenie wartości wyrażenia: $\\frac{37}{36}$.\nOdpowiedź: $\\frac{37}{36}$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = (-7)^2 - 4 \\cdot 6 = 25 > 0$, więc $x_1 + x_2 = 7$ i $x_1 x_2 = 6$."
+   },
+   {
+    "step_num": 2,
+    "description": "$\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "step_num": 3,
+    "description": "$\\frac{7^2 - 2 \\cdot 6}{6^2} = \\frac{37}{36}$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = (-7)^2 - 4 \\cdot 6 = 25 > 0$, więc $x_1 + x_2 = 7$ i $x_1 x_2 = 6$.\n\n**Krok 2:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n\n**Krok 3:** $\\frac{7^2 - 2 \\cdot 6}{6^2} = \\frac{37}{36}$.\n\n**Pułapka CKE:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$ to NIE jest $\\frac{1}{x_1^2 + x_2^2}$ – sprowadź ułamki do wspólnego mianownika.\n\n**Podsumowanie:** Odpowiedź: $\\frac{37}{36}$",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-05",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie symetryczne bez liczenia rozwiązań",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Liczby $x_1$ i $x_2$ są różnymi rozwiązaniami równania $x^2 + 3x - 3 = 0$. Oblicz wartość wyrażenia $x_1^2 + x_2^2$. Wpisz liczbę.",
+  "correct_answer": "15",
+  "explanation": "**Krok 1:** $\\Delta = 21 > 0$, a ze wzorów Viète’a: $x_1 + x_2 = -3$, $x_1 x_2 = -3$.\n\n**Krok 2:** $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2$.\n\n**Krok 3:** $= (-3)^2 - 2 \\cdot (-3) = 15$.\n\n**Pułapka CKE:** Nie licz $x_1$ i $x_2$ z pierwiastkami – przekształć wyrażenie tak, żeby zostały w nim tylko $x_1 + x_2$ i $x_1 x_2$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **15**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-06",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Kiedy wolno użyć wzorów Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Suma rozwiązań równania $x^2 - 2x + 4 = 0$ jest równa $2$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Iloczyn rozwiązań równania $2x^2 + 8x - 5 = 0$ jest równy $-\\frac{5}{2}$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "FP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $\\Delta = -12 < 0$ – równanie nie ma rozwiązań, więc nie ma też ich sumy.\n\n**Krok 2:** Stwierdzenie 2: $\\Delta > 0$ i $x_1 x_2 = \\frac{c}{a} = -\\frac{5}{2}$.\n\n**Pułapka CKE:** Zanim użyjesz wzorów Viète’a, sprawdź $\\Delta$. Przy $\\Delta < 0$ wzór „policzy” sumę rozwiązań, których nie ma.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-07",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Równanie o danej sumie i iloczynie rozwiązań",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczby $x_1$ i $x_2$ spełniają warunki $x_1 + x_2 = -2$ oraz $x_1 \\cdot x_2 = -15$. Liczby te są rozwiązaniami równania",
+  "options": [
+   "$x^2 + 2x - 15 = 0$",
+   "$x^2 - 2x + 15 = 0$",
+   "$x^2 + 2x + 15 = 0$",
+   "$x^2 - 2x - 15 = 0$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Dla $a = 1$ wzory Viète’a dają $b = -(x_1 + x_2) = 2$ oraz $c = x_1 x_2 = -15$.\n\n**Krok 2:** Szukane równanie: $x^2 + 2x - 15 = 0$. Sprawdzenie: jego rozwiązania to $-5$ i $3$.\n\n**Pułapka CKE:** Współczynnik $b$ to suma rozwiązań ze ZMIENIONYM znakiem: $b = -(x_1 + x_2)$.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-08",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami bez ich obliczania",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Równanie $x^2 - x - 6 = 0$ ma dwa różne rozwiązania $x_1$, $x_2$. Nie obliczając tych rozwiązań, oblicz wartość wyrażenia $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$. Zapisz obliczenia.",
+  "correct_answer": "$\\frac{13}{36}$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie wzorów Viète’a: $x_1 + x_2 = 1$, $x_1 x_2 = -6$ (przy $\\Delta = 25 > 0$)."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Obliczenie wartości wyrażenia: $\\frac{13}{36}$."
+   }
+  ],
+  "scoring_key": "1 pkt – Zapisanie wzorów Viète’a: $x_1 + x_2 = 1$, $x_1 x_2 = -6$ (przy $\\Delta = 25 > 0$).\n2 pkt – Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n3 pkt – Obliczenie wartości wyrażenia: $\\frac{13}{36}$.\nOdpowiedź: $\\frac{13}{36}$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = (-1)^2 - 4 \\cdot (-6) = 25 > 0$, więc $x_1 + x_2 = 1$ i $x_1 x_2 = -6$."
+   },
+   {
+    "step_num": 2,
+    "description": "$\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "step_num": 3,
+    "description": "$\\frac{1^2 - 2 \\cdot (-6)}{(-6)^2} = \\frac{13}{36}$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = (-1)^2 - 4 \\cdot (-6) = 25 > 0$, więc $x_1 + x_2 = 1$ i $x_1 x_2 = -6$.\n\n**Krok 2:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n\n**Krok 3:** $\\frac{1^2 - 2 \\cdot (-6)}{(-6)^2} = \\frac{13}{36}$.\n\n**Pułapka CKE:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$ to NIE jest $\\frac{1}{x_1^2 + x_2^2}$ – sprowadź ułamki do wspólnego mianownika.\n\n**Podsumowanie:** Odpowiedź: $\\frac{13}{36}$",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-09",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Suma rozwiązań ze wzoru Viète’a",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 7x - 5 = 0$ ma dwa różne rozwiązania $x_1$ i $x_2$. Suma $x_1 + x_2$ jest równa",
+  "options": [
+   "$5$",
+   "$-7$",
+   "$-5$",
+   "$7$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** $\\Delta = (-7)^2 - 4 \\cdot 1 \\cdot (-5) = 69 > 0$, więc rozwiązania istnieją i wolno użyć wzorów Viète’a.\n\n**Krok 2:** $x_1 + x_2 = -\\frac{b}{a}$, gdzie $a = 1$ i $b = -7$, więc $x_1 + x_2 = 7$.\n\n**Pułapka CKE:** W sumie rozwiązań jest minus: $-\\frac{b}{a}$. Bez niego dostajesz liczbę przeciwną.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-10",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie symetryczne bez liczenia rozwiązań",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Liczby $x_1$ i $x_2$ są różnymi rozwiązaniami równania $x^2 - x - 7 = 0$. Oblicz wartość wyrażenia $x_1^3 + x_2^3$. Wpisz liczbę.",
+  "correct_answer": "22",
+  "explanation": "**Krok 1:** $\\Delta = 29 > 0$, a ze wzorów Viète’a: $x_1 + x_2 = 1$, $x_1 x_2 = -7$.\n\n**Krok 2:** $x_1^3 + x_2^3 = (x_1 + x_2)^3 - 3x_1 x_2(x_1 + x_2)$.\n\n**Krok 3:** $= 1^3 - 3 \\cdot (-7) \\cdot 1 = 22$.\n\n**Pułapka CKE:** Nie licz $x_1$ i $x_2$ z pierwiastkami – przekształć wyrażenie tak, żeby zostały w nim tylko $x_1 + x_2$ i $x_1 x_2$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **22**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-11",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Kiedy wolno użyć wzorów Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Suma rozwiązań równania $x^2 + x + 7 = 0$ jest równa $-1$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Iloczyn rozwiązań równania $3x^2 + 6x - 1 = 0$ jest równy $-1$.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "FF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $\\Delta = -27 < 0$ – równanie nie ma rozwiązań, więc nie ma też ich sumy.\n\n**Krok 2:** Stwierdzenie 2: $x_1 x_2 = \\frac{c}{a} = -\\frac{1}{3}$, a nie $-1$ – trzeba podzielić przez $a = 3$.\n\n**Pułapka CKE:** Zanim użyjesz wzorów Viète’a, sprawdź $\\Delta$. Przy $\\Delta < 0$ wzór „policzy” sumę rozwiązań, których nie ma.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-12",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Równanie o danej sumie i iloczynie rozwiązań",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczby $x_1$ i $x_2$ spełniają warunki $x_1 + x_2 = 8$ oraz $x_1 \\cdot x_2 = 12$. Liczby te są rozwiązaniami równania",
+  "options": [
+   "$x^2 + 8x + 12 = 0$",
+   "$x^2 - 8x + 12 = 0$",
+   "$x^2 - 8x - 12 = 0$",
+   "$x^2 + 8x - 12 = 0$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Dla $a = 1$ wzory Viète’a dają $b = -(x_1 + x_2) = -8$ oraz $c = x_1 x_2 = 12$.\n\n**Krok 2:** Szukane równanie: $x^2 - 8x + 12 = 0$. Sprawdzenie: jego rozwiązania to $2$ i $6$.\n\n**Pułapka CKE:** Współczynnik $b$ to suma rozwiązań ze ZMIENIONYM znakiem: $b = -(x_1 + x_2)$.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-13",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Iloczyn rozwiązań ze wzoru Viète’a",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 6x - 8 = 0$ ma dwa różne rozwiązania $x_1$ i $x_2$. Iloczyn $x_1 \\cdot x_2$ jest równy",
+  "options": [
+   "$-\\frac{1}{8}$",
+   "$-8$",
+   "$8$",
+   "$6$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** $\\Delta = (-6)^2 - 4 \\cdot 1 \\cdot (-8) = 68 > 0$, więc rozwiązania istnieją i wolno użyć wzorów Viète’a.\n\n**Krok 2:** $x_1 \\cdot x_2 = \\frac{c}{a}$, gdzie $a = 1$ i $c = -8$, więc $x_1 \\cdot x_2 = -8$.\n\n**Pułapka CKE:** Iloczyn to $\\frac{c}{a}$ – bez minusa i z dzieleniem przez $a$, a nie przez $b$.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-14",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Kiedy wolno użyć wzorów Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Suma rozwiązań równania $x^2 + x + 12 = 0$ jest równa $-1$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Iloczyn rozwiązań równania $2x^2 - 9x + 8 = 0$ jest równy $4$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "FP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $\\Delta = -47 < 0$ – równanie nie ma rozwiązań, więc nie ma też ich sumy.\n\n**Krok 2:** Stwierdzenie 2: $\\Delta > 0$ i $x_1 x_2 = \\frac{c}{a} = 4$.\n\n**Pułapka CKE:** Zanim użyjesz wzorów Viète’a, sprawdź $\\Delta$. Przy $\\Delta < 0$ wzór „policzy” sumę rozwiązań, których nie ma.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-15",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Równanie o danej sumie i iloczynie rozwiązań",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczby $x_1$ i $x_2$ spełniają warunki $x_1 + x_2 = 5$ oraz $x_1 \\cdot x_2 = -6$. Liczby te są rozwiązaniami równania",
+  "options": [
+   "$x^2 + 5x + 6 = 0$",
+   "$x^2 - 5x - 6 = 0$",
+   "$x^2 - 5x + 6 = 0$",
+   "$x^2 + 5x - 6 = 0$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Dla $a = 1$ wzory Viète’a dają $b = -(x_1 + x_2) = -5$ oraz $c = x_1 x_2 = -6$.\n\n**Krok 2:** Szukane równanie: $x^2 - 5x - 6 = 0$. Sprawdzenie: jego rozwiązania to $-1$ i $6$.\n\n**Pułapka CKE:** Współczynnik $b$ to suma rozwiązań ze ZMIENIONYM znakiem: $b = -(x_1 + x_2)$.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-16",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami bez ich obliczania",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Równanie $x^2 - x - 3 = 0$ ma dwa różne rozwiązania $x_1$, $x_2$. Nie obliczając tych rozwiązań, oblicz wartość wyrażenia $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$. Zapisz obliczenia.",
+  "correct_answer": "$\\frac{7}{9}$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie wzorów Viète’a: $x_1 + x_2 = 1$, $x_1 x_2 = -3$ (przy $\\Delta = 13 > 0$)."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Obliczenie wartości wyrażenia: $\\frac{7}{9}$."
+   }
+  ],
+  "scoring_key": "1 pkt – Zapisanie wzorów Viète’a: $x_1 + x_2 = 1$, $x_1 x_2 = -3$ (przy $\\Delta = 13 > 0$).\n2 pkt – Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n3 pkt – Obliczenie wartości wyrażenia: $\\frac{7}{9}$.\nOdpowiedź: $\\frac{7}{9}$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = (-1)^2 - 4 \\cdot (-3) = 13 > 0$, więc $x_1 + x_2 = 1$ i $x_1 x_2 = -3$."
+   },
+   {
+    "step_num": 2,
+    "description": "$\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "step_num": 3,
+    "description": "$\\frac{1^2 - 2 \\cdot (-3)}{(-3)^2} = \\frac{7}{9}$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = (-1)^2 - 4 \\cdot (-3) = 13 > 0$, więc $x_1 + x_2 = 1$ i $x_1 x_2 = -3$.\n\n**Krok 2:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n\n**Krok 3:** $\\frac{1^2 - 2 \\cdot (-3)}{(-3)^2} = \\frac{7}{9}$.\n\n**Pułapka CKE:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$ to NIE jest $\\frac{1}{x_1^2 + x_2^2}$ – sprowadź ułamki do wspólnego mianownika.\n\n**Podsumowanie:** Odpowiedź: $\\frac{7}{9}$",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-17",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Suma rozwiązań ze wzoru Viète’a",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $-2x^2 + x + 2 = 0$ ma dwa różne rozwiązania $x_1$ i $x_2$. Suma $x_1 + x_2$ jest równa",
+  "options": [
+   "$-1$",
+   "$1$",
+   "$-\\frac{1}{2}$",
+   "$\\frac{1}{2}$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** $\\Delta = 1^2 - 4 \\cdot (-2) \\cdot 2 = 17 > 0$, więc rozwiązania istnieją i wolno użyć wzorów Viète’a.\n\n**Krok 2:** $x_1 + x_2 = -\\frac{b}{a}$, gdzie $a = -2$ i $b = 1$, więc $x_1 + x_2 = \\frac{1}{2}$.\n\n**Pułapka CKE:** W sumie rozwiązań jest minus: $-\\frac{b}{a}$. Bez niego dostajesz liczbę przeciwną.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-18",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie symetryczne bez liczenia rozwiązań",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Liczby $x_1$ i $x_2$ są różnymi rozwiązaniami równania $x^2 - 6x + 7 = 0$. Oblicz wartość wyrażenia $(x_1 - x_2)^2$. Wpisz liczbę.",
+  "correct_answer": "8",
+  "explanation": "**Krok 1:** $\\Delta = 8 > 0$, a ze wzorów Viète’a: $x_1 + x_2 = 6$, $x_1 x_2 = 7$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$.\n\n**Krok 3:** $= 6^2 - 4 \\cdot 7 = 8$.\n\n**Pułapka CKE:** Nie licz $x_1$ i $x_2$ z pierwiastkami – przekształć wyrażenie tak, żeby zostały w nim tylko $x_1 + x_2$ i $x_1 x_2$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **8**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-19",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Kiedy wolno użyć wzorów Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Suma rozwiązań równania $x^2 + 7x - 3 = 0$ jest równa $-7$.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Iloczyn rozwiązań równania $3x^2 - 4x - 5 = 0$ jest równy $-\\frac{5}{3}$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "PP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $\\Delta = 61 > 0$, więc rozwiązania istnieją i $x_1 + x_2 = -7$.\n\n**Krok 2:** Stwierdzenie 2: $\\Delta > 0$ i $x_1 x_2 = \\frac{c}{a} = -\\frac{5}{3}$.\n\n**Pułapka CKE:** Zanim użyjesz wzorów Viète’a, sprawdź $\\Delta$. Przy $\\Delta < 0$ wzór „policzy” sumę rozwiązań, których nie ma.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-1-20",
+  "lessonId": "math-pr-lesson-5-1",
+  "lessonKey": "5.1",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.1",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami bez ich obliczania",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Równanie $x^2 + 4x + 2 = 0$ ma dwa różne rozwiązania $x_1$, $x_2$. Nie obliczając tych rozwiązań, oblicz wartość wyrażenia $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$. Zapisz obliczenia.",
+  "correct_answer": "$3$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie wzorów Viète’a: $x_1 + x_2 = -4$, $x_1 x_2 = 2$ (przy $\\Delta = 8 > 0$)."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Obliczenie wartości wyrażenia: $3$."
+   }
+  ],
+  "scoring_key": "1 pkt – Zapisanie wzorów Viète’a: $x_1 + x_2 = -4$, $x_1 x_2 = 2$ (przy $\\Delta = 8 > 0$).\n2 pkt – Przekształcenie wyrażenia do postaci $\\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n3 pkt – Obliczenie wartości wyrażenia: $3$.\nOdpowiedź: $3$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = 4^2 - 4 \\cdot 2 = 8 > 0$, więc $x_1 + x_2 = -4$ i $x_1 x_2 = 2$."
+   },
+   {
+    "step_num": 2,
+    "description": "$\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$."
+   },
+   {
+    "step_num": 3,
+    "description": "$\\frac{(-4)^2 - 2 \\cdot 2}{2^2} = \\frac{12}{4} = 3$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = 4^2 - 4 \\cdot 2 = 8 > 0$, więc $x_1 + x_2 = -4$ i $x_1 x_2 = 2$.\n\n**Krok 2:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2} = \\frac{x_1^2 + x_2^2}{x_1^2 x_2^2} = \\frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2}$.\n\n**Krok 3:** $\\frac{(-4)^2 - 2 \\cdot 2}{2^2} = \\frac{12}{4} = 3$.\n\n**Pułapka CKE:** $\\frac{1}{x_1^2} + \\frac{1}{x_2^2}$ to NIE jest $\\frac{1}{x_1^2 + x_2^2}$ – sprowadź ułamki do wspólnego mianownika.\n\n**Podsumowanie:** Odpowiedź: $3$",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-01",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Równanie liniowe z parametrem",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m^2 - 36)x = m - 6$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in \\mathbb{R} \\setminus \\{-6\\}$",
+   "$m = 6$",
+   "$m \\in \\mathbb{R} \\setminus \\{-6, 6\\}$",
+   "$m \\in \\mathbb{R} \\setminus \\{6\\}$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** Współczynnik przy $x$: $m^2 - 36 = (m - 6)(m + 6)$ – jest zerem dla $m = 6$ i $m = -6$.\n\n**Krok 2:** Dla $m = 6$: $0 \\cdot x = 0$ – nieskończenie wiele rozwiązań. Dla $m = -6$: $0 \\cdot x = -12$ – brak rozwiązań.\n\n**Krok 3:** Dla pozostałych $m$ dzielimy przez $m^2 - 36 \\ne 0$ i dostajemy jedno rozwiązanie $x = \\frac{1}{m + 6}$.\n\n**Pułapka CKE:** Nie dziel od razu przez $m^2 - 36$ – najpierw sprawdź, dla jakich $m$ to wyrażenie jest zerem.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Równanie $Ax = B$: dla $A \\ne 0$ jedno rozwiązanie, dla $A = 0$ i $B = 0$ nieskończenie wiele, dla $A = 0$ i $B \\ne 0$ brak rozwiązań.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-02",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dokładnie jedno rozwiązanie: Δ = 0",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Równanie $-x^2 + 10x + m = 0$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie. Oblicz $m$. Wpisz liczbę.",
+  "correct_answer": "-25",
+  "explanation": "**Krok 1:** Równanie kwadratowe ma dokładnie jedno rozwiązanie, gdy $\\Delta = 0$.\n\n**Krok 2:** $\\Delta = 10^2 - 4 \\cdot (-1) \\cdot m = 100 + 4m$.\n\n**Krok 3:** $100 + 4m = 0$, więc $m = -25$.\n\n**Pułapka CKE:** Parametr $m$ jest tu wyrazem wolnym $c$, więc w $\\Delta = b^2 - 4ac$ mnożysz go przez $4a$, a nie tylko przez $4$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **-25**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-03",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Parametr przy x²: najpierw przypadek liniowy",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m - 3)x^2 + 2x + 1 = 0$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m = 4$",
+   "$m = 3$",
+   "$m \\in \\{3, 2\\}$",
+   "$m \\in \\{3, 4\\}$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** Dla $m = 3$ równanie jest liniowe: $2x + 1 = 0$, więc ma dokładnie jedno rozwiązanie $x = -\\frac{1}{2}$.\n\n**Krok 2:** Dla $m \\ne 3$ równanie jest kwadratowe i ma jedno rozwiązanie, gdy $\\Delta = 4 - 4(m - 3) = 0$, czyli $m = 4$.\n\n**Krok 3:** Odpowiedź: $m \\in \\{3, 4\\}$.\n\n**Pułapka CKE:** Gdy parametr stoi przy $x^2$, najpierw sprawdź przypadek, w którym ten współczynnik jest zerem – równanie staje się wtedy liniowe.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-04",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Brak rozwiązań: Δ < 0",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 + mx + 25 = 0$ z niewiadomą $x$ nie ma rozwiązań wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in \\langle -10, 10 \\rangle$",
+   "$m \\in (-\\infty, -10) \\cup (10, +\\infty)$",
+   "$m \\in (-10, 10)$",
+   "$m \\in (10, +\\infty)$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** $\\Delta = m^2 - 4 \\cdot 25 = m^2 - 100 = (m - 10)(m + 10)$.\n\n**Krok 2:** $\\Delta < 0$ między pierwiastkami: $-10 < m < 10$.\n\n**Pułapka CKE:** Dwa RÓŻNE rozwiązania to $\\Delta > 0$, a nie $\\Delta \\ge 0$ – końce przedziałów muszą być otwarte.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-05",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania w zależności od parametru",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m + 3)x + m + 6 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-\\infty, -5) \\cup (3, +\\infty)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m + 3)^2 - 4(m + 6) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Doprowadzenie do postaci $m^2 + 2m - 15 > 0$ i wyznaczenie pierwiastków trójmianu: $m = -5$, $m = 3$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Rozwiązanie nierówności: $m \\in (-\\infty, -5) \\cup (3, +\\infty)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za ten etap."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m + 3)^2 - 4(m + 6) > 0$.\n2 pkt – Doprowadzenie do postaci $m^2 + 2m - 15 > 0$ i wyznaczenie pierwiastków trójmianu: $m = -5$, $m = 3$.\n3 pkt – Rozwiązanie nierówności: $m \\in (-\\infty, -5) \\cup (3, +\\infty)$.\nOdpowiedź: $m \\in (-\\infty, -5) \\cup (3, +\\infty)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m + 3)^2 - 4(m + 6) = m^2 + 2m - 15$."
+   },
+   {
+    "step_num": 2,
+    "description": "Trójmian zmiennej $m$: $\\Delta_m = 64$, więc $m_1 = -5$, $m_2 = 3$."
+   },
+   {
+    "step_num": 3,
+    "description": "Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, -5) \\cup (3, +\\infty)$."
+   }
+  ],
+  "explanation": "**Krok 1:** Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m + 3)^2 - 4(m + 6) = m^2 + 2m - 15$.\n\n**Krok 2:** Trójmian zmiennej $m$: $\\Delta_m = 64$, więc $m_1 = -5$, $m_2 = 3$.\n\n**Krok 3:** Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, -5) \\cup (3, +\\infty)$.\n\n**Pułapka CKE:** Warunek „dwa różne rozwiązania” to $\\Delta > 0$. Przy $\\Delta \\ge 0$ dopuszczasz $m$, dla których jest tylko jedno rozwiązanie.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-\\infty, -5) \\cup (3, +\\infty)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-06",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Równanie liniowe z parametrem",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m^2 - 49)x = m - 7$ z niewiadomą $x$ nie ma rozwiązań wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m = 0$",
+   "$m = -7$",
+   "$m \\in \\{-7, 7\\}$",
+   "$m = 7$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Współczynnik przy $x$: $m^2 - 49 = (m - 7)(m + 7)$ – jest zerem dla $m = 7$ i $m = -7$.\n\n**Krok 2:** Dla $m = 7$: $0 \\cdot x = 0$ – nieskończenie wiele rozwiązań. Dla $m = -7$: $0 \\cdot x = -14$ – brak rozwiązań.\n\n**Krok 3:** Dla pozostałych $m$ dzielimy przez $m^2 - 49 \\ne 0$ i dostajemy jedno rozwiązanie $x = \\frac{1}{m + 7}$.\n\n**Pułapka CKE:** Nie dziel od razu przez $m^2 - 49$ – najpierw sprawdź, dla jakich $m$ to wyrażenie jest zerem.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Równanie $Ax = B$: dla $A \\ne 0$ jedno rozwiązanie, dla $A = 0$ i $B = 0$ nieskończenie wiele, dla $A = 0$ i $B \\ne 0$ brak rozwiązań.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-07",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dokładnie jedno rozwiązanie: Δ = 0",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Równanie $x^2 - 5x + m = 0$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie. Oblicz $m$. Wpisz liczbę.",
+  "correct_answer": "6,25",
+  "explanation": "**Krok 1:** Równanie kwadratowe ma dokładnie jedno rozwiązanie, gdy $\\Delta = 0$.\n\n**Krok 2:** $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot m = 25 - 4m$.\n\n**Krok 3:** $25 - 4m = 0$, więc $m = 6{,}25$.\n\n**Pułapka CKE:** Parametr $m$ jest tu wyrazem wolnym $c$, więc w $\\Delta = b^2 - 4ac$ mnożysz go przez $4a$, a nie tylko przez $4$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **6,25**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-08",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Parametr przy x²: najpierw przypadek liniowy",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m + 1)x^2 + 4x + 1 = 0$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in \\{-1, 3\\}$",
+   "$m = 3$",
+   "$m = -1$",
+   "$m \\in \\{-1, -5\\}$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Dla $m = -1$ równanie jest liniowe: $4x + 1 = 0$, więc ma dokładnie jedno rozwiązanie $x = -\\frac{1}{4}$.\n\n**Krok 2:** Dla $m \\ne -1$ równanie jest kwadratowe i ma jedno rozwiązanie, gdy $\\Delta = 16 - 4(m + 1) = 0$, czyli $m = 3$.\n\n**Krok 3:** Odpowiedź: $m \\in \\{-1, 3\\}$.\n\n**Pułapka CKE:** Gdy parametr stoi przy $x^2$, najpierw sprawdź przypadek, w którym ten współczynnik jest zerem – równanie staje się wtedy liniowe.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-09",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania: Δ > 0",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 + mx + 4 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (-\\infty, -4 \\rangle \\cup \\langle 4, +\\infty)$",
+   "$m \\in (4, +\\infty)$",
+   "$m \\in (-\\infty, -4) \\cup (4, +\\infty)$",
+   "$m \\in (-4, 4)$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** $\\Delta = m^2 - 4 \\cdot 4 = m^2 - 16 = (m - 4)(m + 4)$.\n\n**Krok 2:** $\\Delta > 0$ poza przedziałem między pierwiastkami: $m < -4$ lub $m > 4$.\n\n**Pułapka CKE:** Dwa RÓŻNE rozwiązania to $\\Delta > 0$, a nie $\\Delta \\ge 0$ – końce przedziałów muszą być otwarte.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-10",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Równanie liniowe z parametrem",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m^2 - 25)x = m - 5$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in \\mathbb{R} \\setminus \\{5\\}$",
+   "$m = 5$",
+   "$m \\in \\mathbb{R} \\setminus \\{-5\\}$",
+   "$m \\in \\mathbb{R} \\setminus \\{-5, 5\\}$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** Współczynnik przy $x$: $m^2 - 25 = (m - 5)(m + 5)$ – jest zerem dla $m = 5$ i $m = -5$.\n\n**Krok 2:** Dla $m = 5$: $0 \\cdot x = 0$ – nieskończenie wiele rozwiązań. Dla $m = -5$: $0 \\cdot x = -10$ – brak rozwiązań.\n\n**Krok 3:** Dla pozostałych $m$ dzielimy przez $m^2 - 25 \\ne 0$ i dostajemy jedno rozwiązanie $x = \\frac{1}{m + 5}$.\n\n**Pułapka CKE:** Nie dziel od razu przez $m^2 - 25$ – najpierw sprawdź, dla jakich $m$ to wyrażenie jest zerem.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Równanie $Ax = B$: dla $A \\ne 0$ jedno rozwiązanie, dla $A = 0$ i $B = 0$ nieskończenie wiele, dla $A = 0$ i $B \\ne 0$ brak rozwiązań.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-11",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Parametr przy x²: najpierw przypadek liniowy",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m + 4)x^2 + 6x + 1 = 0$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in \\{-4, 5\\}$",
+   "$m \\in \\{-4, -13\\}$",
+   "$m = 5$",
+   "$m = -4$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Dla $m = -4$ równanie jest liniowe: $6x + 1 = 0$, więc ma dokładnie jedno rozwiązanie $x = -\\frac{1}{6}$.\n\n**Krok 2:** Dla $m \\ne -4$ równanie jest kwadratowe i ma jedno rozwiązanie, gdy $\\Delta = 36 - 4(m + 4) = 0$, czyli $m = 5$.\n\n**Krok 3:** Odpowiedź: $m \\in \\{-4, 5\\}$.\n\n**Pułapka CKE:** Gdy parametr stoi przy $x^2$, najpierw sprawdź przypadek, w którym ten współczynnik jest zerem – równanie staje się wtedy liniowe.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-12",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania: Δ > 0",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 + mx + 36 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (12, +\\infty)$",
+   "$m \\in (-12, 12)$",
+   "$m \\in (-\\infty, -12 \\rangle \\cup \\langle 12, +\\infty)$",
+   "$m \\in (-\\infty, -12) \\cup (12, +\\infty)$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** $\\Delta = m^2 - 4 \\cdot 36 = m^2 - 144 = (m - 12)(m + 12)$.\n\n**Krok 2:** $\\Delta > 0$ poza przedziałem między pierwiastkami: $m < -12$ lub $m > 12$.\n\n**Pułapka CKE:** Dwa RÓŻNE rozwiązania to $\\Delta > 0$, a nie $\\Delta \\ge 0$ – końce przedziałów muszą być otwarte.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-13",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania w zależności od parametru",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m + 5)x + m + 5 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-\\infty, -5) \\cup (-1, +\\infty)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m + 5)^2 - 4(m + 5) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Doprowadzenie do postaci $m^2 + 6m + 5 > 0$ i wyznaczenie pierwiastków trójmianu: $m = -5$, $m = -1$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Rozwiązanie nierówności: $m \\in (-\\infty, -5) \\cup (-1, +\\infty)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za ten etap."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m + 5)^2 - 4(m + 5) > 0$.\n2 pkt – Doprowadzenie do postaci $m^2 + 6m + 5 > 0$ i wyznaczenie pierwiastków trójmianu: $m = -5$, $m = -1$.\n3 pkt – Rozwiązanie nierówności: $m \\in (-\\infty, -5) \\cup (-1, +\\infty)$.\nOdpowiedź: $m \\in (-\\infty, -5) \\cup (-1, +\\infty)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m + 5)^2 - 4(m + 5) = m^2 + 6m + 5$."
+   },
+   {
+    "step_num": 2,
+    "description": "Trójmian zmiennej $m$: $\\Delta_m = 16$, więc $m_1 = -5$, $m_2 = -1$."
+   },
+   {
+    "step_num": 3,
+    "description": "Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, -5) \\cup (-1, +\\infty)$."
+   }
+  ],
+  "explanation": "**Krok 1:** Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m + 5)^2 - 4(m + 5) = m^2 + 6m + 5$.\n\n**Krok 2:** Trójmian zmiennej $m$: $\\Delta_m = 16$, więc $m_1 = -5$, $m_2 = -1$.\n\n**Krok 3:** Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, -5) \\cup (-1, +\\infty)$.\n\n**Pułapka CKE:** Warunek „dwa różne rozwiązania” to $\\Delta > 0$. Przy $\\Delta \\ge 0$ dopuszczasz $m$, dla których jest tylko jedno rozwiązanie.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-\\infty, -5) \\cup (-1, +\\infty)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-14",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Równanie liniowe z parametrem",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m^2 - 25)x = m - 5$ z niewiadomą $x$ ma nieskończenie wiele rozwiązań wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m = 0$",
+   "$m = 5$",
+   "$m \\in \\{-5, 5\\}$",
+   "$m = -5$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Współczynnik przy $x$: $m^2 - 25 = (m - 5)(m + 5)$ – jest zerem dla $m = 5$ i $m = -5$.\n\n**Krok 2:** Dla $m = 5$: $0 \\cdot x = 0$ – nieskończenie wiele rozwiązań. Dla $m = -5$: $0 \\cdot x = -10$ – brak rozwiązań.\n\n**Krok 3:** Dla pozostałych $m$ dzielimy przez $m^2 - 25 \\ne 0$ i dostajemy jedno rozwiązanie $x = \\frac{1}{m + 5}$.\n\n**Pułapka CKE:** Nie dziel od razu przez $m^2 - 25$ – najpierw sprawdź, dla jakich $m$ to wyrażenie jest zerem.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Równanie $Ax = B$: dla $A \\ne 0$ jedno rozwiązanie, dla $A = 0$ i $B = 0$ nieskończenie wiele, dla $A = 0$ i $B \\ne 0$ brak rozwiązań.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-15",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dokładnie jedno rozwiązanie: Δ = 0",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Równanie $x^2 - 11x + m = 0$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie. Oblicz $m$. Wpisz liczbę.",
+  "correct_answer": "30,25",
+  "explanation": "**Krok 1:** Równanie kwadratowe ma dokładnie jedno rozwiązanie, gdy $\\Delta = 0$.\n\n**Krok 2:** $\\Delta = (-11)^2 - 4 \\cdot 1 \\cdot m = 121 - 4m$.\n\n**Krok 3:** $121 - 4m = 0$, więc $m = 30{,}25$.\n\n**Pułapka CKE:** Parametr $m$ jest tu wyrazem wolnym $c$, więc w $\\Delta = b^2 - 4ac$ mnożysz go przez $4a$, a nie tylko przez $4$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **30,25**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-16",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Parametr przy x²: najpierw przypadek liniowy",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m + 3)x^2 + 4x + 1 = 0$ z niewiadomą $x$ ma dokładnie jedno rozwiązanie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m = -3$",
+   "$m \\in \\{-3, -7\\}$",
+   "$m \\in \\{-3, 1\\}$",
+   "$m = 1$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** Dla $m = -3$ równanie jest liniowe: $4x + 1 = 0$, więc ma dokładnie jedno rozwiązanie $x = -\\frac{1}{4}$.\n\n**Krok 2:** Dla $m \\ne -3$ równanie jest kwadratowe i ma jedno rozwiązanie, gdy $\\Delta = 16 - 4(m + 3) = 0$, czyli $m = 1$.\n\n**Krok 3:** Odpowiedź: $m \\in \\{-3, 1\\}$.\n\n**Pułapka CKE:** Gdy parametr stoi przy $x^2$, najpierw sprawdź przypadek, w którym ten współczynnik jest zerem – równanie staje się wtedy liniowe.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-17",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Brak rozwiązań: Δ < 0",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 + mx + 1 = 0$ z niewiadomą $x$ nie ma rozwiązań wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (2, +\\infty)$",
+   "$m \\in (-2, 2)$",
+   "$m \\in \\langle -2, 2 \\rangle$",
+   "$m \\in (-\\infty, -2) \\cup (2, +\\infty)$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** $\\Delta = m^2 - 4 \\cdot 1 = m^2 - 4 = (m - 2)(m + 2)$.\n\n**Krok 2:** $\\Delta < 0$ między pierwiastkami: $-2 < m < 2$.\n\n**Pułapka CKE:** Dwa RÓŻNE rozwiązania to $\\Delta > 0$, a nie $\\Delta \\ge 0$ – końce przedziałów muszą być otwarte.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-18",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania w zależności od parametru",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m - 4)x + m - 4 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-\\infty, 4) \\cup (8, +\\infty)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m - 4)^2 - 4(m - 4) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Doprowadzenie do postaci $m^2 - 12m + 32 > 0$ i wyznaczenie pierwiastków trójmianu: $m = 4$, $m = 8$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Rozwiązanie nierówności: $m \\in (-\\infty, 4) \\cup (8, +\\infty)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za ten etap."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m - 4)^2 - 4(m - 4) > 0$.\n2 pkt – Doprowadzenie do postaci $m^2 - 12m + 32 > 0$ i wyznaczenie pierwiastków trójmianu: $m = 4$, $m = 8$.\n3 pkt – Rozwiązanie nierówności: $m \\in (-\\infty, 4) \\cup (8, +\\infty)$.\nOdpowiedź: $m \\in (-\\infty, 4) \\cup (8, +\\infty)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m - 4)^2 - 4(m - 4) = m^2 - 12m + 32$."
+   },
+   {
+    "step_num": 2,
+    "description": "Trójmian zmiennej $m$: $\\Delta_m = 16$, więc $m_1 = 4$, $m_2 = 8$."
+   },
+   {
+    "step_num": 3,
+    "description": "Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, 4) \\cup (8, +\\infty)$."
+   }
+  ],
+  "explanation": "**Krok 1:** Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m - 4)^2 - 4(m - 4) = m^2 - 12m + 32$.\n\n**Krok 2:** Trójmian zmiennej $m$: $\\Delta_m = 16$, więc $m_1 = 4$, $m_2 = 8$.\n\n**Krok 3:** Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, 4) \\cup (8, +\\infty)$.\n\n**Pułapka CKE:** Warunek „dwa różne rozwiązania” to $\\Delta > 0$. Przy $\\Delta \\ge 0$ dopuszczasz $m$, dla których jest tylko jedno rozwiązanie.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-\\infty, 4) \\cup (8, +\\infty)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-19",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Równanie liniowe z parametrem",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $(m^2 - 9)x = m - 3$ z niewiadomą $x$ nie ma rozwiązań wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m = 0$",
+   "$m = 3$",
+   "$m \\in \\{-3, 3\\}$",
+   "$m = -3$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** Współczynnik przy $x$: $m^2 - 9 = (m - 3)(m + 3)$ – jest zerem dla $m = 3$ i $m = -3$.\n\n**Krok 2:** Dla $m = 3$: $0 \\cdot x = 0$ – nieskończenie wiele rozwiązań. Dla $m = -3$: $0 \\cdot x = -6$ – brak rozwiązań.\n\n**Krok 3:** Dla pozostałych $m$ dzielimy przez $m^2 - 9 \\ne 0$ i dostajemy jedno rozwiązanie $x = \\frac{1}{m + 3}$.\n\n**Pułapka CKE:** Nie dziel od razu przez $m^2 - 9$ – najpierw sprawdź, dla jakich $m$ to wyrażenie jest zerem.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Równanie $Ax = B$: dla $A \\ne 0$ jedno rozwiązanie, dla $A = 0$ i $B = 0$ nieskończenie wiele, dla $A = 0$ i $B \\ne 0$ brak rozwiązań.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-2-20",
+  "lessonId": "math-pr-lesson-5-2",
+  "lessonKey": "5.2",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.2",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania w zależności od parametru",
+  "points": 3,
+  "maxPoints": 3,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m + 1)x + m + 1 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-\\infty, -1) \\cup (3, +\\infty)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m + 1)^2 - 4(m + 1) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Doprowadzenie do postaci $m^2 - 2m - 3 > 0$ i wyznaczenie pierwiastków trójmianu: $m = -1$, $m = 3$."
+   },
+   {
+    "points": 3,
+    "label": "Komplet",
+    "criterion": "Rozwiązanie nierówności: $m \\in (-\\infty, -1) \\cup (3, +\\infty)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za ten etap."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$ w zależności od $m$: $(m + 1)^2 - 4(m + 1) > 0$.\n2 pkt – Doprowadzenie do postaci $m^2 - 2m - 3 > 0$ i wyznaczenie pierwiastków trójmianu: $m = -1$, $m = 3$.\n3 pkt – Rozwiązanie nierówności: $m \\in (-\\infty, -1) \\cup (3, +\\infty)$.\nOdpowiedź: $m \\in (-\\infty, -1) \\cup (3, +\\infty)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m + 1)^2 - 4(m + 1) = m^2 - 2m - 3$."
+   },
+   {
+    "step_num": 2,
+    "description": "Trójmian zmiennej $m$: $\\Delta_m = 16$, więc $m_1 = -1$, $m_2 = 3$."
+   },
+   {
+    "step_num": 3,
+    "description": "Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, -1) \\cup (3, +\\infty)$."
+   }
+  ],
+  "explanation": "**Krok 1:** Dwa różne rozwiązania: $\\Delta > 0$, gdzie $\\Delta = (m + 1)^2 - 4(m + 1) = m^2 - 2m - 3$.\n\n**Krok 2:** Trójmian zmiennej $m$: $\\Delta_m = 16$, więc $m_1 = -1$, $m_2 = 3$.\n\n**Krok 3:** Ramiona paraboli skierowane w górę, więc $m \\in (-\\infty, -1) \\cup (3, +\\infty)$.\n\n**Pułapka CKE:** Warunek „dwa różne rozwiązania” to $\\Delta > 0$. Przy $\\Delta \\ge 0$ dopuszczasz $m$, dla których jest tylko jedno rozwiązanie.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-\\infty, -1) \\cup (3, +\\infty)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-01",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Znaki rozwiązań a wzory Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Warunki $x_1 + x_2 > 0$ i $x_1 x_2 > 0$ bez sprawdzenia $\\Delta$ gwarantują istnienie dwóch rozwiązań dodatnich.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Do tego, by oba rozwiązania były dodatnie, wystarczy warunek $x_1 + x_2 > 0$.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "FF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Przy $\\Delta < 0$ rozwiązań nie ma, a wzory Viète’a niczego wtedy nie opisują.\n\n**Krok 2:** Stwierdzenie 2: Przykład: $x_1 = 5$, $x_2 = -1$ – suma jest dodatnia, a jedno rozwiązanie ujemne.\n\n**Pułapka CKE:** Iloczyn mówi, czy znaki są takie same; suma mówi, jaki to znak; $\\Delta > 0$ mówi, że rozwiązania w ogóle istnieją.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-02",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Rozwiązania różnych znaków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - x + (m - 1) = 0$ z niewiadomą $x$ ma dwa rozwiązania różnych znaków wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (1, +\\infty)$",
+   "$m \\in (-\\infty, 1)$",
+   "$m \\in (-\\infty, -1)$",
+   "$m \\in (-\\infty, 1 \\rangle$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Rozwiązania mają różne znaki wtedy i tylko wtedy, gdy $x_1 x_2 = \\frac{c}{a} < 0$.\n\n**Krok 2:** $x_1 x_2 = m - 1 < 0$, czyli $m < 1$. Warunek $\\Delta > 0$ jest wtedy spełniony automatycznie, bo $ac < 0$.\n\n**Pułapka CKE:** Nie dopisuj warunku $x_1 + x_2$ – przy różnych znakach suma może być dowolna.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-03",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania ujemne",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 + 4x + m = 0$ z niewiadomą $x$ ma dwa różne rozwiązania ujemne wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (0, 4 \\rangle$",
+   "$m \\in (-\\infty, 4)$",
+   "$m \\in (0, +\\infty)$",
+   "$m \\in (0, 4)$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** $\\Delta = 16 - 4m > 0$, czyli $m < 4$.\n\n**Krok 2:** $x_1 + x_2 = -4$ – ten warunek jest zawsze spełniony. $x_1 x_2 = m > 0$.\n\n**Krok 3:** Część wspólna: $m \\in (0, 4)$.\n\n**Pułapka CKE:** Bez warunku $x_1 x_2 > 0$ dopuszczasz rozwiązania różnych znaków, a z $\\Delta \\ge 0$ – jedno podwójne rozwiązanie.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-04",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Układ warunków dla znaków rozwiązań",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie kwadratowe $ax^2 + bx + c = 0$ ma dwa różne rozwiązania tego samego znaku wtedy i tylko wtedy, gdy spełnione są warunki",
+  "options": [
+   "$x_1 x_2 < 0$",
+   "$\\Delta > 0$, $x_1 + x_2 < 0$ i $x_1 x_2 > 0$",
+   "$\\Delta > 0$ i $x_1 x_2 > 0$",
+   "$\\Delta \\ge 0$, $x_1 + x_2 > 0$ i $x_1 x_2 > 0$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** $x_1 x_2 > 0$ – ten sam znak, $x_1 x_2 < 0$ – różne znaki.\n\n**Krok 2:** Przy tym samym znaku o tym, czy oba są dodatnie, czy ujemne, decyduje znak sumy $x_1 + x_2$.\n\n**Krok 3:** Dwa różne rozwiązania wymagają $\\Delta > 0$; przy $x_1 x_2 < 0$ ten warunek jest spełniony automatycznie.\n\n**Pułapka CKE:** Najczęstszy błąd to pominięcie $\\Delta > 0$ albo zapis $\\Delta \\ge 0$, który dopuszcza jedno (podwójne) rozwiązanie.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-05",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania dodatnie",
+  "points": 4,
+  "maxPoints": 4,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + 2mx + m + 6 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania dodatnie. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-6, -2)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -2) \\cup (3, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m > 0$ albo $x_1 x_2 = m + 6 > 0$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie obu warunków ze wzorów Viète’a."
+   },
+   {
+    "points": 4,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (-6, -2)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -2) \\cup (3, +\\infty)$.\n2 pkt – Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m > 0$ albo $x_1 x_2 = m + 6 > 0$.\n3 pkt – Rozwiązanie obu warunków ze wzorów Viète’a.\n4 pkt – Wyznaczenie części wspólnej: $m \\in (-6, -2)$.\nOdpowiedź: $m \\in (-6, -2)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = 4m^2 - 4(m + 6) = 4(m^2 - m - 6) = 4(m + 2)(m - 3)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -2) \\cup (3, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "$x_1 + x_2 = -2m > 0$, czyli $m < 0$."
+   },
+   {
+    "step_num": 3,
+    "description": "$x_1 x_2 = m + 6 > 0$, czyli $m > -6$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna trzech warunków: $m \\in (-6, -2)$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = 4m^2 - 4(m + 6) = 4(m^2 - m - 6) = 4(m + 2)(m - 3)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -2) \\cup (3, +\\infty)$.\n\n**Krok 2:** $x_1 + x_2 = -2m > 0$, czyli $m < 0$.\n\n**Krok 3:** $x_1 x_2 = m + 6 > 0$, czyli $m > -6$.\n\n**Krok 4:** Część wspólna trzech warunków: $m \\in (-6, -2)$.\n\n**Pułapka CKE:** Dodatni iloczyn to tylko „ten sam znak”. Bez warunku na sumę nie odróżnisz rozwiązań dodatnich od ujemnych.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-6, -2)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-06",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Znaki rozwiązań a wzory Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Do tego, by oba rozwiązania były dodatnie, wystarczy warunek $x_1 + x_2 > 0$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Rozwiązania równania $x^2 - x - 6 = 0$ są tego samego znaku.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "FF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Przykład: $x_1 = 5$, $x_2 = -1$ – suma jest dodatnia, a jedno rozwiązanie ujemne.\n\n**Krok 2:** Stwierdzenie 2: $x_1 x_2 = -6 < 0$ (rozwiązania: $-2$ i $3$).\n\n**Pułapka CKE:** Iloczyn mówi, czy znaki są takie same; suma mówi, jaki to znak; $\\Delta > 0$ mówi, że rozwiązania w ogóle istnieją.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-07",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Rozwiązania różnych znaków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 4x + (m + 6) = 0$ z niewiadomą $x$ ma dwa rozwiązania różnych znaków wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (-\\infty, -6)$",
+   "$m \\in (-\\infty, -6 \\rangle$",
+   "$m \\in (-\\infty, 6)$",
+   "$m \\in (-6, +\\infty)$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Rozwiązania mają różne znaki wtedy i tylko wtedy, gdy $x_1 x_2 = \\frac{c}{a} < 0$.\n\n**Krok 2:** $x_1 x_2 = m + 6 < 0$, czyli $m < -6$. Warunek $\\Delta > 0$ jest wtedy spełniony automatycznie, bo $ac < 0$.\n\n**Pułapka CKE:** Nie dopisuj warunku $x_1 + x_2$ – przy różnych znakach suma może być dowolna.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-08",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania ujemne",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 + 10x + m = 0$ z niewiadomą $x$ ma dwa różne rozwiązania ujemne wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (0, +\\infty)$",
+   "$m \\in (0, 25 \\rangle$",
+   "$m \\in (-\\infty, 25)$",
+   "$m \\in (0, 25)$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** $\\Delta = 100 - 4m > 0$, czyli $m < 25$.\n\n**Krok 2:** $x_1 + x_2 = -10$ – ten warunek jest zawsze spełniony. $x_1 x_2 = m > 0$.\n\n**Krok 3:** Część wspólna: $m \\in (0, 25)$.\n\n**Pułapka CKE:** Bez warunku $x_1 x_2 > 0$ dopuszczasz rozwiązania różnych znaków, a z $\\Delta \\ge 0$ – jedno podwójne rozwiązanie.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-09",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Układ warunków dla znaków rozwiązań",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie kwadratowe $ax^2 + bx + c = 0$ ma dwa rozwiązania różnych znaków wtedy i tylko wtedy, gdy spełnione są warunki",
+  "options": [
+   "$x_1 x_2 < 0$",
+   "$x_1 + x_2 > 0$ i $x_1 x_2 > 0$",
+   "$\\Delta \\ge 0$, $x_1 + x_2 > 0$ i $x_1 x_2 > 0$",
+   "$\\Delta > 0$ i $x_1 x_2 > 0$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** $x_1 x_2 > 0$ – ten sam znak, $x_1 x_2 < 0$ – różne znaki.\n\n**Krok 2:** Przy tym samym znaku o tym, czy oba są dodatnie, czy ujemne, decyduje znak sumy $x_1 + x_2$.\n\n**Krok 3:** Dwa różne rozwiązania wymagają $\\Delta > 0$; przy $x_1 x_2 < 0$ ten warunek jest spełniony automatycznie.\n\n**Pułapka CKE:** Najczęstszy błąd to pominięcie $\\Delta > 0$ albo zapis $\\Delta \\ge 0$, który dopuszcza jedno (podwójne) rozwiązanie.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-10",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania dodatnie",
+  "points": 4,
+  "maxPoints": 4,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + 2mx + m + 20 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania dodatnie. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-20, -4)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -4) \\cup (5, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m > 0$ albo $x_1 x_2 = m + 20 > 0$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie obu warunków ze wzorów Viète’a."
+   },
+   {
+    "points": 4,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (-20, -4)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -4) \\cup (5, +\\infty)$.\n2 pkt – Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m > 0$ albo $x_1 x_2 = m + 20 > 0$.\n3 pkt – Rozwiązanie obu warunków ze wzorów Viète’a.\n4 pkt – Wyznaczenie części wspólnej: $m \\in (-20, -4)$.\nOdpowiedź: $m \\in (-20, -4)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = 4m^2 - 4(m + 20) = 4(m^2 - m - 20) = 4(m + 4)(m - 5)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -4) \\cup (5, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "$x_1 + x_2 = -2m > 0$, czyli $m < 0$."
+   },
+   {
+    "step_num": 3,
+    "description": "$x_1 x_2 = m + 20 > 0$, czyli $m > -20$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna trzech warunków: $m \\in (-20, -4)$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = 4m^2 - 4(m + 20) = 4(m^2 - m - 20) = 4(m + 4)(m - 5)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -4) \\cup (5, +\\infty)$.\n\n**Krok 2:** $x_1 + x_2 = -2m > 0$, czyli $m < 0$.\n\n**Krok 3:** $x_1 x_2 = m + 20 > 0$, czyli $m > -20$.\n\n**Krok 4:** Część wspólna trzech warunków: $m \\in (-20, -4)$.\n\n**Pułapka CKE:** Dodatni iloczyn to tylko „ten sam znak”. Bez warunku na sumę nie odróżnisz rozwiązań dodatnich od ujemnych.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-20, -4)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-11",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Znaki rozwiązań a wzory Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Jeżeli $x_1 x_2 > 0$, to oba rozwiązania są dodatnie.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Warunki $x_1 + x_2 > 0$ i $x_1 x_2 > 0$ bez sprawdzenia $\\Delta$ gwarantują istnienie dwóch rozwiązań dodatnich.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "FF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Dodatni iloczyn oznacza tylko ten sam znak – oba mogą być ujemne. O znaku decyduje suma.\n\n**Krok 2:** Stwierdzenie 2: Przy $\\Delta < 0$ rozwiązań nie ma, a wzory Viète’a niczego wtedy nie opisują.\n\n**Pułapka CKE:** Iloczyn mówi, czy znaki są takie same; suma mówi, jaki to znak; $\\Delta > 0$ mówi, że rozwiązania w ogóle istnieją.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-12",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Rozwiązania różnych znaków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 + x + (m + 3) = 0$ z niewiadomą $x$ ma dwa rozwiązania różnych znaków wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (-\\infty, 3)$",
+   "$m \\in (-\\infty, -3)$",
+   "$m \\in (-\\infty, -3 \\rangle$",
+   "$m \\in (-3, +\\infty)$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Rozwiązania mają różne znaki wtedy i tylko wtedy, gdy $x_1 x_2 = \\frac{c}{a} < 0$.\n\n**Krok 2:** $x_1 x_2 = m + 3 < 0$, czyli $m < -3$. Warunek $\\Delta > 0$ jest wtedy spełniony automatycznie, bo $ac < 0$.\n\n**Pułapka CKE:** Nie dopisuj warunku $x_1 + x_2$ – przy różnych znakach suma może być dowolna.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-13",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania dodatnie",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 2x + m = 0$ z niewiadomą $x$ ma dwa różne rozwiązania dodatnie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (-\\infty, 1)$",
+   "$m \\in (0, 1 \\rangle$",
+   "$m \\in (0, +\\infty)$",
+   "$m \\in (0, 1)$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** $\\Delta = 4 - 4m > 0$, czyli $m < 1$.\n\n**Krok 2:** $x_1 + x_2 = 2$ – ten warunek jest zawsze spełniony. $x_1 x_2 = m > 0$.\n\n**Krok 3:** Część wspólna: $m \\in (0, 1)$.\n\n**Pułapka CKE:** Bez warunku $x_1 x_2 > 0$ dopuszczasz rozwiązania różnych znaków, a z $\\Delta \\ge 0$ – jedno podwójne rozwiązanie.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-14",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania ujemne",
+  "points": 4,
+  "maxPoints": 4,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + 2mx + m + 20 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania ujemne. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (5, +\\infty)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -4) \\cup (5, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m < 0$ albo $x_1 x_2 = m + 20 > 0$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie obu warunków ze wzorów Viète’a."
+   },
+   {
+    "points": 4,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (5, +\\infty)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -4) \\cup (5, +\\infty)$.\n2 pkt – Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m < 0$ albo $x_1 x_2 = m + 20 > 0$.\n3 pkt – Rozwiązanie obu warunków ze wzorów Viète’a.\n4 pkt – Wyznaczenie części wspólnej: $m \\in (5, +\\infty)$.\nOdpowiedź: $m \\in (5, +\\infty)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = 4m^2 - 4(m + 20) = 4(m^2 - m - 20) = 4(m + 4)(m - 5)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -4) \\cup (5, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "$x_1 + x_2 = -2m < 0$, czyli $m > 0$."
+   },
+   {
+    "step_num": 3,
+    "description": "$x_1 x_2 = m + 20 > 0$, czyli $m > -20$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna trzech warunków: $m \\in (5, +\\infty)$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = 4m^2 - 4(m + 20) = 4(m^2 - m - 20) = 4(m + 4)(m - 5)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -4) \\cup (5, +\\infty)$.\n\n**Krok 2:** $x_1 + x_2 = -2m < 0$, czyli $m > 0$.\n\n**Krok 3:** $x_1 x_2 = m + 20 > 0$, czyli $m > -20$.\n\n**Krok 4:** Część wspólna trzech warunków: $m \\in (5, +\\infty)$.\n\n**Pułapka CKE:** Dodatni iloczyn to tylko „ten sam znak”. Bez warunku na sumę nie odróżnisz rozwiązań dodatnich od ujemnych.\n\n**Podsumowanie:** Odpowiedź: $m \\in (5, +\\infty)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-15",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Znaki rozwiązań a wzory Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Równanie ma dwa różne rozwiązania ujemne wtedy i tylko wtedy, gdy $\\Delta > 0$, $x_1 + x_2 < 0$ oraz $x_1 x_2 > 0$.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Warunki $x_1 + x_2 > 0$ i $x_1 x_2 > 0$ bez sprawdzenia $\\Delta$ gwarantują istnienie dwóch rozwiązań dodatnich.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "PF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Ten sam znak daje iloczyn, ujemny znak – suma, a istnienie dwóch rozwiązań – $\\Delta > 0$.\n\n**Krok 2:** Stwierdzenie 2: Przy $\\Delta < 0$ rozwiązań nie ma, a wzory Viète’a niczego wtedy nie opisują.\n\n**Pułapka CKE:** Iloczyn mówi, czy znaki są takie same; suma mówi, jaki to znak; $\\Delta > 0$ mówi, że rozwiązania w ogóle istnieją.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-16",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Rozwiązania różnych znaków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 6x + (m + 5) = 0$ z niewiadomą $x$ ma dwa rozwiązania różnych znaków wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (-\\infty, -5)$",
+   "$m \\in (-5, +\\infty)$",
+   "$m \\in (-\\infty, -5 \\rangle$",
+   "$m \\in (-\\infty, 5)$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Rozwiązania mają różne znaki wtedy i tylko wtedy, gdy $x_1 x_2 = \\frac{c}{a} < 0$.\n\n**Krok 2:** $x_1 x_2 = m + 5 < 0$, czyli $m < -5$. Warunek $\\Delta > 0$ jest wtedy spełniony automatycznie, bo $ac < 0$.\n\n**Pułapka CKE:** Nie dopisuj warunku $x_1 + x_2$ – przy różnych znakach suma może być dowolna.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-17",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania dodatnie",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 10x + m = 0$ z niewiadomą $x$ ma dwa różne rozwiązania dodatnie wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (-\\infty, 25)$",
+   "$m \\in (0, +\\infty)$",
+   "$m \\in (0, 25)$",
+   "$m \\in (0, 25 \\rangle$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** $\\Delta = 100 - 4m > 0$, czyli $m < 25$.\n\n**Krok 2:** $x_1 + x_2 = 10$ – ten warunek jest zawsze spełniony. $x_1 x_2 = m > 0$.\n\n**Krok 3:** Część wspólna: $m \\in (0, 25)$.\n\n**Pułapka CKE:** Bez warunku $x_1 x_2 > 0$ dopuszczasz rozwiązania różnych znaków, a z $\\Delta \\ge 0$ – jedno podwójne rozwiązanie.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-18",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Dwa różne rozwiązania dodatnie",
+  "points": 4,
+  "maxPoints": 4,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + 2mx + m + 12 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania dodatnie. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-12, -3)$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -3) \\cup (4, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m > 0$ albo $x_1 x_2 = m + 12 > 0$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie obu warunków ze wzorów Viète’a."
+   },
+   {
+    "points": 4,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (-12, -3)$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -3) \\cup (4, +\\infty)$.\n2 pkt – Rozwiązanie jednego z warunków: $x_1 + x_2 = -2m > 0$ albo $x_1 x_2 = m + 12 > 0$.\n3 pkt – Rozwiązanie obu warunków ze wzorów Viète’a.\n4 pkt – Wyznaczenie części wspólnej: $m \\in (-12, -3)$.\nOdpowiedź: $m \\in (-12, -3)$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = 4m^2 - 4(m + 12) = 4(m^2 - m - 12) = 4(m + 3)(m - 4)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -3) \\cup (4, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "$x_1 + x_2 = -2m > 0$, czyli $m < 0$."
+   },
+   {
+    "step_num": 3,
+    "description": "$x_1 x_2 = m + 12 > 0$, czyli $m > -12$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna trzech warunków: $m \\in (-12, -3)$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = 4m^2 - 4(m + 12) = 4(m^2 - m - 12) = 4(m + 3)(m - 4)$, więc $\\Delta > 0$ dla $m \\in (-\\infty, -3) \\cup (4, +\\infty)$.\n\n**Krok 2:** $x_1 + x_2 = -2m > 0$, czyli $m < 0$.\n\n**Krok 3:** $x_1 x_2 = m + 12 > 0$, czyli $m > -12$.\n\n**Krok 4:** Część wspólna trzech warunków: $m \\in (-12, -3)$.\n\n**Pułapka CKE:** Dodatni iloczyn to tylko „ten sam znak”. Bez warunku na sumę nie odróżnisz rozwiązań dodatnich od ujemnych.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-12, -3)$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-19",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Znaki rozwiązań a wzory Viète’a",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Do tego, by oba rozwiązania były dodatnie, wystarczy warunek $x_1 + x_2 > 0$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Rozwiązania równania $x^2 + 5x + 6 = 0$ są tego samego znaku.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "FP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Przykład: $x_1 = 5$, $x_2 = -1$ – suma jest dodatnia, a jedno rozwiązanie ujemne.\n\n**Krok 2:** Stwierdzenie 2: $x_1 x_2 = 6 > 0$ i $\\Delta = 1 > 0$ (rozwiązania: $-2$ i $-3$).\n\n**Pułapka CKE:** Iloczyn mówi, czy znaki są takie same; suma mówi, jaki to znak; $\\Delta > 0$ mówi, że rozwiązania w ogóle istnieją.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-3-20",
+  "lessonId": "math-pr-lesson-5-3",
+  "lessonKey": "5.3",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.3",
+  "category": "Parametr i Viète",
+  "title": "Rozwiązania różnych znaków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^2 - 7x + (m + 1) = 0$ z niewiadomą $x$ ma dwa rozwiązania różnych znaków wtedy i tylko wtedy, gdy",
+  "options": [
+   "$m \\in (-\\infty, 1)$",
+   "$m \\in (-\\infty, -1 \\rangle$",
+   "$m \\in (-\\infty, -1)$",
+   "$m \\in (-1, +\\infty)$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** Rozwiązania mają różne znaki wtedy i tylko wtedy, gdy $x_1 x_2 = \\frac{c}{a} < 0$.\n\n**Krok 2:** $x_1 x_2 = m + 1 < 0$, czyli $m < -1$. Warunek $\\Delta > 0$ jest wtedy spełniony automatycznie, bo $ac < 0$.\n\n**Pułapka CKE:** Nie dopisuj warunku $x_1 + x_2$ – przy różnych znakach suma może być dowolna.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-01",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami zapisane przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla tych wartości $m$, dla których równanie $x^2 + (m + 4)x - 4m = 0$ ma dwa rozwiązania $x_1$, $x_2$, wyrażenie $(x_1 - x_2)^2$ jest równe",
+  "options": [
+   "$m^2 + 16m + 16$",
+   "$m^2 + 24m + 16$",
+   "$m^2 - 8m + 16$",
+   "$m^2 + 12m + 16$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m + 4)$, $x_1 x_2 = -4m$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m + 4)^2 - 4 \\cdot (-4)m = m^2 + 24m + 16$.\n\n**Pułapka CKE:** $(-(m + a))^2 = (m + a)^2$ – kwadrat zjada minus, ale środkowy wyraz $2am$ musi zostać.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-02",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wartość wyrażenia dla danego parametru",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Równanie $x^2 + (m + 3)x - 4m = 0$ dla $m = 6$ ma dwa różne rozwiązania $x_1$, $x_2$. Oblicz $x_1^2 + x_2^2$. Wpisz liczbę.",
+  "correct_answer": "129",
+  "explanation": "**Krok 1:** Dla $m = 6$: $x_1 + x_2 = -9$, $x_1 x_2 = -24$ (i $\\Delta = 177 > 0$).\n\n**Krok 2:** $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = (-9)^2 - 2 \\cdot (-24) = 129$.\n\n**Pułapka CKE:** Podstaw $m$ dopiero do wzorów Viète’a – nie do gotowego wyniku z innego zadania.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **129**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-03",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenia symetryczne – które przekształcenie jest dobre",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 2x_1 x_2$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "FP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Poprawnie: $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$.\n\n**Krok 2:** Stwierdzenie 2: $(x_1 + x_2)^2 - 4x_1 x_2 = x_1^2 - 2x_1 x_2 + x_2^2 = (x_1 - x_2)^2$.\n\n**Pułapka CKE:** Każde przekształcenie sprawdź na prostym przykładzie, np. $x_1 = 1$, $x_2 = 2$.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-04",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Parametr z warunkiem na sumę kwadratów rozwiązań",
+  "points": 5,
+  "maxPoints": 5,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + mx + m - 2 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania $x_1$, $x_2$ spełniające warunek $x_1^2 + x_2^2 = 28$. Zapisz obliczenia.",
+  "correct_answer": "$m \\in \\{-4, 6\\}$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m - 2) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m - 2)$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie równania $m^2 - 2m + 4 = 28$: $m = -4$ lub $m = 6$."
+   },
+   {
+    "points": 5,
+    "label": "Komplet",
+    "criterion": "Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m \\in \\{-4, 6\\}$."
+   }
+  ],
+  "zero_rules": [
+   "Bez sprawdzenia warunku $\\Delta > 0$ dla otrzymanych wartości – najwyżej 4 pkt."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m - 2) > 0$.\n2 pkt – Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m - 2)$.\n4 pkt – Rozwiązanie równania $m^2 - 2m + 4 = 28$: $m = -4$ lub $m = 6$.\n5 pkt – Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m \\in \\{-4, 6\\}$.\nOdpowiedź: $m \\in \\{-4, 6\\}$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Warunek: $\\Delta = m^2 - 4(m - 2) = m^2 - 4m + 8 > 0$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m - 2$, więc $x_1^2 + x_2^2 = m^2 - 2(m - 2)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$m^2 - 2m + 4 = 28$, czyli $m^2 - 2m - 24 = 0$, więc $m = -4$ lub $m = 6$."
+   },
+   {
+    "step_num": 4,
+    "description": "Sprawdzenie: $\\Delta(-4) = 40$, $\\Delta(6) = 20$."
+   },
+   {
+    "step_num": 5,
+    "description": "Odpowiedź: $m \\in \\{-4, 6\\}$."
+   }
+  ],
+  "explanation": "**Krok 1:** Warunek: $\\Delta = m^2 - 4(m - 2) = m^2 - 4m + 8 > 0$.\n\n**Krok 2:** Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m - 2$, więc $x_1^2 + x_2^2 = m^2 - 2(m - 2)$.\n\n**Krok 3:** $m^2 - 2m + 4 = 28$, czyli $m^2 - 2m - 24 = 0$, więc $m = -4$ lub $m = 6$.\n\n**Krok 4:** Sprawdzenie: $\\Delta(-4) = 40$, $\\Delta(6) = 20$.\n\n**Krok 5:** Odpowiedź: $m \\in \\{-4, 6\\}$.\n\n**Pułapka CKE:** Wzory Viète’a „działają” także dla $m$, przy których rozwiązań nie ma. Bez sprawdzenia $\\Delta > 0$ łatwo podać wartość, która nie spełnia warunków zadania.\n\n**Podsumowanie:** Odpowiedź: $m \\in \\{-4, 6\\}$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-05",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami zapisane przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla tych wartości $m$, dla których równanie $x^2 + (m + 1)x - 2m = 0$ ma dwa rozwiązania $x_1$, $x_2$, wyrażenie $(x_1 - x_2)^2$ jest równe",
+  "options": [
+   "$m^2 + 8m + 1$",
+   "$m^2 - 6m + 1$",
+   "$m^2 + 10m + 1$",
+   "$m^2 + 6m + 1$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m + 1)$, $x_1 x_2 = -2m$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m + 1)^2 - 4 \\cdot (-2)m = m^2 + 10m + 1$.\n\n**Pułapka CKE:** $(-(m + a))^2 = (m + a)^2$ – kwadrat zjada minus, ale środkowy wyraz $2am$ musi zostać.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-06",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wartość wyrażenia dla danego parametru",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Równanie $x^2 + (m + 3)x + m = 0$ dla $m = 6$ ma dwa różne rozwiązania $x_1$, $x_2$. Oblicz $x_1^2 + x_2^2$. Wpisz liczbę.",
+  "correct_answer": "69",
+  "explanation": "**Krok 1:** Dla $m = 6$: $x_1 + x_2 = -9$, $x_1 x_2 = 6$ (i $\\Delta = 57 > 0$).\n\n**Krok 2:** $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = (-9)^2 - 2 \\cdot 6 = 69$.\n\n**Pułapka CKE:** Podstaw $m$ dopiero do wzorów Viète’a – nie do gotowego wyniku z innego zadania.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **69**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-07",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenia symetryczne – które przekształcenie jest dobre",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $x_1^2 + x_2^2 = (x_1 + x_2)^2 + 2x_1 x_2$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $x_1^3 + x_2^3 = (x_1 + x_2)^3 - 3x_1 x_2(x_1 + x_2)$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "FP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Poprawnie: $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2$.\n\n**Krok 2:** Stwierdzenie 2: $(x_1 + x_2)^3 = x_1^3 + x_2^3 + 3x_1 x_2(x_1 + x_2)$.\n\n**Pułapka CKE:** Każde przekształcenie sprawdź na prostym przykładzie, np. $x_1 = 1$, $x_2 = 2$.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-08",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Odległość między rozwiązaniami",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Liczby $x_1$, $x_2$ są różnymi rozwiązaniami równania $3x^2 + 21x + 18 = 0$. Oblicz $|x_1 - x_2|$. Wpisz liczbę.",
+  "correct_answer": "5",
+  "explanation": "**Krok 1:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = \\frac{b^2}{a^2} - \\frac{4c}{a} = \\frac{\\Delta}{a^2}$.\n\n**Krok 2:** $\\Delta = 225$, $a^2 = 9$, więc $(x_1 - x_2)^2 = 25$.\n\n**Krok 3:** $|x_1 - x_2| = \\sqrt{25} = 5$.\n\n**Pułapka CKE:** $|x_1 - x_2| = \\frac{\\sqrt{\\Delta}}{|a|}$ – przy $a \\ne 1$ nie zapomnij podzielić przez $|a|$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **5**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-09",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Parametr z warunkiem na sumę kwadratów rozwiązań",
+  "points": 5,
+  "maxPoints": 5,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + mx + m + 4 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania $x_1$, $x_2$ spełniające warunek $x_1^2 + x_2^2 = 7$. Zapisz obliczenia.",
+  "correct_answer": "$m = -3$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m + 4) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m + 4)$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie równania $m^2 - 2m - 8 = 7$: $m = -3$ lub $m = 5$."
+   },
+   {
+    "points": 5,
+    "label": "Komplet",
+    "criterion": "Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m = -3$."
+   }
+  ],
+  "zero_rules": [
+   "Bez sprawdzenia warunku $\\Delta > 0$ dla otrzymanych wartości – najwyżej 4 pkt."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m + 4) > 0$.\n2 pkt – Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m + 4)$.\n4 pkt – Rozwiązanie równania $m^2 - 2m - 8 = 7$: $m = -3$ lub $m = 5$.\n5 pkt – Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m = -3$.\nOdpowiedź: $m = -3$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Warunek: $\\Delta = m^2 - 4(m + 4) = m^2 - 4m - 16 > 0$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m + 4$, więc $x_1^2 + x_2^2 = m^2 - 2(m + 4)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$m^2 - 2m - 8 = 7$, czyli $m^2 - 2m - 15 = 0$, więc $m = -3$ lub $m = 5$."
+   },
+   {
+    "step_num": 4,
+    "description": "Sprawdzenie: $\\Delta(-3) = 5$, $\\Delta(5) = -11$. Odrzucamy $m = 5$, bo wtedy $\\Delta \\le 0$."
+   },
+   {
+    "step_num": 5,
+    "description": "Odpowiedź: $m = -3$."
+   }
+  ],
+  "explanation": "**Krok 1:** Warunek: $\\Delta = m^2 - 4(m + 4) = m^2 - 4m - 16 > 0$.\n\n**Krok 2:** Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m + 4$, więc $x_1^2 + x_2^2 = m^2 - 2(m + 4)$.\n\n**Krok 3:** $m^2 - 2m - 8 = 7$, czyli $m^2 - 2m - 15 = 0$, więc $m = -3$ lub $m = 5$.\n\n**Krok 4:** Sprawdzenie: $\\Delta(-3) = 5$, $\\Delta(5) = -11$. Odrzucamy $m = 5$, bo wtedy $\\Delta \\le 0$.\n\n**Krok 5:** Odpowiedź: $m = -3$.\n\n**Pułapka CKE:** Wzory Viète’a „działają” także dla $m$, przy których rozwiązań nie ma. Bez sprawdzenia $\\Delta > 0$ łatwo podać wartość, która nie spełnia warunków zadania.\n\n**Podsumowanie:** Odpowiedź: $m = -3$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-10",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami zapisane przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla tych wartości $m$, dla których równanie $x^2 + (m + 2)x - 3m = 0$ ma dwa rozwiązania $x_1$, $x_2$, wyrażenie $(x_1 - x_2)^2$ jest równe",
+  "options": [
+   "$m^2 + 10m + 4$",
+   "$m^2 - 8m + 4$",
+   "$m^2 + 16m + 4$",
+   "$m^2 + 12m + 4$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m + 2)$, $x_1 x_2 = -3m$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m + 2)^2 - 4 \\cdot (-3)m = m^2 + 16m + 4$.\n\n**Pułapka CKE:** $(-(m + a))^2 = (m + a)^2$ – kwadrat zjada minus, ale środkowy wyraz $2am$ musi zostać.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-11",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wartość wyrażenia dla danego parametru",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Równanie $x^2 + (m + 4)x + 3m = 0$ dla $m = -2$ ma dwa różne rozwiązania $x_1$, $x_2$. Oblicz $x_1^2 + x_2^2$. Wpisz liczbę.",
+  "correct_answer": "16",
+  "explanation": "**Krok 1:** Dla $m = -2$: $x_1 + x_2 = -2$, $x_1 x_2 = -6$ (i $\\Delta = 28 > 0$).\n\n**Krok 2:** $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = (-2)^2 - 2 \\cdot (-6) = 16$.\n\n**Pułapka CKE:** Podstaw $m$ dopiero do wzorów Viète’a – nie do gotowego wyniku z innego zadania.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **16**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-12",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenia symetryczne – które przekształcenie jest dobre",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $x_1^3 + x_2^3 = (x_1 + x_2)^3 - 3x_1 x_2(x_1 + x_2)$.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $\\frac{1}{x_1} + \\frac{1}{x_2} = \\frac{1}{x_1 + x_2}$.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "PF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $(x_1 + x_2)^3 = x_1^3 + x_2^3 + 3x_1 x_2(x_1 + x_2)$.\n\n**Krok 2:** Stwierdzenie 2: Poprawnie: $\\frac{1}{x_1} + \\frac{1}{x_2} = \\frac{x_1 + x_2}{x_1 x_2}$.\n\n**Pułapka CKE:** Każde przekształcenie sprawdź na prostym przykładzie, np. $x_1 = 1$, $x_2 = 2$.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-13",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Kwadrat różnicy rozwiązań",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Liczby $x_1$, $x_2$ są różnymi rozwiązaniami równania $-x^2 + 5x - 4 = 0$. Oblicz $(x_1 - x_2)^2$. Wpisz liczbę.",
+  "correct_answer": "9",
+  "explanation": "**Krok 1:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = \\frac{b^2}{a^2} - \\frac{4c}{a} = \\frac{\\Delta}{a^2}$.\n\n**Krok 2:** $\\Delta = 9$, $a^2 = 1$, więc $(x_1 - x_2)^2 = 9$.\n\n**Krok 3:** Odpowiedź: $9$.\n\n**Pułapka CKE:** $|x_1 - x_2| = \\frac{\\sqrt{\\Delta}}{|a|}$ – przy $a \\ne 1$ nie zapomnij podzielić przez $|a|$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **9**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-14",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Parametr z warunkiem na sumę kwadratów rozwiązań",
+  "points": 5,
+  "maxPoints": 5,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + mx + m - 5 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania $x_1$, $x_2$ spełniające warunek $x_1^2 + x_2^2 = 45$. Zapisz obliczenia.",
+  "correct_answer": "$m \\in \\{-5, 7\\}$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m - 5) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m - 5)$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie równania $m^2 - 2m + 10 = 45$: $m = -5$ lub $m = 7$."
+   },
+   {
+    "points": 5,
+    "label": "Komplet",
+    "criterion": "Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m \\in \\{-5, 7\\}$."
+   }
+  ],
+  "zero_rules": [
+   "Bez sprawdzenia warunku $\\Delta > 0$ dla otrzymanych wartości – najwyżej 4 pkt."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m - 5) > 0$.\n2 pkt – Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m - 5)$.\n4 pkt – Rozwiązanie równania $m^2 - 2m + 10 = 45$: $m = -5$ lub $m = 7$.\n5 pkt – Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m \\in \\{-5, 7\\}$.\nOdpowiedź: $m \\in \\{-5, 7\\}$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Warunek: $\\Delta = m^2 - 4(m - 5) = m^2 - 4m + 20 > 0$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m - 5$, więc $x_1^2 + x_2^2 = m^2 - 2(m - 5)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$m^2 - 2m + 10 = 45$, czyli $m^2 - 2m - 35 = 0$, więc $m = -5$ lub $m = 7$."
+   },
+   {
+    "step_num": 4,
+    "description": "Sprawdzenie: $\\Delta(-5) = 65$, $\\Delta(7) = 41$."
+   },
+   {
+    "step_num": 5,
+    "description": "Odpowiedź: $m \\in \\{-5, 7\\}$."
+   }
+  ],
+  "explanation": "**Krok 1:** Warunek: $\\Delta = m^2 - 4(m - 5) = m^2 - 4m + 20 > 0$.\n\n**Krok 2:** Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m - 5$, więc $x_1^2 + x_2^2 = m^2 - 2(m - 5)$.\n\n**Krok 3:** $m^2 - 2m + 10 = 45$, czyli $m^2 - 2m - 35 = 0$, więc $m = -5$ lub $m = 7$.\n\n**Krok 4:** Sprawdzenie: $\\Delta(-5) = 65$, $\\Delta(7) = 41$.\n\n**Krok 5:** Odpowiedź: $m \\in \\{-5, 7\\}$.\n\n**Pułapka CKE:** Wzory Viète’a „działają” także dla $m$, przy których rozwiązań nie ma. Bez sprawdzenia $\\Delta > 0$ łatwo podać wartość, która nie spełnia warunków zadania.\n\n**Podsumowanie:** Odpowiedź: $m \\in \\{-5, 7\\}$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-15",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami zapisane przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla tych wartości $m$, dla których równanie $x^2 + (m - 2)x - 2m = 0$ ma dwa rozwiązania $x_1$, $x_2$, wyrażenie $(x_1 - x_2)^2$ jest równe",
+  "options": [
+   "$m^2 + 4m + 4$",
+   "$m^2 + 4$",
+   "$m^2 - 12m + 4$",
+   "$m^2 + 8m + 4$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m - 2)$, $x_1 x_2 = -2m$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m - 2)^2 - 4 \\cdot (-2)m = m^2 + 4m + 4$.\n\n**Pułapka CKE:** $(-(m + a))^2 = (m + a)^2$ – kwadrat zjada minus, ale środkowy wyraz $2am$ musi zostać.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-16",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenia symetryczne – które przekształcenie jest dobre",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $x_1^3 + x_2^3 = (x_1 + x_2)^3 - 3x_1 x_2(x_1 + x_2)$.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Dla rozwiązań $x_1$, $x_2$ (różnych od zera) dowolnego równania kwadratowego zachodzi równość $\\frac{1}{x_1} + \\frac{1}{x_2} = \\frac{x_1 + x_2}{x_1 x_2}$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "PP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $(x_1 + x_2)^3 = x_1^3 + x_2^3 + 3x_1 x_2(x_1 + x_2)$.\n\n**Krok 2:** Stwierdzenie 2: Wspólny mianownik $x_1 x_2$.\n\n**Pułapka CKE:** Każde przekształcenie sprawdź na prostym przykładzie, np. $x_1 = 1$, $x_2 = 2$.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-17",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Kwadrat różnicy rozwiązań",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Liczby $x_1$, $x_2$ są różnymi rozwiązaniami równania $3x^2 - 9x - 30 = 0$. Oblicz $(x_1 - x_2)^2$. Wpisz liczbę.",
+  "correct_answer": "49",
+  "explanation": "**Krok 1:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = \\frac{b^2}{a^2} - \\frac{4c}{a} = \\frac{\\Delta}{a^2}$.\n\n**Krok 2:** $\\Delta = 441$, $a^2 = 9$, więc $(x_1 - x_2)^2 = 49$.\n\n**Krok 3:** Odpowiedź: $49$.\n\n**Pułapka CKE:** $|x_1 - x_2| = \\frac{\\sqrt{\\Delta}}{|a|}$ – przy $a \\ne 1$ nie zapomnij podzielić przez $|a|$.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **49**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-18",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wyrażenie z rozwiązaniami zapisane przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla tych wartości $m$, dla których równanie $x^2 + (m - 1)x - 2m = 0$ ma dwa rozwiązania $x_1$, $x_2$, wyrażenie $(x_1 - x_2)^2$ jest równe",
+  "options": [
+   "$m^2 + 2m + 1$",
+   "$m^2 + 8m + 1$",
+   "$m^2 + 6m + 1$",
+   "$m^2 - 10m + 1$"
+  ],
+  "correct_answer": "C",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m - 1)$, $x_1 x_2 = -2m$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m - 1)^2 - 4 \\cdot (-2)m = m^2 + 6m + 1$.\n\n**Pułapka CKE:** $(-(m + a))^2 = (m + a)^2$ – kwadrat zjada minus, ale środkowy wyraz $2am$ musi zostać.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **C**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-19",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Wartość wyrażenia dla danego parametru",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Równanie $x^2 + (m + 2)x + 2m = 0$ dla $m = -2$ ma dwa różne rozwiązania $x_1$, $x_2$. Oblicz $x_1^2 + x_2^2$. Wpisz liczbę.",
+  "correct_answer": "8",
+  "explanation": "**Krok 1:** Dla $m = -2$: $x_1 + x_2 = 0$, $x_1 x_2 = -4$ (i $\\Delta = 16 > 0$).\n\n**Krok 2:** $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = 0^2 - 2 \\cdot (-4) = 8$.\n\n**Pułapka CKE:** Podstaw $m$ dopiero do wzorów Viète’a – nie do gotowego wyniku z innego zadania.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **8**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-4-20",
+  "lessonId": "math-pr-lesson-5-4",
+  "lessonKey": "5.4",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.4",
+  "category": "Parametr i Viète",
+  "title": "Parametr z warunkiem na sumę kwadratów rozwiązań",
+  "points": 5,
+  "maxPoints": 5,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + mx + m - 2 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania $x_1$, $x_2$ spełniające warunek $x_1^2 + x_2^2 = 12$. Zapisz obliczenia.",
+  "correct_answer": "$m \\in \\{-2, 4\\}$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m - 2) > 0$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m - 2)$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3",
+    "criterion": "Rozwiązanie równania $m^2 - 2m + 4 = 12$: $m = -2$ lub $m = 4$."
+   },
+   {
+    "points": 5,
+    "label": "Komplet",
+    "criterion": "Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m \\in \\{-2, 4\\}$."
+   }
+  ],
+  "zero_rules": [
+   "Bez sprawdzenia warunku $\\Delta > 0$ dla otrzymanych wartości – najwyżej 4 pkt."
+  ],
+  "scoring_key": "1 pkt – Zapisanie warunku $\\Delta > 0$: $m^2 - 4(m - 2) > 0$.\n2 pkt – Zapisanie $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = m^2 - 2(m - 2)$.\n4 pkt – Rozwiązanie równania $m^2 - 2m + 4 = 12$: $m = -2$ lub $m = 4$.\n5 pkt – Sprawdzenie warunku $\\Delta > 0$ i odpowiedź: $m \\in \\{-2, 4\\}$.\nOdpowiedź: $m \\in \\{-2, 4\\}$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "Warunek: $\\Delta = m^2 - 4(m - 2) = m^2 - 4m + 8 > 0$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m - 2$, więc $x_1^2 + x_2^2 = m^2 - 2(m - 2)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$m^2 - 2m + 4 = 12$, czyli $m^2 - 2m - 8 = 0$, więc $m = -2$ lub $m = 4$."
+   },
+   {
+    "step_num": 4,
+    "description": "Sprawdzenie: $\\Delta(-2) = 20$, $\\Delta(4) = 8$."
+   },
+   {
+    "step_num": 5,
+    "description": "Odpowiedź: $m \\in \\{-2, 4\\}$."
+   }
+  ],
+  "explanation": "**Krok 1:** Warunek: $\\Delta = m^2 - 4(m - 2) = m^2 - 4m + 8 > 0$.\n\n**Krok 2:** Ze wzorów Viète’a: $x_1 + x_2 = -m$, $x_1 x_2 = m - 2$, więc $x_1^2 + x_2^2 = m^2 - 2(m - 2)$.\n\n**Krok 3:** $m^2 - 2m + 4 = 12$, czyli $m^2 - 2m - 8 = 0$, więc $m = -2$ lub $m = 4$.\n\n**Krok 4:** Sprawdzenie: $\\Delta(-2) = 20$, $\\Delta(4) = 8$.\n\n**Krok 5:** Odpowiedź: $m \\in \\{-2, 4\\}$.\n\n**Pułapka CKE:** Wzory Viète’a „działają” także dla $m$, przy których rozwiązań nie ma. Bez sprawdzenia $\\Delta > 0$ łatwo podać wartość, która nie spełnia warunków zadania.\n\n**Podsumowanie:** Odpowiedź: $m \\in \\{-2, 4\\}$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-01",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Część wspólna warunków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRozwiązując zadanie z parametrem, otrzymano trzy warunki: $m \\in (-\\infty, -3) \\cup (5, +\\infty)$, $m \\in (-4, +\\infty)$ oraz $m \\in \\langle -4, 6 \\rangle$. Zbiór wszystkich $m$ spełniających jednocześnie te warunki to",
+  "options": [
+   "$(-4, -3 \\rangle \\cup \\langle 5, 6 \\rangle$",
+   "$(-4, 6 \\rangle$",
+   "$\\langle -4, -3) \\cup (5, 6 \\rangle$",
+   "$(-4, -3) \\cup (5, 6 \\rangle$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** Część wspólna pierwszego i trzeciego warunku: $\\langle -4, -3) \\cup (5, 6 \\rangle$.\n\n**Krok 2:** Uwzględniamy drugi warunek: $(-4, -3) \\cup (5, 6 \\rangle$.\n\n**Krok 3:** Zaznacz wszystkie trzy zbiory na jednej osi – wtedy od razu widać, które końce są domknięte.\n\n**Pułapka CKE:** Każdy koniec przedziału bierze nawias z warunku, z którego pochodzi: z $\\Delta > 0$ – otwarty, z nierówności nieostrej – domknięty.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-02",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Najmniejsza całkowita wartość parametru",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Zbiór wszystkich wartości parametru $m$, dla których równanie $x^2 + (m - 1)x + m - 1 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste $x_1$, $x_2$ tego samego znaku, spełniające warunek $(x_1 - x_2)^2 \\le 12$, to $(5, 7 \\rangle$. Podaj najmniejszą liczbę całkowitą należącą do tego zbioru. Wpisz liczbę.",
+  "correct_answer": "6",
+  "explanation": "**Krok 1:** Zbiór: $(5, 7 \\rangle$. Sprawdź, czy końce przedziałów należą do zbioru (nawias kwadratowy lub $\\langle\\,\\rangle$ – tak, okrągły – nie).\n\n**Krok 2:** Liczby całkowite w zbiorze: $6,\\; 7$.\n\n**Krok 3:** Najmniejsza z nich to $6$.\n\n**Pułapka CKE:** Przy otwartym końcu przedziału sama liczba graniczna do zbioru NIE należy.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **6**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-03",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Jak CKE punktuje zadanie z parametrem",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Dla równania $x^2 + bx + c = 0$ wyrażenie $(x_1 - x_2)^2$ jest równe $\\Delta$.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Część wspólną wystarczy policzyć z warunków otrzymanych ze wzorów Viète’a.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "PF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = b^2 - 4c = \\Delta$.\n\n**Krok 2:** Stwierdzenie 2: Do części wspólnej wchodzą wszystkie warunki, także $\\Delta > 0$.\n\n**Pułapka CKE:** Punkty są za etapy – nawet gdy nie dojdziesz do końca, każdy poprawnie rozwiązany warunek się liczy.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-04",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Warunek (x₁ − x₂)² ≤ K zapisany przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla równania $x^2 + (m - 3)x + m - 3 = 0$ warunek $(x_1 - x_2)^2 \\le 21$ zapisany w zależności od $m$ ma postać",
+  "options": [
+   "$m^2 - 2m - 3 \\le 21$",
+   "$m^2 - 10m + 21 \\le 21$",
+   "$m^2 - 8m + 15 \\le 21$",
+   "$m^2 - 4m + 21 \\le 21$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m - 3)$, $x_1 x_2 = m - 3$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m - 3)^2 - 4(m - 3) = m^2 - 10m + 21$.\n\n**Pułapka CKE:** W $(x_1 - x_2)^2$ odejmujesz $4x_1 x_2$, a nie $2x_1 x_2$ (to wzór na $x_1^2 + x_2^2$).\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-05",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Pełne zadanie z parametrem za 6 pkt",
+  "points": 6,
+  "maxPoints": 6,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m - 5)x + m - 2 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste $x_1$, $x_2$ tego samego znaku, spełniające warunek $(x_1 - x_2)^2 \\le 48$. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (2, 3) \\cup (11, 15 \\rangle$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, 3) \\cup (11, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie warunku $x_1 x_2 > 0$: $m - 2 > 0$, czyli $m \\in (2, +\\infty)$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3a",
+    "criterion": "Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3b",
+    "criterion": "Zapisanie nierówności z jedną niewiadomą: $m^2 - 14m + 33 \\le 48$."
+   },
+   {
+    "points": 5,
+    "label": "Etap 3c",
+    "criterion": "Rozwiązanie tej nierówności: $m \\in \\langle -1, 15 \\rangle$."
+   },
+   {
+    "points": 6,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (2, 3) \\cup (11, 15 \\rangle$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, 3) \\cup (11, +\\infty)$.\n2 pkt – Rozwiązanie warunku $x_1 x_2 > 0$: $m - 2 > 0$, czyli $m \\in (2, +\\infty)$.\n3 pkt – Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$.\n4 pkt – Zapisanie nierówności z jedną niewiadomą: $m^2 - 14m + 33 \\le 48$.\n5 pkt – Rozwiązanie tej nierówności: $m \\in \\langle -1, 15 \\rangle$.\n6 pkt – Wyznaczenie części wspólnej: $m \\in (2, 3) \\cup (11, 15 \\rangle$.\nOdpowiedź: $m \\in (2, 3) \\cup (11, 15 \\rangle$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = (m - 5)^2 - 4(m - 2) = m^2 - 14m + 33 > 0$. Pierwiastki trójmianu: $3$ i $11$, więc $m \\in (-\\infty, 3) \\cup (11, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ten sam znak: $x_1 x_2 = m - 2 > 0$, czyli $m \\in (2, +\\infty)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 - 14m + 33 \\le 48$, czyli $m^2 - 14m - 15 \\le 0$. Pierwiastki: $-1$ i $15$, więc $m \\in \\langle -1, 15 \\rangle$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna: $m \\in (2, 3) \\cup (11, 15 \\rangle$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = (m - 5)^2 - 4(m - 2) = m^2 - 14m + 33 > 0$. Pierwiastki trójmianu: $3$ i $11$, więc $m \\in (-\\infty, 3) \\cup (11, +\\infty)$.\n\n**Krok 2:** Ten sam znak: $x_1 x_2 = m - 2 > 0$, czyli $m \\in (2, +\\infty)$.\n\n**Krok 3:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 - 14m + 33 \\le 48$, czyli $m^2 - 14m - 15 \\le 0$. Pierwiastki: $-1$ i $15$, więc $m \\in \\langle -1, 15 \\rangle$.\n\n**Krok 4:** Część wspólna: $m \\in (2, 3) \\cup (11, 15 \\rangle$.\n\n**Pułapka CKE:** Na końcu zostaje część wspólna WSZYSTKICH trzech warunków – najczęściej gubi się warunek ze znakiem iloczynu.\n\n**Podsumowanie:** Odpowiedź: $m \\in (2, 3) \\cup (11, 15 \\rangle$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-06",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Część wspólna warunków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRozwiązując zadanie z parametrem, otrzymano trzy warunki: $m \\in (-\\infty, 1) \\cup (5, +\\infty)$, $m \\in (1, +\\infty)$ oraz $m \\in \\langle 0, 6 \\rangle$. Zbiór wszystkich $m$ spełniających jednocześnie te warunki to",
+  "options": [
+   "$\\langle 5, 6 \\rangle$",
+   "$(5, 6 \\rangle$",
+   "$(1, 6 \\rangle$",
+   "$\\langle 0, 1) \\cup (5, 6 \\rangle$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Część wspólna pierwszego i trzeciego warunku: $\\langle 0, 1) \\cup (5, 6 \\rangle$.\n\n**Krok 2:** Uwzględniamy drugi warunek: $(5, 6 \\rangle$.\n\n**Krok 3:** Zaznacz wszystkie trzy zbiory na jednej osi – wtedy od razu widać, które końce są domknięte.\n\n**Pułapka CKE:** Każdy koniec przedziału bierze nawias z warunku, z którego pochodzi: z $\\Delta > 0$ – otwarty, z nierówności nieostrej – domknięty.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-07",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Jak CKE punktuje zadanie z parametrem",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Poprawnie rozwiązany warunek $\\Delta > 0$ daje punkt, nawet jeśli dalsza część rozwiązania jest błędna.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Część wspólną wystarczy policzyć z warunków otrzymanych ze wzorów Viète’a.",
+    "correct": "F"
+   }
+  ],
+  "correct_answer": "PF",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Zasady oceniania CKE przyznają punkty za każdy poprawnie wykonany etap.\n\n**Krok 2:** Stwierdzenie 2: Do części wspólnej wchodzą wszystkie warunki, także $\\Delta > 0$.\n\n**Pułapka CKE:** Punkty są za etapy – nawet gdy nie dojdziesz do końca, każdy poprawnie rozwiązany warunek się liczy.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **fałsz**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-08",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Warunek (x₁ − x₂)² ≤ K zapisany przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla równania $x^2 + (m + 3)x + m + 6 = 0$ warunek $(x_1 - x_2)^2 \\le 9$ zapisany w zależności od $m$ ma postać",
+  "options": [
+   "$m^2 + 2m - 15 \\le 9$",
+   "$m^2 + 4m - 3 \\le 9$",
+   "$m^2 + 10m + 33 \\le 9$",
+   "$m^2 - 4m - 15 \\le 9$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m + 3)$, $x_1 x_2 = m + 6$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m + 3)^2 - 4(m + 6) = m^2 + 2m - 15$.\n\n**Pułapka CKE:** W $(x_1 - x_2)^2$ odejmujesz $4x_1 x_2$, a nie $2x_1 x_2$ (to wzór na $x_1^2 + x_2^2$).\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-09",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Pełne zadanie z parametrem za 6 pkt",
+  "points": 6,
+  "maxPoints": 6,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m + 4)x + m + 7 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste $x_1$, $x_2$ tego samego znaku, spełniające warunek $(x_1 - x_2)^2 \\le 33$. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-7, -6) \\cup (2, 5 \\rangle$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -6) \\cup (2, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie warunku $x_1 x_2 > 0$: $m + 7 > 0$, czyli $m \\in (-7, +\\infty)$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3a",
+    "criterion": "Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3b",
+    "criterion": "Zapisanie nierówności z jedną niewiadomą: $m^2 + 4m - 12 \\le 33$."
+   },
+   {
+    "points": 5,
+    "label": "Etap 3c",
+    "criterion": "Rozwiązanie tej nierówności: $m \\in \\langle -9, 5 \\rangle$."
+   },
+   {
+    "points": 6,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (-7, -6) \\cup (2, 5 \\rangle$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, -6) \\cup (2, +\\infty)$.\n2 pkt – Rozwiązanie warunku $x_1 x_2 > 0$: $m + 7 > 0$, czyli $m \\in (-7, +\\infty)$.\n3 pkt – Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$.\n4 pkt – Zapisanie nierówności z jedną niewiadomą: $m^2 + 4m - 12 \\le 33$.\n5 pkt – Rozwiązanie tej nierówności: $m \\in \\langle -9, 5 \\rangle$.\n6 pkt – Wyznaczenie części wspólnej: $m \\in (-7, -6) \\cup (2, 5 \\rangle$.\nOdpowiedź: $m \\in (-7, -6) \\cup (2, 5 \\rangle$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = (m + 4)^2 - 4(m + 7) = m^2 + 4m - 12 > 0$. Pierwiastki trójmianu: $-6$ i $2$, więc $m \\in (-\\infty, -6) \\cup (2, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ten sam znak: $x_1 x_2 = m + 7 > 0$, czyli $m \\in (-7, +\\infty)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 + 4m - 12 \\le 33$, czyli $m^2 + 4m - 45 \\le 0$. Pierwiastki: $-9$ i $5$, więc $m \\in \\langle -9, 5 \\rangle$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna: $m \\in (-7, -6) \\cup (2, 5 \\rangle$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = (m + 4)^2 - 4(m + 7) = m^2 + 4m - 12 > 0$. Pierwiastki trójmianu: $-6$ i $2$, więc $m \\in (-\\infty, -6) \\cup (2, +\\infty)$.\n\n**Krok 2:** Ten sam znak: $x_1 x_2 = m + 7 > 0$, czyli $m \\in (-7, +\\infty)$.\n\n**Krok 3:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 + 4m - 12 \\le 33$, czyli $m^2 + 4m - 45 \\le 0$. Pierwiastki: $-9$ i $5$, więc $m \\in \\langle -9, 5 \\rangle$.\n\n**Krok 4:** Część wspólna: $m \\in (-7, -6) \\cup (2, 5 \\rangle$.\n\n**Pułapka CKE:** Na końcu zostaje część wspólna WSZYSTKICH trzech warunków – najczęściej gubi się warunek ze znakiem iloczynu.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-7, -6) \\cup (2, 5 \\rangle$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-10",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Część wspólna warunków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRozwiązując zadanie z parametrem, otrzymano trzy warunki: $m \\in (-\\infty, -6) \\cup (2, +\\infty)$, $m \\in (-7, +\\infty)$ oraz $m \\in \\langle -8, 4 \\rangle$. Zbiór wszystkich $m$ spełniających jednocześnie te warunki to",
+  "options": [
+   "$\\langle -8, -6) \\cup (2, 4 \\rangle$",
+   "$(-7, -6) \\cup (2, 4 \\rangle$",
+   "$(-7, 4 \\rangle$",
+   "$(-7, -6 \\rangle \\cup \\langle 2, 4 \\rangle$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Część wspólna pierwszego i trzeciego warunku: $\\langle -8, -6) \\cup (2, 4 \\rangle$.\n\n**Krok 2:** Uwzględniamy drugi warunek: $(-7, -6) \\cup (2, 4 \\rangle$.\n\n**Krok 3:** Zaznacz wszystkie trzy zbiory na jednej osi – wtedy od razu widać, które końce są domknięte.\n\n**Pułapka CKE:** Każdy koniec przedziału bierze nawias z warunku, z którego pochodzi: z $\\Delta > 0$ – otwarty, z nierówności nieostrej – domknięty.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-11",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Liczba całkowitych wartości parametru",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Zbiór wszystkich wartości parametru $m$, dla których równanie $x^2 + (m - 5)x + m - 2 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste $x_1$, $x_2$ tego samego znaku, spełniające warunek $(x_1 - x_2)^2 \\le 48$, to $(2, 3) \\cup (11, 15 \\rangle$. Ile liczb całkowitych należy do tego zbioru? Wpisz liczbę.",
+  "correct_answer": "4",
+  "explanation": "**Krok 1:** Zbiór: $(2, 3) \\cup (11, 15 \\rangle$. Sprawdź, czy końce przedziałów należą do zbioru (nawias kwadratowy lub $\\langle\\,\\rangle$ – tak, okrągły – nie).\n\n**Krok 2:** Liczby całkowite w zbiorze: $12,\\; 13,\\; 14,\\; 15$.\n\n**Krok 3:** Jest ich $4$.\n\n**Pułapka CKE:** Przy otwartym końcu przedziału sama liczba graniczna do zbioru NIE należy.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **4**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-12",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Jak CKE punktuje zadanie z parametrem",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Dla równania $x^2 + bx + c = 0$ wyrażenie $(x_1 - x_2)^2$ jest równe $\\Delta$.",
+    "correct": "P"
+   },
+   {
+    "id": "2",
+    "text": "Poprawnie rozwiązany warunek $\\Delta > 0$ daje punkt, nawet jeśli dalsza część rozwiązania jest błędna.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "PP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = b^2 - 4c = \\Delta$.\n\n**Krok 2:** Stwierdzenie 2: Zasady oceniania CKE przyznają punkty za każdy poprawnie wykonany etap.\n\n**Pułapka CKE:** Punkty są za etapy – nawet gdy nie dojdziesz do końca, każdy poprawnie rozwiązany warunek się liczy.\n\n**Podsumowanie:** Stwierdzenie 1 – **prawda**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-13",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Warunek (x₁ − x₂)² ≤ K zapisany przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla równania $x^2 + (m - 2)x + m - 2 = 0$ warunek $(x_1 - x_2)^2 \\le 12$ zapisany w zależności od $m$ ma postać",
+  "options": [
+   "$m^2 - 4 \\le 12$",
+   "$m^2 - 8m + 12 \\le 12$",
+   "$m^2 - 6m + 8 \\le 12$",
+   "$m^2 - 4m + 12 \\le 12$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m - 2)$, $x_1 x_2 = m - 2$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m - 2)^2 - 4(m - 2) = m^2 - 8m + 12$.\n\n**Pułapka CKE:** W $(x_1 - x_2)^2$ odejmujesz $4x_1 x_2$, a nie $2x_1 x_2$ (to wzór na $x_1^2 + x_2^2$).\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-14",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Pełne zadanie z parametrem za 6 pkt",
+  "points": 6,
+  "maxPoints": 6,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m - 2)x + m + 1 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste $x_1$, $x_2$ tego samego znaku, spełniające warunek $(x_1 - x_2)^2 \\le 48$. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (-1, 0) \\cup (8, 12 \\rangle$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, 0) \\cup (8, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie warunku $x_1 x_2 > 0$: $m + 1 > 0$, czyli $m \\in (-1, +\\infty)$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3a",
+    "criterion": "Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3b",
+    "criterion": "Zapisanie nierówności z jedną niewiadomą: $m^2 - 8m \\le 48$."
+   },
+   {
+    "points": 5,
+    "label": "Etap 3c",
+    "criterion": "Rozwiązanie tej nierówności: $m \\in \\langle -4, 12 \\rangle$."
+   },
+   {
+    "points": 6,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (-1, 0) \\cup (8, 12 \\rangle$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, 0) \\cup (8, +\\infty)$.\n2 pkt – Rozwiązanie warunku $x_1 x_2 > 0$: $m + 1 > 0$, czyli $m \\in (-1, +\\infty)$.\n3 pkt – Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$.\n4 pkt – Zapisanie nierówności z jedną niewiadomą: $m^2 - 8m \\le 48$.\n5 pkt – Rozwiązanie tej nierówności: $m \\in \\langle -4, 12 \\rangle$.\n6 pkt – Wyznaczenie części wspólnej: $m \\in (-1, 0) \\cup (8, 12 \\rangle$.\nOdpowiedź: $m \\in (-1, 0) \\cup (8, 12 \\rangle$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = (m - 2)^2 - 4(m + 1) = m^2 - 8m > 0$. Pierwiastki trójmianu: $0$ i $8$, więc $m \\in (-\\infty, 0) \\cup (8, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ten sam znak: $x_1 x_2 = m + 1 > 0$, czyli $m \\in (-1, +\\infty)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 - 8m \\le 48$, czyli $m^2 - 8m - 48 \\le 0$. Pierwiastki: $-4$ i $12$, więc $m \\in \\langle -4, 12 \\rangle$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna: $m \\in (-1, 0) \\cup (8, 12 \\rangle$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = (m - 2)^2 - 4(m + 1) = m^2 - 8m > 0$. Pierwiastki trójmianu: $0$ i $8$, więc $m \\in (-\\infty, 0) \\cup (8, +\\infty)$.\n\n**Krok 2:** Ten sam znak: $x_1 x_2 = m + 1 > 0$, czyli $m \\in (-1, +\\infty)$.\n\n**Krok 3:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 - 8m \\le 48$, czyli $m^2 - 8m - 48 \\le 0$. Pierwiastki: $-4$ i $12$, więc $m \\in \\langle -4, 12 \\rangle$.\n\n**Krok 4:** Część wspólna: $m \\in (-1, 0) \\cup (8, 12 \\rangle$.\n\n**Pułapka CKE:** Na końcu zostaje część wspólna WSZYSTKICH trzech warunków – najczęściej gubi się warunek ze znakiem iloczynu.\n\n**Podsumowanie:** Odpowiedź: $m \\in (-1, 0) \\cup (8, 12 \\rangle$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-15",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Część wspólna warunków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRozwiązując zadanie z parametrem, otrzymano trzy warunki: $m \\in (-\\infty, 1) \\cup (5, +\\infty)$, $m \\in (1, +\\infty)$ oraz $m \\in \\langle -1, 7 \\rangle$. Zbiór wszystkich $m$ spełniających jednocześnie te warunki to",
+  "options": [
+   "$\\langle 5, 7 \\rangle$",
+   "$(5, 7 \\rangle$",
+   "$\\langle -1, 1) \\cup (5, 7 \\rangle$",
+   "$(1, 7 \\rangle$"
+  ],
+  "correct_answer": "B",
+  "explanation": "**Krok 1:** Część wspólna pierwszego i trzeciego warunku: $\\langle -1, 1) \\cup (5, 7 \\rangle$.\n\n**Krok 2:** Uwzględniamy drugi warunek: $(5, 7 \\rangle$.\n\n**Krok 3:** Zaznacz wszystkie trzy zbiory na jednej osi – wtedy od razu widać, które końce są domknięte.\n\n**Pułapka CKE:** Każdy koniec przedziału bierze nawias z warunku, z którego pochodzi: z $\\Delta > 0$ – otwarty, z nierówności nieostrej – domknięty.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **B**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-16",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Najmniejsza całkowita wartość parametru",
+  "points": 1,
+  "type": "NUMERIC_INPUT",
+  "content": "Zbiór wszystkich wartości parametru $m$, dla których równanie $x^2 + (m - 2)x + m + 1 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste $x_1$, $x_2$ tego samego znaku, spełniające warunek $(x_1 - x_2)^2 \\le 9$, to $(-1, 0) \\cup (8, 9 \\rangle$. Podaj najmniejszą liczbę całkowitą należącą do tego zbioru. Wpisz liczbę.",
+  "correct_answer": "9",
+  "explanation": "**Krok 1:** Zbiór: $(-1, 0) \\cup (8, 9 \\rangle$. Sprawdź, czy końce przedziałów należą do zbioru (nawias kwadratowy lub $\\langle\\,\\rangle$ – tak, okrągły – nie).\n\n**Krok 2:** Liczby całkowite w zbiorze: $9$.\n\n**Krok 3:** Najmniejsza z nich to $9$.\n\n**Pułapka CKE:** Przy otwartym końcu przedziału sama liczba graniczna do zbioru NIE należy.\n\n**Podsumowanie:** Prawidłowa odpowiedź to **9**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-17",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Jak CKE punktuje zadanie z parametrem",
+  "points": 1,
+  "type": "TRUE_FALSE",
+  "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+  "statements": [
+   {
+    "id": "1",
+    "text": "Warunek „rozwiązania tego samego znaku” zapisujemy jako $x_1 + x_2 > 0$.",
+    "correct": "F"
+   },
+   {
+    "id": "2",
+    "text": "Dla równania $x^2 + bx + c = 0$ wyrażenie $(x_1 - x_2)^2$ jest równe $\\Delta$.",
+    "correct": "P"
+   }
+  ],
+  "correct_answer": "FP",
+  "explanation": "**Krok 1:** Stwierdzenie 1: Ten sam znak to $x_1 x_2 > 0$ (przy $\\Delta > 0$).\n\n**Krok 2:** Stwierdzenie 2: $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = b^2 - 4c = \\Delta$.\n\n**Pułapka CKE:** Punkty są za etapy – nawet gdy nie dojdziesz do końca, każdy poprawnie rozwiązany warunek się liczy.\n\n**Podsumowanie:** Stwierdzenie 1 – **fałsz**, stwierdzenie 2 – **prawda**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-18",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Warunek (x₁ − x₂)² ≤ K zapisany przez parametr",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla równania $x^2 + (m + 5)x + m + 5 = 0$ warunek $(x_1 - x_2)^2 \\le 12$ zapisany w zależności od $m$ ma postać",
+  "options": [
+   "$m^2 + 6m + 5 \\le 12$",
+   "$m^2 - 4m + 5 \\le 12$",
+   "$m^2 + 8m + 15 \\le 12$",
+   "$m^2 + 14m + 45 \\le 12$"
+  ],
+  "correct_answer": "A",
+  "explanation": "**Krok 1:** Ze wzorów Viète’a: $x_1 + x_2 = -(m + 5)$, $x_1 x_2 = m + 5$.\n\n**Krok 2:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (m + 5)^2 - 4(m + 5) = m^2 + 6m + 5$.\n\n**Pułapka CKE:** W $(x_1 - x_2)^2$ odejmujesz $4x_1 x_2$, a nie $2x_1 x_2$ (to wzór na $x_1^2 + x_2^2$).\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **A**.",
+  "matura_tip": "Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-19",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Pełne zadanie z parametrem za 6 pkt",
+  "points": 6,
+  "maxPoints": 6,
+  "type": "OPEN_CALCULATION",
+  "content": "Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m - 5)x + m - 5 = 0$ z niewiadomą $x$ ma dwa różne rozwiązania rzeczywiste $x_1$, $x_2$ tego samego znaku, spełniające warunek $(x_1 - x_2)^2 \\le 5$. Zapisz obliczenia.",
+  "correct_answer": "$m \\in (9, 10 \\rangle$",
+  "rubric_stages": [
+   {
+    "points": 1,
+    "label": "Etap 1",
+    "criterion": "Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, 5) \\cup (9, +\\infty)$."
+   },
+   {
+    "points": 2,
+    "label": "Etap 2",
+    "criterion": "Rozwiązanie warunku $x_1 x_2 > 0$: $m - 5 > 0$, czyli $m \\in (5, +\\infty)$."
+   },
+   {
+    "points": 3,
+    "label": "Etap 3a",
+    "criterion": "Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$."
+   },
+   {
+    "points": 4,
+    "label": "Etap 3b",
+    "criterion": "Zapisanie nierówności z jedną niewiadomą: $m^2 - 14m + 45 \\le 5$."
+   },
+   {
+    "points": 5,
+    "label": "Etap 3c",
+    "criterion": "Rozwiązanie tej nierówności: $m \\in \\langle 4, 10 \\rangle$."
+   },
+   {
+    "points": 6,
+    "label": "Komplet",
+    "criterion": "Wyznaczenie części wspólnej: $m \\in (9, 10 \\rangle$."
+   }
+  ],
+  "zero_rules": [
+   "Rozwiązanie nierówności $\\Delta \\ge 0$ zamiast $\\Delta > 0$ – 0 pkt za etap 1."
+  ],
+  "scoring_key": "1 pkt – Rozwiązanie nierówności $\\Delta > 0$: $m \\in (-\\infty, 5) \\cup (9, +\\infty)$.\n2 pkt – Rozwiązanie warunku $x_1 x_2 > 0$: $m - 5 > 0$, czyli $m \\in (5, +\\infty)$.\n3 pkt – Zapisanie $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2$ w zależności od $m$.\n4 pkt – Zapisanie nierówności z jedną niewiadomą: $m^2 - 14m + 45 \\le 5$.\n5 pkt – Rozwiązanie tej nierówności: $m \\in \\langle 4, 10 \\rangle$.\n6 pkt – Wyznaczenie części wspólnej: $m \\in (9, 10 \\rangle$.\nOdpowiedź: $m \\in (9, 10 \\rangle$",
+  "official_solution_steps": [
+   {
+    "step_num": 1,
+    "description": "$\\Delta = (m - 5)^2 - 4(m - 5) = m^2 - 14m + 45 > 0$. Pierwiastki trójmianu: $5$ i $9$, więc $m \\in (-\\infty, 5) \\cup (9, +\\infty)$."
+   },
+   {
+    "step_num": 2,
+    "description": "Ten sam znak: $x_1 x_2 = m - 5 > 0$, czyli $m \\in (5, +\\infty)$."
+   },
+   {
+    "step_num": 3,
+    "description": "$(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 - 14m + 45 \\le 5$, czyli $m^2 - 14m + 40 \\le 0$. Pierwiastki: $4$ i $10$, więc $m \\in \\langle 4, 10 \\rangle$."
+   },
+   {
+    "step_num": 4,
+    "description": "Część wspólna: $m \\in (9, 10 \\rangle$."
+   }
+  ],
+  "explanation": "**Krok 1:** $\\Delta = (m - 5)^2 - 4(m - 5) = m^2 - 14m + 45 > 0$. Pierwiastki trójmianu: $5$ i $9$, więc $m \\in (-\\infty, 5) \\cup (9, +\\infty)$.\n\n**Krok 2:** Ten sam znak: $x_1 x_2 = m - 5 > 0$, czyli $m \\in (5, +\\infty)$.\n\n**Krok 3:** $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = m^2 - 14m + 45 \\le 5$, czyli $m^2 - 14m + 40 \\le 0$. Pierwiastki: $4$ i $10$, więc $m \\in \\langle 4, 10 \\rangle$.\n\n**Krok 4:** Część wspólna: $m \\in (9, 10 \\rangle$.\n\n**Pułapka CKE:** Na końcu zostaje część wspólna WSZYSTKICH trzech warunków – najczęściej gubi się warunek ze znakiem iloczynu.\n\n**Podsumowanie:** Odpowiedź: $m \\in (9, 10 \\rangle$",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ },
+ {
+  "id": "mat-pr-5-5-20",
+  "lessonId": "math-pr-lesson-5-5",
+  "lessonKey": "5.5",
+  "topicId": "pr-dzial-5",
+  "sectionTitle": "Dział 5: Parametr i wzory Viète’a",
+  "archetypeCode": "PR5.5",
+  "category": "Parametr i Viète",
+  "title": "Część wspólna warunków",
+  "points": 1,
+  "type": "SINGLE_CHOICE",
+  "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRozwiązując zadanie z parametrem, otrzymano trzy warunki: $m \\in (-\\infty, 2) \\cup (6, +\\infty)$, $m \\in (2, +\\infty)$ oraz $m \\in \\langle 1, 7 \\rangle$. Zbiór wszystkich $m$ spełniających jednocześnie te warunki to",
+  "options": [
+   "$\\langle 6, 7 \\rangle$",
+   "$(2, 7 \\rangle$",
+   "$\\langle 1, 2) \\cup (6, 7 \\rangle$",
+   "$(6, 7 \\rangle$"
+  ],
+  "correct_answer": "D",
+  "explanation": "**Krok 1:** Część wspólna pierwszego i trzeciego warunku: $\\langle 1, 2) \\cup (6, 7 \\rangle$.\n\n**Krok 2:** Uwzględniamy drugi warunek: $(6, 7 \\rangle$.\n\n**Krok 3:** Zaznacz wszystkie trzy zbiory na jednej osi – wtedy od razu widać, które końce są domknięte.\n\n**Pułapka CKE:** Każdy koniec przedziału bierze nawias z warunku, z którego pochodzi: z $\\Delta > 0$ – otwarty, z nierówności nieostrej – domknięty.\n\n**Podsumowanie:** Prawidłową odpowiedzią jest **D**.",
+  "matura_tip": "Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.",
+  "requirements": [
+   "III.R3",
+   "III.R5"
+  ]
+ }
+]

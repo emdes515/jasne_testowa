@@ -31,7 +31,7 @@ import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVi
 import { POLISH_CURRICULUM_TOPICS, getPolishLessonDocument } from '../data/polishCurriculumData';
 import { ENGLISH_PILLARS } from '../data/english/englishPillars';
 import { loadEnglishCurriculum, getEnglishCurriculumIfLoaded } from '../data/englishDataLoader';
-import { loadMathCurriculum } from '../data/mathDataLoader';
+import { loadMathCurriculum, loadMathRozCurriculum } from '../data/mathDataLoader';
 
 export const DEFAULT_SUBJECT_ID = 'matematyka-podstawowa';
 
@@ -284,6 +284,19 @@ export const curriculumRepository = {
       return topicsBySubjectCache.get(subjectId)!;
     }
 
+    // 0.15. Matematyka Rozszerzona – kurs z generatora scripts/math_pr (paczka, 0 odczytów Firestore)
+    if (!isTestEnv && (subjectId === 'matematyka-rozszerzona' || subjectId === 'math-roz')) {
+      if (!topicsBySubjectCache.has(subjectId)) {
+        const { MATH_ROZ_CURRICULUM_TOPICS } = await loadMathRozCurriculum();
+        topicsBySubjectCache.set(subjectId, MATH_ROZ_CURRICULUM_TOPICS);
+        for (const t of MATH_ROZ_CURRICULUM_TOPICS) {
+          topicByIdCache.set(`${subjectId}/${t.id}`, t);
+          topicByIdCache.set(t.id, t);
+        }
+      }
+      return topicsBySubjectCache.get(subjectId)!;
+    }
+
     // 0.2. Matematyka Podstawowa - 15 Działów CKE Formuła 2023
     if (!isTestEnv && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'matematyka' || subjectId === 'math')) {
       if (!topicsBySubjectCache.has(subjectId)) {
@@ -426,6 +439,16 @@ export const curriculumRepository = {
       }
     }
 
+    // Matematyka Rozszerzona topic resolution
+    if (subjectId === 'matematyka-rozszerzona' || topicId.startsWith('pr-dzial-')) {
+      const found = (await loadMathRozCurriculum()).MATH_ROZ_CURRICULUM_TOPICS.find(t => t.id === topicId);
+      if (found) {
+        topicByIdCache.set(cacheKey, found);
+        topicByIdCache.set(topicId, found);
+        return found;
+      }
+    }
+
     // Matematyka Podstawowa topic resolution
     if (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math' || topicId.startsWith('dzial-')) {
       const found = (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS.find(t => t.id === topicId || t.name === topicId || t.title === topicId || t.numericId === parseInt(topicId.replace(/\D/g, '') || '0', 10));
@@ -522,6 +545,20 @@ export const curriculumRepository = {
           if (subjectId) lessonByIdCache.set(`${subjectId}:${v}`, engDoc);
         }
         return engDoc;
+      }
+    }
+
+    // 1.65. Matematyka Rozszerzona lesson resolution (przed PP: identyfikatory `math-pr-` nie mogą trafić do kursu podstawowego)
+    if (!isTestEnv && (subjectId === 'matematyka-rozszerzona' || lessonId.startsWith('math-pr-') || topicId.startsWith('pr-dzial-'))) {
+      const rozDoc = (await loadMathRozCurriculum()).getMathRozLessonDocument(topicId, lessonId);
+      if (rozDoc) {
+        for (const v of Array.from(new Set([...variants, ...getLessonKeyVariants(rozDoc.id)]))) {
+          lessonCache.set(`${subjectId}/${topicId}/${v}`, rozDoc);
+          lessonCache.set(`${topicId}/${v}`, rozDoc);
+          lessonByIdCache.set(v, rozDoc);
+          if (subjectId) lessonByIdCache.set(`${subjectId}:${v}`, rozDoc);
+        }
+        return rozDoc;
       }
     }
 
