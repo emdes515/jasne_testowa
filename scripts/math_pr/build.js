@@ -43,6 +43,8 @@ function lintText(id, text, where) {
   if (dollars % 2 !== 0) fail(`${id}: nieparzysta liczba $ (${where})`);
   const checks = [
     [/undefined|NaN|Infinity|\[object/, 'śmieci JS'],
+    // np. '\frac' w zwykłym stringu JS daje znak form-feed zamiast polecenia LaTeX
+    [/[\x00-\x08\x0b\x0c\x0e-\x1f]/, 'znak sterujący (niezescapowany backslash)'],
     [/\\\\[a-zA-Z]/, 'podwójny backslash przed poleceniem LaTeX'],
     [/(?<![\d,}])1\\sqrt/, 'współczynnik 1 przed pierwiastkiem'],
     [/\+\s*-|-\s*-\s*\d|\+\s*\+/, 'podwójny znak'],

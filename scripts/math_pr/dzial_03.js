@@ -12,7 +12,7 @@ const test = (op, v) => (op === '>' ? v > 0 : op === '>=' ? v >= 0 : op === '<' 
 const den = (a, b) => `(${xm(a)})(${xm(b)})`;
 /** Składnik ze znakiem do doklejenia: plusTex('-1') -> '- 1'. */
 const plusTex = (s) => (s.startsWith('-') ? `- ${s.slice(1)}` : `+ ${s}`);
-const sfrac = (n, d) => (n < 0 ? `-rac{${-n}}{${d}}` : `rac{${n}}{${d}}`);
+const sfrac = (n, d) => (n < 0 ? `-\\frac{${-n}}{${d}}` : `\\frac{${n}}{${d}}`);
 const fct = (p) => (p === 0 ? 'x' : `(${xm(p)})`);
 const solSet = (list) => (list.length ? `\\{${[...new Set(list)].sort((x, y) => x - y).map(numTex).join(', ')}\\}` : '\\emptyset');
 

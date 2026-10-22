@@ -3071,5 +3071,1835 @@
     }
    }
   ]
+ },
+ {
+  "id": "pr-dzial-6",
+  "numericId": 6,
+  "title": "Ciągi: granice i szereg geometryczny",
+  "short_title": "Granice i szereg",
+  "description": "Granice ciągów, twierdzenie o trzech ciągach, suma szeregu geometrycznego i zadania łączące ciąg arytmetyczny z geometrycznym.",
+  "icon": "ListOrdered",
+  "color": "#FFB800",
+  "matura_points_range": "4–6 pkt",
+  "importance": "CRITICAL_PEWNIAK",
+  "cke_formula_page": "str. 9–10",
+  "cke_stats": "W 10 z 11 arkuszy CKE 2022–2026, średnio 5,1 pkt na arkusz; szereg geometryczny w 7 arkuszach.",
+  "lessons": [
+   {
+    "id": "math-pr-lesson-6-1",
+    "order": 1,
+    "title": "Granica ciągu: dzielenie przez najwyższą potęgę",
+    "short_title": "Granica ciągu",
+    "badge": "Lekcja 6.1",
+    "archetypeCode": "PR6.1",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VI.R1"
+    ],
+    "prereq": [
+     "math-lesson-7-1"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Granica ciągu to liczba, do której wyrazy zbliżają się dowolnie blisko, gdy $n$ rośnie. Dla ilorazu wielomianów dzielisz licznik i mianownik przez najwyższą potęgę $n$ z mianownika: wszystkie ułamki typu $\\frac{c}{n}$ znikają, zostają współczynniki przy najwyższych potęgach.",
+     "matura_context": "Granice ciągów (VI.R1) pojawiają się na rozszerzeniu jako samodzielne zadanie za 2–3 pkt i w zadaniach z szeregiem.",
+     "plain_polish": "Z polskiego na nasze: $\\frac{3n^2 + 5n}{n^2 + 1}$ dla $n = 1000$: licznik to $3\\,005\\,000$, mianownik $1\\,000\\,001$ – prawie dokładnie $3$. Wyrazy $5n$ i $1$ są „okruchami” przy $n^2$. Granica to $3$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Najwyższa potęga",
+       "description": "Znajdź najwyższą potęgę $n$ w mianowniku.",
+       "tip": "Przez nią dzielisz."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Podziel licznik i mianownik",
+       "description": "Każdy wyraz osobno.",
+       "tip": "Ułamki c/n dążą do 0."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Odczytaj granicę",
+       "description": "Iloraz współczynników, $0$ albo $\\pm\\infty$.",
+       "tip": "Zależy od stopni."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Granica ilorazu",
+       "formula": "\\lim_{n \\to \\infty} \\frac{a_n}{b_n} = \\frac{a}{b}, \\ b \\ne 0",
+       "cke_page": "str. 10",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Podstawowa granica",
+       "formula": "\\lim_{n \\to \\infty} \\frac{1}{n} = 0",
+       "cke_page": "str. 10",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Te same stopnie",
+       "formula": "\\lim \\frac{an^k + \\ldots}{bn^k + \\ldots} = \\frac{a}{b}"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Te same stopnie",
+       "points": "1 pkt",
+       "problem": "Oblicz $\\lim \\frac{4n^2 - n}{2n^2 + 3}$.",
+       "solution": "1. Dzielimy przez $n^2$: $\\frac{4 - \\frac{1}{n}}{2 + \\frac{3}{n^2}}$.\n2. Granica: $2$.",
+       "keyInsight": "Iloraz współczynników przy n².",
+       "steps": [
+        {
+         "num": 1,
+         "text": "Dzielimy przez $n^2$: $\\frac{4 - \\frac{1}{n}}{2 + \\frac{3}{n^2}}$."
+        }
+       ],
+       "result": "Granica: $2$."
+      },
+      {
+       "title": "Różne stopnie",
+       "points": "1 pkt",
+       "problem": "Oblicz $\\lim \\frac{3n + 1}{n^2 + 5}$.",
+       "solution": "1. Dzielimy przez $n^2$: $\\frac{\\frac{3}{n} + \\frac{1}{n^2}}{1 + \\frac{5}{n^2}}$.\n2. Granica: $0$.",
+       "keyInsight": "Mianownik rośnie szybciej.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "Dzielimy przez $n^2$: $\\frac{\\frac{3}{n} + \\frac{1}{n^2}}{1 + \\frac{5}{n^2}}$."
+        }
+       ],
+       "result": "Granica: $0$."
+      }
+     ],
+     "exam_trap": "Zapis „$\\frac{\\infty}{\\infty} = 1$” to błąd – wynik zależy od tego, JAK szybko rosną licznik i mianownik.",
+     "trap_details": {
+      "fail": "Błąd: „$\\lim \\frac{2n}{n} = \\frac{\\infty}{\\infty} = 1$.”",
+      "win": "Poprawnie: $\\frac{2n}{n} = 2$, więc granica to $2$.",
+      "explanation": "Symbole nieoznaczone trzeba usunąć przekształceniem.",
+      "ckeTip": "Pokaż jawnie podzielenie przez najwyższą potęgę – za ten krok jest punkt nawet przy błędzie rachunkowym na końcu."
+     },
+     "key_points": [
+      "Dziel przez najwyższą potęgę z mianownika.",
+      "c/n dąży do 0.",
+      "Stopnie: równe – iloraz, licznik mniejszy – 0."
+     ],
+     "worked_example": {
+      "title": "Te same stopnie",
+      "points": "1 pkt",
+      "problem": "Oblicz $\\lim \\frac{4n^2 - n}{2n^2 + 3}$.",
+      "solution": "1. Dzielimy przez $n^2$: $\\frac{4 - \\frac{1}{n}}{2 + \\frac{3}{n^2}}$.\n2. Granica: $2$.",
+      "keyInsight": "Iloraz współczynników przy n².",
+      "steps": [
+       {
+        "num": 1,
+        "text": "Dzielimy przez $n^2$: $\\frac{4 - \\frac{1}{n}}{2 + \\frac{3}{n^2}}$."
+       }
+      ],
+      "result": "Granica: $2$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-6-2",
+    "order": 2,
+    "title": "Granice z pierwiastkami i twierdzenie o trzech ciągach",
+    "short_title": "Sprzężenie i trzy ciągi",
+    "badge": "Lekcja 6.2",
+    "archetypeCode": "PR6.2",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VI.R1"
+    ],
+    "prereq": [
+     "math-lesson-1-2"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Różnicę typu $\\sqrt{n^2 + an} - n$ mnożysz i dzielisz przez sprzężenie $\\sqrt{n^2 + an} + n$ – pierwiastek znika z licznika i dalej dzielisz przez $n$. Gdy w ciągu jest składnik bez granicy, np. $(-1)^n$, ograniczasz go z obu stron ciągami o tej samej granicy (twierdzenie o trzech ciągach).",
+     "matura_context": "Twierdzenie o trzech ciągach i granice z pierwiastkami to część wymagania VI.R1; oba narzędzia są na karcie wzorów (str. 10).",
+     "plain_polish": "Z polskiego na nasze: $\\sqrt{n^2 + 6n} - n$ wygląda na „nieskończoność minus nieskończoność”. Ale $\\sqrt{n^2 + 6n}$ jest tylko trochę większe od $n$ – o około $3$. Sprzężenie pozwala policzyć to „trochę” dokładnie.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Rozpoznaj typ",
+       "description": "Różnica z pierwiastkiem albo składnik ograniczony.",
+       "tip": "Sprzężenie albo trzy ciągi."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Sprzężenie",
+       "description": "$(A - B) = \\frac{A^2 - B^2}{A + B}$.",
+       "tip": "Pierwiastek znika z licznika."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Trzy ciągi",
+       "description": "$a_n \\le b_n \\le c_n$, ta sama granica skrajnych.",
+       "tip": "Np. −1 ≤ (−1)ⁿ ≤ 1."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Sprzężenie",
+       "formula": "\\sqrt{a} - b = \\frac{a - b^2}{\\sqrt{a} + b}"
+      },
+      {
+       "name": "Trzy ciągi",
+       "formula": "a_n \\le b_n \\le c_n, \\ \\lim a_n = \\lim c_n = g \\ \\text{to} \\ \\lim b_n = g",
+       "cke_page": "str. 10",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Pierwiastek n-tego stopnia",
+       "formula": "\\lim_{n \\to \\infty} \\sqrt[n]{a} = 1, \\ a > 0",
+       "cke_page": "str. 10",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Sprzężenie",
+       "points": "2 pkt",
+       "problem": "Oblicz $\\lim (\\sqrt{n^2 + 4n} - n)$.",
+       "solution": "1. $\\frac{4n}{\\sqrt{n^2 + 4n} + n}$.\n2. Dzielimy przez $n$: $\\frac{4}{\\sqrt{1 + \\frac{4}{n}} + 1} \\to 2$.",
+       "keyInsight": "Granica to połowa współczynnika przy n.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{4n}{\\sqrt{n^2 + 4n} + n}$."
+        }
+       ],
+       "result": "Dzielimy przez $n$: $\\frac{4}{\\sqrt{1 + \\frac{4}{n}} + 1} \\to 2$."
+      },
+      {
+       "title": "Trzy ciągi",
+       "points": "1 pkt",
+       "problem": "Oblicz $\\lim \\frac{2n + (-1)^n}{n}$.",
+       "solution": "1. $\\frac{2n - 1}{n} \\le a_n \\le \\frac{2n + 1}{n}$.\n2. Oba ograniczenia dążą do $2$.",
+       "keyInsight": "Składnik ograniczony znika po podzieleniu przez n.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{2n - 1}{n} \\le a_n \\le \\frac{2n + 1}{n}$."
+        }
+       ],
+       "result": "Oba ograniczenia dążą do $2$."
+      }
+     ],
+     "exam_trap": "Granica $\\sqrt{n^2 + 4n} - n$ NIE jest zerem – po sprzężeniu wychodzi $2$.",
+     "trap_details": {
+      "fail": "Błąd: „$\\sqrt{n^2 + 4n} \\approx n$, więc granica to $0$.”",
+      "win": "Poprawnie: $\\frac{4n}{\\sqrt{n^2 + 4n} + n} \\to 2$.",
+      "explanation": "Różnica rośnie razem z $n$ wolniej, ale nie znika – trzeba ją policzyć dokładnie.",
+      "ckeTip": "Zapisz mnożenie przez sprzężenie jako osobny krok – to pierwszy etap w kluczu oceniania."
+     },
+     "key_points": [
+      "Różnica z pierwiastkiem – sprzężenie.",
+      "Składnik ograniczony – trzy ciągi.",
+      "Po przekształceniu dziel przez n."
+     ],
+     "worked_example": {
+      "title": "Sprzężenie",
+      "points": "2 pkt",
+      "problem": "Oblicz $\\lim (\\sqrt{n^2 + 4n} - n)$.",
+      "solution": "1. $\\frac{4n}{\\sqrt{n^2 + 4n} + n}$.\n2. Dzielimy przez $n$: $\\frac{4}{\\sqrt{1 + \\frac{4}{n}} + 1} \\to 2$.",
+      "keyInsight": "Granica to połowa współczynnika przy n.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$\\frac{4n}{\\sqrt{n^2 + 4n} + n}$."
+       }
+      ],
+      "result": "Dzielimy przez $n$: $\\frac{4}{\\sqrt{1 + \\frac{4}{n}} + 1} \\to 2$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-6-3",
+    "order": 3,
+    "title": "Szereg geometryczny: zbieżność i suma",
+    "short_title": "Suma szeregu",
+    "badge": "Lekcja 6.3",
+    "archetypeCode": "PR6.3",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VI.R2"
+    ],
+    "prereq": [
+     "math-lesson-7-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Szereg geometryczny to suma nieskończenie wielu wyrazów ciągu geometrycznego. Ma skończoną sumę wtedy i tylko wtedy, gdy $|q| < 1$, i jest ona równa $\\frac{a_1}{1 - q}$. Zawsze najpierw sprawdzasz warunek zbieżności – dla $|q| \\ge 1$ wzór daje bzdury.",
+     "matura_context": "Szereg geometryczny (VI.R2) był na 7 z 11 arkuszy CKE 2022–2026, łącznie 27 pkt – często w zadaniach za 4–5 pkt.",
+     "plain_polish": "Z polskiego na nasze: $1 + \\frac{1}{2} + \\frac{1}{4} + \\ldots$: idziesz do ściany odległej o $2$ m, za każdym razem pokonując połowę pozostałej drogi. Nigdy nie przekroczysz $2$ m, ale dojdziesz dowolnie blisko. Suma to $2$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Wyznacz q",
+       "description": "$q = \\frac{a_2}{a_1}$.",
+       "tip": "Uwaga na znak."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Sprawdź |q| < 1",
+       "description": "Bez tego nie ma sumy.",
+       "tip": "Zapisz to w rozwiązaniu."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Policz sumę",
+       "description": "$S = \\frac{a_1}{1 - q}$.",
+       "tip": "Przy ujemnym q: 1 − q = 1 + |q|."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Suma szeregu",
+       "formula": "S = \\frac{a_1}{1 - q}, \\ |q| < 1",
+       "cke_page": "str. 9",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Iloraz",
+       "formula": "q = \\frac{a_{n+1}}{a_n}"
+      },
+      {
+       "name": "Wyraz ogólny",
+       "formula": "a_n = a_1 q^{n-1}",
+       "cke_page": "str. 9",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Suma",
+       "points": "1 pkt",
+       "problem": "Oblicz $6 - 3 + \\frac{3}{2} - \\ldots$.",
+       "solution": "1. $a_1 = 6$, $q = -\\frac{1}{2}$.\n2. $S = \\frac{6}{\\frac{3}{2}} = 4$.",
+       "keyInsight": "Ujemny iloraz zmniejsza sumę.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$a_1 = 6$, $q = -\\frac{1}{2}$."
+        }
+       ],
+       "result": "$S = \\frac{6}{\\frac{3}{2}} = 4$."
+      },
+      {
+       "title": "Równanie",
+       "points": "3 pkt",
+       "problem": "Rozwiąż $2 + 2x + 2x^2 + \\ldots = 5$.",
+       "solution": "1. $|x| < 1$, $\\frac{2}{1 - x} = 5$.\n2. $x = \\frac{3}{5}$ – spełnia warunek.",
+       "keyInsight": "Rozwiązanie zawsze sprawdź z |x| < 1.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$|x| < 1$, $\\frac{2}{1 - x} = 5$."
+        }
+       ],
+       "result": "$x = \\frac{3}{5}$ – spełnia warunek."
+      }
+     ],
+     "exam_trap": "Dla $q = 2$ wzór daje $\\frac{1}{1 - 2} = -1$ jako „sumę” $1 + 2 + 4 + \\ldots$ – a ta suma rośnie bez końca.",
+     "trap_details": {
+      "fail": "Błąd: „$1 + 2 + 4 + \\ldots = -1$.”",
+      "win": "Poprawnie: $|q| = 2 > 1$ – szereg rozbieżny, suma nie istnieje.",
+      "explanation": "Wzór na sumę wyprowadza się z granicy, która istnieje tylko dla |q| < 1.",
+      "ckeTip": "W zadaniu z niewiadomą w ilorazie warunek $|q| < 1$ to osobny etap – za jego pominięcie tracisz punkt nawet przy dobrym wyniku."
+     },
+     "key_points": [
+      "Suma istnieje tylko dla |q| < 1.",
+      "S = a₁/(1 − q).",
+      "Rozwiązania sprawdzaj z warunkiem zbieżności."
+     ],
+     "worked_example": {
+      "title": "Suma",
+      "points": "1 pkt",
+      "problem": "Oblicz $6 - 3 + \\frac{3}{2} - \\ldots$.",
+      "solution": "1. $a_1 = 6$, $q = -\\frac{1}{2}$.\n2. $S = \\frac{6}{\\frac{3}{2}} = 4$.",
+      "keyInsight": "Ujemny iloraz zmniejsza sumę.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$a_1 = 6$, $q = -\\frac{1}{2}$."
+       }
+      ],
+      "result": "$S = \\frac{6}{\\frac{3}{2}} = 4$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-6-4",
+    "order": 4,
+    "title": "Szereg geometryczny w równaniach i nierównościach",
+    "short_title": "Szereg z parametrem",
+    "badge": "Lekcja 6.4",
+    "archetypeCode": "PR6.4",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VI.R2"
+    ],
+    "prereq": [
+     "math-lesson-3-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Gdy iloraz szeregu zależy od $x$, zadanie ma zawsze dwa elementy: warunek zbieżności $|q(x)| < 1$ i równanie albo nierówność z sumą $\\frac{a_1}{1 - q(x)}$. Odpowiedź to część wspólna. Szereg geometryczny opisuje też nieskończone ciągi figur – pól i obwodów.",
+     "matura_context": "Szereg z niewiadomą to typowe zadanie za 4–5 pkt (np. maj 2025). Pola nieskończonego ciągu figur to zastosowanie w kontekście geometrycznym.",
+     "plain_polish": "Z polskiego na nasze: Szereg $1 + 2x + 4x^2 + \\ldots$ to „$1 + q + q^2 + \\ldots$” dla $q = 2x$. Działa tylko wtedy, gdy $|2x| < 1$ – czyli dla $x$ między $-\\frac{1}{2}$ a $\\frac{1}{2}$. Poza tym przedziałem pytanie o sumę nie ma sensu.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Iloraz z x",
+       "description": "$q = q(x)$.",
+       "tip": "Np. 2x albo x − 1."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Warunek zbieżności",
+       "description": "$|q(x)| < 1$ – przedział.",
+       "tip": "Nierówność ostra."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Suma i część wspólna",
+       "description": "Rozwiąż z $\\frac{a_1}{1 - q(x)}$, przetnij z warunkiem.",
+       "tip": "Uwaga przy mnożeniu przez 1 − q."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Suma szeregu",
+       "formula": "S = \\frac{a_1}{1 - q}, \\ |q| < 1",
+       "cke_page": "str. 9",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Warunek z modułem",
+       "formula": "|cx - d| < 1 \\ \\text{gdy} \\ \\frac{d - 1}{c} < x < \\frac{d + 1}{c}, \\ c > 0"
+      },
+      {
+       "name": "Pola przy podobieństwie",
+       "formula": "k \\text{ – skala}, \\ \\text{pola} \\cdot k^2"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Zbieżność",
+       "points": "1 pkt",
+       "problem": "Dla jakich $x$ szereg $1 + (x - 2) + (x - 2)^2 + \\ldots$ jest zbieżny?",
+       "solution": "1. $|x - 2| < 1$.\n2. $x \\in (1, 3)$.",
+       "keyInsight": "Iloraz to cały nawias.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$|x - 2| < 1$."
+        }
+       ],
+       "result": "$x \\in (1, 3)$."
+      },
+      {
+       "title": "Nierówność",
+       "points": "4 pkt",
+       "problem": "Rozwiąż $1 + 2x + 4x^2 + \\ldots \\le 2$.",
+       "solution": "1. $|2x| < 1$: $x \\in (-\\frac{1}{2}, \\frac{1}{2})$.\n2. $\\frac{1}{1 - 2x} \\le 2$, czyli $x \\le \\frac{1}{4}$.\n3. $x \\in (-\\frac{1}{2}, \\frac{1}{4} \\rangle$.",
+       "keyInsight": "Na końcu część wspólna z warunkiem.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$|2x| < 1$: $x \\in (-\\frac{1}{2}, \\frac{1}{2})$."
+        },
+        {
+         "num": 2,
+         "text": "$\\frac{1}{1 - 2x} \\le 2$, czyli $x \\le \\frac{1}{4}$."
+        }
+       ],
+       "result": "$x \\in (-\\frac{1}{2}, \\frac{1}{4} \\rangle$."
+      }
+     ],
+     "exam_trap": "Mnożąc nierówność przez $1 - q$, korzystasz z tego, że w przedziale zbieżności $1 - q > 0$ – bez warunku zbieżności to mnożenie jest nieuzasadnione.",
+     "trap_details": {
+      "fail": "Błąd: „$\\frac{1}{1 - 2x} \\le 2$, więc $x \\le \\frac{1}{4}$.”",
+      "win": "Poprawnie: $x \\in (-\\frac{1}{2}, \\frac{1}{4} \\rangle$ – po uwzględnieniu zbieżności.",
+      "explanation": "Dla $x \\le -\\frac{1}{2}$ szereg nie ma sumy.",
+      "ckeTip": "Zapisz warunek zbieżności na samym początku – w kluczu CKE to pierwszy punkt."
+     },
+     "key_points": [
+      "|q(x)| < 1 to przedział otwarty.",
+      "Suma przez wzór a₁/(1 − q).",
+      "Odpowiedź = część wspólna."
+     ],
+     "worked_example": {
+      "title": "Zbieżność",
+      "points": "1 pkt",
+      "problem": "Dla jakich $x$ szereg $1 + (x - 2) + (x - 2)^2 + \\ldots$ jest zbieżny?",
+      "solution": "1. $|x - 2| < 1$.\n2. $x \\in (1, 3)$.",
+      "keyInsight": "Iloraz to cały nawias.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$|x - 2| < 1$."
+       }
+      ],
+      "result": "$x \\in (1, 3)$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-6-5",
+    "order": 5,
+    "title": "Ciąg arytmetyczny i geometryczny w jednym zadaniu",
+    "short_title": "Ciągi razem",
+    "badge": "Lekcja 6.5",
+    "archetypeCode": "PR6.5",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VI.7",
+     "VI.5",
+     "VI.6"
+    ],
+    "prereq": [
+     "math-lesson-7-5"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Zadania łączące oba ciągi opierają się na dwóch warunkach dla trzech kolejnych wyrazów: $2b = a + c$ (arytmetyczny) i $b^2 = ac$ (geometryczny). Liczby z ciągu arytmetycznego zapisujesz symetrycznie jako $b - r$, $b$, $b + r$ – wtedy z sumy od razu masz $b$, a warunek geometryczny daje równanie kwadratowe z $r$.",
+     "matura_context": "Zadania z dwoma ciągami (VI.7) były na rozszerzeniu warte do 6 pkt (np. czerwiec 2023, maj 2024: 5 pkt).",
+     "plain_polish": "Z polskiego na nasze: Trzy liczby arytmetyczne o sumie $15$: środkowa to na pewno $5$ (bo $3 \\cdot 5 = 15$). Zostaje jedna niewiadoma – odstęp $r$. Zapis $5 - r, 5, 5 + r$ oszczędza połowę rachunków.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Zapis symetryczny",
+       "description": "$b - r$, $b$, $b + r$.",
+       "tip": "Suma to 3b."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Warunek geometryczny",
+       "description": "Kwadrat środkowego = iloczyn skrajnych.",
+       "tip": "Po zmianach z treści."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Równanie z r",
+       "description": "Kwadratowe – sprawdź oba rozwiązania.",
+       "tip": "Często są dwie odpowiedzi."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Arytmetyczny",
+       "formula": "2b = a + c",
+       "cke_page": "str. 9",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Geometryczny",
+       "formula": "b^2 = ac",
+       "cke_page": "str. 9",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Suma arytmetycznego",
+       "formula": "S_n = \\frac{2a_1 + (n - 1)r}{2} \\cdot n",
+       "cke_page": "str. 9",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Dwie średnie",
+       "points": "2 pkt",
+       "problem": "Liczby $x, 5, y$ tworzą ciąg arytmetyczny, a $x, 3, y$ – geometryczny. Oblicz $|x - y|$.",
+       "solution": "1. $x + y = 10$, $xy = 9$.\n2. $(x - y)^2 = 100 - 36 = 64$, $|x - y| = 8$.",
+       "keyInsight": "Wzory Viète’a w przebraniu.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$x + y = 10$, $xy = 9$."
+        }
+       ],
+       "result": "$(x - y)^2 = 100 - 36 = 64$, $|x - y| = 8$."
+      },
+      {
+       "title": "Trójka liczb",
+       "points": "5 pkt",
+       "problem": "Liczby $5 - r, 5, 5 + r$; po dodaniu $1$ do pierwszej i $3$ do trzeciej tworzą ciąg geometryczny.",
+       "solution": "1. $(6 - r)(8 + r) = 25$.\n2. $r^2 + 2r - 23 = 0$ – rozwiąż i sprawdź wyrazy.",
+       "keyInsight": "Warunek geometryczny daje równanie kwadratowe.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$(6 - r)(8 + r) = 25$."
+        }
+       ],
+       "result": "$r^2 + 2r - 23 = 0$ – rozwiąż i sprawdź wyrazy."
+      }
+     ],
+     "exam_trap": "Równanie kwadratowe z $r$ zwykle ma dwa rozwiązania – i oba mogą dawać poprawne trójki. Podanie jednej to niepełna odpowiedź.",
+     "trap_details": {
+      "fail": "Błąd: „$r = 2$, więc liczby to $3, 5, 7$.” (bez drugiego rozwiązania)",
+      "win": "Poprawnie: $r = 2$ lub $r = -4$: liczby $3, 5, 7$ albo $9, 5, 1$.",
+      "explanation": "Obie trójki spełniają wszystkie warunki zadania.",
+      "ckeTip": "Sprawdź, czy otrzymane wyrazy ciągu geometrycznego są różne od zera – inaczej trzeba odrzucić rozwiązanie."
+     },
+     "key_points": [
+      "Zapis b − r, b, b + r.",
+      "b² = ac dla geometrycznego.",
+      "Podaj wszystkie rozwiązania."
+     ],
+     "worked_example": {
+      "title": "Dwie średnie",
+      "points": "2 pkt",
+      "problem": "Liczby $x, 5, y$ tworzą ciąg arytmetyczny, a $x, 3, y$ – geometryczny. Oblicz $|x - y|$.",
+      "solution": "1. $x + y = 10$, $xy = 9$.\n2. $(x - y)^2 = 100 - 36 = 64$, $|x - y| = 8$.",
+      "keyInsight": "Wzory Viète’a w przebraniu.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$x + y = 10$, $xy = 9$."
+       }
+      ],
+      "result": "$(x - y)^2 = 100 - 36 = 64$, $|x - y| = 8$."
+     }
+    }
+   }
+  ]
+ },
+ {
+  "id": "pr-dzial-7",
+  "numericId": 7,
+  "title": "Trygonometria: funkcje i wzory",
+  "short_title": "Funkcje trygonometryczne",
+  "description": "Miara łukowa, wykresy i okresowość, wzory redukcyjne, wzory na sumę i różnicę kątów, kąt podwojony i tożsamości.",
+  "icon": "TriangleRight",
+  "color": "#FFB800",
+  "matura_points_range": "1–3 pkt",
+  "importance": "HIGH",
+  "cke_formula_page": "str. 11–13",
+  "cke_stats": "Narzędzia dla równań trygonometrycznych (11 z 11 arkuszy) i planimetrii; samodzielnie średnio 0,7 pkt na arkusz.",
+  "lessons": [
+   {
+    "id": "math-pr-lesson-7-1",
+    "order": 1,
+    "title": "Miara łukowa i koło trygonometryczne",
+    "short_title": "Miara łukowa",
+    "badge": "Lekcja 7.1",
+    "archetypeCode": "PR7.1",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R1"
+    ],
+    "prereq": [
+     "math-lesson-8-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Na rozszerzeniu kąty mierzysz także w radianach: $180^\\circ = \\pi$. Kąt $\\frac{\\pi}{6}$ to $30^\\circ$, $\\frac{\\pi}{2}$ to $90^\\circ$, $2\\pi$ to pełny obrót. Wartości funkcji dla dowolnego kąta odczytujesz z kąta odniesienia (ostrego) i znaku w ćwiartce.",
+     "matura_context": "Miara łukowa (VII.R1) jest w każdym zadaniu z równaniem trygonometrycznym – CKE podaje przedziały i odpowiedzi w radianach.",
+     "plain_polish": "Z polskiego na nasze: Radian to „ile promieni zmieści się na łuku”. Półokrąg ma długość $\\pi r$, więc mieści $\\pi \\approx 3{,}14$ promienia – stąd $180^\\circ = \\pi$. Przelicznik zawsze ten sam: zamieniasz $\\pi$ na $180^\\circ$ albo odwrotnie.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Stopnie na radiany",
+       "description": "Pomnóż przez $\\frac{\\pi}{180}$.",
+       "tip": "Skróć ułamek."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Ćwiartka",
+       "description": "I: wszystkie dodatnie, II: sinus, III: tangens, IV: cosinus.",
+       "tip": "Znak funkcji."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Kąt odniesienia",
+       "description": "Odległość od osi $Ox$: $180^\\circ - \\alpha$, $\\alpha - 180^\\circ$, $360^\\circ - \\alpha$.",
+       "tip": "Wartość z tabeli."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Przelicznik",
+       "formula": "180^\\circ = \\pi \\ \\text{rad}",
+       "cke_page": "str. 11",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Definicje funkcji",
+       "formula": "\\sin\\alpha = \\frac{y}{r}, \\ \\cos\\alpha = \\frac{x}{r}, \\ \\operatorname{tg}\\alpha = \\frac{y}{x}",
+       "cke_page": "str. 11",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Tabela",
+       "formula": "\\sin\\frac{\\pi}{6} = \\frac{1}{2}, \\ \\sin\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}, \\ \\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}",
+       "cke_page": "str. 12",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Zamiana",
+       "points": "1 pkt",
+       "problem": "Zamień $225^\\circ$ na radiany.",
+       "solution": "1. $225 \\cdot \\frac{\\pi}{180} = \\frac{5\\pi}{4}$.\n2. Odpowiedź: $\\frac{5\\pi}{4}$.",
+       "keyInsight": "Skracasz 225/180 przez 45.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$225 \\cdot \\frac{\\pi}{180} = \\frac{5\\pi}{4}$."
+        }
+       ],
+       "result": "Odpowiedź: $\\frac{5\\pi}{4}$."
+      },
+      {
+       "title": "Wartość",
+       "points": "1 pkt",
+       "problem": "Oblicz $\\cos \\frac{5\\pi}{6}$.",
+       "solution": "1. $\\frac{5\\pi}{6} = 150^\\circ$ – II ćwiartka, cosinus ujemny.\n2. $\\cos 150^\\circ = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$.",
+       "keyInsight": "Kąt odniesienia 30°.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{5\\pi}{6} = 150^\\circ$ – II ćwiartka, cosinus ujemny."
+        }
+       ],
+       "result": "$\\cos 150^\\circ = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$."
+      }
+     ],
+     "exam_trap": "$\\sin \\frac{7\\pi}{6}$ to nie $\\frac{1}{2}$ – kąt $210^\\circ$ leży w III ćwiartce, gdzie sinus jest ujemny.",
+     "trap_details": {
+      "fail": "Błąd: „$\\sin 210^\\circ = \\sin 30^\\circ = \\frac{1}{2}$.”",
+      "win": "Poprawnie: $\\sin 210^\\circ = -\\sin 30^\\circ = -\\frac{1}{2}$.",
+      "explanation": "Kąt odniesienia daje wartość, ale znak zależy od ćwiartki.",
+      "ckeTip": "Odpowiedzi w równaniach trygonometrycznych podawaj w tej samej mierze co przedział z treści – zwykle w radianach."
+     },
+     "key_points": [
+      "180° = π.",
+      "Najpierw ćwiartka i znak.",
+      "Wartość z kąta odniesienia."
+     ],
+     "worked_example": {
+      "title": "Zamiana",
+      "points": "1 pkt",
+      "problem": "Zamień $225^\\circ$ na radiany.",
+      "solution": "1. $225 \\cdot \\frac{\\pi}{180} = \\frac{5\\pi}{4}$.\n2. Odpowiedź: $\\frac{5\\pi}{4}$.",
+      "keyInsight": "Skracasz 225/180 przez 45.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$225 \\cdot \\frac{\\pi}{180} = \\frac{5\\pi}{4}$."
+       }
+      ],
+      "result": "Odpowiedź: $\\frac{5\\pi}{4}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-7-2",
+    "order": 2,
+    "title": "Wykresy i okresowość funkcji trygonometrycznych",
+    "short_title": "Wykresy i okresowość",
+    "badge": "Lekcja 7.2",
+    "archetypeCode": "PR7.2",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R2",
+     "VII.R3"
+    ],
+    "prereq": [
+     "math-lesson-4-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Sinus i cosinus mają okres $2\\pi$ i wartości od $-1$ do $1$; tangens ma okres $\\pi$ i nie istnieje dla $x = \\frac{\\pi}{2} + k\\pi$. Funkcja $f(kx)$ ma okres $k$ razy krótszy. Okresowość pozwala sprowadzić duży kąt do kąta z przedziału $\\langle 0, 2\\pi)$.",
+     "matura_context": "Wykresy i okresowość (VII.R2, VII.R3) to podstawa liczenia rozwiązań równań trygonometrycznych w przedziale.",
+     "plain_polish": "Z polskiego na nasze: Sinus to fala, która powtarza się co $2\\pi$ – jak koło roweru, które po pełnym obrocie wraca do tej samej pozycji. $\\sin(2x)$ kręci się dwa razy szybciej, więc fala powtarza się co $\\pi$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Okres",
+       "description": "$2\\pi$ dla sin, cos; $\\pi$ dla tg.",
+       "tip": "f(kx): podziel przez k."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Zbiór wartości",
+       "description": "$\\langle -1, 1 \\rangle$ dla sin, cos.",
+       "tip": "a·sin x + b: od b − |a| do b + |a|."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Redukcja kąta",
+       "description": "Odejmij pełne okresy.",
+       "tip": "Potem ćwiartka."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Okresowość",
+       "formula": "\\sin(\\alpha + k \\cdot 360^\\circ) = \\sin\\alpha, \\ \\cos(\\alpha + k \\cdot 360^\\circ) = \\cos\\alpha",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Okres tangensa",
+       "formula": "\\operatorname{tg}(\\alpha + k \\cdot 180^\\circ) = \\operatorname{tg}\\alpha",
+       "cke_page": "str. 14",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Wykresy",
+       "formula": "y = \\sin x, \\ y = \\cos x, \\ y = \\operatorname{tg} x",
+       "cke_page": "str. 11",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Okres",
+       "points": "1 pkt",
+       "problem": "Jaki jest okres funkcji $f(x) = \\cos 3x$?",
+       "solution": "1. Okres cosinusa: $2\\pi$.\n2. Dla $\\cos 3x$: $\\frac{2\\pi}{3}$.",
+       "keyInsight": "Argument razy 3 – okres trzy razy krótszy.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "Okres cosinusa: $2\\pi$."
+        }
+       ],
+       "result": "Dla $\\cos 3x$: $\\frac{2\\pi}{3}$."
+      },
+      {
+       "title": "Duży kąt",
+       "points": "1 pkt",
+       "problem": "Oblicz $\\sin \\frac{13\\pi}{6}$.",
+       "solution": "1. $\\frac{13\\pi}{6} = 2\\pi + \\frac{\\pi}{6}$.\n2. $\\sin \\frac{\\pi}{6} = \\frac{1}{2}$.",
+       "keyInsight": "Pełny okres można pominąć.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{13\\pi}{6} = 2\\pi + \\frac{\\pi}{6}$."
+        }
+       ],
+       "result": "$\\sin \\frac{\\pi}{6} = \\frac{1}{2}$."
+      }
+     ],
+     "exam_trap": "Tangens ma okres $\\pi$, a nie $2\\pi$ – w rozwiązaniach równania $\\operatorname{tg} x = a$ dodajesz $k\\pi$.",
+     "trap_details": {
+      "fail": "Błąd: „$\\operatorname{tg} x = 1$, więc $x = \\frac{\\pi}{4} + 2k\\pi$.”",
+      "win": "Poprawnie: $x = \\frac{\\pi}{4} + k\\pi$.",
+      "explanation": "Gubisz połowę rozwiązań, np. $\\frac{5\\pi}{4}$.",
+      "ckeTip": "W zadaniach z przedziałem narysuj szkic wykresu – łatwiej policzyć punkty przecięcia."
+     },
+     "key_points": [
+      "Okres sin i cos: 2π, tg: π.",
+      "f(kx): okres dzielony przez k.",
+      "Zbiór wartości sin i cos: ⟨−1, 1⟩."
+     ],
+     "worked_example": {
+      "title": "Okres",
+      "points": "1 pkt",
+      "problem": "Jaki jest okres funkcji $f(x) = \\cos 3x$?",
+      "solution": "1. Okres cosinusa: $2\\pi$.\n2. Dla $\\cos 3x$: $\\frac{2\\pi}{3}$.",
+      "keyInsight": "Argument razy 3 – okres trzy razy krótszy.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "Okres cosinusa: $2\\pi$."
+       }
+      ],
+      "result": "Dla $\\cos 3x$: $\\frac{2\\pi}{3}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-7-3",
+    "order": 3,
+    "title": "Wzory redukcyjne",
+    "short_title": "Wzory redukcyjne",
+    "badge": "Lekcja 7.3",
+    "archetypeCode": "PR7.3",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R4"
+    ],
+    "prereq": [
+     "math-lesson-8-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Wzory redukcyjne zamieniają funkcję kąta $90^\\circ \\pm \\alpha$ albo $180^\\circ \\pm \\alpha$ na funkcję kąta $\\alpha$. Zasada: przy $90^\\circ$ funkcja zmienia się na kofunkcję (sinus na cosinus), przy $180^\\circ$ zostaje ta sama. Znak bierzesz z ćwiartki, w której leży kąt (dla ostrego $\\alpha$).",
+     "matura_context": "Wzory redukcyjne (VII.R4) są na karcie (str. 13) – przydają się w równaniach i w planimetrii (kąty rozwarte w trójkątach).",
+     "plain_polish": "Z polskiego na nasze: $\\cos(180^\\circ - \\alpha)$: kąt leży w II ćwiartce, gdzie cosinus jest ujemny, a przy $180^\\circ$ funkcja się nie zmienia. Wynik: $-\\cos\\alpha$. Dwa pytania – „jaka funkcja?” i „jaki znak?” – i gotowe.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Jaka funkcja",
+       "description": "$90^\\circ$ – kofunkcja, $180^\\circ$ – ta sama.",
+       "tip": "sin ↔ cos."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Jaki znak",
+       "description": "Ćwiartka kąta dla ostrego $\\alpha$.",
+       "tip": "Znak funkcji z lewej strony."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Zapisz",
+       "description": "Np. $\\sin(90^\\circ + \\alpha) = \\cos\\alpha$.",
+       "tip": "Sprawdź dla α = 30°."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Wokół 90°",
+       "formula": "\\sin(90^\\circ \\pm \\alpha) = \\cos\\alpha, \\ \\cos(90^\\circ \\pm \\alpha) = \\mp\\sin\\alpha",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Wokół 180°",
+       "formula": "\\sin(180^\\circ \\pm \\alpha) = \\mp\\sin\\alpha, \\ \\cos(180^\\circ \\pm \\alpha) = -\\cos\\alpha",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Tangens",
+       "formula": "\\operatorname{tg}(180^\\circ - \\alpha) = -\\operatorname{tg}\\alpha",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Wartość",
+       "points": "1 pkt",
+       "problem": "Oblicz $\\cos 150^\\circ$.",
+       "solution": "1. $\\cos(180^\\circ - 30^\\circ) = -\\cos 30^\\circ$.\n2. $= -\\frac{\\sqrt{3}}{2}$.",
+       "keyInsight": "Kąt rozwarty – cosinus ujemny.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\cos(180^\\circ - 30^\\circ) = -\\cos 30^\\circ$."
+        }
+       ],
+       "result": "$= -\\frac{\\sqrt{3}}{2}$."
+      },
+      {
+       "title": "Upraszczanie",
+       "points": "1 pkt",
+       "problem": "Uprość $\\sin(180^\\circ - \\alpha) + \\cos(90^\\circ + \\alpha)$.",
+       "solution": "1. $\\sin\\alpha + (-\\sin\\alpha)$.\n2. $= 0$.",
+       "keyInsight": "Każdy wzór osobno.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\sin\\alpha + (-\\sin\\alpha)$."
+        }
+       ],
+       "result": "$= 0$."
+      }
+     ],
+     "exam_trap": "$\\sin(180^\\circ - \\alpha) = \\sin\\alpha$, ale $\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$ – nie wszystkie wzory mają ten sam znak.",
+     "trap_details": {
+      "fail": "Błąd: „$\\cos(180^\\circ - \\alpha) = \\cos\\alpha$.”",
+      "win": "Poprawnie: $\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$.",
+      "explanation": "Kąt $180^\\circ - \\alpha$ jest w II ćwiartce, gdzie cosinus jest ujemny.",
+      "ckeTip": "Wzory redukcyjne masz na karcie – nie ucz się ich na pamięć, naucz się szybko je tam znajdować."
+     },
+     "key_points": [
+      "90° – kofunkcja, 180° – ta sama funkcja.",
+      "Znak z ćwiartki.",
+      "Sprawdź na α = 30°."
+     ],
+     "worked_example": {
+      "title": "Wartość",
+      "points": "1 pkt",
+      "problem": "Oblicz $\\cos 150^\\circ$.",
+      "solution": "1. $\\cos(180^\\circ - 30^\\circ) = -\\cos 30^\\circ$.\n2. $= -\\frac{\\sqrt{3}}{2}$.",
+      "keyInsight": "Kąt rozwarty – cosinus ujemny.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$\\cos(180^\\circ - 30^\\circ) = -\\cos 30^\\circ$."
+       }
+      ],
+      "result": "$= -\\frac{\\sqrt{3}}{2}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-7-4",
+    "order": 4,
+    "title": "Suma, różnica i kąt podwojony",
+    "short_title": "Wzory na sumę kątów",
+    "badge": "Lekcja 7.4",
+    "archetypeCode": "PR7.4",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R5"
+    ],
+    "prereq": [
+     "math-lesson-8-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Funkcji sumy kątów nie rozbijasz na sumę funkcji – używasz wzorów z karty: $\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$ i $\\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta$. Szczególny przypadek to kąt podwojony: $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha$.",
+     "matura_context": "Wzory na sumę i kąt podwojony (VII.R5) były w 3 zadaniach CKE 2022–2026 wprost i w wielu równaniach trygonometrycznych.",
+     "plain_polish": "Z polskiego na nasze: $\\sin 75^\\circ$ nie ma w tabeli, ale $75^\\circ = 45^\\circ + 30^\\circ$, a te kąty znasz. Wzór na sinus sumy składa wynik z czterech znanych wartości.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Rozbij kąt",
+       "description": "Na sumę lub różnicę znanych kątów.",
+       "tip": "Np. 15° = 45° − 30°."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Wybierz wzór",
+       "description": "Sinus „miesza”, cosinus „trzyma pary”.",
+       "tip": "W cosinusie sumy jest minus."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Brakująca funkcja",
+       "description": "Z jedynki – znak z ćwiartki.",
+       "tip": "Kąt ostry: obie dodatnie."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Sinus sumy",
+       "formula": "\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta",
+       "cke_page": "str. 12",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Cosinus sumy",
+       "formula": "\\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta",
+       "cke_page": "str. 12",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Kąt podwojony",
+       "formula": "\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha, \\ \\cos 2\\alpha = 1 - 2\\sin^2\\alpha",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Kąt 15°",
+       "points": "1 pkt",
+       "problem": "Oblicz $\\cos 15^\\circ$.",
+       "solution": "1. $\\cos(45^\\circ - 30^\\circ) = \\cos 45^\\circ\\cos 30^\\circ + \\sin 45^\\circ\\sin 30^\\circ$.\n2. $= \\frac{\\sqrt{6} + \\sqrt{2}}{4}$.",
+       "keyInsight": "W różnicy kątów cosinus ma plus.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\cos(45^\\circ - 30^\\circ) = \\cos 45^\\circ\\cos 30^\\circ + \\sin 45^\\circ\\sin 30^\\circ$."
+        }
+       ],
+       "result": "$= \\frac{\\sqrt{6} + \\sqrt{2}}{4}$."
+      },
+      {
+       "title": "Kąt podwojony",
+       "points": "2 pkt",
+       "problem": "Kąt ostry, $\\sin\\alpha = \\frac{3}{5}$. Oblicz $\\sin 2\\alpha$.",
+       "solution": "1. $\\cos\\alpha = \\frac{4}{5}$.\n2. $\\sin 2\\alpha = 2 \\cdot \\frac{3}{5} \\cdot \\frac{4}{5} = \\frac{24}{25}$.",
+       "keyInsight": "Potrzebny jest też cosinus.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\cos\\alpha = \\frac{4}{5}$."
+        }
+       ],
+       "result": "$\\sin 2\\alpha = 2 \\cdot \\frac{3}{5} \\cdot \\frac{4}{5} = \\frac{24}{25}$."
+      }
+     ],
+     "exam_trap": "$\\sin 2\\alpha \\ne 2\\sin\\alpha$. Dla $\\alpha = 30^\\circ$: $\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$, a $2\\sin 30^\\circ = 1$.",
+     "trap_details": {
+      "fail": "Błąd: „$\\sin\\alpha = \\frac{3}{5}$, więc $\\sin 2\\alpha = \\frac{6}{5}$.”",
+      "win": "Poprawnie: $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = \\frac{24}{25}$.",
+      "explanation": "Sinus nie może być większy od 1 – to od razu sygnał błędu.",
+      "ckeTip": "Wyznaczając cosinus z jedynki, napisz, dlaczego wybierasz znak (np. „kąt ostry, więc cos α > 0”)."
+     },
+     "key_points": [
+      "Rozbij kąt na znane.",
+      "Cosinus sumy: minus.",
+      "Kąt podwojony: potrzebne sin i cos."
+     ],
+     "worked_example": {
+      "title": "Kąt 15°",
+      "points": "1 pkt",
+      "problem": "Oblicz $\\cos 15^\\circ$.",
+      "solution": "1. $\\cos(45^\\circ - 30^\\circ) = \\cos 45^\\circ\\cos 30^\\circ + \\sin 45^\\circ\\sin 30^\\circ$.\n2. $= \\frac{\\sqrt{6} + \\sqrt{2}}{4}$.",
+      "keyInsight": "W różnicy kątów cosinus ma plus.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$\\cos(45^\\circ - 30^\\circ) = \\cos 45^\\circ\\cos 30^\\circ + \\sin 45^\\circ\\sin 30^\\circ$."
+       }
+      ],
+      "result": "$= \\frac{\\sqrt{6} + \\sqrt{2}}{4}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-7-5",
+    "order": 5,
+    "title": "Tożsamości trygonometryczne i dowody",
+    "short_title": "Tożsamości",
+    "badge": "Lekcja 7.5",
+    "archetypeCode": "PR7.5",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R5",
+     "VII.2"
+    ],
+    "prereq": [
+     "math-lesson-8-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Tożsamość trygonometryczną dowodzisz, przekształcając jedną stronę (zwykle bardziej złożoną), aż dostaniesz drugą. Główne narzędzia: jedynka $\\sin^2\\alpha + \\cos^2\\alpha = 1$, wzory na kąt podwojony i wzory skróconego mnożenia. Przy ułamkach zapisz, dla jakich kątów mianownik jest różny od zera.",
+     "matura_context": "Tożsamości trygonometryczne to typ dowodu na rozszerzeniu (wymaganie IV – rozumowanie); pojawiają się też jako krok w równaniach.",
+     "plain_polish": "Z polskiego na nasze: $(\\sin\\alpha + \\cos\\alpha)^2$ to zwykły kwadrat sumy: $\\sin^2\\alpha + 2\\sin\\alpha\\cos\\alpha + \\cos^2\\alpha$. Kwadraty sklejają się w jedynkę, a środek to $\\sin 2\\alpha$. Wynik: $1 + \\sin 2\\alpha$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Wybierz stronę",
+       "description": "Przekształcaj tę bardziej złożoną.",
+       "tip": "Druga zostaje bez zmian."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Narzędzia",
+       "description": "Jedynka, kąt podwojony, wzory skróconego mnożenia.",
+       "tip": "Wyłączanie przed nawias."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Wniosek",
+       "description": "„Lewa strona równa się prawej”.",
+       "tip": "Plus założenia o mianownikach."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Jedynka",
+       "formula": "\\sin^2\\alpha + \\cos^2\\alpha = 1",
+       "cke_page": "str. 12",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Kąt podwojony",
+       "formula": "\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha, \\ \\cos 2\\alpha = 2\\cos^2\\alpha - 1",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Tangens",
+       "formula": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}",
+       "cke_page": "str. 12",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Kwadraty",
+       "points": "2 pkt",
+       "problem": "Wykaż, że $(\\sin\\alpha + \\cos\\alpha)^2 + (\\sin\\alpha - \\cos\\alpha)^2 = 2$.",
+       "solution": "1. $(1 + 2\\sin\\alpha\\cos\\alpha) + (1 - 2\\sin\\alpha\\cos\\alpha)$.\n2. $= 2$.",
+       "keyInsight": "Iloczyny się znoszą.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$(1 + 2\\sin\\alpha\\cos\\alpha) + (1 - 2\\sin\\alpha\\cos\\alpha)$."
+        }
+       ],
+       "result": "$= 2$."
+      },
+      {
+       "title": "Ułamek",
+       "points": "2 pkt",
+       "problem": "Wykaż, że $\\frac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\operatorname{tg}\\alpha$.",
+       "solution": "1. $\\frac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha}$.\n2. $= \\frac{\\sin\\alpha}{\\cos\\alpha} = \\operatorname{tg}\\alpha$.",
+       "keyInsight": "Wybierz postać cos 2α, która skróci mianownik.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha}$."
+        }
+       ],
+       "result": "$= \\frac{\\sin\\alpha}{\\cos\\alpha} = \\operatorname{tg}\\alpha$."
+      }
+     ],
+     "exam_trap": "Nie „mnóż na krzyż” i nie przenoś wyrazów między stronami tożsamości – to zakłada tezę, zamiast ją udowodnić.",
+     "trap_details": {
+      "fail": "Błąd: „Mnożę obie strony przez $1 + \\cos 2\\alpha$ i sprawdzam, że wyszło to samo.”",
+      "win": "Poprawnie: Przekształcam tylko lewą stronę, aż otrzymam prawą.",
+      "explanation": "Operacje na całej równości zakładają, że jest ona prawdziwa.",
+      "ckeTip": "Przy tożsamościach z ułamkiem dopisz warunek (np. $\\cos\\alpha \\ne 0$) – egzaminator to sprawdza."
+     },
+     "key_points": [
+      "Przekształcaj jedną stronę.",
+      "Jedynka i kąt podwojony.",
+      "Warunki dla mianowników."
+     ],
+     "worked_example": {
+      "title": "Kwadraty",
+      "points": "2 pkt",
+      "problem": "Wykaż, że $(\\sin\\alpha + \\cos\\alpha)^2 + (\\sin\\alpha - \\cos\\alpha)^2 = 2$.",
+      "solution": "1. $(1 + 2\\sin\\alpha\\cos\\alpha) + (1 - 2\\sin\\alpha\\cos\\alpha)$.\n2. $= 2$.",
+      "keyInsight": "Iloczyny się znoszą.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$(1 + 2\\sin\\alpha\\cos\\alpha) + (1 - 2\\sin\\alpha\\cos\\alpha)$."
+       }
+      ],
+      "result": "$= 2$."
+     }
+    }
+   }
+  ]
+ },
+ {
+  "id": "pr-dzial-8",
+  "numericId": 8,
+  "title": "Równania trygonometryczne",
+  "short_title": "Równania trygonometryczne",
+  "description": "Równania elementarne, rozwiązania w przedziale, podstawienie, wzory na kąt podwojony i równania iloczynowe.",
+  "icon": "TriangleRight",
+  "color": "#FFB800",
+  "matura_points_range": "3–5 pkt",
+  "importance": "CRITICAL_PEWNIAK",
+  "cke_formula_page": "str. 11–14",
+  "cke_stats": "W 11 z 11 arkuszy CKE 2022–2026, średnio 4,1 pkt na arkusz (VII.R6 – łącznie 45 pkt).",
+  "lessons": [
+   {
+    "id": "math-pr-lesson-8-1",
+    "order": 1,
+    "title": "Równania elementarne: sin x = a, cos x = a, tg x = a",
+    "short_title": "Równania elementarne",
+    "badge": "Lekcja 8.1",
+    "archetypeCode": "PR8.1",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R6"
+    ],
+    "prereq": [
+     "math-lesson-8-2"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Równanie $\\sin x = a$ ma w każdym okresie dwa rozwiązania: kąt podstawowy $x_0$ i $\\pi - x_0$. Dla $\\cos x = a$ to $x_0$ i $-x_0$, a dla $\\operatorname{tg} x = a$ – jedno rozwiązanie z okresem $\\pi$. Do każdej serii dopisujesz okres: $+ 2k\\pi$ (albo $+ k\\pi$ dla tangensa).",
+     "matura_context": "Równanie trygonometryczne było na KAŻDYM arkuszu CKE 2022–2026 (11 z 11), średnio za 4 pkt. Równania elementarne to jego ostatni krok.",
+     "plain_polish": "Z polskiego na nasze: $\\sin x = \\frac{1}{2}$: na kole trygonometrycznym prosta $y = \\frac{1}{2}$ przecina okrąg w dwóch punktach – przy $\\frac{\\pi}{6}$ i przy $\\frac{5\\pi}{6}$. Po pełnym obrocie wszystko się powtarza, stąd $+ 2k\\pi$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Kąt podstawowy",
+       "description": "Z tabeli wartości (str. 12).",
+       "tip": "Dla ujemnego a – kąt ujemny lub z ćwiartki."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Druga seria",
+       "description": "sin: $\\pi - x_0$; cos: $-x_0$.",
+       "tip": "Tangens – tylko jedna seria."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Okres",
+       "description": "$+ 2k\\pi$, a dla tangensa $+ k\\pi$.",
+       "tip": "k – dowolna liczba całkowita."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Sinus",
+       "formula": "\\sin x = \\sin x_0: \\ x = x_0 + 2k\\pi \\ \\text{lub} \\ x = \\pi - x_0 + 2k\\pi"
+      },
+      {
+       "name": "Cosinus",
+       "formula": "\\cos x = \\cos x_0: \\ x = \\pm x_0 + 2k\\pi"
+      },
+      {
+       "name": "Tangens",
+       "formula": "\\operatorname{tg} x = \\operatorname{tg} x_0: \\ x = x_0 + k\\pi",
+       "cke_page": "str. 14",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Sinus",
+       "points": "1 pkt",
+       "problem": "Rozwiąż $\\sin x = \\frac{\\sqrt{2}}{2}$.",
+       "solution": "1. $x_0 = \\frac{\\pi}{4}$.\n2. $x = \\frac{\\pi}{4} + 2k\\pi$ lub $x = \\frac{3\\pi}{4} + 2k\\pi$.",
+       "keyInsight": "Druga seria: π − π/4.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$x_0 = \\frac{\\pi}{4}$."
+        }
+       ],
+       "result": "$x = \\frac{\\pi}{4} + 2k\\pi$ lub $x = \\frac{3\\pi}{4} + 2k\\pi$."
+      },
+      {
+       "title": "Przedział",
+       "points": "2 pkt",
+       "problem": "Rozwiąż $\\cos x = -\\frac{1}{2}$ w $\\langle 0, 2\\pi \\rangle$.",
+       "solution": "1. $x_0 = \\frac{2\\pi}{3}$, druga seria $-\\frac{2\\pi}{3} + 2\\pi = \\frac{4\\pi}{3}$.\n2. $x \\in \\{\\frac{2\\pi}{3}, \\frac{4\\pi}{3}\\}$.",
+       "keyInsight": "Ujemny kąt przesuwasz o okres.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$x_0 = \\frac{2\\pi}{3}$, druga seria $-\\frac{2\\pi}{3} + 2\\pi = \\frac{4\\pi}{3}$."
+        }
+       ],
+       "result": "$x \\in \\{\\frac{2\\pi}{3}, \\frac{4\\pi}{3}\\}$."
+      }
+     ],
+     "exam_trap": "Dla sinusa druga seria to $\\pi - x_0$, a nie $-x_0$. Pomylenie wzorów daje rozwiązania, które nie spełniają równania.",
+     "trap_details": {
+      "fail": "Błąd: „$\\sin x = \\frac{1}{2}$, więc $x = \\pm\\frac{\\pi}{6} + 2k\\pi$.”",
+      "win": "Poprawnie: $x = \\frac{\\pi}{6} + 2k\\pi$ lub $x = \\frac{5\\pi}{6} + 2k\\pi$.",
+      "explanation": "$\\sin(-\\frac{\\pi}{6}) = -\\frac{1}{2}$ – to rozwiązanie innego równania.",
+      "ckeTip": "Na końcu wypisz rozwiązania z przedziału jako zbiór – egzaminator punktuje kompletną odpowiedź."
+     },
+     "key_points": [
+      "sin: x₀ i π − x₀.",
+      "cos: x₀ i −x₀.",
+      "tg: x₀ + kπ."
+     ],
+     "worked_example": {
+      "title": "Sinus",
+      "points": "1 pkt",
+      "problem": "Rozwiąż $\\sin x = \\frac{\\sqrt{2}}{2}$.",
+      "solution": "1. $x_0 = \\frac{\\pi}{4}$.\n2. $x = \\frac{\\pi}{4} + 2k\\pi$ lub $x = \\frac{3\\pi}{4} + 2k\\pi$.",
+      "keyInsight": "Druga seria: π − π/4.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$x_0 = \\frac{\\pi}{4}$."
+       }
+      ],
+      "result": "$x = \\frac{\\pi}{4} + 2k\\pi$ lub $x = \\frac{3\\pi}{4} + 2k\\pi$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-8-2",
+    "order": 2,
+    "title": "Rozwiązania w zadanym przedziale",
+    "short_title": "Rozwiązania w przedziale",
+    "badge": "Lekcja 8.2",
+    "archetypeCode": "PR8.2",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R6"
+    ],
+    "prereq": [
+     "math-lesson-8-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Gdy w równaniu jest $\\sin kx$ albo $\\cos kx$, podstawiasz $t = kx$: rozwiązujesz równanie elementarne w $t$, a potem dzielisz przez $k$ – także okres. Przedział dla $t$ jest $k$ razy dłuższy niż dla $x$, więc rozwiązań jest więcej. Na końcu wybierasz te, które leżą w zadanym przedziale.",
+     "matura_context": "CKE zawsze podaje przedział (np. $\\langle 0, \\pi \\rangle$) – ostatni punkt jest za wybranie dokładnie tych rozwiązań, które do niego należą.",
+     "plain_polish": "Z polskiego na nasze: $\\sin 2x$ „kręci się” dwa razy szybciej niż $\\sin x$. Na odcinku od $0$ do $2\\pi$ zdąży zrobić dwa pełne obroty, więc każde rozwiązanie pojawia się dwa razy częściej.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Podstaw t = kx",
+       "description": "Równanie elementarne w $t$.",
+       "tip": "Przedział dla t: k razy dłuższy."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Wróć do x",
+       "description": "Podziel rozwiązania i okres przez $k$.",
+       "tip": "2kπ zamienia się w 2kπ/k."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Wybierz z przedziału",
+       "description": "Podstaw kolejne $k$ całkowite.",
+       "tip": "Sprawdź końce przedziału."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Podstawienie",
+       "formula": "t = kx, \\quad x = \\frac{t}{k}"
+      },
+      {
+       "name": "Okres po podstawieniu",
+       "formula": "t = t_0 + 2k\\pi \\ \\text{więc} \\ x = \\frac{t_0}{k} + \\frac{2k\\pi}{k}"
+      },
+      {
+       "name": "Tabela wartości",
+       "formula": "\\sin\\frac{\\pi}{6} = \\frac{1}{2}, \\ \\cos\\frac{\\pi}{3} = \\frac{1}{2}",
+       "cke_page": "str. 12",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Podwojony argument",
+       "points": "3 pkt",
+       "problem": "Rozwiąż $\\sin 2x = \\frac{1}{2}$ w $\\langle 0, \\pi \\rangle$.",
+       "solution": "1. $2x = \\frac{\\pi}{6} + 2k\\pi$ lub $2x = \\frac{5\\pi}{6} + 2k\\pi$.\n2. $x = \\frac{\\pi}{12} + k\\pi$ lub $x = \\frac{5\\pi}{12} + k\\pi$.\n3. $x \\in \\{\\frac{\\pi}{12}, \\frac{5\\pi}{12}\\}$.",
+       "keyInsight": "Okres w x to π.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$2x = \\frac{\\pi}{6} + 2k\\pi$ lub $2x = \\frac{5\\pi}{6} + 2k\\pi$."
+        },
+        {
+         "num": 2,
+         "text": "$x = \\frac{\\pi}{12} + k\\pi$ lub $x = \\frac{5\\pi}{12} + k\\pi$."
+        }
+       ],
+       "result": "$x \\in \\{\\frac{\\pi}{12}, \\frac{5\\pi}{12}\\}$."
+      },
+      {
+       "title": "Liczba rozwiązań",
+       "points": "1 pkt",
+       "problem": "Ile rozwiązań ma $\\cos 2x = 0$ w $\\langle 0, 2\\pi \\rangle$?",
+       "solution": "1. $2x = \\frac{\\pi}{2} + k\\pi$, więc $x = \\frac{\\pi}{4} + \\frac{k\\pi}{2}$.\n2. Cztery rozwiązania.",
+       "keyInsight": "Krok między rozwiązaniami to π/2.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$2x = \\frac{\\pi}{2} + k\\pi$, więc $x = \\frac{\\pi}{4} + \\frac{k\\pi}{2}$."
+        }
+       ],
+       "result": "Cztery rozwiązania."
+      }
+     ],
+     "exam_trap": "Po podzieleniu przez $k$ zmienia się też okres: $2x = \\ldots + 2k\\pi$ daje $x = \\ldots + k\\pi$, a nie $+ 2k\\pi$.",
+     "trap_details": {
+      "fail": "Błąd: „$2x = \\frac{\\pi}{6} + 2k\\pi$, więc $x = \\frac{\\pi}{12} + 2k\\pi$.”",
+      "win": "Poprawnie: $x = \\frac{\\pi}{12} + k\\pi$.",
+      "explanation": "Dzielisz przez 2 całe wyrażenie, także składnik z okresem.",
+      "ckeTip": "Wypisz rozwiązania dla kolejnych $k$ (np. $k = 0, 1$) – egzaminator widzi, skąd wzięły się liczby z przedziału."
+     },
+     "key_points": [
+      "t = kx.",
+      "Okres też dzielisz przez k.",
+      "Wybierz rozwiązania z przedziału."
+     ],
+     "worked_example": {
+      "title": "Podwojony argument",
+      "points": "3 pkt",
+      "problem": "Rozwiąż $\\sin 2x = \\frac{1}{2}$ w $\\langle 0, \\pi \\rangle$.",
+      "solution": "1. $2x = \\frac{\\pi}{6} + 2k\\pi$ lub $2x = \\frac{5\\pi}{6} + 2k\\pi$.\n2. $x = \\frac{\\pi}{12} + k\\pi$ lub $x = \\frac{5\\pi}{12} + k\\pi$.\n3. $x \\in \\{\\frac{\\pi}{12}, \\frac{5\\pi}{12}\\}$.",
+      "keyInsight": "Okres w x to π.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$2x = \\frac{\\pi}{6} + 2k\\pi$ lub $2x = \\frac{5\\pi}{6} + 2k\\pi$."
+       },
+       {
+        "num": 2,
+        "text": "$x = \\frac{\\pi}{12} + k\\pi$ lub $x = \\frac{5\\pi}{12} + k\\pi$."
+       }
+      ],
+      "result": "$x \\in \\{\\frac{\\pi}{12}, \\frac{5\\pi}{12}\\}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-8-3",
+    "order": 3,
+    "title": "Równania sprowadzalne do kwadratowego",
+    "short_title": "Podstawienie t = sin x",
+    "badge": "Lekcja 8.3",
+    "archetypeCode": "PR8.3",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R6"
+    ],
+    "prereq": [
+     "math-lesson-3-2"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Równanie, w którym występuje $\\sin^2 x$ i $\\sin x$ (albo cosinusy), rozwiązujesz podstawieniem $t = \\sin x$, z warunkiem $t \\in \\langle -1, 1 \\rangle$. Jeśli w równaniu są obie funkcje, najpierw jedynką trygonometryczną zamieniasz $\\cos^2 x$ na $1 - \\sin^2 x$. Każde dopuszczalne $t$ daje równanie elementarne.",
+     "matura_context": "Podstawienie to najczęstszy typ równania trygonometrycznego na rozszerzeniu (np. maj 2023, czerwiec 2024: 4–5 pkt).",
+     "plain_polish": "Z polskiego na nasze: $2\\sin^2 x - 3\\sin x + 1 = 0$ to w przebraniu $2t^2 - 3t + 1 = 0$. Rozwiązujesz zwykłe równanie kwadratowe ($t = 1$ albo $t = \\frac{1}{2}$), a potem pytasz: dla jakich $x$ sinus ma te wartości?",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Jedna funkcja",
+       "description": "Jedynka: $\\cos^2 x = 1 - \\sin^2 x$.",
+       "tip": "Albo odwrotnie."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Podstawienie",
+       "description": "$t = \\sin x$, $t \\in \\langle -1, 1 \\rangle$.",
+       "tip": "Równanie kwadratowe."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Powrót do x",
+       "description": "Odrzuć $|t| > 1$, rozwiąż równania elementarne.",
+       "tip": "Zbierz rozwiązania z przedziału."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Jedynka",
+       "formula": "\\sin^2 x + \\cos^2 x = 1",
+       "cke_page": "str. 12",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Warunek",
+       "formula": "t = \\sin x \\in \\langle -1, 1 \\rangle"
+      },
+      {
+       "name": "Wyróżnik",
+       "formula": "\\Delta = b^2 - 4ac",
+       "cke_page": "str. 7",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Podstawienie",
+       "points": "4 pkt",
+       "problem": "Rozwiąż $2\\sin^2 x - \\sin x - 1 = 0$ w $\\langle 0, 2\\pi \\rangle$.",
+       "solution": "1. $2t^2 - t - 1 = 0$: $t = 1$ lub $t = -\\frac{1}{2}$.\n2. $\\sin x = 1$: $\\frac{\\pi}{2}$; $\\sin x = -\\frac{1}{2}$: $\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.\n3. $x \\in \\{\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}\\}$.",
+       "keyInsight": "sin x = 1 daje tylko jedno rozwiązanie w okresie.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$2t^2 - t - 1 = 0$: $t = 1$ lub $t = -\\frac{1}{2}$."
+        },
+        {
+         "num": 2,
+         "text": "$\\sin x = 1$: $\\frac{\\pi}{2}$; $\\sin x = -\\frac{1}{2}$: $\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$."
+        }
+       ],
+       "result": "$x \\in \\{\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}\\}$."
+      },
+      {
+       "title": "Jedynka",
+       "points": "4 pkt",
+       "problem": "Rozwiąż $2\\cos^2 x + 3\\sin x - 3 = 0$.",
+       "solution": "1. $2(1 - \\sin^2 x) + 3\\sin x - 3 = 0$.\n2. $2t^2 - 3t + 1 = 0$: $t = 1$ lub $t = \\frac{1}{2}$.",
+       "keyInsight": "Najpierw zamiana na jedną funkcję.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$2(1 - \\sin^2 x) + 3\\sin x - 3 = 0$."
+        }
+       ],
+       "result": "$2t^2 - 3t + 1 = 0$: $t = 1$ lub $t = \\frac{1}{2}$."
+      }
+     ],
+     "exam_trap": "Pierwiastek $t = 2$ (albo $t = -\\frac{3}{2}$) trzeba jawnie odrzucić – sinus nie przyjmuje takich wartości.",
+     "trap_details": {
+      "fail": "Błąd: „$t = 2$, więc $\\sin x = 2$ i $x = \\ldots$”",
+      "win": "Poprawnie: $t = 2 \\notin \\langle -1, 1 \\rangle$ – brak rozwiązań z tego czynnika.",
+      "explanation": "Zbiór wartości sinusa to ⟨−1, 1⟩.",
+      "ckeTip": "Zapis „$t \\in \\langle -1, 1 \\rangle$” przy podstawieniu to element pełnego rozwiązania – bez niego odrzucenie pierwiastka jest bezpodstawne."
+     },
+     "key_points": [
+      "Jedna funkcja dzięki jedynce.",
+      "t ∈ ⟨−1, 1⟩.",
+      "Każde t – równanie elementarne."
+     ],
+     "worked_example": {
+      "title": "Podstawienie",
+      "points": "4 pkt",
+      "problem": "Rozwiąż $2\\sin^2 x - \\sin x - 1 = 0$ w $\\langle 0, 2\\pi \\rangle$.",
+      "solution": "1. $2t^2 - t - 1 = 0$: $t = 1$ lub $t = -\\frac{1}{2}$.\n2. $\\sin x = 1$: $\\frac{\\pi}{2}$; $\\sin x = -\\frac{1}{2}$: $\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.\n3. $x \\in \\{\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}\\}$.",
+      "keyInsight": "sin x = 1 daje tylko jedno rozwiązanie w okresie.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$2t^2 - t - 1 = 0$: $t = 1$ lub $t = -\\frac{1}{2}$."
+       },
+       {
+        "num": 2,
+        "text": "$\\sin x = 1$: $\\frac{\\pi}{2}$; $\\sin x = -\\frac{1}{2}$: $\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$."
+       }
+      ],
+      "result": "$x \\in \\{\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}\\}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-8-4",
+    "order": 4,
+    "title": "Kąt podwojony w równaniach",
+    "short_title": "Kąt podwojony",
+    "badge": "Lekcja 8.4",
+    "archetypeCode": "PR8.4",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R6",
+     "VII.R5"
+    ],
+    "prereq": [
+     "math-lesson-8-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Gdy w równaniu jest $\\sin 2x$ obok $\\sin x$ lub $\\cos x$, zamieniasz $\\sin 2x = 2\\sin x\\cos x$ i wyłączasz wspólny czynnik. Przy $\\cos 2x$ wybierasz postać z jedną funkcją: $1 - 2\\sin^2 x$ albo $2\\cos^2 x - 1$ – powstaje równanie kwadratowe.",
+     "matura_context": "Równania z kątem podwojonym pojawiały się w zadaniach PR za 4–5 pkt (np. czerwiec 2023). Wymagają połączenia VII.R5 i VII.R6.",
+     "plain_polish": "Z polskiego na nasze: $\\sin 2x = \\sin x$ wygląda, jakby wystarczyło „skrócić sinusy”. Ale $\\sin 2x = 2\\sin x\\cos x$, więc równanie to $\\sin x(2\\cos x - 1) = 0$ – i nagle widać dwie grupy rozwiązań.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Wzór",
+       "description": "$\\sin 2x = 2\\sin x\\cos x$, $\\cos 2x = 1 - 2\\sin^2 x$.",
+       "tip": "Dobierz do reszty równania."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Iloczyn albo kwadrat",
+       "description": "Wyłącz czynnik albo podstaw $t$.",
+       "tip": "Nie dziel przez funkcję."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Rozwiązania",
+       "description": "Wszystkie czynniki / wszystkie $t$.",
+       "tip": "Suma rozwiązań."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Sinus podwojony",
+       "formula": "\\sin 2x = 2\\sin x\\cos x",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Cosinus podwojony",
+       "formula": "\\cos 2x = 1 - 2\\sin^2 x = 2\\cos^2 x - 1",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Iloczyn",
+       "formula": "ab = 0 \\ \\text{gdy} \\ a = 0 \\ \\text{lub} \\ b = 0"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Iloczyn",
+       "points": "3 pkt",
+       "problem": "Rozwiąż $\\sin 2x = \\cos x$ w $\\langle 0, \\pi \\rangle$.",
+       "solution": "1. $\\cos x(2\\sin x - 1) = 0$.\n2. $\\cos x = 0$: $\\frac{\\pi}{2}$; $\\sin x = \\frac{1}{2}$: $\\frac{\\pi}{6}, \\frac{5\\pi}{6}$.\n3. $x \\in \\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\}$.",
+       "keyInsight": "Czynnik cos x też daje rozwiązanie.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\cos x(2\\sin x - 1) = 0$."
+        },
+        {
+         "num": 2,
+         "text": "$\\cos x = 0$: $\\frac{\\pi}{2}$; $\\sin x = \\frac{1}{2}$: $\\frac{\\pi}{6}, \\frac{5\\pi}{6}$."
+        }
+       ],
+       "result": "$x \\in \\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\}$."
+      },
+      {
+       "title": "Kwadratowe",
+       "points": "4 pkt",
+       "problem": "Rozwiąż $\\cos 2x = \\cos x$.",
+       "solution": "1. $2\\cos^2 x - 1 - \\cos x = 0$.\n2. $\\cos x = 1$ lub $\\cos x = -\\frac{1}{2}$.",
+       "keyInsight": "Wybierasz postać z samym cosinusem.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$2\\cos^2 x - 1 - \\cos x = 0$."
+        }
+       ],
+       "result": "$\\cos x = 1$ lub $\\cos x = -\\frac{1}{2}$."
+      }
+     ],
+     "exam_trap": "Podzielenie $\\sin 2x = \\cos x$ przez $\\cos x$ gubi rozwiązanie $x = \\frac{\\pi}{2}$.",
+     "trap_details": {
+      "fail": "Błąd: „Dzielę przez $\\cos x$: $2\\sin x = 1$.”",
+      "win": "Poprawnie: $\\cos x(2\\sin x - 1) = 0$ – rozwiązujesz oba czynniki.",
+      "explanation": "Dzielenie wolno wykonać tylko przez wyrażenie różne od zera.",
+      "ckeTip": "Rozkład na czynniki zapisz jawnie – w kluczu CKE to osobny etap rozwiązania."
+     },
+     "key_points": [
+      "Wzór na kąt podwojony.",
+      "Wyłączaj, nie dziel.",
+      "cos 2x: postać z jedną funkcją."
+     ],
+     "worked_example": {
+      "title": "Iloczyn",
+      "points": "3 pkt",
+      "problem": "Rozwiąż $\\sin 2x = \\cos x$ w $\\langle 0, \\pi \\rangle$.",
+      "solution": "1. $\\cos x(2\\sin x - 1) = 0$.\n2. $\\cos x = 0$: $\\frac{\\pi}{2}$; $\\sin x = \\frac{1}{2}$: $\\frac{\\pi}{6}, \\frac{5\\pi}{6}$.\n3. $x \\in \\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\}$.",
+      "keyInsight": "Czynnik cos x też daje rozwiązanie.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$\\cos x(2\\sin x - 1) = 0$."
+       },
+       {
+        "num": 2,
+        "text": "$\\cos x = 0$: $\\frac{\\pi}{2}$; $\\sin x = \\frac{1}{2}$: $\\frac{\\pi}{6}, \\frac{5\\pi}{6}$."
+       }
+      ],
+      "result": "$x \\in \\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-8-5",
+    "order": 5,
+    "title": "Równania iloczynowe i pełny zapis rozwiązania",
+    "short_title": "Równania iloczynowe",
+    "badge": "Lekcja 8.5",
+    "archetypeCode": "PR8.5",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "VII.R6"
+    ],
+    "prereq": [
+     "math-lesson-3-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Iloczyn jest równy zeru, gdy któryś czynnik jest zerem. Równanie trygonometryczne rozkładasz na czynniki (wyłączając wspólną funkcję), rozwiązujesz każde równanie elementarne osobno, a odpowiedzią jest suma wszystkich rozwiązań z przedziału – bez powtórzeń.",
+     "matura_context": "Pełne rozwiązanie równania trygonometrycznego za 4 pkt ma w kluczu CKE etapy: wzór, rozkład, jedno równanie elementarne, komplet rozwiązań.",
+     "plain_polish": "Z polskiego na nasze: $\\sin x(2\\cos x - \\sqrt{3}) = 0$ to dwa osobne pytania: kiedy sinus jest zerem? kiedy cosinus to $\\frac{\\sqrt{3}}{2}$? Odpowiedzi zbierasz do jednego worka.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Rozkład",
+       "description": "Wyłącz wspólny czynnik.",
+       "tip": "Po zastosowaniu wzorów."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Każdy czynnik",
+       "description": "Osobne równanie elementarne.",
+       "tip": "W zadanym przedziale."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Odpowiedź",
+       "description": "Suma zbiorów, bez powtórzeń.",
+       "tip": "Zapisz jako zbiór."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Iloczyn",
+       "formula": "a \\cdot b = 0 \\ \\text{gdy} \\ a = 0 \\ \\text{lub} \\ b = 0"
+      },
+      {
+       "name": "Sinus podwojony",
+       "formula": "\\sin 2x = 2\\sin x\\cos x",
+       "cke_page": "str. 13",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Zera funkcji",
+       "formula": "\\sin x = 0: \\ x = k\\pi, \\quad \\cos x = 0: \\ x = \\frac{\\pi}{2} + k\\pi"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Pełny zapis",
+       "points": "4 pkt",
+       "problem": "Rozwiąż $\\sin 2x = \\sqrt{3}\\sin x$ w $\\langle 0, 2\\pi \\rangle$.",
+       "solution": "1. $2\\sin x\\cos x - \\sqrt{3}\\sin x = 0$, czyli $\\sin x(2\\cos x - \\sqrt{3}) = 0$.\n2. $\\sin x = 0$: $0, \\pi, 2\\pi$; $\\cos x = \\frac{\\sqrt{3}}{2}$: $\\frac{\\pi}{6}, \\frac{11\\pi}{6}$.\n3. $x \\in \\{0, \\frac{\\pi}{6}, \\pi, \\frac{11\\pi}{6}, 2\\pi\\}$.",
+       "keyInsight": "Końce przedziału też są rozwiązaniami.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$2\\sin x\\cos x - \\sqrt{3}\\sin x = 0$, czyli $\\sin x(2\\cos x - \\sqrt{3}) = 0$."
+        },
+        {
+         "num": 2,
+         "text": "$\\sin x = 0$: $0, \\pi, 2\\pi$; $\\cos x = \\frac{\\sqrt{3}}{2}$: $\\frac{\\pi}{6}, \\frac{11\\pi}{6}$."
+        }
+       ],
+       "result": "$x \\in \\{0, \\frac{\\pi}{6}, \\pi, \\frac{11\\pi}{6}, 2\\pi\\}$."
+      },
+      {
+       "title": "Liczba rozwiązań",
+       "points": "1 pkt",
+       "problem": "Ile rozwiązań ma $\\sin x\\cos x = 0$ w $\\langle 0, 2\\pi \\rangle$?",
+       "solution": "1. $\\sin x = 0$: $0, \\pi, 2\\pi$.\n2. $\\cos x = 0$: $\\frac{\\pi}{2}, \\frac{3\\pi}{2}$. Razem $5$.",
+       "keyInsight": "Policz oba czynniki.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\sin x = 0$: $0, \\pi, 2\\pi$."
+        }
+       ],
+       "result": "$\\cos x = 0$: $\\frac{\\pi}{2}, \\frac{3\\pi}{2}$. Razem $5$."
+      }
+     ],
+     "exam_trap": "Rozwiązania na końcach przedziału domkniętego (np. $0$ i $2\\pi$) łatwo przeoczyć.",
+     "trap_details": {
+      "fail": "Błąd: „$\\sin x = 0$ w $\\langle 0, 2\\pi \\rangle$: $x = \\pi$.”",
+      "win": "Poprawnie: $x \\in \\{0, \\pi, 2\\pi\\}$.",
+      "explanation": "Przedział jest domknięty – końce należą do niego.",
+      "ckeTip": "Odpowiedź końcową zapisz jednym zbiorem – rozproszone wyniki bez podsumowania mogą kosztować ostatni punkt."
+     },
+     "key_points": [
+      "Rozkład na czynniki.",
+      "Każdy czynnik osobno.",
+      "Suma rozwiązań, z końcami przedziału."
+     ],
+     "worked_example": {
+      "title": "Pełny zapis",
+      "points": "4 pkt",
+      "problem": "Rozwiąż $\\sin 2x = \\sqrt{3}\\sin x$ w $\\langle 0, 2\\pi \\rangle$.",
+      "solution": "1. $2\\sin x\\cos x - \\sqrt{3}\\sin x = 0$, czyli $\\sin x(2\\cos x - \\sqrt{3}) = 0$.\n2. $\\sin x = 0$: $0, \\pi, 2\\pi$; $\\cos x = \\frac{\\sqrt{3}}{2}$: $\\frac{\\pi}{6}, \\frac{11\\pi}{6}$.\n3. $x \\in \\{0, \\frac{\\pi}{6}, \\pi, \\frac{11\\pi}{6}, 2\\pi\\}$.",
+      "keyInsight": "Końce przedziału też są rozwiązaniami.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$2\\sin x\\cos x - \\sqrt{3}\\sin x = 0$, czyli $\\sin x(2\\cos x - \\sqrt{3}) = 0$."
+       },
+       {
+        "num": 2,
+        "text": "$\\sin x = 0$: $0, \\pi, 2\\pi$; $\\cos x = \\frac{\\sqrt{3}}{2}$: $\\frac{\\pi}{6}, \\frac{11\\pi}{6}$."
+       }
+      ],
+      "result": "$x \\in \\{0, \\frac{\\pi}{6}, \\pi, \\frac{11\\pi}{6}, 2\\pi\\}$."
+     }
+    }
+   }
+  ]
  }
 ]

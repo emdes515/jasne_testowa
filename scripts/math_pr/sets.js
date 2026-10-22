@@ -90,7 +90,7 @@ export const endpoints = (S) => S.flatMap(([lo, hi]) => [lo, hi]).filter(Number.
 
 /** Liczba wymierna o małym mianowniku w LaTeX-u. */
 export function numTex(v) {
-  for (let d = 1; d <= 12; d++) if (Math.abs(v * d - Math.round(v * d)) < 1e-9) return fr(Math.round(v * d), d);
+  for (let d = 1; d <= 30; d++) if (Math.abs(v * d - Math.round(v * d)) < 1e-9) return fr(Math.round(v * d), d);
   throw new Error(`numTex: ${v} nie jest prostym ułamkiem`);
 }
 
