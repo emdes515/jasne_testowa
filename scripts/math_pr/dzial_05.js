@@ -1,15 +1,10 @@
 import { T, mc, num, pf, open, pill, fr, dec, quad, poly, lin, sg, xm, par, m, iv, need } from '../math_pp/lib.js';
 import { quadIneq, gt, lt, intersect, intersectAll, fmt, twoRoots, verifySet, contains } from './sets.js';
+import { pickTwo } from './common.js';
 
 const TIP_VIETE = 'Karta wzorów, str. 8: $x_1 + x_2 = -\\frac{b}{a}$ oraz $x_1 \\cdot x_2 = \\frac{c}{a}$. Wzory mają sens tylko wtedy, gdy rozwiązania istnieją.';
 const TIP_PARAM = 'Zadanie z parametrem rozwiązuj etapami: każdy warunek osobno, na końcu część wspólna. Za każdy poprawny etap CKE daje punkt.';
 const TIP_DELTA = 'Dwa różne rozwiązania to $\\Delta > 0$, dokładnie jedno to $\\Delta = 0$, brak rozwiązań to $\\Delta < 0$ (karta wzorów, str. 8).';
-
-const pickTwo = (r, list) => {
-  const i = r.int(0, list.length - 1);
-  const j = r.intNot(0, list.length - 1, i);
-  return [list[i], list[j]];
-};
 
 // ---------- 5.1 Wzory Viète'a i wyrażenia symetryczne ----------
 const niceCoefs = (r) => {

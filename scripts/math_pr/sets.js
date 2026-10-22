@@ -32,6 +32,58 @@ export function intersect(A, B) {
 
 export const intersectAll = (...sets) => sets.reduce((acc, s) => intersect(acc, s));
 
+/** Scala przedziały, które się nakładają albo stykają domkniętym końcem (także punkty {a}). */
+export function normalize(S) {
+  const sorted = S.map((s) => [...s]).sort((x, y) => x[0] - y[0] || x[1] - y[1]);
+  const out = [];
+  for (const s of sorted) {
+    const last = out[out.length - 1];
+    if (last && (s[0] < last[1] || (s[0] === last[1] && (last[3] || s[2])))) {
+      if (s[0] === last[0]) last[2] = last[2] || s[2];
+      if (s[1] > last[1]) [last[1], last[3]] = [s[1], s[3]];
+      else if (s[1] === last[1]) last[3] = last[3] || s[3];
+    } else out.push(s);
+  }
+  return out;
+}
+
+export const union = (...sets) => normalize(sets.flat());
+
+/** Usuwa punkty (np. miejsca zerowe mianownika) ze zbioru. */
+export function removePoints(S, pts) {
+  let out = S.map((s) => [...s]);
+  for (const p of pts) {
+    out = out.flatMap(([lo, hi, loC, hiC]) => {
+      if (p < lo || p > hi || (p === lo && !loC) || (p === hi && !hiC)) return [[lo, hi, loC, hiC]];
+      const parts = [];
+      if (p > lo) parts.push([lo, p, loC, false]);
+      if (p < hi) parts.push([p, hi, false, hiC]);
+      return parts;
+    });
+  }
+  return out;
+}
+
+/**
+ * Zbiór rozwiązań nierówności sign · Π(x − r) op 0 (pierwiastki z krotnością przez powtórzenie),
+ * wyznaczony metodą „wężyka”: znak w każdym przedziale między pierwiastkami.
+ */
+export function signSet(roots, op, sign = 1) {
+  const pts = [...new Set(roots)].sort((a, b) => a - b);
+  const val = (x) => sign * roots.reduce((p, r) => p * (x - r), 1);
+  const ok = (v) => (op === '>' ? v > 0 : op === '>=' ? v >= 0 : op === '<' ? v < 0 : v <= 0);
+  const bounds = [-INF, ...pts, INF];
+  const out = [];
+  for (let i = 0; i < bounds.length - 1; i++) {
+    const lo = bounds[i];
+    const hi = bounds[i + 1];
+    const mid = lo === -INF ? hi - 1 : hi === INF ? lo + 1 : (lo + hi) / 2;
+    if (ok(val(mid))) out.push([lo, hi, false, false]);
+  }
+  if (op === '>=' || op === '<=') for (const p of pts) out.push([p, p, true, true]);
+  return normalize(out);
+}
+
 export const contains = (S, x) => S.some(([lo, hi, loC, hiC]) => (x > lo || (loC && x === lo)) && (x < hi || (hiC && x === hi)));
 
 export const endpoints = (S) => S.flatMap(([lo, hi]) => [lo, hi]).filter(Number.isFinite);
