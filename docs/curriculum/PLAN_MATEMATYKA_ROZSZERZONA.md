@@ -287,7 +287,7 @@ Sesja = 5 zadań z dziennego okna puli (jak PP), w tym **co najmniej 1 otwarte o
 | **2 ✅** | Karta wzorów PR w `ckeFormulasData.ts` + test stron | 1 karta PP+PR |
 | **3 ✅** | Rozszerzenie modelu (`rubric_stages`, `bundle_id`, `prereq`) + BFF ewaluatora + UI samooceny | ścieżka zadań otwartych |
 | **4 ✅** | **Pilot: dział 5** od początku do końca → przegląd ([walkthrough](matematyka_pr/WALKTHROUGH_ETAPY_2-4.md)) | czeka na akceptację wzorca |
-| 5 | Pozostałe działy partiami: **(1, 2, 3, 4) ✅** → **(6, 7, 8) ✅** ([walkthrough](matematyka_pr/WALKTHROUGH_DZIALY_6-8.md)) → (9, 10, 11, 12) → (13, 14, 15) | 75 lekcji, 1500 zadań (stan: 40 lekcji, 800 zadań) |
+| 5 | Pozostałe działy partiami: **(1, 2, 3, 4) ✅** → **(6, 7, 8) ✅** ([walkthrough](matematyka_pr/WALKTHROUGH_DZIALY_6-8.md)) → **(9, 10, 11, 12) ✅** ([walkthrough](matematyka_pr/WALKTHROUGH_DZIALY_9-12.md)) → (13, 14, 15) | 75 lekcji, 1500 zadań (stan: 60 lekcji, 1200 zadań) |
 | 6 | Integracja: LearnView, Dashboard, symulator PR, seed Firestore | PR w aplikacji |
 | 7 | QA całości, notatka `Kurikulum - Matematyka Rozszerzona.md` w Obsidianie | wydanie |
 

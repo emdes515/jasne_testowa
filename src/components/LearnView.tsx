@@ -73,7 +73,20 @@ const subjectIconMap: Record<string, any> = {
   ListChecks,
   Clock,
   Zap,
-  Award
+  Award,
+  // Ikony działów matematyki po nazwie (kurs PR podaje je w blueprintach)
+  Hash,
+  Binary,
+  EqualNot,
+  TrendingUp,
+  Activity,
+  ListOrdered,
+  TriangleRight,
+  CircleDot,
+  Map: MapIcon,
+  Box,
+  PieChart,
+  Target
 };
 
 function getTopicIcon(subjectKey: string, topicIndex: number, DefaultIcon: any, topic?: any) {

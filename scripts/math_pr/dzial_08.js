@@ -1,5 +1,5 @@
 import { T, mc, num, pf, open, pill, fr, m, need } from '../math_pp/lib.js';
-import { pickTwo } from './common.js';
+import { pickTwo, terms } from './common.js';
 import { sinD, cosD, tgD, valTex, piTex, piSet, piInterval, solveDeg } from './trig.js';
 
 const TIP_EQ = 'Równanie $\\sin x = a$ ma w każdym okresie dwa rozwiązania: $x_0$ i $\\pi - x_0$; $\\cos x = a$: $x_0$ i $-x_0$; $\\operatorname{tg} x = a$ – jedno, z okresem $\\pi$ (karta wzorów, str. 11–14).';
@@ -16,17 +16,6 @@ const sols = (g, [lo, hi]) => solveDeg(g, lo, hi);
 const nSol = (n) => (n === 1 ? 'rozwiązanie' : n >= 2 && n <= 4 ? 'rozwiązania' : 'rozwiązań');
 /** Argument funkcji: ujemny kąt w nawiasie, np. \sin\left(-\frac{\pi}{4}\right). */
 const argTex = (d) => (d < 0 ? `\\left(${piTex(d)}\\right)` : piTex(d));
-/** Suma wyrazów [współczynnik, czynnik]: [[2, '\\sin^2 x'], [-1, '\\sin x'], [0, '']] -> 2\sin^2 x - \sin x. */
-const terms = (list) => {
-  let s = '';
-  for (const [c, t] of list) {
-    if (!c) continue;
-    const abs = Math.abs(c);
-    const body = t ? `${abs === 1 ? '' : abs}${t}` : `${abs}`;
-    s += s ? ` ${c < 0 ? '-' : '+'} ${body}` : `${c < 0 ? '-' : ''}${body}`;
-  }
-  return s || '0';
-};
 /** Wyraz z niewymiernym współczynnikiem k (kk: '1', '-1', '\\sqrt{2}', '-\\sqrt{2}' ...) odejmowany od wyrażenia: "- \sqrt{2}\cos x" albo "+ \cos x". */
 const minusK = (kk, t) => {
   const abs = kk.replace('-', '');

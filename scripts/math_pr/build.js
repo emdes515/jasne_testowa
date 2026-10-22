@@ -47,8 +47,8 @@ function lintText(id, text, where) {
     [/[\x00-\x08\x0b\x0c\x0e-\x1f]/, 'znak sterujący (niezescapowany backslash)'],
     [/\\\\[a-zA-Z]/, 'podwójny backslash przed poleceniem LaTeX'],
     [/(?<![\d,}])1\\sqrt/, 'współczynnik 1 przed pierwiastkiem'],
-    [/\+\s*-|-\s*-\s*\d|\+\s*\+/, 'podwójny znak'],
-    [/(?<![\d,{}])\b1(x|n|a|y|m)\b(?!\w)/, 'współczynnik 1 przed zmienną'],
+    [/\+\s*-|-\s*-\s*(\d|\\)|\+\s*\+/, 'podwójny znak'],
+    [/(?<![\d,{}])\b1(x|n|a|y|m|k|t)\b(?!\w)/, 'współczynnik 1 przed zmienną'],
     [/\d\.\d/, 'kropka dziesiętna zamiast przecinka'],
     [/\d{,}\d*0{6,}|\d{,}\d*9{6,}/, 'artefakt zmiennoprzecinkowy'],
     // Informator PR dopuszcza ∧, ∨, ⇒, ⇔ w treści zadań, ale kurs tłumaczy warunki słowami (Core-4)

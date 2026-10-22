@@ -19,6 +19,18 @@ export function frs(n, d) {
   return f === raw ? raw : `${raw} = ${f}`;
 }
 
+/** Suma wyrazów [współczynnik, czynnik]: [[2, '\\sin^2 x'], [-1, '\\sin x'], [0, '']] -> 2\sin^2 x - \sin x. */
+export function terms(list) {
+  let s = '';
+  for (const [c, t] of list) {
+    if (!c) continue;
+    const abs = Math.abs(c);
+    const body = t ? `${abs === 1 ? '' : abs}${t}` : `${abs}`;
+    s += s ? ` ${c < 0 ? '-' : '+'} ${body}` : `${c < 0 ? '-' : ''}${body}`;
+  }
+  return s || '0';
+}
+
 /** Ułamek jako współczynnik przed wyrażeniem: '' dla 1, "-" dla −1, w pozostałych przypadkach fr(n, d). */
 export function coef(n, d = 1) {
   const f = fr(n, d);

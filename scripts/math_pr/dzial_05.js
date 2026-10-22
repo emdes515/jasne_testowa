@@ -671,7 +671,7 @@ export default {
   title: 'Parametr i wzory Viète’a',
   short_title: 'Parametr i Viète',
   description: 'Wzory Viète’a, liczba i znaki rozwiązań w zależności od parametru oraz pełne rozwiązanie zadania za 6 pkt.',
-  icon: 'Layers',
+  icon: 'Activity',
   color: '#FFB800',
   matura_points_range: '5–6 pkt',
   importance: 'CRITICAL_PEWNIAK',
