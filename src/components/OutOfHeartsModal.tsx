@@ -67,7 +67,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.92, y: 20 }}
           transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-          className="relative w-full max-w-sm bg-[#0B0F19] border border-white/10 rounded-[32px] p-6 sm:p-7 shadow-[0_25px_70px_rgba(0,0,0,0.95)] flex flex-col items-center text-center overflow-hidden"
+          className="relative w-full max-w-sm bg-surface-bg border border-hairline rounded-[32px] p-6 sm:p-7 shadow-[0_25px_70px_rgba(0,0,0,0.95)] flex flex-col items-center text-center overflow-hidden"
         >
           {/* Ambient Lighting Background */}
           <div className="absolute -top-20 -right-20 w-44 h-44 bg-rose-500/15 blur-3xl rounded-full pointer-events-none" />
@@ -76,7 +76,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer border border-white/5"
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition cursor-pointer border border-hairline-soft"
             aria-label="Zamknij"
           >
             <X size={16} />
@@ -84,7 +84,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
 
           {/* 1. Pięć Pojemników Serc (5 Heart Containers Showcase) */}
           <div className="w-full mt-2 mb-4">
-            <div className="w-full py-4 px-3 bg-slate-900/70 border border-white/5 rounded-2xl flex flex-col items-center gap-2.5 shadow-inner">
+            <div className="w-full py-4 px-3 bg-slate-900/70 border border-hairline-soft rounded-2xl flex flex-col items-center gap-2.5 shadow-inner">
               <div className="flex items-center justify-center gap-2 sm:gap-2.5">
                 {[0, 1, 2, 3, 4].map((idx) => {
                   const isLastLost = idx === 4;
@@ -119,7 +119,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
           </div>
 
           {/* 2. Typografia i Komunikat */}
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl font-black text-text-strong tracking-tight leading-tight">
             Skończyły Ci się serca!
           </h2>
           <p className="text-xs text-slate-300/90 leading-relaxed mt-1.5 max-w-xs mx-auto">
@@ -127,7 +127,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
           </p>
 
           {/* 3. Karta Odliczania Regeneracji (Live Regen Timer) */}
-          <div className="w-full bg-[#101626]/90 border border-white/10 rounded-2xl p-3 my-3.5 flex items-center justify-between shadow-sm">
+          <div className="w-full bg-[#101626]/90 border border-hairline rounded-2xl p-3 my-3.5 flex items-center justify-between shadow-sm">
             <div className="flex items-center gap-2 text-xs text-slate-300">
               <Clock size={16} className="text-amber-400 shrink-0" />
               <span className="font-medium">Kolejne serce za:</span>
@@ -146,7 +146,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
                 triggerHaptic('medium');
                 onOpenParentSponsor();
               }}
-              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFD54F] hover:brightness-105 active:scale-[0.98] text-amber-950 font-black text-sm transition-all shadow-[0_0_25px_rgba(255,184,0,0.35)] cursor-pointer flex flex-col items-center justify-center gap-0.5 group border-t border-white/40"
+              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#FF8800] via-primary to-[#FFD54F] hover:brightness-105 active:scale-[0.98] text-amber-950 font-black text-sm transition-all shadow-[0_0_25px_rgba(255,184,0,0.35)] cursor-pointer flex flex-col items-center justify-center gap-0.5 group border-t border-white/40"
             >
               <div className="flex items-center gap-2">
                 <Users size={17} className="fill-amber-950 text-amber-950" />
@@ -168,7 +168,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
               }}
               className={`w-full py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm flex items-center justify-between transition-all border ${
                 canAffordCoins
-                  ? 'bg-slate-800/80 hover:bg-slate-700/80 border-slate-700 text-white active:scale-[0.98] cursor-pointer shadow-sm'
+                  ? 'bg-slate-800/80 hover:bg-slate-700/80 border-slate-700 text-text-strong active:scale-[0.98] cursor-pointer shadow-sm'
                   : 'bg-slate-900/60 border-slate-800 text-slate-500 cursor-not-allowed opacity-75'
               }`}
             >
@@ -211,7 +211,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
                 triggerHaptic('light');
                 onOpenProPopup();
               }}
-              className="w-full py-2 text-xs text-[#FFB800] hover:text-amber-300 font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              className="w-full py-2 text-xs text-text-accent hover:text-amber-300 font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <Zap size={14} />
               <span>Odblokuj nielimitowane serca w PRO</span>
@@ -223,7 +223,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
                 triggerHaptic('light');
                 onClose();
               }}
-              className="w-full py-1.5 text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
+              className="w-full py-1.5 text-xs text-slate-400 hover:text-text-strong transition-colors cursor-pointer"
             >
               Wróć do menu głównego
             </button>

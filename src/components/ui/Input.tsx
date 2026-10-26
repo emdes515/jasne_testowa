@@ -34,7 +34,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
           className={cn(
             'w-full bg-surface-card border border-surface-border text-text-primary rounded-xl text-sm font-sans placeholder:text-text-muted transition-all duration-200 min-h-[44px]',
             'focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20',
-            hasError && 'border-[#F43F5E] focus:border-[#F43F5E] focus:ring-[#F43F5E]/20 text-[#FB7185]',
+            hasError && 'border-alert-crimson focus:border-alert-crimson focus:ring-[#F43F5E]/20 text-[#FB7185]',
             disabled && 'opacity-50 cursor-not-allowed bg-surface-bg',
             leftIcon ? 'pl-10 pr-3.5' : 'px-3.5',
             rightIcon ? 'pr-10' : '',

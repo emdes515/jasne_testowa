@@ -93,7 +93,7 @@ export function OnboardingOverlay({
       exam: 'matura_2025',
       score: '70',
       title: '70%+ • Solidny wynik',
-      subtitle: 'Studia dzienne • Pewne schematy z 14 działów maturalnych',
+      subtitle: 'Studia dzienne • Pewne schematy z 15 działów maturalnych',
       icon: GraduationCap,
       badgeText: 'NAJPOPULARNIEJSZY',
       badgeVariant: 'jasne'
@@ -197,7 +197,7 @@ export function OnboardingOverlay({
       title: 'Nawigacja & Menu',
       badge: 'SZYBKI DOSTĘP',
       icon: Compass,
-      desc: 'Intuicyjny dock u dołu ekranu. Błyskawicznie przełączaj się między nauką, arkuszami CKE i pojedynkami 1v1.',
+      desc: 'Intuicyjny dock u dołu ekranu. Błyskawicznie przełączaj się między nauką, arkuszami CKE i swoim profilem.',
       color: '#FFB800'
     },
     {
@@ -211,7 +211,7 @@ export function OnboardingOverlay({
     {
       id: 'learn',
       title: 'Mapa Nauki & Bento',
-      badge: '14 DZIAŁÓW',
+      badge: '15 DZIAŁÓW',
       icon: BookOpen,
       desc: 'Drzewo powtórek podzielone na mikro-lekcje (4–6 min). Pigułka teorii, oficjalne wzory i zadania ze schematów CKE.',
       color: '#10B981'
@@ -229,16 +229,16 @@ export function OnboardingOverlay({
   return (
     <div 
       id="onboarding-overlay"
-      className="fixed inset-0 z-[100] flex flex-col bg-[#070A0F] text-white overflow-hidden font-sans select-none touch-pan-y"
+      className="fixed inset-0 z-[100] flex flex-col bg-surface-bg text-text-strong overflow-hidden font-sans select-none touch-pan-y"
     >
       {/* Dynamiczne oświetlenie tła Nocturne Luminary */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[550px] h-[280px] bg-gradient-to-b from-[#FFB800]/12 to-transparent blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[550px] h-[280px] bg-gradient-to-b from-primary/12 to-transparent blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[420px] h-[260px] bg-gradient-to-t from-amber-500/10 to-transparent blur-[90px] pointer-events-none" />
 
       {/* Pasek postępu na samej górze */}
-      <div className="w-full bg-white/5 h-1.5 relative overflow-hidden shrink-0 z-30">
+      <div className="w-full bg-veil h-1.5 relative overflow-hidden shrink-0 z-30">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#D97706] via-[#FFB800] to-[#FFC72C] shadow-[0_0_12px_rgba(255,184,0,0.8)]"
+          className="h-full bg-gradient-to-r from-jasne-dark via-primary to-[#FFC72C] shadow-[0_0_12px_rgba(255,184,0,0.8)]"
           initial={false}
           animate={{ width: `${(currentStep / 5) * 100}%` }}
           transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
@@ -246,7 +246,7 @@ export function OnboardingOverlay({
       </div>
 
       {/* Górny pasek nawigacyjny kroku */}
-      <div className="relative z-20 flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/5 bg-[#0B0F19]/90 backdrop-blur-md shrink-0">
+      <div className="relative z-20 flex items-center justify-between px-4 sm:px-6 py-3 border-b border-hairline-soft bg-surface-bg/90 backdrop-blur-md shrink-0">
         <div className="flex items-center gap-2">
           {currentStep > 1 ? (
             <button
@@ -255,7 +255,7 @@ export function OnboardingOverlay({
                 triggerHaptic('light');
                 setCurrentStep(prev => Math.max(1, prev - 1));
               }}
-              className="p-1.5 -ml-1.5 rounded-xl hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+              className="p-1.5 -ml-1.5 rounded-xl hover:bg-veil-strong text-slate-400 hover:text-text-strong transition-colors cursor-pointer flex items-center gap-1"
               title="Wróć"
             >
               <ArrowLeft size={17} />
@@ -264,15 +264,15 @@ export function OnboardingOverlay({
           ) : (
             <div className="flex items-center gap-2">
               <JasneLogo variant="icon" size={24} glow={true} />
-              <span className="font-black text-sm tracking-wider text-white">
-                JASNE<span className="text-[#FFB800]">.</span>
+              <span className="font-black text-sm tracking-wider text-text-strong">
+                JASNE<span className="text-text-accent">.</span>
               </span>
             </div>
           )}
         </div>
 
-        <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">
-          <span className="text-[11px] font-bold text-white">
+        <div className="flex items-center gap-1.5 bg-veil px-2.5 py-0.5 rounded-full border border-hairline-soft">
+          <span className="text-[11px] font-bold text-text-strong">
             Krok {currentStep}
           </span>
           <span className="text-[11px] text-slate-400">/ 5</span>
@@ -283,7 +283,7 @@ export function OnboardingOverlay({
             triggerHaptic('light');
             handleFinishOnboarding(false);
           }}
-          className="text-xs font-semibold text-slate-400 hover:text-white px-2.5 py-1 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
+          className="text-xs font-semibold text-slate-400 hover:text-text-strong px-2.5 py-1 rounded-lg hover:bg-veil transition-colors cursor-pointer"
         >
           Pomiń
         </button>
@@ -310,7 +310,7 @@ export function OnboardingOverlay({
                     TWÓJ CEL MATURALNY • FORMUŁA 2023
                   </Badge>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                <h2 className="text-2xl sm:text-3xl font-bold text-text-strong leading-tight">
                   W co celujesz na maturze z matematyki?
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-400 mt-1">
@@ -331,15 +331,15 @@ export function OnboardingOverlay({
                       onClick={() => handleSelectGoal(opt)}
                       className={`w-full text-left p-3.5 rounded-2xl border transition-all duration-150 relative flex items-center gap-3.5 cursor-pointer active:scale-[0.99] ${
                         isSelected
-                          ? 'border-[#FFB800] bg-[#FFB800]/10 shadow-[0_0_20px_rgba(255,184,0,0.2)]'
-                          : 'bg-[#0E1522]/90 border-white/10 hover:border-white/20 hover:bg-[#131D2E]'
+                          ? 'border-primary bg-jasne/10 shadow-[0_0_20px_rgba(255,184,0,0.2)]'
+                          : 'bg-surface-panel/90 border-hairline hover:border-white/20 hover:bg-[#131D2E]'
                       }`}
                     >
                       <div
                         className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border transition-all ${
                           isSelected
-                            ? 'bg-[#FFB800]/20 border-[#FFB800]/40 text-[#FFB800]'
-                            : 'bg-white/5 border-white/10 text-slate-400'
+                            ? 'bg-jasne/20 border-primary/40 text-text-accent'
+                            : 'bg-veil border-hairline text-slate-400'
                         }`}
                       >
                         <Icon size={20} />
@@ -347,14 +347,14 @@ export function OnboardingOverlay({
 
                       <div className="flex-1 min-w-0 pr-1">
                         <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-                          <span className="text-sm font-bold text-white">
+                          <span className="text-sm font-bold text-text-strong">
                             {opt.title}
                           </span>
                           <Badge variant={opt.badgeVariant}>
                             {opt.badgeText}
                           </Badge>
                         </div>
-                        <p className="text-xs text-slate-400 leading-tight truncate">
+                        <p className="text-xs text-slate-400 leading-snug line-clamp-2">
                           {opt.subtitle}
                         </p>
                       </div>
@@ -362,7 +362,7 @@ export function OnboardingOverlay({
                       <div
                         className={`w-6 h-6 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
                           isSelected
-                            ? 'bg-[#FFB800] border-[#FFB800] text-[#080B11]'
+                            ? 'bg-jasne border-primary text-on-primary'
                             : 'border-white/20 text-transparent'
                         }`}
                       >
@@ -378,7 +378,7 @@ export function OnboardingOverlay({
                 <button
                   id="onboarding-step1-continue"
                   onClick={() => setCurrentStep(2)}
-                  className="w-full py-3.5 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm sm:text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-3.5 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm sm:text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>DALEJ</span>
                   <ArrowRight size={17} />
@@ -409,7 +409,7 @@ export function OnboardingOverlay({
                     PEWNIAK CKE • ANALIZA WYKRESU
                   </Badge>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight">
+                <h2 className="text-xl sm:text-2xl font-bold text-text-strong leading-tight">
                   Rozwiąż 1 pewniaka z wykresu i poczuj satysfakcję
                 </h2>
                 <p className="text-xs text-slate-400 mt-1">
@@ -418,7 +418,7 @@ export function OnboardingOverlay({
               </div>
 
               {/* Rysunek wykresu funkcji kwadratowej (SVG) */}
-              <div className="bg-[#0E1522]/95 border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center relative shadow-lg">
+              <div className="bg-surface-panel/95 border border-hairline rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center relative shadow-lg">
                 <div className="w-full flex items-center justify-between text-[11px] text-slate-400 mb-1 px-1">
                   <span className="font-semibold text-amber-400/90 flex items-center gap-1">
                     <Zap size={13} /> Wierzchołek paraboli: W = (1, -4)
@@ -426,7 +426,7 @@ export function OnboardingOverlay({
                   <span className="font-mono text-slate-500">Zadanie za 1 pkt</span>
                 </div>
 
-                <div className="w-full max-w-[320px] bg-[#070A0F] rounded-xl border border-white/10 p-2 flex items-center justify-center overflow-hidden">
+                <div className="w-full max-w-[320px] bg-surface-bg rounded-xl border border-hairline p-2 flex items-center justify-center overflow-hidden">
                   <svg 
                     viewBox="0 0 300 170" 
                     className="w-full h-auto select-none"
@@ -487,7 +487,7 @@ export function OnboardingOverlay({
                 </div>
 
                 <div className="w-full text-center mt-2.5">
-                  <span className="text-xs sm:text-sm font-bold text-white">
+                  <span className="text-xs sm:text-sm font-bold text-text-strong">
                     Zbiorem wartości funkcji <InlineMath math="f" /> jest przedział:
                   </span>
                 </div>
@@ -503,7 +503,7 @@ export function OnboardingOverlay({
                     const isSelected = selectedAnswer === opt.id;
                     const isCorrect = opt.isCorrect;
 
-                    let btnStyle = 'bg-white/5 border-white/10 text-white hover:bg-white/10';
+                    let btnStyle = 'bg-veil border-hairline text-text-strong hover:bg-veil-strong';
                     if (isTaskSolved && isCorrect) {
                       btnStyle =
                         'bg-emerald-500 border-emerald-400 text-emerald-950 shadow-[0_0_25px_rgba(16,185,129,0.7)] scale-[1.02] font-black';
@@ -554,7 +554,7 @@ export function OnboardingOverlay({
                         <Check size={18} strokeWidth={3} />
                       </div>
                       <div>
-                        <span className="text-xs font-bold text-white block">
+                        <span className="text-xs font-bold text-text-strong block">
                           Świetnie! Zbiór wartości to <InlineMath math="\\langle -4, +\\infty)" />.
                         </span>
                         <span className="text-[11px] text-emerald-300">
@@ -595,7 +595,7 @@ export function OnboardingOverlay({
                     EKOSYSTEM MATURALNY JASNE
                   </Badge>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                <h2 className="text-2xl sm:text-3xl font-bold text-text-strong leading-tight">
                   Wszystko, czego potrzebujesz do matury
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-400 mt-1">
@@ -606,14 +606,14 @@ export function OnboardingOverlay({
               {/* 3 Bento Cards */}
               <div className="flex flex-col gap-2.5 my-auto">
                 {/* Bento 1: System Mini-matur CKE */}
-                <div className="bg-[#0E1522]/90 border border-amber-500/30 rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_15px_rgba(255,184,0,0.08)] relative overflow-hidden">
+                <div className="bg-surface-panel/90 border border-amber-500/30 rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_15px_rgba(255,184,0,0.08)] relative overflow-hidden">
                   <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-[#FFB800] shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-text-accent shrink-0 mt-0.5">
                       <Clock size={20} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
-                        <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
+                        <h4 className="text-sm font-bold text-text-strong flex items-center gap-1.5">
                           System Mini-matur CKE (20 minut)
                         </h4>
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
@@ -629,36 +629,36 @@ export function OnboardingOverlay({
                 </div>
 
                 {/* Bento 2: Baza Wszystkich Zadań CKE */}
-                <div className="bg-[#0E1522]/90 border border-sky-500/30 rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_15px_rgba(56,189,248,0.06)] relative overflow-hidden">
+                <div className="bg-surface-panel/90 border border-sky-500/30 rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_15px_rgba(56,189,248,0.06)] relative overflow-hidden">
                   <div className="flex items-start gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0 mt-0.5">
                       <BookOpen size={20} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
-                        <h4 className="text-sm font-bold text-white">
+                        <h4 className="text-sm font-bold text-text-strong">
                           Baza Wszystkich Zadań CKE
                         </h4>
                         <Badge variant="jasne">
-                          14 DZIAŁÓW CKE
+                          15 DZIAŁÓW CKE
                         </Badge>
                       </div>
                       <p className="text-xs text-slate-300 leading-relaxed">
-                        Przerobisz oficjalne zadania z arkuszy 2015–2025. Każde zadanie z pigułką Core-4, wzorami z tablic i ostrzeżeniem o pułapce.
+                        Przerobisz zadania z oficjalnych arkuszy CKE w Formule 2023. Każde zadanie z pigułką Core-4, wzorami z tablic i ostrzeżeniem o pułapce.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Bento 3: AI Tutor & Seria Nawykowa */}
-                <div className="bg-[#0E1522]/90 border border-emerald-500/30 rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_15px_rgba(16,185,129,0.06)] relative overflow-hidden">
+                <div className="bg-surface-panel/90 border border-emerald-500/30 rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_15px_rgba(16,185,129,0.06)] relative overflow-hidden">
                   <div className="flex items-start gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
                       <Flame size={20} className="fill-emerald-400 text-emerald-400" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
-                        <h4 className="text-sm font-bold text-white">
+                        <h4 className="text-sm font-bold text-text-strong">
                           AI Tutor & Seria Nawykowa
                         </h4>
                         <Badge variant="emerald">
@@ -681,7 +681,7 @@ export function OnboardingOverlay({
                     triggerHaptic('medium');
                     setCurrentStep(4);
                   }}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>ZOBACZ JAK WYGLĄDA KOKPIT</span>
                   <ArrowRight size={18} />
@@ -708,7 +708,7 @@ export function OnboardingOverlay({
                     PRZEGLĄD INTERFEJSU
                   </Badge>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                <h2 className="text-2xl sm:text-3xl font-bold text-text-strong leading-tight">
                   Twój kokpit w pigułce
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-400 mt-1">
@@ -717,7 +717,7 @@ export function OnboardingOverlay({
               </div>
 
               {/* Interaktywna makieta kokpitu */}
-              <div className="bg-[#0E1522]/90 border border-white/10 rounded-2xl p-4 flex flex-col gap-3 shadow-lg">
+              <div className="bg-surface-panel/90 border border-hairline rounded-2xl p-4 flex flex-col gap-3 shadow-lg">
                 {/* 4 Zakładki / Hotspoty */}
                 <div className="grid grid-cols-2 gap-2">
                   {hotspots.map((hs, idx) => {
@@ -732,8 +732,8 @@ export function OnboardingOverlay({
                         }}
                         className={`p-2.5 rounded-xl border text-left flex items-center gap-2 transition cursor-pointer active:scale-[0.98] ${
                           isActive
-                            ? 'border-[#FFB800] bg-[#FFB800]/15 text-white shadow-sm'
-                            : 'border-white/5 bg-white/[0.03] text-slate-400 hover:text-slate-200 hover:bg-white/5'
+                            ? 'border-primary bg-jasne/15 text-white shadow-sm'
+                            : 'border-hairline-soft bg-white/[0.03] text-slate-400 hover:text-slate-200 hover:bg-veil'
                         }`}
                       >
                         <div 
@@ -743,7 +743,7 @@ export function OnboardingOverlay({
                           <Icon size={16} />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <span className="text-xs font-bold block truncate leading-tight">
+                          <span className="text-xs font-bold block leading-tight line-clamp-2">
                             {hs.title}
                           </span>
                           <span className="text-[10px] opacity-70 block truncate">
@@ -756,16 +756,16 @@ export function OnboardingOverlay({
                 </div>
 
                 {/* Dynamiczny podgląd wybranego modułu */}
-                <div className="bg-[#070A0F] border border-white/10 rounded-xl p-3.5 min-h-[120px] flex flex-col justify-center">
+                <div className="bg-surface-bg border border-hairline rounded-xl p-3.5 min-h-[120px] flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-1.5">
                     <span 
                       className="w-2 h-2 rounded-full" 
                       style={{ backgroundColor: hotspots[activeHotspot].color }} 
                     />
-                    <h4 className="text-sm font-bold text-white">
+                    <h4 className="text-sm font-bold text-text-strong">
                       {hotspots[activeHotspot].title}
                     </h4>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-slate-300 font-mono">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-veil-strong text-slate-300 font-mono">
                       {hotspots[activeHotspot].badge}
                     </span>
                   </div>
@@ -775,12 +775,12 @@ export function OnboardingOverlay({
                 </div>
 
                 {/* Szybka wizualizacja paska akcji w aplikacji */}
-                <div className="flex items-center justify-between px-3 py-2 bg-white/[0.02] border border-white/5 rounded-xl text-[11px] text-slate-400">
+                <div className="flex items-center justify-between px-3 py-2 bg-white/[0.02] border border-hairline-soft rounded-xl text-[11px] text-slate-400">
                   <span className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     Wszystkie moduły zintegrowane w 1 koncie
                   </span>
-                  <span className="text-[#FFB800] font-semibold">Formuła 2023</span>
+                  <span className="text-text-accent font-semibold">Formuła 2023</span>
                 </div>
               </div>
 
@@ -792,7 +792,7 @@ export function OnboardingOverlay({
                     triggerHaptic('medium');
                     setCurrentStep(5);
                   }}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>ODBIERZ SWÓJ PLAN NAUKI</span>
                   <ArrowRight size={18} />
@@ -818,7 +818,7 @@ export function OnboardingOverlay({
                     DZIEŃ 1 SERII ODBLOKOWANY
                   </Badge>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                <h2 className="text-2xl sm:text-3xl font-bold text-text-strong leading-tight">
                   Twój plan nauki z matematyki jest gotowy!
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-sm mx-auto leading-relaxed">
@@ -840,16 +840,16 @@ export function OnboardingOverlay({
                   }}
                   className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 flex items-center justify-center shadow-[0_0_45px_rgba(245,158,11,0.55)] border-2 border-white/30 relative z-10"
                 >
-                  <Flame size={52} className="text-white fill-white drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
+                  <Flame size={52} className="text-text-strong fill-white drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
                 </motion.div>
                 <div className="absolute inset-0 bg-amber-500/30 rounded-3xl blur-2xl -z-10 animate-pulse" />
               </div>
 
               {/* Karta podsumowania startu */}
-              <div className="w-full bg-[#0E1522]/90 border border-white/10 rounded-2xl p-3.5 text-left shadow-lg">
-                <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/5">
-                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <ShieldCheck size={15} className="text-[#FFB800]" />
+              <div className="w-full bg-surface-panel/90 border border-hairline rounded-2xl p-3.5 text-left shadow-lg">
+                <div className="flex items-center justify-between pb-2 mb-2 border-b border-hairline-soft">
+                  <span className="text-xs font-bold text-text-strong flex items-center gap-1.5">
+                    <ShieldCheck size={15} className="text-text-accent" />
                     Twój spersonalizowany start:
                   </span>
                   <Badge variant="emerald">
@@ -858,21 +858,21 @@ export function OnboardingOverlay({
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 text-center text-xs mb-2.5">
-                  <div className="bg-white/5 rounded-xl p-2 border border-white/5">
+                  <div className="bg-veil rounded-xl p-2 border border-hairline-soft">
                     <span className="text-[10px] text-slate-400 block">Cel maturalny</span>
-                    <strong className="text-[#FFB800] text-xs block mt-0.5">
+                    <strong className="text-text-accent text-xs block mt-0.5">
                       {targetScore}%
                     </strong>
                   </div>
 
-                  <div className="bg-white/5 rounded-xl p-2 border border-white/5">
+                  <div className="bg-veil rounded-xl p-2 border border-hairline-soft">
                     <span className="text-[10px] text-slate-400 block">Zdobyte XP</span>
                     <strong className="text-emerald-400 text-xs block mt-0.5">
                       +15 XP
                     </strong>
                   </div>
 
-                  <div className="bg-white/5 rounded-xl p-2 border border-white/5">
+                  <div className="bg-veil rounded-xl p-2 border border-hairline-soft">
                     <span className="text-[10px] text-slate-400 block">Seria nauki</span>
                     <strong className="text-amber-400 text-xs block mt-0.5 flex items-center justify-center gap-1">
                       <Flame size={12} className="fill-amber-400" /> Dzień 1
@@ -881,7 +881,7 @@ export function OnboardingOverlay({
                 </div>
 
                 {/* Komunikat psychologiczny Loss Aversion */}
-                <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 text-[11px] text-slate-300 leading-relaxed flex items-start gap-2">
+                <div className="p-2.5 rounded-xl bg-white/[0.03] border border-hairline-soft text-[11px] text-slate-300 leading-relaxed flex items-start gap-2">
                   <Lightbulb size={15} className="text-amber-400 shrink-0 mt-0.5" />
                   <span>
                     Utwórz darmowe konto, aby <strong>zabezpieczyć 15 XP</strong>, utrzymać serię i synchronizować postępy między telefonem a komputerem.
@@ -894,10 +894,10 @@ export function OnboardingOverlay({
                 <button
                   id="onboarding-save-progress-button"
                   onClick={() => handleFinishOnboarding(true)}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <LogIn size={18} className="stroke-[2.5]" />
-                  <span>ZAPISZ SWÓJ PROGRES (LOGOWANIE)</span>
+                  <span>ZAPISZ POSTĘPY</span>
                 </button>
 
                 <button

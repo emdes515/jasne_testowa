@@ -177,7 +177,6 @@ export function evaluateFallback(params: EvaluateFallbackParams) {
   let calculatedScore = Math.min(maxPts, Math.round(ratio * maxPts));
   if (hasFractionFinal || (hasAlgebraProgress && hasConclusion)) calculatedScore = maxPts;
   else if (hasFractionStep || hasAlgebraProgress) calculatedScore = Math.max(calculatedScore, 1);
-  if (text.length > 30 && calculatedScore === 0) calculatedScore = 1;
 
   const passed = calculatedScore >= Math.ceil(maxPts * 0.5);
 

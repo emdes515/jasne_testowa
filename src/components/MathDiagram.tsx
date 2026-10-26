@@ -884,7 +884,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
           {d.cards.map((c, idx) => (
             <div
               key={`card-${idx}`}
-              className={`p-3.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-white/10' : 'bg-slate-900/90 border border-slate-800'} flex flex-col gap-1.5 shadow-sm transition-all`}
+              className={`p-3.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-hairline' : 'bg-slate-900/90 border border-slate-800'} flex flex-col gap-1.5 shadow-sm transition-all`}
               style={{ borderLeftColor: c.color || '#FFB800', borderLeftWidth: '3px' }}
             >
               {c.badge && (
@@ -898,7 +898,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 </span>
               )}
               {c.formula && (
-                <div className="py-1 px-2 text-sm sm:text-base font-bold text-amber-300 text-center bg-black/30 rounded-lg border border-white/5 my-0.5 overflow-x-auto no-scrollbar">
+                <div className="py-1 px-2 text-sm sm:text-base font-bold text-amber-300 text-center bg-black/30 rounded-lg border border-hairline-soft my-0.5 overflow-x-auto no-scrollbar">
                   <MathRenderer content={c.formula.includes('$') ? c.formula : `$${c.formula}$`} />
                 </div>
               )}
@@ -914,13 +914,13 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
 
       {/* Pasek kluczowych parametrów i odczytów (Strict Zoning Architecture) */}
       {d.metrics && d.metrics.length > 0 && (
-        <div className={`w-full grid gap-2 pt-3 pb-1 border-t border-white/5 mt-2 ${
+        <div className={`w-full grid gap-2 pt-3 pb-1 border-t border-hairline-soft mt-2 ${
           d.metrics.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 md:grid-cols-4'
         }`}>
           {d.metrics.map((m, idx) => (
             <div
               key={`metric-${idx}`}
-              className={`px-3 py-2.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-white/10' : 'bg-slate-900/90 border border-slate-800'} hover:border-slate-700 transition-all flex flex-col justify-between gap-1 shadow-sm min-h-[60px]`}
+              className={`px-3 py-2.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-hairline' : 'bg-slate-900/90 border border-slate-800'} hover:border-slate-700 transition-all flex flex-col justify-between gap-1 shadow-sm min-h-[60px]`}
             >
               <div className="flex items-start gap-1.5 min-w-0">
                 <span

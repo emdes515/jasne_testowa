@@ -317,7 +317,7 @@ export const TaskMatchingInteractive: React.FC<TaskMatchingInteractiveProps> = (
               </span>
             ) : (
               <span>
-                Przeciągnij kafelki w wolne sloty lub <strong className="text-slate-900 dark:text-white">kliknij hasło, a potem odpowiedź</strong>.
+                Przeciągnij kafelki w wolne sloty lub <strong className="text-slate-900 dark:text-text-strong">kliknij hasło, a potem odpowiedź</strong>.
               </span>
             )}
           </span>
@@ -352,9 +352,9 @@ export const TaskMatchingInteractive: React.FC<TaskMatchingInteractiveProps> = (
                 onClick={() => handleLeftClick(p.left)}
                 className={`p-3.5 rounded-xl border transition-all cursor-pointer relative ${
                   isCorrect
-                    ? 'bg-emerald-500/15 dark:bg-emerald-950/40 border-emerald-500/60 text-slate-900 dark:text-white shadow-xs'
+                    ? 'bg-emerald-500/15 dark:bg-emerald-950/40 border-emerald-500/60 text-slate-900 dark:text-text-strong shadow-xs'
                     : isIncorrect
-                    ? 'bg-rose-500/15 dark:bg-rose-950/40 border-rose-500/60 text-slate-900 dark:text-white shadow-xs'
+                    ? 'bg-rose-500/15 dark:bg-rose-950/40 border-rose-500/60 text-slate-900 dark:text-text-strong shadow-xs'
                     : isTargeted
                     ? 'bg-amber-50 dark:bg-amber-950/30 border-amber-500 ring-2 ring-amber-400/30'
                     : assignedValue
@@ -368,7 +368,7 @@ export const TaskMatchingInteractive: React.FC<TaskMatchingInteractiveProps> = (
                     <span className="w-5 h-5 rounded-md bg-slate-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 font-mono text-xs flex items-center justify-center font-bold">
                       {idx + 1}
                     </span>
-                    <span className="font-semibold text-xs text-slate-900 dark:text-white">
+                    <span className="font-semibold text-xs text-slate-900 dark:text-text-strong">
                       {p.left}
                     </span>
                   </div>
@@ -442,8 +442,8 @@ export const TaskMatchingInteractive: React.FC<TaskMatchingInteractiveProps> = (
                       isDistractorTrapped
                         ? 'bg-amber-500/15 dark:bg-amber-950/40 border-amber-500 text-amber-900 dark:text-amber-200 shadow-xs'
                         : selectedLeft
-                        ? 'bg-amber-50 dark:bg-slate-900 border-amber-500/70 hover:bg-amber-100/50 dark:hover:bg-amber-950/20 text-slate-900 dark:text-white shadow-xs ring-1 ring-amber-500/30 animate-pulse'
-                        : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-800 dark:text-slate-200 shadow-xs'
+                        ? 'bg-amber-50 dark:bg-slate-900 border-amber-500/70 hover:bg-amber-100/50 dark:hover:bg-amber-950/20 text-slate-900 dark:text-text-strong shadow-xs ring-1 ring-amber-500/30 animate-pulse'
+                        : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 shadow-xs'
                     }`}
                   >
                     <GripVertical className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0 mt-0.5" />

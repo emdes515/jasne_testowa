@@ -6,6 +6,7 @@ import { NumberLineData } from '../components/NumberLineDiagram';
 // 1. PIGUŁKI WIEDZY - SCHEMATY SVG DO TEORII (KARTY WZORÓW I DEFINICJI)
 // =========================================================================
 
+import { MATH_PP_NEW_DIAGRAMS } from './mathPpLessonDiagrams';
 export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   // Lekcja 3.1: Wartość bezwzględna - definicja geometryczna i odległość na osi (|x - a| = r)
   'lesson-3-1': {
@@ -2580,15 +2581,77 @@ export function getCandidateLessonVisualIds(id: string): string[] {
   return Array.from(candidates);
 }
 
+/** Schemat o podanym kluczu: z rejestru teorii, archetypów geometrycznych albo nowych schematów kursu PP. */
+export function resolveLessonDiagram(key: string): MathDiagramData | null {
+  return THEORY_DIAGRAMS[key] ?? GEOMETRIC_ARCHETYPES[key] ?? MATH_PP_NEW_DIAGRAMS[key] ?? null;
+}
+
+/**
+ * Rysunek do pigułki wiedzy kursu matematyki PP (lekcja „dział-lekcja” -> klucz schematu w rejestrze).
+ * Dobór po temacie lekcji: ten sam schemat może ilustrować dwie lekcje (np. parabola z miejscami zerowymi).
+ */
+export const MATH_PP_LESSON_VISUALS: Record<string, { diagram: string; numberLine?: string; trapDiagram?: string }> = {
+  '1-4': { diagram: 'lesson-3-1' },
+  '3-1': { diagram: 'lesson-5-1', numberLine: 'lesson-5-1' },
+  '3-2': { diagram: 'lesson-8-1' },
+  '3-3': { diagram: 'lesson-8-2', trapDiagram: 'lesson-8-3' },
+  '3-5': { diagram: 'lesson-7-2' },
+  '4-2': { diagram: 'lesson-9-1' },
+  '4-3': { diagram: 'lesson-9-3' },
+  '4-4': { diagram: 'pp-shift' },
+  '4-5': { diagram: 'pp-exponential' },
+  '5-1': { diagram: 'lesson-10-4' },
+  '5-2': { diagram: 'lesson-10-2' },
+  '5-4': { diagram: 'pp-linear-system' },
+  '6-1': { diagram: 'pp-quadratic-forms' },
+  '6-2': { diagram: 'legacy-parabola-vertex' },
+  '6-3': { diagram: 'lesson-8-1' },
+  '6-4': { diagram: 'pp-quadratic-interval' },
+  '7-2': { diagram: 'pp-arithmetic-sequence' },
+  '7-4': { diagram: 'pp-geometric-sequence' },
+  '8-1': { diagram: 'geo-archetype-trigonometry' },
+  '8-2': { diagram: 'pp-special-triangles' },
+  '8-4': { diagram: 'pp-obtuse-angle' },
+  '8-5': { diagram: 'pp-sas-triangle' },
+
+  '9-1': { diagram: 'geo-archetype-pythagoras' },
+  '9-2': { diagram: 'lesson-9-6' },
+  '9-3': { diagram: 'lesson-9-13' },
+  '9-4': { diagram: 'geo-archetype-inscribed-angles' },
+  '9-5': { diagram: 'geo-archetype-equilateral' },
+  '10-1': { diagram: 'geo-archetype-distance' },
+  '10-2': { diagram: 'lesson-10-1' },
+  '10-3': { diagram: 'lesson-10-3' },
+  '10-4': { diagram: 'geo-archetype-circle' },
+  '10-5': { diagram: 'pp-symmetry' },
+  '11-1': { diagram: 'pp-cube-diagonals' },
+  '11-2': { diagram: 'pp-pyramid' },
+  '11-3': { diagram: 'pp-solid-angles' },
+  '11-4': { diagram: 'lesson-11-6', trapDiagram: 'lesson-11-7' },
+  '11-5': { diagram: 'pp-similar-solids' },
+  '13-4': { diagram: 'pp-probability-tree' },
+  '15-1': { diagram: 'lesson-15-4' },
+  '15-3': { diagram: 'lesson-15-5' }
+};
+
 /**
  * Automatycznie uzupełnia pigułkę wiedzy o schemat wektorowy SVG i osie liczbowe,
  * jeśli pigułka z bazy lub cache przeglądarki go nie posiada.
  */
 export function enrichTheoryPillWithVisual(pill: any, lessonId: string): any {
   if (!pill) return pill;
-  // Pigułki z generatora scripts/math_pp są kompletne – nie doklejamy do nich rysunków
-  // z rejestru, który jest indeksowany starą numeracją lekcji (rysunek nie pasowałby do tematu).
-  if (pill.noAutoVisual === true) return pill;
+  // Pigułki z generatora scripts/math_pp mają nową numerację lekcji, a rejestr jest indeksowany starą.
+  // Rysunek dobieramy więc jawnie po temacie (MATH_PP_LESSON_VISUALS), a nie po numerze lekcji.
+  if (pill.noAutoVisual === true) {
+    const mapped = MATH_PP_LESSON_VISUALS[String(lessonId || '').toLowerCase().replace(/^math-lesson-/, '')];
+    if (!mapped) return pill;
+    return {
+      ...pill,
+      diagram: pill.diagram ?? resolveLessonDiagram(mapped.diagram),
+      trapDiagram: pill.trapDiagram ?? (mapped.trapDiagram ? resolveLessonDiagram(mapped.trapDiagram) : null),
+      numberLine: pill.numberLine ?? (mapped.numberLine ? THEORY_NUMBER_LINES[mapped.numberLine] : null) ?? null
+    };
+  }
   const candidates = getCandidateLessonVisualIds(lessonId);
   
   let registeredDiagram = null;

@@ -395,7 +395,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   triggerHaptic('light');
                   setIsDemoActive(false);
                 }}
-                className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-bold transition cursor-pointer"
+                className="px-3 py-1.5 rounded-xl bg-veil hover:bg-veil-strong text-slate-300 font-bold transition cursor-pointer"
               >
                 Wróć do edytora
               </button>
@@ -406,7 +406,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     triggerHaptic('medium');
                     onOpenProModal();
                   }}
-                  className="px-3.5 py-1.5 rounded-xl bg-primary hover:bg-primary/90 text-[#070A0F] font-black transition cursor-pointer flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-black transition cursor-pointer flex items-center gap-1.5"
                 >
                   <Lock size={12} />
                   <span>Aktywuj PRO</span>
@@ -444,7 +444,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
         </div>
 
         {taskTitle && (
-          <h2 className="text-lg sm:text-xl font-black text-white font-display">
+          <h2 className="text-lg sm:text-xl font-black text-text-strong font-display">
             {taskTitle}
           </h2>
         )}
@@ -463,7 +463,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
         {isEnglishWriting && bulletPoints.length > 0 && (
           <div className="pt-3 border-t border-surface-border/60 space-y-2">
             <div className="flex items-center justify-between text-xs text-text-muted">
-              <span className="font-bold text-white flex items-center gap-1.5">
+              <span className="font-bold text-text-strong flex items-center gap-1.5">
                 <CheckSquare size={14} className="text-primary" />
                 Matryca 4 podpunktów CKE (odhaczaj w trakcie pisania):
               </span>
@@ -481,7 +481,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     className={`flex items-start gap-2.5 p-2.5 rounded-xl border text-left text-xs transition cursor-pointer active:scale-98 ${
                       isChecked
                         ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200'
-                        : 'bg-surface-card-hover border-surface-border text-text-secondary hover:text-white'
+                        : 'bg-surface-card-hover border-surface-border text-text-secondary hover:text-text-strong'
                     }`}
                   >
                     <span className="mt-0.5 text-primary shrink-0">
@@ -532,7 +532,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-bold transition cursor-pointer shrink-0 ${
               showPhraseBank
                 ? 'bg-primary/20 border-primary text-primary'
-                : 'bg-surface-elevated border-surface-border text-text-secondary hover:text-white'
+                : 'bg-surface-elevated border-surface-border text-text-secondary hover:text-text-strong'
             }`}
           >
             <BookMarked size={14} />
@@ -552,8 +552,8 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   onClick={() => setActivePhraseCategory(cat.id)}
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition whitespace-nowrap cursor-pointer ${
                     activePhraseCategory === cat.id
-                      ? 'bg-primary text-[#070A0F]'
-                      : 'bg-surface-elevated text-text-secondary hover:text-white'
+                      ? 'bg-primary text-on-primary'
+                      : 'bg-surface-elevated text-text-secondary hover:text-text-strong'
                   }`}
                 >
                   {cat.title}
@@ -581,7 +581,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
               })}
             </div>
             <p className="text-[11px] text-text-muted italic">
-              💡 Kliknij dowolny zwrot, aby wstawić go bezpośrednio do Twojego wypracowania.
+              Kliknij dowolny zwrot, aby wstawić go bezpośrednio do Twojego wypracowania.
             </p>
           </div>
         )}
@@ -600,7 +600,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   ? "Wpisz swoje wypracowanie maturalne (min. 300 słów). Zadbaj o wstęp z tezą, akapity argumentacyjne z lekturą obowiązkową i kontekstem oraz syntezę na koniec."
                   : "Napisz zwięzłą notatkę syntetyzującą (60–90 słów) przedstawiającą wspólny problem i stanowiska obu autorów."
             }
-            className="w-full min-h-[260px] sm:min-h-[320px] p-4 sm:p-5 rounded-2xl bg-[#070A0F]/90 border border-surface-border focus:border-primary/60 focus:ring-2 focus:ring-primary/20 text-white placeholder-text-muted font-sans text-sm sm:text-base leading-relaxed resize-y transition shadow-inner outline-none select-text"
+            className="w-full min-h-[260px] sm:min-h-[320px] p-4 sm:p-5 rounded-2xl bg-surface-bg/90 border border-surface-border focus:border-primary/60 focus:ring-2 focus:ring-primary/20 text-text-strong placeholder-text-muted font-sans text-sm sm:text-base leading-relaxed resize-y transition shadow-inner outline-none select-text"
           />
 
           {isSavedLocally && (
@@ -635,7 +635,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                 className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-xs sm:text-sm transition cursor-pointer shadow-xl active:scale-95 ${
                   isEvaluating || wordCount < 10
                     ? 'bg-surface-elevated text-text-muted cursor-not-allowed border border-surface-border'
-                    : 'bg-primary hover:bg-primary/90 text-[#070A0F] shadow-primary/20'
+                    : 'bg-primary hover:bg-primary/90 text-on-primary shadow-primary/20'
                 }`}
               >
                 {isEvaluating ? (
@@ -658,7 +658,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     triggerHaptic('light');
                     setIsDemoActive(true);
                   }}
-                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/40 text-xs font-bold text-text-secondary hover:text-white transition cursor-pointer"
+                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl bg-veil hover:bg-veil-strong border border-hairline hover:border-primary/40 text-xs font-bold text-text-secondary hover:text-text-strong transition cursor-pointer"
                   title="Zobacz przykładowy oficjalny raport egzaminatora CKE"
                 >
                   <Eye size={14} className="text-primary" />
@@ -670,7 +670,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     triggerHaptic('medium');
                     if (onOpenProModal) onOpenProModal();
                   }}
-                  className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-[#070A0F] font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-amber-500/20 active:scale-95"
+                  className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-on-primary font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-amber-500/20 active:scale-95"
                 >
                   <Lock size={15} />
                   <span>Odblokuj Audyt CKE (PRO)</span>

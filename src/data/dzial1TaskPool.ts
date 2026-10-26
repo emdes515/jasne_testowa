@@ -190,10 +190,11 @@ export function drawSessionTasks(
     let drawnTasks: any[] = [];
     
     if (openTasks.length > 0) {
-      // 4 zamknięte i 1 otwarte na końcu
+      // 4 zamknięte i 1 otwarte na 3. pozycji: sesja kończy się po 3 poprawnych odpowiedziach,
+      // więc zadanie otwarte na końcu kolejki nigdy nie byłoby pokazane
       const selectedClosed = shuffle(closedTasks).slice(0, 4);
       const selectedOpen = shuffle(openTasks).slice(0, 1);
-      drawnTasks = [...selectedClosed, ...selectedOpen];
+      drawnTasks = [...selectedClosed.slice(0, 2), ...selectedOpen, ...selectedClosed.slice(2)];
     } else {
       // 5 zamkniętych
       drawnTasks = shuffle(closedTasks).slice(0, 5);

@@ -820,7 +820,7 @@ export function TaskView({
         <header className="shrink-0 px-4 pt-4 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-end z-20">
           <button 
             onClick={handleContinue}
-            className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#9CA3AF] hover:text-white transition-colors active:scale-95"
+            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-text-secondary hover:text-text-strong transition-colors active:scale-95"
             title="Zamknij"
           >
             <X size={16} />
@@ -849,7 +849,7 @@ export function TaskView({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight mb-1.5"
+            className="font-display font-black text-2xl sm:text-3xl text-text-strong tracking-tight mb-1.5"
           >
             Lekcja ukończona!
           </motion.h2>
@@ -871,33 +871,33 @@ export function TaskView({
             className="w-full grid grid-cols-3 gap-3 mb-5 max-w-sm sm:max-w-md"
           >
             {/* XP Card */}
-            <div className="bg-[#141C28] border border-[#FFB800]/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
-              <div className="w-8 h-8 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center mb-1.5 text-[#FFB800]">
-                <Zap size={16} className="fill-[#FFB800] text-[#FFB800]" />
+            <div className="bg-surface-card-hover border border-primary/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+              <div className="w-8 h-8 rounded-xl bg-jasne/15 border border-primary/30 flex items-center justify-center mb-1.5 text-text-accent">
+                <Zap size={16} className="fill-[#FFB800] text-text-accent" />
               </div>
-              <span className="text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">+{totalEarnedXp}</span>
+              <span className="text-lg sm:text-xl font-bold text-text-strong tracking-tight leading-tight">+{totalEarnedXp}</span>
               <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider mt-0.5">
                 XP
               </span>
             </div>
 
             {/* Coins Card */}
-            <div className="bg-[#141C28] border border-amber-400/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+            <div className="bg-surface-card-hover border border-amber-400/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
               <div className="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mb-1.5 text-amber-400">
                 <Coins size={16} className="text-amber-400" />
               </div>
-              <span className="text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">+{totalEarnedCoins}</span>
+              <span className="text-lg sm:text-xl font-bold text-text-strong tracking-tight leading-tight">+{totalEarnedCoins}</span>
               <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider mt-0.5">
                 Monet
               </span>
             </div>
 
             {/* Streak Card */}
-            <div className="bg-[#141C28] border border-orange-500/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+            <div className="bg-surface-card-hover border border-orange-500/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
               <div className="w-8 h-8 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center mb-1.5 text-orange-400">
                 <Flame size={16} className="fill-orange-400 text-orange-400" />
               </div>
-              <span className="text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">{streakDays} dni</span>
+              <span className="text-lg sm:text-xl font-bold text-text-strong tracking-tight leading-tight">{streakDays} dni</span>
               <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider mt-0.5">
                 Seria
               </span>
@@ -934,7 +934,7 @@ export function TaskView({
           <div className="flex flex-col items-center w-full">
             <button 
               onClick={handleContinue}
-              className="w-full h-[52px] bg-primary hover:bg-[#FFC72C] border border-primary-dark/40 text-[#070A0F] font-bold text-base px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+              className="w-full h-[52px] bg-primary hover:bg-primary-hover border border-primary-dark/40 text-on-primary font-bold text-base px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
             >
               <span>WRÓĆ DO MAPY NAUKI</span>
               <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
@@ -962,7 +962,7 @@ export function TaskView({
           </span>
           <button 
             onClick={onCancelTask}
-            className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#9CA3AF] hover:text-white transition-colors"
+            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-text-secondary hover:text-text-strong transition-colors"
           >
             <X size={16} />
           </button>
@@ -973,26 +973,26 @@ export function TaskView({
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="w-20 h-20 rounded-3xl bg-[#FFB800]/15 border-2 border-[#FFB800] text-[#FFB800] flex items-center justify-center shadow-[0_0_30px_rgba(255,184,0,0.25)] mb-5"
+            className="w-20 h-20 rounded-3xl bg-jasne/15 border-2 border-primary text-text-accent flex items-center justify-center shadow-[0_0_30px_rgba(255,184,0,0.25)] mb-5"
           >
             <RotateCcw size={40} className="animate-spin-slow" />
           </motion.div>
 
-          <span className="text-xs font-black uppercase text-[#FFB800] tracking-widest px-3 py-1 rounded-full bg-[#FFB800]/10 border border-[#FFB800]/20 mb-3">
+          <span className="text-xs font-black uppercase text-text-accent tracking-widest px-3 py-1 rounded-full bg-jasne/10 border border-primary/20 mb-3">
             Faza Poprawkowa
           </span>
 
-          <h2 className="font-display font-black text-2xl sm:text-3xl text-white mb-2 tracking-tight">
+          <h2 className="font-display font-black text-2xl sm:text-3xl text-text-strong mb-2 tracking-tight">
             Czas na szybką powtórkę!
           </h2>
 
-          <p className="text-[#9CA3AF] text-sm max-w-sm leading-relaxed mb-6">
+          <p className="text-text-secondary text-sm max-w-sm leading-relaxed mb-6">
             Popraw błędy, aby ukończyć lekcję i utrwalić wiedzę. Pętla poprawek to najskuteczniejszy sposób na 100% z matury.
           </p>
 
-          <div className="w-full bg-[#141C28] border border-white/10 rounded-2xl p-4 text-left shadow-lg mb-4">
+          <div className="w-full bg-surface-card-hover border border-hairline rounded-2xl p-4 text-left shadow-lg mb-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-white flex items-center gap-1.5">
+              <span className="text-xs font-bold text-text-strong flex items-center gap-1.5">
                 <AlertTriangle size={14} className="text-amber-400" />
                 Zadania do poprawy:
               </span>
@@ -1000,8 +1000,8 @@ export function TaskView({
                 {mistakesBuffer.length} {mistakesBuffer.length === 1 ? 'zadanie' : 'zadania'}
               </span>
             </div>
-            <p className="text-xs text-[#9CA3AF] leading-relaxed">
-              Za każdą udaną poprawkę otrzymujesz <span className="text-[#FFB800] font-bold">+5 XP</span> oraz odblokowujesz oficjalny Ekran Sukcesu z gwiazdkami.
+            <p className="text-xs text-text-secondary leading-relaxed">
+              Za każdą udaną poprawkę otrzymujesz <span className="text-text-accent font-bold">+5 XP</span> oraz odblokowujesz oficjalny Ekran Sukcesu z gwiazdkami.
             </p>
           </div>
         </div>
@@ -1009,7 +1009,7 @@ export function TaskView({
         <footer className="shrink-0 w-full p-4 bg-surface-elevated/95 backdrop-blur-md border-t border-surface-border" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           <button 
             onClick={handleStartRetryPhase}
-            className="w-full bg-[#FFB800] hover:bg-[#FFC72C] border border-[#D97706]/40 text-[#080B11] font-bold text-base py-3.5 px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+            className="w-full bg-jasne hover:bg-primary-hover border border-jasne-dark/40 text-on-primary font-bold text-base py-3.5 px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>Popraw błędy</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -1030,22 +1030,22 @@ export function TaskView({
     const isLastCard = currentTheoryIndex === cards.length - 1;
 
     return (
-      <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
+      <div className="fixed inset-0 z-50 bg-surface-bg/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
         <div className="w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-surface-bg md:rounded-[32px] md:border md:border-surface-border md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-start items-stretch overflow-hidden relative">
           <header className="shrink-0 px-4 pt-3.5 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-between z-20">
           <button 
             onClick={onCancelTask}
-            className="flex items-center gap-1.5 text-[#9CA3AF] hover:text-white text-xs font-bold bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full transition-colors active:scale-95"
+            className="flex items-center gap-1.5 text-text-secondary hover:text-text-strong text-xs font-bold bg-veil hover:bg-veil-strong px-3 py-1.5 rounded-full transition-colors active:scale-95"
           >
             <X size={14} /> Zamknij
           </button>
 
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-2.5 py-1 rounded-full flex items-center gap-1">
+            <span className="text-[10px] font-black uppercase tracking-wider text-text-accent bg-jasne/10 border border-primary/20 px-2.5 py-1 rounded-full flex items-center gap-1">
               <BookOpen size={12} />
               <span>{theoryItem.topic || 'Pigułka wiedzy'}</span>
             </span>
-            <span className="text-xs font-bold text-[#8B8D98]">
+            <span className="text-xs font-bold text-text-secondary">
               {currentTheoryIndex + 1} / {cards.length}
             </span>
           </div>
@@ -1062,7 +1062,7 @@ export function TaskView({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.18 }}
-              className="bg-[#141C28] border border-white/[0.08] rounded-2xl p-4 sm:p-5 shadow-xl flex-1 min-h-0 flex flex-col justify-between relative overflow-y-auto custom-scrollbar"
+              className="bg-surface-card-hover border border-white/[0.08] rounded-2xl p-4 sm:p-5 shadow-xl flex-1 min-h-0 flex flex-col justify-between relative overflow-y-auto custom-scrollbar"
             >
               <div className="flex-1 flex flex-col justify-start">
                 <div className="flex items-center justify-between gap-2 mb-2 text-xs font-bold">
@@ -1074,8 +1074,8 @@ export function TaskView({
                       </>
                     ) : (
                       <>
-                        <Lightbulb size={14} className="text-[#FFB800]" />
-                        <span className="text-[#FFB800] font-black uppercase tracking-wider">{currentCard.badge || 'Kluczowa Reguła'}</span>
+                        <Lightbulb size={14} className="text-text-accent" />
+                        <span className="text-text-accent font-black uppercase tracking-wider">{currentCard.badge || 'Kluczowa Reguła'}</span>
                       </>
                     )}
                   </div>
@@ -1091,7 +1091,7 @@ export function TaskView({
                           triggerHaptic('light');
                         }}
                         className={`h-1.5 rounded-full transition-all duration-200 ${
-                          idx === currentTheoryIndex ? 'w-5 bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.5)]' : 'w-1.5 bg-white/20 hover:bg-white/40'
+                          idx === currentTheoryIndex ? 'w-5 bg-jasne shadow-[0_0_8px_rgba(255,184,0,0.5)]' : 'w-1.5 bg-white/20 hover:bg-white/40'
                         }`}
                         aria-label={`Przejdź do kroku ${idx + 1}`}
                       />
@@ -1099,7 +1099,7 @@ export function TaskView({
                   </div>
                 </div>
 
-                <h3 className="font-display font-black text-lg sm:text-xl text-white mb-2 leading-snug">
+                <h3 className="font-display font-black text-lg sm:text-xl text-text-strong mb-2 leading-snug">
                   {currentCard.title}
                 </h3>
 
@@ -1107,8 +1107,8 @@ export function TaskView({
                 {currentCard.type === 'essence' ? (
                   <div className="flex flex-col gap-3.5 w-full my-auto">
                     {currentCard.concept_essence && (
-                      <div className="p-4 sm:p-5 rounded-2xl bg-[#0F1622] border border-white/10 text-white/95 text-sm sm:text-base leading-relaxed break-words">
-                        <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1.5">
+                      <div className="p-4 sm:p-5 rounded-2xl bg-surface-panel border border-hairline text-white/95 text-sm sm:text-base leading-relaxed break-words">
+                        <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1.5">
                           W pigułce:
                         </span>
                         <MathRenderer
@@ -1134,7 +1134,7 @@ export function TaskView({
                         {currentCard.diagram ? (
                           <MathDiagram diagram={currentCard.diagram} borderless hideTitle={true} />
                         ) : currentCard.numberLine ? (
-                          <div className="w-full max-w-lg bg-black/30 border border-white/10 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
+                          <div className="w-full max-w-lg bg-black/30 border border-hairline p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
                             <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider self-start flex items-center gap-1.5">
                               <Target size={13} className="text-amber-400" />
                               <span>Interpretacja na osi liczbowej:</span>
@@ -1145,8 +1145,8 @@ export function TaskView({
                       </div>
                     )}
                     {currentCard.matura_context && (
-                      <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-slate-300 text-xs sm:text-sm leading-relaxed break-words">
-                        <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1">
+                      <div className="p-4 rounded-2xl bg-white/[0.02] border border-hairline text-slate-300 text-xs sm:text-sm leading-relaxed break-words">
+                        <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1">
                           Wskazówka egzaminacyjna:
                         </span>
                         <MathRenderer content={currentCard.matura_context} className="leading-relaxed" />
@@ -1161,26 +1161,26 @@ export function TaskView({
                         {currentCard.structuredFormulas.map((item, idx) => (
                           <div
                             key={idx}
-                            className="w-full bg-[#0B101B] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-2 shadow-inner hover:border-[#FFB800]/30 transition-all"
+                            className="w-full bg-[#0B101B] border border-hairline rounded-2xl p-4 sm:p-5 flex flex-col gap-2 shadow-inner hover:border-primary/30 transition-all"
                           >
                             {item.title && (
-                              <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                              <div className="flex items-center justify-between border-b border-hairline-soft pb-2">
                                 <div className="flex items-center gap-2">
-                                  <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
+                                  <span className="w-5 h-5 rounded-md bg-jasne/10 border border-primary/25 text-[10px] font-mono font-bold text-text-accent flex items-center justify-center shrink-0">
                                     {String(idx + 1).padStart(2, '0')}
                                   </span>
-                                  <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
+                                  <span className="text-xs sm:text-sm font-bold text-text-strong tracking-wide">
                                     {item.title}
                                   </span>
                                 </div>
                               </div>
                             )}
-                            <div className="w-full text-center overflow-x-auto py-1 text-white">
+                            <div className="w-full text-center overflow-x-auto py-1 text-text-strong">
                               <MathRenderer content={item.latex} displayMode={true} />
                             </div>
                             {item.description && (
-                              <div className="mt-1 pt-2.5 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-white/[0.02] -mx-2 px-3 py-2 rounded-xl">
-                                <Info className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                              <div className="mt-1 pt-2.5 border-t border-hairline text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-white/[0.02] -mx-2 px-3 py-2 rounded-xl">
+                                <Info className="w-4 h-4 text-text-accent shrink-0 mt-0.5" />
                                 <div className="w-full font-normal">
                                   <MathRenderer content={item.description} className="leading-relaxed" />
                                 </div>
@@ -1190,7 +1190,7 @@ export function TaskView({
                         ))}
                       </div>
                     ) : currentCard.core_formulas ? (
-                      <div className="w-full bg-[#0B101B] border border-white/10 rounded-2xl p-4 sm:p-5 text-center">
+                      <div className="w-full bg-[#0B101B] border border-hairline rounded-2xl p-4 sm:p-5 text-center">
                         <div className="w-full max-w-full overflow-x-auto py-1 text-center">
                           <MathRenderer content={currentCard.core_formulas} displayMode={true} />
                         </div>
@@ -1198,7 +1198,7 @@ export function TaskView({
                     ) : null}
 
                     {currentCard.formula_notes && (
-                      <div className="p-3 bg-white/[0.02] border border-white/10 rounded-xl text-xs text-slate-400 leading-relaxed">
+                      <div className="p-3 bg-white/[0.02] border border-hairline rounded-xl text-xs text-slate-400 leading-relaxed">
                         <MathRenderer content={currentCard.formula_notes} />
                       </div>
                     )}
@@ -1206,19 +1206,19 @@ export function TaskView({
                 ) : currentCard.type === 'example' && currentCard.worked_example ? (
                   /* Card Type: example (Worked example krok po kroku) */
                   <div className="flex flex-col gap-3 w-full my-auto text-left min-w-0 max-w-full overflow-hidden">
-                    <div className="p-3.5 sm:p-4 rounded-xl bg-[#0F1622] border border-white/10 min-w-0 max-w-full overflow-hidden">
-                      <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1">
+                    <div className="p-3.5 sm:p-4 rounded-xl bg-surface-panel border border-hairline min-w-0 max-w-full overflow-hidden">
+                      <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1">
                         Zadanie z arkusza:
                       </span>
-                      <div className="text-xs sm:text-sm font-medium text-white leading-relaxed min-w-0 max-w-full break-words">
+                      <div className="text-xs sm:text-sm font-medium text-text-strong leading-relaxed min-w-0 max-w-full break-words">
                         <MathRenderer content={currentCard.worked_example.problem} />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       {currentCard.worked_example.step1 && (
-                        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
-                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="p-3 rounded-xl bg-white/[0.02] border border-hairline flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
+                          <span className="w-5 h-5 rounded-md bg-jasne/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             1
                           </span>
                           <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
@@ -1228,8 +1228,8 @@ export function TaskView({
                       )}
 
                       {currentCard.worked_example.step2 && (
-                        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
-                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="p-3 rounded-xl bg-white/[0.02] border border-hairline flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
+                          <span className="w-5 h-5 rounded-md bg-jasne/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             2
                           </span>
                           <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
@@ -1242,12 +1242,12 @@ export function TaskView({
                         const stepNum = st?.step_num || st?.num || (idx + 1);
                         const stepContent = st?.explanation || st?.text || (typeof st === 'string' ? st : '');
                         return (
-                          <div key={stepNum} className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
-                            <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          <div key={stepNum} className="p-3 rounded-xl bg-white/[0.02] border border-hairline flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
+                            <span className="w-5 h-5 rounded-md bg-jasne/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                               {stepNum}
                             </span>
                             <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
-                              {st?.label && <span className="block text-[11px] font-bold text-[#FFB800] mb-0.5">{st.label}</span>}
+                              {st?.label && <span className="block text-[11px] font-bold text-text-accent mb-0.5">{st.label}</span>}
                               <MathRenderer content={stepContent} />
                             </div>
                           </div>
@@ -1283,7 +1283,7 @@ export function TaskView({
                           <X size={14} className="stroke-[3]" />
                           <span>Częsty błąd</span>
                         </div>
-                        <div className="text-white font-medium text-xs sm:text-sm leading-relaxed break-words py-0.5 max-w-full">
+                        <div className="text-text-strong font-medium text-xs sm:text-sm leading-relaxed break-words py-0.5 max-w-full">
                           <MathRenderer 
                             content={currentCard.trap_error.startsWith('$') ? currentCard.trap_error : `$${currentCard.trap_error}$`} 
                             className="flex flex-wrap items-center gap-x-1.5 gap-y-1 break-words max-w-full"
@@ -1298,7 +1298,7 @@ export function TaskView({
                           <Check size={14} className="stroke-[3]" />
                           <span>Prawidłowy zapis</span>
                         </div>
-                        <div className="text-white font-medium text-xs sm:text-sm leading-relaxed break-words py-0.5 max-w-full">
+                        <div className="text-text-strong font-medium text-xs sm:text-sm leading-relaxed break-words py-0.5 max-w-full">
                           <MathRenderer 
                             content={currentCard.trap_correct.startsWith('$') ? currentCard.trap_correct : `$${currentCard.trap_correct}$`} 
                             className="flex flex-wrap items-center gap-x-1.5 gap-y-1 break-words max-w-full"
@@ -1308,14 +1308,14 @@ export function TaskView({
                     )}
 
                     {(currentCard.trap_note && currentCard.trap_note !== currentCard.exam_trap) && (
-                      <div className="p-3 bg-[#0F1622] border border-white/10 rounded-xl text-xs sm:text-sm text-[#9CA3AF] leading-relaxed break-words max-w-full">
+                      <div className="p-3 bg-surface-panel border border-hairline rounded-xl text-xs sm:text-sm text-text-secondary leading-relaxed break-words max-w-full">
                         <MathRenderer content={currentCard.trap_note} className="break-words" />
                       </div>
                     )}
                   </div>
                 ) : (
                   /* Card Type: takeaway or default */
-                  <div className="bg-[#0F1622] border border-white/10 rounded-2xl p-4 sm:p-5 my-auto text-white/95 text-sm sm:text-base leading-relaxed break-words">
+                  <div className="bg-surface-panel border border-hairline rounded-2xl p-4 sm:p-5 my-auto text-white/95 text-sm sm:text-base leading-relaxed break-words">
                     <MathRenderer content={currentCard.content || ''} className="leading-relaxed" />
                   </div>
                 )}
@@ -1331,7 +1331,7 @@ export function TaskView({
                 setCurrentTheoryIndex(i => i - 1);
                 triggerHaptic('light');
               }}
-              className="bg-[#141C28] hover:bg-[#1A2434] text-white border border-white/10 font-bold px-5 py-3.5 rounded-xl text-sm transition-all flex items-center justify-center active:scale-95"
+              className="bg-surface-card-hover hover:bg-[#1A2434] text-white border border-hairline font-bold px-5 py-3.5 rounded-xl text-sm transition-all flex items-center justify-center active:scale-95"
             >
               Wstecz
             </button>
@@ -1351,7 +1351,7 @@ export function TaskView({
                 }
               }
             }}
-            className="flex-1 bg-[#FFB800] hover:bg-[#FFC72C] border border-[#D97706]/40 text-[#080B11] font-bold py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:scale-[0.98] shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+            className="flex-1 bg-jasne hover:bg-primary-hover border border-jasne-dark/40 text-on-primary font-bold py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:scale-[0.98] shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>
               {!isLastCard 
@@ -1393,7 +1393,7 @@ export function TaskView({
           <button 
             type="button"
             onClick={onCancelTask}
-            className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#9CA3AF] hover:text-white transition-colors active:scale-95"
+            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-text-secondary hover:text-text-strong transition-colors active:scale-95"
             title="Zamknij zadanie"
           >
             <X size={16} />
@@ -1438,7 +1438,7 @@ export function TaskView({
                 Poprawka: {currentTaskIndex + 1}/{practiceQueue.length}
               </Badge>
             ) : (
-              <span className="text-xs font-bold text-[#8B8D98]">
+              <span className="text-xs font-bold text-text-secondary">
                 {currentTaskIndex + 1}/{practiceQueue.length}
               </span>
             )}
@@ -1446,10 +1446,10 @@ export function TaskView({
         </div>
 
         {/* Progress Bar Track */}
-        <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+        <div className="w-full h-1.5 bg-veil rounded-full overflow-hidden border border-hairline-soft">
           <motion.div 
             className={`h-full rounded-full transition-all duration-300 ${
-              isRetryPhase ? 'bg-amber-400' : 'bg-[#FFB800]'
+              isRetryPhase ? 'bg-amber-400' : 'bg-jasne'
             }`}
             style={{ width: `${Math.min(100, Math.max(8, progressPercent))}%` }}
           />
@@ -1465,9 +1465,9 @@ export function TaskView({
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {/* Task Question Card */}
-        <div className="bg-[#141C28] border border-white/10 rounded-2xl p-4 shadow-lg flex flex-col gap-2.5 shrink-0">
+        <div className="bg-surface-card-hover border border-hairline rounded-2xl p-4 shadow-lg flex flex-col gap-2.5 shrink-0">
           {/* Authentic Source & Exam Metadata line above question */}
-          <div className="flex items-center gap-2 text-[11px] sm:text-xs text-[#8B8D98] flex-wrap pb-1 border-b border-white/5">
+          <div className="flex items-center gap-2 text-[11px] sm:text-xs text-text-secondary flex-wrap pb-1 border-b border-hairline-soft">
             <span className="text-[#38BDF8] font-semibold tracking-wide">
               {activeTask.badge || activeTask.source_badge || activeTask.source || activeTask.cke_source || 'Trening JASNE • Baza CKE'}
             </span>
@@ -1478,13 +1478,13 @@ export function TaskView({
           </div>
 
           {instructionText && (
-            <div className="text-xs sm:text-sm text-[#8B8D98] font-medium leading-relaxed">
+            <div className="text-xs sm:text-sm text-text-secondary font-medium leading-relaxed">
               <MathRenderer content={instructionText} />
             </div>
           )}
 
           {/* Math Statement - Prominent KaTeX rendered */}
-          <div className="text-white font-bold text-base sm:text-lg leading-snug">
+          <div className="text-text-strong font-bold text-base sm:text-lg leading-snug">
             <MathRenderer content={mathStatement} />
           </div>
 
@@ -1499,7 +1499,7 @@ export function TaskView({
           ) : null}
 
           {/* Auxiliary Buttons: Brudnopis & Wskazówka */}
-          <div className="flex items-center justify-between pt-2 border-t border-white/5">
+          <div className="flex items-center justify-between pt-2 border-t border-hairline-soft">
             <div className="flex items-center gap-2">
               <button
                 type="button"
@@ -1507,7 +1507,7 @@ export function TaskView({
                   triggerHaptic('light');
                   setIsScratchpadOpen(true);
                 }}
-                className="flex items-center gap-1.5 text-xs font-bold text-[#FFB800] hover:text-[#FFC72C] bg-[#FFB800]/10 hover:bg-[#FFB800]/15 border border-[#FFB800]/25 px-2.5 py-1 rounded-xl transition-all active:scale-95 shadow-[0_0_12px_rgba(255,184,0,0.1)]"
+                className="flex items-center gap-1.5 text-xs font-bold text-text-accent hover:text-[#FFC72C] bg-jasne/10 hover:bg-jasne/15 border border-primary/25 px-2.5 py-1 rounded-xl transition-all active:scale-95 shadow-[0_0_12px_rgba(255,184,0,0.1)]"
               >
                 <PenTool size={12} />
                 <span>Brudnopis</span>
@@ -1532,8 +1532,8 @@ export function TaskView({
             </div>
 
             {taskType === 'MULTI_CHOICE' && (
-              <span className="text-[11px] font-bold text-[#8B8D98] bg-white/5 px-2.5 py-1 rounded-lg border border-white/5">
-                Zaznaczono: <strong className="text-white">{selectedOptions.length}</strong> / {requiredCount}
+              <span className="text-[11px] font-bold text-text-secondary bg-veil px-2.5 py-1 rounded-lg border border-hairline-soft">
+                Zaznaczono: <strong className="text-text-strong">{selectedOptions.length}</strong> / {requiredCount}
               </span>
             )}
           </div>
@@ -1563,11 +1563,11 @@ export function TaskView({
 
               if (!isEvaluated) {
                 if (isSelected) {
-                  cardClasses += "bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.2)] scale-[1.01]";
-                  badgeClasses += "bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]";
+                  cardClasses += "bg-jasne/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.2)] scale-[1.01]";
+                  badgeClasses += "bg-jasne text-on-primary font-bold border-primary";
                 } else {
-                  cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-white/5 hover:border-white/15 text-white/90";
-                  badgeClasses += "bg-[#0F1622] text-[#8B8D98] border-white/10";
+                  cardClasses += "bg-surface-card-hover hover:bg-[#1A2434] border-hairline-soft hover:border-white/15 text-white/90";
+                  badgeClasses += "bg-surface-panel text-text-secondary border-hairline";
                 }
               } else {
                 if (isOptionCorrect) {
@@ -1577,8 +1577,8 @@ export function TaskView({
                   cardClasses += "bg-rose-500/15 border-rose-500 text-rose-100 shadow-[0_0_20px_rgba(244,63,94,0.3)]";
                   badgeClasses += "bg-rose-500 text-white border-rose-500";
                 } else {
-                  cardClasses += "bg-[#141C28] opacity-40 border-white/5 text-white/60";
-                  badgeClasses += "bg-[#0F1622] text-[#8B8D98] border-white/5";
+                  cardClasses += "bg-surface-card-hover opacity-40 border-hairline-soft text-white/60";
+                  badgeClasses += "bg-surface-panel text-text-secondary border-hairline-soft";
                 }
               }
 
@@ -1603,7 +1603,7 @@ export function TaskView({
                     )}
                   </div>
                   {!isEvaluated && (
-                    <span className="hidden md:inline-flex items-center text-[10px] font-mono font-bold text-[#8B8D98] bg-[#0F1622] border border-white/10 px-1.5 py-0.5 rounded mr-1">
+                    <span className="hidden md:inline-flex items-center text-[10px] font-mono font-bold text-text-secondary bg-surface-panel border border-hairline px-1.5 py-0.5 rounded mr-1">
                       {opt.id}
                     </span>
                   )}
@@ -1637,11 +1637,11 @@ export function TaskView({
 
               if (!isEvaluated) {
                 if (isSelected) {
-                  cardClasses += "bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.2)]";
-                  checkboxClasses += "bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]";
+                  cardClasses += "bg-jasne/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.2)]";
+                  checkboxClasses += "bg-jasne text-on-primary font-bold border-primary";
                 } else {
-                  cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-white/5 hover:border-white/15 text-white/90";
-                  checkboxClasses += "bg-[#0F1622] text-transparent border-white/15";
+                  cardClasses += "bg-surface-card-hover hover:bg-[#1A2434] border-hairline-soft hover:border-white/15 text-white/90";
+                  checkboxClasses += "bg-surface-panel text-transparent border-white/15";
                 }
               } else {
                 if (isOptionCorrect) {
@@ -1651,8 +1651,8 @@ export function TaskView({
                   cardClasses += "bg-rose-500/15 border-rose-500 text-rose-100 shadow-[0_0_20px_rgba(244,63,94,0.3)]";
                   checkboxClasses += "bg-rose-500 text-white border-rose-500";
                 } else {
-                  cardClasses += "bg-[#141C28] opacity-40 border-white/5 text-white/60";
-                  checkboxClasses += "bg-[#0F1622] text-transparent border-white/5";
+                  cardClasses += "bg-surface-card-hover opacity-40 border-hairline-soft text-white/60";
+                  checkboxClasses += "bg-surface-panel text-transparent border-hairline-soft";
                 }
               }
 
@@ -1706,7 +1706,7 @@ export function TaskView({
                   let btnClass = 'p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all text-xs sm:text-sm cursor-pointer select-none ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-primary/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                      ? 'bg-primary/15 border-primary text-text-strong shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                       : 'bg-surface-elevated border-surface-border hover:border-primary/40 text-text-primary';
                   } else {
                     if (isOptionCorrect) {
@@ -1731,7 +1731,7 @@ export function TaskView({
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-primary text-[#080B11] font-bold border-primary' : 'bg-white/5 border-surface-border text-text-secondary'
+                        isSelected ? 'bg-primary text-on-primary font-bold border-primary' : 'bg-veil border-surface-border text-text-secondary'
                       }`}>
                         {opt.id}
                       </span>
@@ -1759,7 +1759,7 @@ export function TaskView({
                   let btnClass = 'p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all text-xs sm:text-sm cursor-pointer select-none ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-primary/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                      ? 'bg-primary/15 border-primary text-text-strong shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                       : 'bg-surface-elevated border-surface-border hover:border-primary/40 text-text-primary';
                   } else {
                     if (isOptionCorrect) {
@@ -1784,7 +1784,7 @@ export function TaskView({
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]' : 'bg-white/5 border-white/10 text-white/80'
+                        isSelected ? 'bg-jasne text-on-primary font-bold border-primary' : 'bg-veil border-hairline text-white/80'
                       }`}>
                         {opt.id}
                       </span>
@@ -1839,7 +1839,7 @@ export function TaskView({
                         let btnClass = 'w-11 h-10 rounded-xl text-xs font-black flex items-center justify-center transition-all cursor-pointer border select-none ';
                         if (!isEvaluated) {
                           btnClass += isOptSelected
-                            ? 'bg-primary border-primary text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.3)]'
+                            ? 'bg-primary border-primary text-on-primary font-bold shadow-[0_0_12px_rgba(255,184,0,0.3)]'
                             : 'bg-surface-elevated border-surface-border text-text-secondary hover:text-text-primary hover:border-primary/40';
                         } else {
                           if (isThisTheCorrectAnswer) {
@@ -1915,8 +1915,8 @@ export function TaskView({
             onClick={handleVerifyAnswer}
             className={`w-full py-3.5 px-6 rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 select-none ${
               isReadyToVerify
-                ? 'bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer'
-                : 'bg-white/5 text-[#8B8D98] border border-white/5 cursor-not-allowed opacity-60'
+                ? 'bg-jasne hover:bg-primary-hover border-b-4 border-jasne-dark text-on-primary font-bold active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer'
+                : 'bg-veil text-text-secondary border border-hairline-soft cursor-not-allowed opacity-60'
             }`}
           >
             <span>SPRAWDŹ</span>
@@ -1972,15 +1972,15 @@ export function TaskView({
           <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col gap-3 pr-1 pb-8">
             {/* Header for solution section */}
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-black uppercase tracking-wider text-[#FFB800] flex items-center gap-1.5">
-                <BookOpen size={13} className="text-[#FFB800]" />
+              <span className="text-[11px] font-black uppercase tracking-wider text-text-accent flex items-center gap-1.5">
+                <BookOpen size={13} className="text-text-accent" />
                 {isCorrect ? 'Oficjalne rozwiązanie maturalne:' : 'Wyjaśnienie i kroki rozwiązania:'}
               </span>
               {isCorrect && solutionSteps.length > 1 && (
                 <button
                   type="button"
                   onClick={() => setShowSolutionSteps(!showSolutionSteps)}
-                  className="text-[11px] font-bold text-[#FFB800] hover:underline flex items-center gap-1"
+                  className="text-[11px] font-bold text-text-accent hover:underline flex items-center gap-1"
                 >
                   <span>{showSolutionSteps ? 'Zwiń kroki' : `Wszystkie kroki (${solutionSteps.length})`}</span>
                   {showSolutionSteps ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
@@ -2000,12 +2000,12 @@ export function TaskView({
                     {Boolean(step.title || (step.label && !step.label.toLowerCase().includes('wyjaśnienie'))) && (
                       <div className="flex items-center gap-2 flex-wrap">
                         {step.label && !step.label.toLowerCase().includes('wyjaśnienie') && (
-                          <span className="bg-[#FFB800]/15 text-[#FFB800] font-black text-[11px] px-2.5 py-0.5 rounded-md border border-[#FFB800]/30 uppercase tracking-wide shrink-0">
+                          <span className="bg-jasne/15 text-text-accent font-black text-[11px] px-2.5 py-0.5 rounded-md border border-primary/30 uppercase tracking-wide shrink-0">
                             {step.label}
                           </span>
                         )}
                         {step.title && (
-                          <span className="font-bold text-white text-xs leading-snug">
+                          <span className="font-bold text-text-strong text-xs leading-snug">
                             {step.title}
                           </span>
                         )}
@@ -2030,7 +2030,7 @@ export function TaskView({
                           {solutionSteps[0].label}
                         </span>
                       )}
-                      <span className="font-bold text-white text-xs">{solutionSteps[0].title}</span>
+                      <span className="font-bold text-text-strong text-xs">{solutionSteps[0].title}</span>
                     </div>
                   )}
                   <div className="text-xs text-white/90 leading-relaxed overflow-x-auto">
@@ -2061,14 +2061,14 @@ export function TaskView({
                       {solutionSteps.slice(1).map((step, idx) => (
                         <div
                           key={idx}
-                          className="bg-[#0F1622] border border-white/10 rounded-xl p-3 flex flex-col gap-1.5 shadow-sm"
+                          className="bg-surface-panel border border-hairline rounded-xl p-3 flex flex-col gap-1.5 shadow-sm"
                         >
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="bg-[#FFB800]/15 text-[#FFB800] font-black text-[10px] px-2 py-0.5 rounded-md border border-[#FFB800]/30">
+                            <span className="bg-jasne/15 text-text-accent font-black text-[10px] px-2 py-0.5 rounded-md border border-primary/30">
                               {step.label}
                             </span>
                             {step.title && (
-                              <span className="font-bold text-white text-xs">{step.title}</span>
+                              <span className="font-bold text-text-strong text-xs">{step.title}</span>
                             )}
                           </div>
                           <div className="text-xs text-white/90 leading-relaxed overflow-x-auto">
@@ -2089,7 +2089,7 @@ export function TaskView({
             onClick={handleNextQuestion}
             className={`w-full py-3.5 px-6 rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 group shrink-0 active:translate-y-1 active:border-b-0 cursor-pointer ${
               isCorrect
-                ? 'bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                ? 'bg-jasne hover:bg-primary-hover border-b-4 border-jasne-dark text-on-primary font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)]'
                 : 'bg-rose-500 hover:bg-rose-600 border-b-4 border-rose-700 text-white shadow-[0_0_20px_rgba(244,63,94,0.3)]'
             }`}
           >
@@ -2140,19 +2140,19 @@ export function TaskView({
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 26, stiffness: 300 }}
-              className="relative z-10 w-full max-w-xl mx-auto bg-[#141C28] border-t border-white/15 rounded-t-3xl p-5 shadow-2xl flex flex-col gap-4 pointer-events-auto"
+              className="relative z-10 w-full max-w-xl mx-auto bg-surface-card-hover border-t border-white/15 rounded-t-3xl p-5 shadow-2xl flex flex-col gap-4 pointer-events-auto"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Lightbulb size={18} className="text-amber-400" />
-                  <span className="font-display font-bold text-white text-base">
+                  <span className="font-display font-bold text-text-strong text-base">
                     Wskazówki do zadania
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowHintModal(false)}
-                  className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white"
+                  className="w-7 h-7 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-white/70 hover:text-text-strong"
                 >
                   <X size={14} />
                 </button>
@@ -2181,7 +2181,7 @@ export function TaskView({
                     triggerHaptic('light');
                     setUnlockedHintLevel(2);
                   }}
-                  className="py-2.5 px-4 rounded-xl border border-white/10 hover:border-white/20 bg-white/5 text-xs font-bold text-white/80 hover:text-white transition-all text-center"
+                  className="py-2.5 px-4 rounded-xl border border-hairline hover:border-white/20 bg-veil text-xs font-bold text-white/80 hover:text-text-strong transition-all text-center"
                 >
                   Odblokuj kolejny krok (Poziom 2)
                 </button>
@@ -2210,19 +2210,19 @@ export function TaskView({
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 26, stiffness: 300 }}
-              className="relative z-10 w-full max-w-xl mx-auto max-h-[35vh] bg-[#141C28] border-t border-white/15 rounded-t-3xl p-4 sm:p-5 shadow-2xl flex flex-col gap-3 overflow-y-auto custom-scrollbar pointer-events-auto"
+              className="relative z-10 w-full max-w-xl mx-auto max-h-[35vh] bg-surface-card-hover border-t border-white/15 rounded-t-3xl p-4 sm:p-5 shadow-2xl flex flex-col gap-3 overflow-y-auto custom-scrollbar pointer-events-auto"
             >
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+              <div className="flex items-center justify-between border-b border-hairline pb-2">
                 <div className="flex items-center gap-2">
-                  <Bot size={18} className="text-[#FFB800]" />
-                  <span className="font-display font-bold text-white text-sm sm:text-base">
+                  <Bot size={18} className="text-text-accent" />
+                  <span className="font-display font-bold text-text-strong text-sm sm:text-base">
                     Wskazówka Tutora (Metoda sokratejska)
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowOpenProofTutorSheet(false)}
-                  className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white"
+                  className="w-7 h-7 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-white/70 hover:text-text-strong"
                 >
                   <X size={14} />
                 </button>
@@ -2230,7 +2230,7 @@ export function TaskView({
 
               <div className="text-xs sm:text-sm text-white/95 leading-relaxed py-1">
                 {isAiLoading ? (
-                  <div className="flex items-center gap-2 text-[#FFB800] py-3 font-bold">
+                  <div className="flex items-center gap-2 text-text-accent py-3 font-bold">
                     <Loader2 size={16} className="animate-spin" />
                     <span>Tutor analizuje zadanie i Twoje rozumowanie...</span>
                   </div>

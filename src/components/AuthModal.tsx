@@ -184,12 +184,12 @@ export function AuthModal({ isOpen, onClose, onSuccess, promoContext }: AuthModa
         className="relative w-full max-w-md bg-surface-card border-t sm:border border-surface-border rounded-t-[32px] sm:rounded-3xl p-6 sm:p-7 shadow-2xl overflow-y-auto max-h-[92vh] z-10"
       >
         {/* Subtle Cyber Amber Accent Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-[#FFB800] to-[#F59E0B]" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-jasne-dark via-primary to-[#F59E0B]" />
 
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-text-muted hover:text-text-primary p-2 rounded-xl hover:bg-white/5 transition-colors z-20 cursor-pointer"
+          className="absolute top-4 right-4 text-text-muted hover:text-text-primary p-2 rounded-xl hover:bg-veil transition-colors z-20 cursor-pointer"
           aria-label="Zamknij"
         >
           <X size={18} />
@@ -244,7 +244,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, promoContext }: AuthModa
             }}
             className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               mode === 'login'
-                ? 'bg-primary text-[#070A0F] shadow-sm font-black'
+                ? 'bg-primary text-on-primary shadow-sm font-black'
                 : 'text-text-muted hover:text-text-primary'
             }`}
           >
@@ -259,7 +259,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, promoContext }: AuthModa
             }}
             className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               mode === 'register'
-                ? 'bg-primary text-[#070A0F] shadow-sm font-black'
+                ? 'bg-primary text-on-primary shadow-sm font-black'
                 : 'text-text-muted hover:text-text-primary'
             }`}
           >
@@ -352,7 +352,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, promoContext }: AuthModa
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 py-3 px-4 bg-primary hover:bg-amber-400 disabled:opacity-60 text-[#070A0F] font-display font-black text-sm rounded-xl transition-all shadow-[0_3px_0_#B37F00] active:translate-y-1 active:shadow-none flex items-center justify-center gap-2 cursor-pointer min-h-[46px]"
+            className="w-full mt-2 py-3 px-4 bg-primary hover:bg-amber-400 disabled:opacity-60 text-on-primary font-display font-black text-sm rounded-xl transition-all shadow-[0_3px_0_#B37F00] active:translate-y-1 active:shadow-none flex items-center justify-center gap-2 cursor-pointer min-h-[46px]"
           >
             {loading ? (
               <div className="flex items-center gap-2">

@@ -27,9 +27,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 
   const variantStyles: Record<ProgressBarVariant, string> = {
     primary: 'bg-primary shadow-[0_0_12px_rgba(255,184,0,0.35)]',
-    streak: 'bg-[#EA580C] shadow-[0_0_12px_rgba(234,88,12,0.35)]',
-    success: 'bg-[#10B981] shadow-[0_0_12px_rgba(16,185,129,0.35)]',
-    danger: 'bg-[#F43F5E] shadow-[0_0_12px_rgba(244,63,94,0.35)]',
+    streak: 'bg-streak-flame shadow-[0_0_12px_rgba(234,88,12,0.35)]',
+    success: 'bg-accent-success shadow-[0_0_12px_rgba(16,185,129,0.35)]',
+    danger: 'bg-alert-crimson shadow-[0_0_12px_rgba(244,63,94,0.35)]',
     cyan: 'bg-[#06B6D4] shadow-[0_0_12px_rgba(6,182,212,0.35)]'
   };
 

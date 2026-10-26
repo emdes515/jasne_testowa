@@ -33,8 +33,8 @@ export const Badge: React.FC<BadgeProps> = ({
   id
 }) => {
   const variantStyles: Record<BadgeVariant, string> = {
-    jasne: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30',
-    cyan: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30',
+    jasne: 'bg-jasne/10 text-text-accent border-primary/30',
+    cyan: 'bg-jasne/10 text-text-accent border-primary/30',
     amber: 'bg-amber-400/10 text-amber-300 border-amber-400/30',
     emerald: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/30',
     blue: 'bg-[#38BDF8]/10 text-[#38BDF8] border-[#38BDF8]/30'

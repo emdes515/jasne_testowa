@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { X, Search, BookOpen, AlertTriangle, Compass, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem, type CkeFormulaSubItem } from '../services/ckeCatalogRepository';
-import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS } from '../data/ckeFormulasData';
+import { CKE_FORMULAS_DATA, withLocalCkeFormulas, withLocalCkeFormulaTopics } from '../data/ckeFormulasData';
 import { MathRenderer } from './MathRenderer';
 import { toFormulaBoxContent } from '../lib/formulaBox';
 import { MathPlot } from './MathPlot';
@@ -29,8 +29,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
   const isCatalogLoaded = useCkeCatalogs();
 
   const availableTopics = useMemo(() => {
-    const remote = getCkeFormulaTopics();
-    return remote.length > 1 ? remote : CKE_FORMULA_TOPICS;
+    return withLocalCkeFormulaTopics(getCkeFormulaTopics());
   }, [isCatalogLoaded]);
 
   // Close on Escape key
@@ -91,7 +90,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
   // Filtered formulas
   const filteredFormulas = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
-    const source = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
+    const source = withLocalCkeFormulas(getCkeFormulas());
 
     return source.filter((item: CkeFormulaItem) => {
       // Topic match
@@ -127,18 +126,18 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-[#0E131E] border border-white/10 rounded-t-[28px] sm:rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
+          className="w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-[#0E131E] border border-hairline rounded-t-[28px] sm:rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
         >
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#121824] shrink-0">
+          <div className="p-4 sm:p-5 border-b border-hairline flex items-center justify-between bg-[#121824] shrink-0">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,184,0,0.2)]">
+              <div className="w-10 h-10 rounded-xl bg-jasne/15 border border-primary/30 text-text-accent flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,184,0,0.2)]">
                 <BookOpen size={20} />
               </div>
               <div>
-                <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                <h2 className="text-base sm:text-lg font-bold text-text-strong tracking-tight flex items-center gap-2">
                   Wzory
-                  <span className="text-[10px] font-medium tracking-tight px-2 py-0.5 rounded-full bg-[#FFB800]/10 text-[#FFB800] border border-[#FFB800]/20">
+                  <span className="text-[10px] font-medium tracking-tight px-2 py-0.5 rounded-full bg-jasne/10 text-text-accent border border-primary/20">
                     Nowa Formuła 2023
                   </span>
                 </h2>
@@ -151,7 +150,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
             <button
               id="cke-formulas-close-button"
               onClick={onClose}
-              className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
+              className="w-9 h-9 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition-colors cursor-pointer shrink-0"
               aria-label="Zamknij"
             >
               <X size={18} />
@@ -159,7 +158,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
           </div>
 
           {/* Search bar & Category filters */}
-          <div className="p-4 bg-[#0B0F17] border-b border-white/5 flex flex-col gap-3 shrink-0">
+          <div className="p-4 bg-surface-bg border-b border-hairline-soft flex flex-col gap-3 shrink-0">
             {/* Search Input */}
             <div className="relative w-full">
               <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
@@ -169,12 +168,12 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Szukaj wzoru (np. potęgi, logarytm, delta, procenty)..."
-                className="w-full bg-[#141B26] border border-white/10 focus:border-[#FFB800]/60 rounded-xl pl-10 pr-9 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition shadow-inner"
+                className="w-full bg-[#141B26] border border-hairline focus:border-primary/60 rounded-xl pl-10 pr-9 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition shadow-inner"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5 rounded-md"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-text-strong p-0.5 rounded-md"
                 >
                   <X size={14} />
                 </button>
@@ -186,7 +185,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
               <button
                 type="button"
                 onClick={() => chipsScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
-                className="hidden sm:flex absolute left-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition -translate-x-1"
+                className="hidden sm:flex absolute left-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-surface-panel/95 border border-white/20 text-slate-300 hover:text-text-strong hover:bg-veil-strong shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition -translate-x-1"
                 aria-label="Przewiń działy w lewo"
                 title="Przewiń w lewo"
               >
@@ -211,8 +210,8 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                       onClick={() => setSelectedTopic(topic.id)}
                       className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
                         isSelected
-                          ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.4)]'
-                          : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                          ? 'bg-jasne text-on-primary font-bold shadow-[0_0_12px_rgba(255,184,0,0.4)]'
+                          : 'bg-veil hover:bg-veil-strong text-slate-300 border border-hairline-soft'
                       }`}
                     >
                       {topic.name}
@@ -224,7 +223,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
               <button
                 type="button"
                 onClick={() => chipsScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
-                className="hidden sm:flex absolute right-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition translate-x-1"
+                className="hidden sm:flex absolute right-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-surface-panel/95 border border-white/20 text-slate-300 hover:text-text-strong hover:bg-veil-strong shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition translate-x-1"
                 aria-label="Przewiń działy w prawo"
                 title="Przewiń w prawo"
               >
@@ -241,7 +240,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
           >
             {!isCatalogLoaded && getCkeFormulas().length === 0 && CKE_FORMULAS_DATA.length === 0 ? (
               <div className="py-12 text-center flex flex-col items-center justify-center">
-                <div className="w-8 h-8 rounded-full border-2 border-[#FFB800]/30 border-t-[#FFB800] animate-spin mb-3" />
+                <div className="w-8 h-8 rounded-full border-2 border-primary/30 border-t-[#FFB800] animate-spin mb-3" />
                 <p className="text-sm font-semibold text-slate-300">Wczytuję oficjalne wzory CKE…</p>
                 <p className="text-xs text-slate-500 mt-1">Katalog pobierany z chmury.</p>
               </div>
@@ -257,7 +256,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                     setSearchQuery('');
                     setSelectedTopic('all');
                   }}
-                  className="mt-3 px-4 py-1.5 rounded-xl bg-white/10 text-xs font-semibold text-slate-200 hover:bg-white/15 cursor-pointer"
+                  className="mt-3 px-4 py-1.5 rounded-xl bg-veil-strong text-xs font-semibold text-slate-200 hover:bg-white/15 cursor-pointer"
                 >
                   Pokaż wszystkie wzory
                 </button>
@@ -269,20 +268,27 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                 return (
                   <div
                     key={item.id}
-                    className="bg-[#121824] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 shadow-sm hover:border-[#FFB800]/30 transition-all"
+                    className="bg-[#121824] border border-hairline rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 shadow-sm hover:border-primary/30 transition-all"
                   >
                     {/* Top Bar: Title & Topic Badge */}
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-bold text-white text-sm sm:text-base leading-snug">
+                      <h3 className="font-bold text-text-strong text-sm sm:text-base leading-snug">
                         {item.title}
                       </h3>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-2 py-0.5 rounded-full shrink-0">
-                        {item.topicName}
-                      </span>
+                      <div className="flex flex-col items-end gap-1 shrink-0">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-text-accent bg-jasne/10 border border-primary/20 px-2 py-0.5 rounded-full">
+                          {item.topicName}
+                        </span>
+                        {item.level === 'PR' && (
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/40 px-2 py-0.5 rounded-full">
+                            Rozszerzenie
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     {/* Główny Wzór KaTeX o wysokim kontraście */}
-                    <div className="bg-[#070A11] border border-[#FFB800]/25 rounded-xl p-3 sm:p-4 text-center shadow-[inset_0_2px_12px_rgba(0,0,0,0.6)] overflow-x-auto">
+                    <div className="bg-[#070A11] border border-primary/25 rounded-xl p-3 sm:p-4 text-center shadow-[inset_0_2px_12px_rgba(0,0,0,0.6)] overflow-x-auto">
                       <div className="font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
                         <MathRenderer content={toFormulaBoxContent(mainFormula)} displayMode />
                       </div>
@@ -294,12 +300,12 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                         {subFormulas.map((sub, idx) => (
                           <div
                             key={idx}
-                            className="bg-[#0B101A] border border-white/5 hover:border-white/15 rounded-xl p-2.5 sm:p-3 flex flex-col justify-between gap-1 transition-all"
+                            className="bg-[#0B101A] border border-hairline-soft hover:border-white/15 rounded-xl p-2.5 sm:p-3 flex flex-col justify-between gap-1 transition-all"
                           >
                             <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-slate-400">
                               {sub.label}
                             </span>
-                            <div className="text-white font-semibold text-xs sm:text-sm overflow-x-auto py-0.5">
+                            <div className="text-text-strong font-semibold text-xs sm:text-sm overflow-x-auto py-0.5">
                               <MathRenderer content={toFormulaBoxContent(sub.formula)} />
                             </div>
                           </div>
@@ -348,7 +354,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                     {/* Szkic geometryczny (opcjonalny, bezpośrednie renderowanie CKE) */}
                     {item.diagram && (
                       <div className="pt-2">
-                        <div className="rounded-xl border border-white/10 bg-[#070A0F] p-2.5 sm:p-3 shadow-inner overflow-hidden">
+                        <div className="rounded-xl border border-hairline bg-surface-bg p-2.5 sm:p-3 shadow-inner overflow-hidden">
                           {'intervals' in item.diagram ? (
                             <NumberLineDiagram data={item.diagram as any} height={120} />
                           ) : (
@@ -364,10 +370,10 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
           </div>
 
           {/* Footer */}
-          <div className="p-3.5 sm:p-4 border-t border-white/10 bg-[#121824] flex items-center justify-end shrink-0">
+          <div className="p-3.5 sm:p-4 border-t border-hairline bg-[#121824] flex items-center justify-end shrink-0">
             <button
               onClick={onClose}
-              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-bold transition-all cursor-pointer"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-veil-strong hover:bg-white/15 text-text-strong text-xs sm:text-sm font-bold transition-all cursor-pointer"
             >
               Wróć do lekcji
             </button>

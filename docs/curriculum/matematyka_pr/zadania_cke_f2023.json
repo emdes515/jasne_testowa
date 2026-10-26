@@ -1,0 +1,3948 @@
+[
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Oblicz 𝐥𝐨𝐠𝟑𝟓⋅𝐥𝐨𝐠𝟐𝟓𝟐𝟕 𝐥𝐨𝐠𝟕√𝟒𝟗 𝟔 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "I.9",
+    "now": "I.9",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje związek logarytmowania z potęgowaniem, posługuje się wzorami na logarytm iloczynu, logarytm ilorazu i logarytm potęgi."
+   },
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   }
+  ],
+  "codes_2024": [
+   "I.9",
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "2.1",
+  "points": 2,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "Wyznacz zbiór wszystkich wartości, jakie funkcja 𝒈 przyjmuje w przedziale [𝟗, 𝟏𝟏]. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "V.R1",
+    "now": "V.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "na podstawie wykresu funkcji 𝑦= 𝑓(𝑥) rysuje wykres funkcji 𝑦= |𝑓(𝑥)|."
+   }
+  ],
+  "codes_2024": [
+   "V.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "2.2",
+  "points": 2,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "Wyznacz zbiór wszystkich wartości parametru 𝒎, dla których równanie 𝒈(𝒙) = |𝒎| ma dokładnie dwa rozwiązania dodatnie.",
+  "requirements": [
+   {
+    "cited": "III.R4",
+    "now": "III.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania i nierówności z wartością bezwzględną […];"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.88,
+    "text": "analizuje […] równania i nierówności kwadratowe z parametrami, w szczególności wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy których rozwiązania mają żądaną własność, i wy"
+   }
+  ],
+  "codes_2024": [
+   "III.R4",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że dla każdej liczby rzeczywistej 𝒙 oraz dla każdej liczby rzeczywistej 𝒚, spełniających warunek 𝒙+ 𝒚≥𝟏, prawdziwa jest nierówność 𝒙𝟑+ 𝟐𝒙𝒚+ 𝒚𝟑≥𝒙𝟐+ 𝒙𝒚(𝒙+ 𝒚) + 𝒚𝟐",
+  "requirements": [
+   {
+    "cited": "II.R3",
+    "now": "II.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "korzysta ze wzorów na: (𝑎+ 𝑏)3, (𝑎−𝑏)3, 𝑎3 + 𝑏3 i 𝑎3 −𝑏3."
+   }
+  ],
+  "codes_2024": [
+   "II.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "I",
+   "III"
+  ],
+  "proof": false,
+  "statement": "Maszyna napełnia torebki herbatą. Każda torebka ma zostać napełniona 200 g herbaty. Torebkę, która zawiera mniej niż 200 g herbaty, nazywamy torebką z niedowagą. Prawdopodobieństwo tego, że pojedyncza torebka napełniona przez tę maszynę jest z niedowagą, jest równe 0,1. Kontroli poddano masę herbaty w torebkach napełnianych przez tę maszynę danego dnia. Do kontroli wybrano losowo 20 torebek. Oblic",
+  "requirements": [
+   {
+    "cited": "XII.R2",
+    "now": "XII.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje schemat Bernoullego."
+   }
+  ],
+  "codes_2024": [
+   "XII.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "5",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝟔𝐬𝐢𝐧𝒙+ 𝟐√𝟑𝐜𝐨𝐬𝒙+ 𝟑𝐭𝐠𝒙+ √𝟑= 𝟎 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 0.3,
+    "text": "rozwiązuje równania trygonometryczne o stopniu trudności nie większym niż w przykładzie 4cos 2𝑥cos 5𝑥= 2cos 7𝑥+ 1."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "6",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "W trójkącie 𝐴𝐵𝐶 poprowadzono dwusieczne kątów przecinające boki 𝐵𝐶, 𝐴𝐶 i 𝐴𝐵 tego trójkąta w punktach – odpowiednio – 𝐾, 𝐿 oraz 𝑀. Punkt 𝑃 jest punktem przecięcia tych dwusiecznych. Na czworokątach 𝐶𝐿𝑃𝐾 oraz 𝐵𝐾𝑃𝑀 można opisać okrąg. Udowodnij, że trójkąt 𝑨𝑩𝑪 jest równoboczny.",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "I",
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Olejarnia wytwarza olej ekologiczny. Aby produkcja była opłacalna, dzienna wielkość produkcji musi wynosić co najmniej 480 litrów i nie może przekroczyć 530 litrów (ze względu na ograniczone moce produkcyjne). Przy poziomie produkcji (480 + 𝑥) litrów dziennie przeciętny koszt 𝐾 (w złotych) wytworzenia jednego litra oleju jest równy 𝐾(𝑥) = 22𝑥2 − 621,5𝑥 + 23 430 480 + 𝑥 , gdzie 𝑥∈[0, 50]. Oblicz, i",
+  "requirements": [
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu;"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "8",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż nierówność 𝒙−𝟏 𝒙𝟐−𝟒− 𝟏 𝟐−𝒙≥ 𝟑 𝟐+ 𝒙+ 𝟐 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R2",
+    "now": "III.R2",
+    "level": "PR",
+    "score": 0.57,
+    "text": "rozwiązuje równania i nierówności wymierne nie trudniejsze niż (𝑥+1) 𝑥(𝑥−1) + 1 𝑥+1 ≥ 2𝑥 (𝑥−1)(𝑥+1) ."
+   }
+  ],
+  "codes_2024": [
+   "III.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "9",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie wartości parametru 𝒎, dla których równanie 𝒙𝟐−(𝒎−𝟒)𝒙+ 𝒎𝟐−𝟕𝒎+ 𝟏𝟐= 𝟎 ma dwa różne rozwiązania rzeczywiste 𝒙𝟏 oraz 𝒙𝟐 , spełniające warunek 𝒙𝟏 𝟑+ 𝒙𝟐 𝟑< 𝟓𝒙𝟏 𝟐⋅𝒙𝟐+ 𝟓𝒙𝟏⋅𝒙𝟐 𝟐 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.88,
+    "text": "analizuje równania i nierówności […] kwadratowe z parametrami, w szczególności wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy których rozwiązania mają żądaną własność, i wy"
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "10",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Dany jest ostrosłup prawidłowy czworokątny 𝐴𝐵𝐶𝐷𝑆 o podstawie 𝐴𝐵𝐶𝐷. Krawędź podstawy tego ostrosłupa ma długość 𝑎. Ściana boczna jest nachylona do płaszczyzny podstawy pod kątem o mierze 𝛼 takim, że cos 𝛼= √10 10 . Przez krawędź 𝐵𝐶 podstawy ostrosłupa poprowadzono płaszczyznę 𝜋 prostopadłą do ściany bocznej 𝑆𝐴𝐷. Sporządź rysunek tego ostrosłupa, zaznacz na rysunku przekrój wyznaczony przez płaszczy",
+  "requirements": [
+   {
+    "cited": "X.R5",
+    "now": "X.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza przekroje sześcianu i ostrosłupów prawidłowych oraz oblicza ich pola, także z wykorzystaniem trygonometrii."
+   }
+  ],
+  "codes_2024": [
+   "X.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "11",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Dany jest trapez 𝐴𝐵𝐶𝐷 o podstawach 𝐴𝐵 i 𝐶𝐷, w którym |𝐴𝐵| > |𝐶𝐷| oraz ramię 𝐵𝐶 ma długość 6. Na tym trapezie opisano okrąg o promieniu 𝑅= 5. Miary kątów 𝐵𝐴𝐶 i 𝐴𝐵𝐶 tego trapezu spełniają warunek sin|∡𝐵𝐴𝐶| sin|∡𝐴𝐵𝐶| = 5 8 Oblicz pole i obwód trapezu 𝑨𝑩𝑪𝑫. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R7",
+    "now": "VII.R7",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje twierdzenie sinusów;"
+   },
+   {
+    "cited": "VII.R5",
+    "now": "VII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "korzysta ze wzorów na sinus, cosinus i tangens sumy i różnicy kątów, a także na funkcje trygonometryczne kątów podwojonych."
+   }
+  ],
+  "codes_2024": [
+   "VII.R5",
+   "VII.R7"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2022-grudzien-probna",
+  "task": "12",
+  "points": 6,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Prosta 𝑘 o równaniu 𝑥+ 𝑦−9 = 0 przecina parabolę o równaniu 𝑦= 1 4 𝑥2 −3 2 𝑥+ 1 4 w punktach 𝐴 oraz 𝐵. Pierwsza współrzędna punktu 𝐴 jest liczbą dodatnią; pierwsza współrzędna punktu 𝐵 jest liczbą ujemną. Prosta 𝑙 jest równoległa do prostej 𝑘 i styczna do danej paraboli w punkcie 𝐶. Oblicz odległość punktu 𝑪 od prostej 𝒌 oraz pole trójkąta 𝑨𝑩𝑪. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "IX.R1",
+    "now": "IX.2",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się równaniem prostej w postaci ogólnej na płaszczyźnie […];"
+   },
+   {
+    "cited": "IX.R3",
+    "now": "IX.R1",
+    "level": "PR",
+    "score": 0.5,
+    "text": "znajduje punkty wspólne prostej i okręgu oraz prostej i paraboli będącej wykresem funkcji kwadratowej."
+   }
+  ],
+  "codes_2024": [
+   "IX.2",
+   "IX.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Dane są liczby 𝑎= 4log2 45 oraz 𝑏= log3 2023 log9 2023 Oblicz 𝒂−𝒃.",
+  "requirements": [
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   }
+  ],
+  "codes_2024": [
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "2",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Wśród 𝑛 osób są Ania i jej dwaj znajomi. Wszystkie te 𝑛 osób ustawiamy w kolejkę jedna za drugą. Liczba wszystkich takich ustawień jest 12 razy większa od liczby wszystkich takich ustawień tych 𝑛 osób w kolejkę, w których Ania i jej dwaj znajomi zajmują trzy kolejne miejsca (w dowolnej kolejności). Oblicz 𝒏. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XI.R1",
+    "now": "XI.R1",
+    "level": "PR",
+    "score": 0.67,
+    "text": "oblicza liczbę możliwych sytuacji, spełniających określone kryteria, z wykorzystaniem reguły mnożenia i dodawania (także łącznie) oraz wzorów na liczbę: permutacji, kombinacji i wariacji, również w pr"
+   }
+  ],
+  "codes_2024": [
+   "XI.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Prawdopodobieństwo wystąpienia awarii sieci ciepłowniczej na pewnym osiedlu mieszkaniowym w godzinach porannych pojedynczego dnia jest równe 0,1. Oblicz prawdopodobieństwo zdarzenia 𝑨 polegającego na tym, że w okresie siedmiu dni wystąpią co najwyżej dwa takie dni, w których nastąpi awaria tej sieci na tym osiedlu w godzinach porannych. Wynik podaj w ułamku dziesiętnym w zaokrągleniu do części set",
+  "requirements": [
+   {
+    "cited": "XII.R2",
+    "now": "XII.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje schemat Bernoullego."
+   }
+  ],
+  "codes_2024": [
+   "XII.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Funkcja 𝑓 jest określona wzorem 𝑓(𝑥) = 2𝑥3 −4𝑥2 + 9𝑥 dla każdego 𝑥∈ℝ. Punkt 𝑃= (𝑥0 , 18) należy do wykresu funkcji 𝑓. Oblicz 𝒙𝟎 oraz wyznacz równanie stycznej do wykresu funkcji 𝒇 w punkcie 𝑷. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R2",
+    "now": "XIII.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje definicję pochodnej funkcji, podaje interpretację geometryczną pochodnej;"
+   },
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R3",
+   "XIII.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "5",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że dla każdej liczby rzeczywistej dodatniej 𝒂 prawdziwa jest nierówność 𝒂𝟐+ 𝟏𝟔 𝒂≥𝟏𝟐",
+  "requirements": [
+   {
+    "cited": "II.R1",
+    "now": "II.R3",
+    "level": "PR",
+    "score": 0.83,
+    "text": "znajduje pierwiastki całkowite i wymierne wielomianu o współczynnikach całkowitych."
+   },
+   {
+    "cited": "III.R1",
+    "now": "III.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje nierówności wielomianowe typu: 𝑊(𝑥) > 0, 𝑊(𝑥) ≥0, 𝑊(𝑥) < 0, 𝑊(𝑥) ≤0 dla wielomianów doprowadzonych do postaci iloczynowej lub takich, które dają się doprowadzić do postaci iloczynowej metod"
+   }
+  ],
+  "codes_2024": [
+   "II.R3",
+   "III.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "6",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Dany jest okrąg 𝒪. Przez punkt 𝐴 poprowadzono dwie proste, które są styczne do tego okręgu w punktach – odpowiednio – 𝑃 oraz 𝑄. Przez punkt 𝐵 leżący na odcinku 𝐴𝑃 poprowadzono styczną do tego okręgu w punkcie 𝐷, która przecięła odcinek 𝐴𝑄 w punkcie 𝐶 (zobacz rysunek). Wykaż, że jeżeli |𝑨𝑸| = 𝟓∙|𝑩𝑷| oraz |𝑪𝑫| = 𝟐∙|𝑩𝑫|, to trójkąt 𝑨𝑩𝑪 jest równoramienny.",
+  "requirements": [
+   {
+    "cited": "VIII.1",
+    "now": "VIII.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "wyznacza promienie i średnice okręgów, długości cięciw okręgów oraz odcinków stycznych, w tym z wykorzystaniem twierdzenia Pitagorasa."
+   }
+  ],
+  "codes_2024": [
+   "VIII.1"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Dany jest nieskończony szereg geometryczny 2𝑥− 6𝑥 𝑥−1 + 18𝑥 (𝑥−1)2 − 54𝑥 (𝑥−1)3 + … Wyznacz wszystkie wartości zmiennej 𝒙 (różnej od 𝟎 i od 𝟏), dla których suma tego szeregu istnieje i jest równa 𝟏𝟓 𝟐 . Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.R2",
+    "now": "VI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+   }
+  ],
+  "codes_2024": [
+   "VI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "II",
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐬𝐢𝐧(𝟓𝒙) + 𝐜𝐨𝐬𝒙= 𝟎 w zbiorze [−𝝅 𝟐, 𝝅 𝟐 ]. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 0.3,
+    "text": "rozwiązuje równania trygonometryczne o stopniu trudności nie większym niż w przykładzie 4 cos 2𝑥cos 5𝑥= 2 cos 7𝑥+ 1."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "9",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W okrąg o równaniu (𝑥−1)2 + (𝑦−2)2 = 25 wpisano trójkąt 𝐴𝐵𝐶. Bok 𝐴𝐵 tego trójkąta jest zawarty w prostej o równaniu 4𝑥−3𝑦+ 2 = 0. Wysokość 𝐶𝐷 tego trójkąta dzieli bok 𝐴𝐵 tak, że |𝐴𝐷| = 4 ⋅|𝐷𝐵|. Oblicz pole trójkąta 𝑨𝑩𝑪. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VIII.5",
+    "now": "VIII.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje własności kątów wpisanych i środkowych."
+   },
+   {
+    "cited": "IX.4",
+    "now": "IX.4",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się równaniem okręgu (𝑥−𝑎)2 + (𝑦−𝑏)2 = 𝑟2."
+   }
+  ],
+  "codes_2024": [
+   "IX.4",
+   "VIII.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "10",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie wartości parametru 𝒎, dla których równanie 𝒎𝒙𝟐−(𝒎+ 𝟏)𝒙−𝟐𝒎+ 𝟑= 𝟎 ma dokładnie dwa różne rozwiązania rzeczywiste 𝒙𝟏 oraz 𝒙𝟐 , spełniające warunki: 𝒙𝟏≠𝟎, 𝒙𝟐≠𝟎 oraz 𝟏 𝒙𝟏 𝟐+ 𝟏 𝒙𝟐 𝟐< 𝟏 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.88,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami, w szczególności wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy "
+   }
+  ],
+  "codes_2024": [
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "11",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Ciąg (𝑎, 𝑏, 𝑐) jest trzywyrazowym ciągiem geometrycznym o wyrazach dodatnich. Ciąg (2𝑎, 2𝑏, 𝑐+ 1) jest trzywyrazowym ciągiem arytmetycznym. Ponadto spełniony jest warunek 𝑐−𝑏= 6. Oblicz 𝒂, 𝒃 oraz 𝒄. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.6",
+    "now": "VI.7",
+    "level": "PP",
+    "score": 1.0,
+    "text": "wykorzystuje własności ciągów, w tym arytmetycznych i geometrycznych, do rozwiązywania zadań, również osadzonych w kontekście praktycznym."
+   }
+  ],
+  "codes_2024": [
+   "VI.7"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "12",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Czworokąt wypukły 𝐴𝐵𝐶𝐷 jest wpisany w okrąg o promieniu 4. Kąty 𝐵𝐴𝐷 i 𝐵𝐶𝐷 są proste (zobacz rysunek). Przekątne 𝐴𝐶 i 𝐵𝐷 tego czworokąta przecinają się w punkcie 𝐸 tak, że |𝐵𝐸| = 3 ∙|𝐷𝐸| oraz |𝐵𝐷| = 2 ∙|𝐴𝐸|. Oblicz długości boków czworokąta 𝑨𝑩𝑪𝑫. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-czerwiec-matura",
+  "task": "13",
+  "points": 6,
+  "general": [
+   "III",
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozważamy wszystkie graniastosłupy prawidłowe czworokątne 𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻, w których odcinek łączący punkt 𝑂 przecięcia przekątnych 𝐴𝐶 i 𝐵𝐷 podstawy 𝐴𝐵𝐶𝐷 z dowolnym wierzchołkiem podstawy 𝐸𝐹𝐺𝐻 ma długość 𝑑 (zobacz rysunek). a) Wyznacz zależność objętości 𝑽 graniastosłupa od jego wysokości 𝒉 i podaj dziedzinę funkcji 𝑽(𝒉). b) Wyznacz wysokość tego z rozważanych graniastosłupów, którego objętość jest najwi",
+  "requirements": [
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "W chwili początkowej (𝑡= 0) masa substancji jest równa 4 gramom. Wskutek rozpadu cząsteczek tej substancji jej masa się zmniejsza. Po każdej kolejnej dobie ubywa 19% masy, jaka była na koniec doby poprzedniej. Dla każdej liczby całkowitej 𝑡≥0 funkcja 𝑚(𝑡) określa masę substancji w gramach po 𝑡 pełnych dobach (czas liczymy od chwili początkowej). Wyznacz wzór funkcji 𝒎(𝒕). Oblicz, po ilu pełnych do",
+  "requirements": [
+   {
+    "cited": "V.13",
+    "now": "V.13",
+    "level": "PP",
+    "score": 0.82,
+    "text": "posługuje się funkcjami wykładniczą i logarytmiczną, w tym ich wykresami, do opisu i interpretacji zagadnień związanych z zastosowaniami praktycznymi."
+   }
+  ],
+  "codes_2024": [
+   "V.13"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "2",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Tomek i Romek postanowili rozegrać między sobą pięć partii szachów. Prawdopodobieństwo wygrania pojedynczej partii przez Tomka jest równe 1 4 . Oblicz prawdopodobieństwo wygrania przez Tomka co najmniej czterech z pięciu partii. Wynik podaj w postaci ułamka zwykłego nieskracalnego. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XII.R2",
+    "now": "XII.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje schemat Bernoullego."
+   }
+  ],
+  "codes_2024": [
+   "XII.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Funkcja 𝑓 jest określona wzorem 𝑓(𝑥) = 3𝑥2−2𝑥 𝑥2+2𝑥+8 dla każdej liczby rzeczywistej 𝑥. Punkt 𝑃= (𝑥0 , 3) należy do wykresu funkcji 𝑓. Oblicz 𝒙𝟎 oraz wyznacz równanie stycznej do wykresu funkcji 𝒇 w punkcie 𝑷. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R2",
+    "now": "XIII.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje definicję pochodnej funkcji, podaje interpretację geometryczną pochodnej;"
+   },
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R3",
+   "XIII.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Liczby rzeczywiste 𝑥 oraz 𝑦 spełniają jednocześnie równanie 𝑥+ 𝑦= 4 i nierówność 𝑥3 −𝑥2𝑦≤𝑥𝑦2 −𝑦3. Wykaż, że 𝒙= 𝟐 oraz 𝒚= 𝟐.",
+  "requirements": [
+   {
+    "cited": "II.R3",
+    "now": "II.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "korzysta ze wzorów na: (𝑎+ 𝑏)3, (𝑎−𝑏)3, 𝑎3 + 𝑏3 i 𝑎3 −𝑏3."
+   }
+  ],
+  "codes_2024": [
+   "II.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "5",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Dany jest trójkąt prostokątny 𝐴𝐵𝐶, w którym |∡𝐴𝐵𝐶| = 90° oraz |∡𝐶𝐴𝐵| = 60°. Punkty 𝐾 i 𝐿 leżą na bokach – odpowiednio – 𝐴𝐵 i 𝐵𝐶 tak, że |𝐵𝐾| = |𝐵𝐿| = 1 (zobacz rysunek). Odcinek 𝐾𝐿 przecina wysokość 𝐵𝐷 tego trójkąta w punkcie 𝑁, a ponadto |𝐴𝐷| = 2. Wykaż, że |𝑵𝑫| = √𝟑+ 𝟏.",
+  "requirements": [
+   {
+    "cited": "VIII.R3",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "6",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝟒𝐬𝐢𝐧(𝟒𝒙)𝐜𝐨𝐬(𝟔𝒙) = 𝟐𝐬𝐢𝐧(𝟏𝟎𝒙) + 𝟏 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 0.3,
+    "text": "rozwiązuje równania trygonometryczne o stopniu trudności nie większym niż w przykładzie 4 cos 2𝑥cos 5𝑥= 2 cos 7𝑥+ 1."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Dany jest sześcian 𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻 o krawędzi długości 6. Punkt 𝑆 jest punktem przecięcia przekątnych 𝐴𝐻 i 𝐷𝐸 ściany bocznej 𝐴𝐷𝐻𝐸 (zobacz rysunek). Oblicz wysokość trójkąta 𝑺𝑩𝑯 poprowadzoną z punktu 𝑺 na bok 𝑩𝑯 tego trójkąta. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "X.1",
+    "now": "X.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "rozpoznaje wzajemne położenie prostych w przestrzeni, w szczególności proste prostopadłe nieprzecinające się."
+   },
+   {
+    "cited": "X.R5",
+    "now": "X.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza przekroje sześcianu […]."
+   }
+  ],
+  "codes_2024": [
+   "X.1",
+   "X.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Czworokąt 𝐴𝐵𝐶𝐷, w którym |𝐵𝐶| = 4 i |𝐶𝐷| = 5, jest opisany na okręgu. Przekątna 𝐴𝐶 tego czworokąta tworzy z bokiem 𝐵𝐶 kąt o mierze 60°, natomiast z bokiem 𝐴𝐵 – kąt ostry, którego sinus jest równy 1 4 . Oblicz obwód czworokąta 𝑨𝑩𝑪𝑫. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "9",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż nierówność √𝒙𝟐+ 𝟒𝒙+ 𝟒< 𝟐𝟓 𝟑−√𝒙𝟐−𝟔𝒙+ 𝟗 Zapisz obliczenia. Wskazówka: skorzystaj z tego, że √𝑎2 = |𝑎| dla każdej liczby rzeczywistej 𝑎.",
+  "requirements": [
+   {
+    "cited": "II.1",
+    "now": "II.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje wzory skróconego mnożenia na: (𝑎+ 𝑏)2, (𝑎−𝑏)2, 𝑎2 −𝑏2."
+   },
+   {
+    "cited": "III.R4",
+    "now": "III.R4",
+    "level": "PR",
+    "score": 0.5,
+    "text": "rozwiązuje równania i nierówności z wartością bezwzględną, o stopniu trudności nie większym niż: 2|𝑥+ 3| + 3|𝑥−1| = 13, |𝑥+ 2| + 2|𝑥−3| < 11."
+   }
+  ],
+  "codes_2024": [
+   "II.1",
+   "III.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "10",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Określamy kwadraty 𝐾1 , 𝐾2 , 𝐾3 , … następująco: • 𝐾1 jest kwadratem o boku długości 𝑎 • 𝐾2 jest kwadratem, którego każdy wierzchołek leży na innym boku kwadratu 𝐾1 i dzieli ten bok w stosunku 1 ∶3 • 𝐾3 jest kwadratem, którego każdy wierzchołek leży na innym boku kwadratu 𝐾2 i dzieli ten bok w stosunku 1 ∶3 i ogólnie, dla każdej liczby naturalnej 𝑛≥2, • 𝐾𝑛 jest kwadratem, którego każdy wierzchołek",
+  "requirements": [
+   {
+    "cited": "VI.R2",
+    "now": "VI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+   }
+  ],
+  "codes_2024": [
+   "VI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "11",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie wartości parametru 𝒎≠𝟐, dla których równanie 𝒙𝟐+ 𝟒𝒙−𝒎−𝟑 𝒎−𝟐= 𝟎 ma dwa różne rozwiązania rzeczywiste 𝒙𝟏 , 𝒙𝟐 spełniające warunek 𝒙𝟏 𝟑+ 𝒙𝟐 𝟑> −𝟐𝟖. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.88,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami, w szczególności wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy "
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "12.1",
+  "points": 2,
+  "general": [
+   "I",
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że dla każdej liczby dodatniej 𝒙 wyrażenie 𝟖𝟏𝐥𝐨𝐠𝟑𝒙+ 𝟐⋅𝐥𝐨𝐠𝟐√𝟐𝟕⋅𝐥𝐨𝐠𝟑𝟐 𝟑 ⋅𝒙𝟐−𝟔𝒙 można równoważnie przekształcić do postaci 𝒙𝟒+ 𝒙𝟐−𝟔𝒙.",
+  "requirements": [
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   },
+   {
+    "cited": "I.9",
+    "now": "I.9",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje związek logarytmowania z potęgowaniem, posługuje się wzorami na logarytm iloczynu, logarytm ilorazu i logarytm potęgi."
+   }
+  ],
+  "codes_2024": [
+   "I.9",
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "12.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Oblicz najmniejszą wartość funkcji 𝒇 określonej dla każdej liczby dodatniej 𝒙. Zapisz obliczenia. Wskazówka: przyjmij, że wzór funkcji 𝑓 można przedstawić w postaci 𝑓(𝑥) = 𝑥4 + 𝑥2 −6𝑥.",
+  "requirements": [
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu;"
+   },
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-maj-matura",
+  "task": "13",
+  "points": 6,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) prosta 𝑙 o równaniu 𝑥−𝑦−2 = 0 przecina parabolę o równaniu 𝑦= 4𝑥2 −7𝑥+ 1 w punktach 𝐴 oraz 𝐵. Odcinek 𝐴𝐵 jest średnicą okręgu 𝒪. Punkt 𝐶 leży na okręgu 𝒪 nad prostą 𝑙, a kąt 𝐵𝐴𝐶 jest ostry i ma miarę 𝛼 taką, że tg 𝛼= 1 3 (zobacz rysunek). Oblicz współrzędne punktu 𝑪. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R5",
+    "now": "VII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "korzysta ze wzorów na sinus, cosinus i tangens sumy i różnicy kątów, a także na funkcje trygonometryczne kątów podwojonych."
+   },
+   {
+    "cited": "IX.R3",
+    "now": "IX.R1",
+    "level": "PR",
+    "score": 0.5,
+    "text": "znajduje punkty wspólne prostej i okręgu oraz prostej i paraboli będącej wykresem funkcji kwadratowej."
+   }
+  ],
+  "codes_2024": [
+   "IX.R1",
+   "VII.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "1",
+  "points": 3,
+  "general": [
+   "I",
+   "III"
+  ],
+  "proof": false,
+  "statement": "Dane są liczby 𝑎= log2 3 oraz 𝑏= log3 7. Wyraź 𝐥𝐨𝐠𝟒𝟒𝟗 za pomocą liczb 𝒂 oraz 𝒃. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "I.1",
+    "now": "I.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "wykonuje działania (dodawanie, odejmowanie, mnożenie, dzielenie, potęgowanie, pierwiastkowanie, logarytmowanie) w zbiorze liczb rzeczywistych;"
+   },
+   {
+    "cited": "I.9",
+    "now": "I.9",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje związek logarytmowania z potęgowaniem, posługuje się wzorami na logarytm iloczynu, logarytm ilorazu i logarytm potęgi."
+   },
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   }
+  ],
+  "codes_2024": [
+   "I.1",
+   "I.9",
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "2",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Funkcja 𝑓 jest określona wzorem 𝑓(𝑥) = 𝑥2+3 𝑥−1 dla każdej liczby rzeczywistej 𝑥≠1. Wyznacz równanie stycznej do wykresu tej funkcji w punkcie 𝑷= (−𝟑, −𝟑). Zapisz obliczenia. Wypełnia egzaminator Nr zadania 1. 2. Maks. liczba pkt 3 3 Uzyskana liczba pkt",
+  "requirements": [
+   {
+    "cited": "XIII.R2",
+    "now": "XIII.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje definicję pochodnej funkcji, podaje interpretację geometryczną pochodnej;"
+   },
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R3",
+   "XIII.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "3",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Dany jest nieskończony ciąg geometryczny (𝑎𝑛), określony dla każdej liczby naturalnej 𝑛≥1. Suma trzech początkowych wyrazów ciągu (𝑎𝑛) jest równa 7, a suma 𝑆 wszystkich wyrazów tego ciągu jest równa 8. Wyznacz wszystkie wartości 𝒏, dla których spełniona jest nierówność |𝑺−𝑺𝒏 𝑺𝒏 | < 𝟎, 𝟎𝟎𝟏 gdzie 𝑺𝒏 oznacza sumę 𝒏 początkowych wyrazów ciągu (𝒂𝒏). Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.5",
+    "now": "VI.5",
+    "level": "PP",
+    "score": 0.86,
+    "text": "stosuje wzór na 𝑛–ty wyraz i na sumę 𝑛 początkowych wyrazów ciągu geometrycznego."
+   },
+   {
+    "cited": "VI.R2",
+    "now": "VI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+   }
+  ],
+  "codes_2024": [
+   "VI.5",
+   "VI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "4",
+  "points": 5,
+  "general": [
+   "III",
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Dane jest równanie (𝑥−6) ⋅[(𝑚−2)𝑥2 −4(𝑚+ 3)𝑥+ 𝑚+ 1] = 0 z niewiadomą 𝑥 i parametrem 𝑚∈ℝ. Wyznacz wszystkie wartości parametru 𝒎, dla których to równanie ma trzy różne rozwiązania rzeczywiste tego samego znaku. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.88,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami, w szczególności wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy "
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "5",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Udowodnij, że suma sześcianów trzech kolejnych liczb całkowitych niepodzielnych przez 𝟒 jest liczbą podzielną przez 𝟑𝟔.",
+  "requirements": [
+   {
+    "cited": "I.R2",
+    "now": "I.2",
+    "level": "PP",
+    "score": 0.75,
+    "text": "przeprowadza proste dowody dotyczące podzielności liczb całkowitych i reszt z dzielenia nie trudniejsze niż dowód własności: jeśli liczba przy dzieleniu przez 5 daje resztę 3, to jej trzecia potęga pr"
+   }
+  ],
+  "codes_2024": [
+   "I.2"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "6.1",
+  "points": 2,
+  "general": [
+   "II",
+   "III"
+  ],
+  "proof": true,
+  "statement": "Niech 𝑅 będzie punktem leżącym na wykresie funkcji 𝑔. Wykaż, że odległość punktu 𝑹 od punktu 𝑷 wyraża się wzorem |𝑷𝑹| = √𝟏 𝟒𝒙𝟒−𝟏 𝟐𝒙𝟑−𝟏𝟑 𝟖𝒙𝟐+ 𝟑𝟗 𝟖𝒙+ 𝟓𝟗𝟑 𝟔𝟒 gdzie 𝒙 jest pierwszą współrzędną punktu 𝑹.",
+  "requirements": [
+   {
+    "cited": "II.1",
+    "now": "II.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje wzory skróconego mnożenia na: (𝑎+ 𝑏)2, (𝑎−𝑏)2, 𝑎2 −𝑏2."
+   },
+   {
+    "cited": "IX.3",
+    "now": "IX.3",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza odległość dwóch punktów w układzie współrzędnych."
+   }
+  ],
+  "codes_2024": [
+   "II.1",
+   "IX.3"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "6.2",
+  "points": 6,
+  "general": [
+   "III",
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Koniec toru regatowego należy umieścić na linii brzegowej. Oblicz współrzędne punktu 𝑲, w którym należy zlokalizować koniec toru, aby długość toru (tj. odległość końca 𝑲 toru od początku 𝑷) była możliwie największa. Oblicz długość najdłuższego toru. Zapisz obliczenia. Wskazówka. Przy rozwiązywaniu zadania możesz skorzystać z tego, że odległość dowolnego punktu 𝑅 leżącego na wykresie funkcji 𝑔 od p",
+  "requirements": [
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym […];"
+   },
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐬𝐢𝐧(𝟑𝒙) = 𝟐𝐬𝐢𝐧𝒙 w zbiorze [𝟎, 𝝅]. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 0.3,
+    "text": "rozwiązuje równania trygonometryczne o stopniu trudności nie większym niż w przykładzie 4 cos 2𝑥cos 5𝑥= 2 cos 7𝑥+ 1."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Dany jest trapez równoramienny 𝐴𝐵𝐶𝐷 o obwodzie 𝑙 i podstawach 𝐴𝐵 oraz 𝐶𝐷 takich, że |𝐴𝐵| > |𝐶𝐷|. Trapez jest opisany na okręgu i wpisany w okrąg, a przekątna 𝐴𝐶 trapezu ma długość 𝑑 (zobacz rysunek). Wykaż, że promień 𝑹 okręgu opisanego na trapezie 𝑨𝑩𝑪𝑫 jest równy 𝒅⋅𝒍 𝟐√𝟏𝟔𝒅𝟐−𝒍𝟐 .",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu;"
+   },
+   {
+    "cited": "VIII.R2",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11",
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "9",
+  "points": 6,
+  "general": [
+   "III",
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) punkt 𝐴= (9, 12) jest wierzchołkiem trójkąta 𝐴𝐵𝐶. Prosta 𝑘 o równaniu 𝑦= 1 2 𝑥 zawiera dwusieczną kąta 𝐴𝐵𝐶 tego trójkąta. Okrąg 𝒪 o równaniu (𝑥−8)2 + (𝑦−4)2 = 16 jest wpisany w ten trójkąt. Oblicz współrzędne punktu styczności prostej przechodzącej przez wierzchołki 𝑩 i 𝑪 tego trójkąta z okręgiem 𝓞. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "IX.R1",
+    "now": "IX.2",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się równaniem prostej w postaci ogólnej na płaszczyźnie, w tym wyznacza równanie prostej o zadanych własnościach […];"
+   },
+   {
+    "cited": "IX.R3",
+    "now": "IX.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "znajduje punkty wspólne prostej i okręgu […]."
+   }
+  ],
+  "codes_2024": [
+   "IX.2",
+   "IX.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "10",
+  "points": 6,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Dany jest ostrosłup prawidłowy czworokątny 𝐴𝐵𝐶𝐷𝑆 o podstawie 𝐴𝐵𝐶𝐷 i polu powierzchni bocznej równym 𝑃. Kąt między wysokościami sąsiednich ścian bocznych poprowadzonych z wierzchołka 𝑆 ma miarę 2𝛼. Objętość tego ostrosłupa jest równa √𝑘⋅𝑃3 ⋅sin 𝛼⋅cos(2𝛼) , gdzie 𝑘 jest stałym współczynnikiem liczbowym. Oblicz współczynnik 𝒌. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "X.4",
+    "now": "X.5",
+    "level": "PP",
+    "score": 0.8,
+    "text": "oblicza objętości i pola powierzchni […] ostrosłupów, również z wykorzystaniem trygonometrii i poznanych twierdzeń."
+   },
+   {
+    "cited": "X.R5",
+    "now": "X.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza przekroje […] ostrosłupów prawidłowych oraz oblicza ich pola, także z wykorzystaniem trygonometrii."
+   }
+  ],
+  "codes_2024": [
+   "X.5",
+   "X.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2023-przykladowy-arkusz-cke",
+  "task": "11",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Egzamin składa się z 15 zadań zamkniętych. Do każdego zadania podano cztery odpowiedzi, z których tylko jedna okazuje się poprawna. Zdający zalicza egzamin, jeśli udzieli poprawnych odpowiedzi w co najmniej 11 zadaniach. Pewien student przystąpił nieprzygotowany do egzaminu i w każdym zadaniu wybierał losowo odpowiedź. Przyjmij, że w każdym zadaniu wybór każdej z odpowiedzi przez studenta jest rów",
+  "requirements": [
+   {
+    "cited": "XII.R2",
+    "now": "XII.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje schemat Bernoullego."
+   }
+  ],
+  "codes_2024": [
+   "XII.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "W chwili początkowej (𝑡= 0) zainicjowano pewną reakcję chemiczną, w której brał udział związek A. W wyniku tej reakcji masa 𝑚 związku A zmieniała się w czasie zgodnie z zależnością 𝑚(𝑡) = 𝑎⋅2−0,05⋅𝑡+ 𝑏 dla 𝑡≥0 gdzie: 𝑚 – masa związku A wyrażona w gramach, 𝑡 – czas wyrażony w sekundach (liczony od chwili 𝑡= 0), 𝑎, 𝑏 – współczynniki liczbowe. Masa początkowa związku A (tj. masa w chwili 𝑡= 0) była r",
+  "requirements": [
+   {
+    "cited": "V.13",
+    "now": "V.13",
+    "level": "PP",
+    "score": 0.82,
+    "text": "posługuje się funkcjami wykładniczą i logarytmiczną, w tym ich wykresami, do opisu i interpretacji zagadnień związanych z zastosowaniami praktycznymi."
+   }
+  ],
+  "codes_2024": [
+   "V.13"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "2",
+  "points": 2,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Oblicz granicę lim 𝑥→3− |𝑥−3| 𝑥2 −9 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R1",
+    "now": "XIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza granice funkcji (w tym jednostronne)."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Funkcja 𝑓 jest określona wzorem 𝑓(𝑥) = 2𝑥+1 𝑥−4 dla każdej liczby rzeczywistej 𝑥≠4. W kartezjańskim układzie współrzędnych (𝑥, 𝑦) punkt 𝑃= (𝑥0 , 5) należy do wykresu funkcji 𝑓. Oblicz 𝒙𝟎 oraz wyznacz równanie stycznej do wykresu funkcji 𝒇 w punkcie 𝑷. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R2",
+    "now": "XIII.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje definicję pochodnej funkcji, podaje interpretację geometryczną pochodnej;"
+   },
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R3",
+   "XIII.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Doświadczenie losowe polega na dziesięciokrotnym rzucie symetryczną monetą. Oblicz prawdopodobieństwo zdarzenia polegającego na tym, że w tym doświadczeniu losowym orzeł wypadł dokładnie trzy razy z rzędu, jeśli wiadomo, że wypadł dokładnie trzy razy. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XII.R1",
+    "now": "XII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza prawdopodobieństwo warunkowe […]."
+   }
+  ],
+  "codes_2024": [
+   "XII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "5",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że dla każdej liczby dodatniej 𝒂 i każdej liczby dodatniej 𝒃 takich, że 𝒂+ 𝒃= 𝟏, prawdziwa jest nierówność 𝟏 𝟐𝒂+ 𝒃+ 𝟏 𝒂+ 𝟐𝒃≥𝟒 𝟑",
+  "requirements": [
+   {
+    "cited": "III.R2",
+    "now": "III.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania i nierówności wymierne […]."
+   }
+  ],
+  "codes_2024": [
+   "III.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "6",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Długości podstaw trapezu równoramiennego są równe 𝑎 oraz 𝑏, przy czym 𝑎> 𝑏. W ten trapez można wpisać okrąg. Wykaż, że pole tego trapezu jest większe od 𝒂⋅𝒃.",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Nieskończony ciąg geometryczny (𝑎𝑛) jest określony dla każdej liczby naturalnej 𝑛≥1. Suma wszystkich wyrazów ciągu (𝑎𝑛) o numerach nieparzystych jest równa 16, tj. 𝑎1 + 𝑎3 + 𝑎5 + … = 16 Ponadto 𝑎1 + 𝑎3 = 5 2 ⋅𝑎2 . Wyznacz wzór ogólny na 𝒏–ty wyraz ciągu (𝒂𝒏). Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.R2",
+    "now": "VI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+   }
+  ],
+  "codes_2024": [
+   "VI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W okrąg o promieniu 4 wpisano trójkąt 𝐴𝐵𝐶. Długość boku 𝐴𝐵 jest równa 6. Bok 𝐵𝐶 ma długość 4√3 i jest najdłuższym bokiem tego trójkąta. Oblicz długość boku 𝑨𝑪 trójkąta 𝑨𝑩𝑪. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R8",
+    "now": "VII.R8",
+    "level": "PR",
+    "score": 0.7,
+    "text": "oblicza kąty trójkąta i długości jego boków przy odpowiednich danych (m.in. z wykorzystaniem twierdzenia sinusów)."
+   }
+  ],
+  "codes_2024": [
+   "VII.R8"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "9",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐬𝐢𝐧(𝟔𝒙) + √𝟑⋅𝐬𝐢𝐧(𝟓𝒙) + 𝐬𝐢𝐧(𝟒𝒙) = 𝟎 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 0.3,
+    "text": "rozwiązuje równania trygonometryczne o stopniu trudności nie większym niż w przykładzie 4 cos 2𝑥cos 5𝑥= 2 cos 7𝑥+ 1."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "10",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Długość krawędzi podstawy graniastosłupa prawidłowego trójkątnego jest równa 𝑎. Sinus kąta między przekątnymi ścian bocznych wychodzącymi z jednego wierzchołka graniastosłupa jest równy √11 6 . Wyznacz pole powierzchni całkowitej tego graniastosłupa. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "X.3",
+    "now": "X.3",
+    "level": "PP",
+    "score": 1.0,
+    "text": "rozpoznaje w graniastosłupach […] kąty między odcinkami (np. krawędziami, krawędziami i przekątnymi), oblicza miary tych kątów;"
+   },
+   {
+    "cited": "X.4",
+    "now": "X.5",
+    "level": "PP",
+    "score": 0.78,
+    "text": "oblicza […] pola powierzchni graniastosłupów […], również z wykorzystaniem trygonometrii i poznanych twierdzeń."
+   }
+  ],
+  "codes_2024": [
+   "X.3",
+   "X.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "11",
+  "points": 6,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) prosta o równaniu 3𝑥+ 𝑦+ 2 = 0 przecina parabolę o równaniu 𝑦= 𝑥2 −2𝑥−8 w punktach 𝐴 oraz 𝐵, które są kolejnymi wierzchołkami równoległoboku 𝐴𝐵𝐶𝐷. Wierzchołek 𝐴 ma pierwszą współrzędną ujemną. Wierzchołek 𝐶 leży na prostej o równaniu 𝑦= −1 2 𝑥+ 1 i ma pierwszą współrzędną dodatnią. Odległość punktu 𝐶 od prostej zawierającej bok 𝐴𝐵 równoległoboku jest r",
+  "requirements": [
+   {
+    "cited": "IX.R3",
+    "now": "IX.R1",
+    "level": "PR",
+    "score": 0.5,
+    "text": "znajduje punkty wspólne prostej i okręgu oraz prostej i paraboli będącej wykresem funkcji kwadratowej."
+   }
+  ],
+  "codes_2024": [
+   "IX.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "12",
+  "points": 6,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie wartości parametru 𝒎, dla których równanie (𝟑−𝒎) ⋅𝒙𝟐+ (𝒎+ 𝟏) ⋅𝒙−(𝒎+ 𝟏)𝟐= 𝟎 ma dwa różne rozwiązania rzeczywiste 𝒙𝟏 , 𝒙𝟐 spełniające warunek 𝒙𝟏 𝟐+ 𝒙𝟐 𝟐= 𝒙𝟏⋅𝒙𝟐+ 𝟕 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.88,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami, w szczególności wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy "
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "13.1",
+  "points": 2,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że objętość 𝑽 każdego z takich ostrosłupów w zależności od długości 𝑹 promienia okręgu opisanego na podstawie ostrosłupa jest określona wzorem 𝑽(𝑹) = √𝟑 𝟒⋅(𝟔𝑹𝟐−𝑹𝟑)",
+  "requirements": [
+   {
+    "cited": "X.4",
+    "now": "X.5",
+    "level": "PP",
+    "score": 0.82,
+    "text": "oblicza objętości i pola powierzchni graniastosłupów i ostrosłupów, również z wykorzystaniem trygonometrii i poznanych twierdzeń."
+   }
+  ],
+  "codes_2024": [
+   "X.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-czerwiec-matura",
+  "task": "13.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Objętość 𝑉 ostrosłupa w zależności od długości 𝑅 promienia okręgu opisanego na podstawie ostrosłupa jest określona wzorem 𝑉(𝑅) = √3 4 ⋅(6𝑅2 −𝑅3) dla 𝑅∈(0, 6). Wyznacz długość promienia okręgu opisanego na podstawie tego z rozważanych ostrosłupów, którego objętość jest największa. Oblicz tę największą objętość. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu;"
+   },
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "Ładunek elektryczny zgromadzony w kondensatorze można opisać zależnością 𝑄(𝑡) = 𝑄0 ⋅𝛽−𝑡 dla 𝑡≥0 gdzie: 𝑄0 – ładunek elektryczny zgromadzony w kondensatorze w chwili początkowej (𝑡= 0) wyrażony w milikulombach 𝑄 – ładunek elektryczny zgromadzony w kondensatorze w chwili 𝑡 (licząc od chwili początkowej) wyrażony w milikulombach 𝛽 – stała dodatnia 𝑡 – czas wyrażony w sekundach. Wiadomo, że w chwili 𝑡",
+  "requirements": [
+   {
+    "cited": "V.14",
+    "now": "V.14",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się funkcjami wykładniczą i logarytmiczną […] do opisu i interpretacji zagadnień związanych z zastosowaniami praktycznymi."
+   }
+  ],
+  "codes_2024": [
+   "V.14"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "2",
+  "points": 2,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Okrąg 𝒪 jest styczny do boków 𝐴𝐶 i 𝐵𝐶 trójkąta 𝐴𝐵𝐶 oraz przecina bok 𝐴𝐵 tego trójkąta w punktach 𝑀 oraz 𝑁, przy czym 0 < |𝐴𝑀| < |𝐴𝑁| < |𝐴𝐵|. Wykaż, że jeśli |𝑨𝑴| = |𝑩𝑵|, to trójkąt 𝑨𝑩𝑪 jest równoramienny.",
+  "requirements": [
+   {
+    "cited": "VIII.11",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Iloczyn długości średnicy podstawy walca i wysokości walca jest równy 12√3. Pole powierzchni całkowitej tego walca jest równe 12𝜋(√3 + 1). Oblicz objętość tego walca. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "X.5",
+    "now": "X.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza objętości i pola powierzchni […] walca […]."
+   }
+  ],
+  "codes_2024": [
+   "X.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że 𝟏 𝐥𝐨𝐠𝟐𝟑𝟓+ 𝟏+ 𝟏 𝐥𝐨𝐠𝟕𝟏𝟒𝟎−𝐥𝐨𝐠𝟕𝟐+ 𝟏 𝐥𝐨𝐠𝟓𝟕+ 𝐥𝐨𝐠𝟓𝟐+ 𝟏= 𝟏",
+  "requirements": [
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   }
+  ],
+  "codes_2024": [
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "5",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "W pewnej lokalnej społeczności 35% osób ma wyższe wykształcenie. W tej społeczności językiem niemieckim dobrze włada 70% osób mających wyższe wykształcenie i 40% osób bez wyższego wykształcenia. Spośród członków tej społeczności wybieramy losowo jedną osobę. Oblicz prawdopodobieństwo zdarzenia polegającego na tym, że wybierzemy osobę z wyższym wykształceniem, jeżeli wiadomo, że ta osoba dobrze wła",
+  "requirements": [
+   {
+    "cited": "XII.R1",
+    "now": "XII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "[…] stosuje wzór Bayesa, stosuje twierdzenie o prawdopodobieństwie całkowitym."
+   }
+  ],
+  "codes_2024": [
+   "XII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "6",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie |𝟒𝒙−𝟖| + |𝒙−𝟐| = |𝟐−𝒙| + |𝒙+ 𝟐| + 𝟒 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R4",
+    "now": "III.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania […] z wartością bezwzględną."
+   }
+  ],
+  "codes_2024": [
+   "III.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) dane są: okrąg o równaniu (𝑥+ 1)2 + (𝑦−3)2 = 50 i punkty 𝐴= (6, 4) oraz 𝐵= (−6, 8). Punkt 𝐶 leży na tym okręgu i |𝐴𝐶| = |𝐵𝐶|. Oblicz współrzędne punktu 𝑪. Rozważ wszystkie przypadki. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "IX.R1",
+    "now": "IX.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "znajduje punkty wspólne prostej i okręgu;"
+   },
+   {
+    "cited": "IX.R4",
+    "now": "IX.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza równanie prostej prostopadłej do zadanej prostej […]."
+   }
+  ],
+  "codes_2024": [
+   "IX.R1",
+   "IX.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Oblicz granicę 𝐥𝐢𝐦 𝒏→+∞ 1 + 3 + 5 + 7 + … + (2𝑛+ 1) (𝑛 2) gdzie 𝟏+ 𝟑+ 𝟓+ 𝟕+ … + (𝟐𝒏+ 𝟏) jest sumą kolejnych liczb naturalnych nieparzystych. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.R1",
+    "now": "VI.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza granice ciągów […]."
+   }
+  ],
+  "codes_2024": [
+   "VI.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "9",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐬𝐢𝐧𝟒𝒙= 𝐬𝐢𝐧𝒙⋅𝐜𝐨𝐬𝒙−𝐜𝐨𝐬𝟒𝒙 w zbiorze [−𝝅, 𝟐𝝅]. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania trygonometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "10",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Trzeci i piąty wyraz malejącego ciągu arytmetycznego (𝑎𝑛), określonego dla każdej liczby naturalnej 𝑛≥1, spełniają warunek 𝑎3 + 𝑎5 = 10. Trzywyrazowy ciąg (2𝑎1 + 4, 𝑎4 −1, −1 8 𝑎7) jest geometryczny. Oblicz wyrazy tego ciągu geometrycznego. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.7",
+    "now": "VI.7",
+    "level": "PP",
+    "score": 1.0,
+    "text": "wykorzystuje własności ciągów, w tym arytmetycznych i geometrycznych, do rozwiązywania zadań […]."
+   }
+  ],
+  "codes_2024": [
+   "VI.7"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "11",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Funkcja kwadratowa 𝑓 zmiennej rzeczywistej 𝑥 jest określona wzorem 𝑓(𝑥) = 𝑥2 −3𝑥−𝑚2 + 𝑚+ 3 Wyznacz wszystkie wartości parametru 𝒎, dla których funkcja 𝒇 ma dwa różne miejsca zerowe 𝒙𝟏 , 𝒙𝟐 spełniające warunek |𝒙𝟏 𝟐−𝒙𝟐 𝟐| ≤𝟏𝟐. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "analizuje równania […] kwadratowe z parametrami […]."
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "12",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W trójkącie ostrokątnym 𝐴𝐵𝐶 miara kąta 𝐵𝐴𝐶 jest dwa razy większa od miary kąta 𝐴𝐵𝐶. Punkt 𝐷 jest środkiem boku 𝐴𝐵. Niech 𝛼 oznacza miarę kąta 𝐴𝐵𝐶, natomiast 𝛽 – miarę kąta 𝐴𝐷𝐶 (zobacz rysunek). Oblicz 𝐭𝐠𝜷 𝐬𝐢𝐧(𝟐𝜶) . Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.1",
+    "now": "VII.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "wykorzystuje definicje funkcji: sinus, cosinus i tangens […]."
+   },
+   {
+    "cited": "VII.R5",
+    "now": "VII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "korzysta z wzorów na sinus, cosinus i tangens sumy i różnicy kątów, a także na funkcje trygonometryczne kątów podwojonych;"
+   },
+   {
+    "cited": "VII.R7",
+    "now": "VII.R7",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje twierdzenie sinusów."
+   }
+  ],
+  "codes_2024": [
+   "VII.1",
+   "VII.R5",
+   "VII.R7"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "13.1",
+  "points": 2,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że pole 𝑷 czworokąta 𝑶𝑩𝑪𝑫 w zależności od pierwszej współrzędnej 𝒙 punktu 𝑪 jest określone wzorem 𝑷(𝒙) = 𝟐𝟏 𝟒⋅𝒙𝟐−𝟓𝟔 𝒙−𝟖",
+  "requirements": [
+   {
+    "cited": "V.3",
+    "now": "V.3",
+    "level": "PP",
+    "score": 1.0,
+    "text": "odczytuje i interpretuje wartości funkcji określonych za pomocą […] wykresów, wzorów itp., również w sytuacjach wielokrotnego użycia tego samego źródła informacji lub kilku źródeł jednocześnie."
+   }
+  ],
+  "codes_2024": [
+   "V.3"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-grudzien-probna",
+  "task": "13.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Pole 𝑃 czworokąta 𝑂𝐵𝐶𝐷 w zależności od pierwszej współrzędnej 𝑥 punktu 𝐶 jest określone wzorem 𝑃(𝑥) = 21 4 ⋅𝑥2 −56 𝑥−8 dla 𝑥∈(0, 7). Oblicz współrzędne wierzchołka 𝑪, dla których pole czworokąta 𝑶𝑩𝑪𝑫 jest największe. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu;"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R6",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "W chwili początkowej (𝑡= 0) filiżanka z gorącą kawą znajduje się w pokoju, a temperatura tej kawy jest równa 80 °C. Temperatura w pokoju (temperatura otoczenia) jest stała i równa 20 °C. Temperatura 𝑇 tej kawy zmienia się w czasie zgodnie z zależnością 𝑇(𝑡) = (𝑇𝑝−𝑇𝑧) ⋅𝑘−𝑡+ 𝑇𝑧 dla 𝑡≥0 gdzie: 𝑇 – temperatura kawy wyrażona w stopniach Celsjusza, 𝑡 – czas wyrażony w minutach, liczony od chwili początk",
+  "requirements": [
+   {
+    "cited": "V.13",
+    "now": "V.13",
+    "level": "PP",
+    "score": 0.8,
+    "text": "posługuje się funkcjami wykładniczą i logarytmiczną […] do opisu i interpretacji zagadnień związanych z zastosowaniami praktycznymi."
+   }
+  ],
+  "codes_2024": [
+   "V.13"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "2",
+  "points": 2,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Oblicz granicę lim 𝑥→2− 𝑥3 −8 (𝑥−2)2 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R1",
+    "now": "XIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza granice funkcji (w tym jednostronne)."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "I",
+   "III"
+  ],
+  "proof": false,
+  "statement": "W pewnym zakładzie mleczarskim śmietana produkowana jest w 200-gramowych opakowaniach. Prawdopodobieństwo zdarzenia, że w losowo wybranym opakowaniu śmietana zawiera mniej niż 36% tłuszczu, jest równe 0,01. Kontroli poddajemy 10 losowo wybranych opakowań ze śmietaną. Oblicz prawdopodobieństwo zdarzenia polegającego na tym, że wśród opakowań poddanych tej kontroli będzie co najwyżej jedno opakowani",
+  "requirements": [
+   {
+    "cited": "XII.R2",
+    "now": "XII.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje schemat Bernoullego."
+   }
+  ],
+  "codes_2024": [
+   "XII.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Funkcja 𝑓 jest określona wzorem 𝑓(𝑥) = 𝑥3 − 3𝑥 + 2 𝑥 dla każdej liczby rzeczywistej 𝑥 różnej od zera. W kartezjańskim układzie współrzędnych (𝑥, 𝑦) punkt 𝑃, o pierwszej współrzędnej równej 2, należy do wykresu funkcji 𝑓. Prosta o równaniu 𝑦= 𝑎𝑥+ 𝑏 jest styczna do wykresu funkcji 𝑓 w punkcie 𝑃. Oblicz współczynniki 𝒂 oraz 𝒃 w równaniu tej stycznej. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R2",
+    "now": "XIII.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje definicję pochodnej funkcji, podaje interpretację geometryczną pochodnej;"
+   },
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R3",
+   "XIII.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "5",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że jeżeli 𝐥𝐨𝐠𝟓𝟒= 𝒂 oraz 𝐥𝐨𝐠𝟒𝟑= 𝒃, to 𝐥𝐨𝐠𝟏𝟐𝟖𝟎= 𝟐𝒂 + 𝟏 𝒂 ⋅ (𝟏 + 𝒃) .",
+  "requirements": [
+   {
+    "cited": "I.9",
+    "now": "I.9",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje związek logarytmowania z potęgowaniem, posługuje się wzorami na logarytm iloczynu, logarytm ilorazu i logarytm potęgi."
+   },
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   }
+  ],
+  "codes_2024": [
+   "I.9",
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "6",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozważamy wszystkie liczby naturalne, w których zapisie dziesiętnym nie powtarza się jakakolwiek cyfra oraz dokładnie trzy cyfry są nieparzyste i dokładnie dwie cyfry są parzyste. Oblicz, ile jest wszystkich takich liczb. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XI.R1",
+    "now": "XI.R1",
+    "level": "PR",
+    "score": 0.67,
+    "text": "oblicza liczbę możliwych sytuacji, spełniających określone kryteria, z wykorzystaniem reguły mnożenia i dodawania (także łącznie) oraz wzorów na liczbę: permutacji, kombinacji i wariacji, również w pr"
+   }
+  ],
+  "codes_2024": [
+   "XI.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Trzywyrazowy ciąg (𝑥, 𝑦, 𝑧) jest geometryczny i rosnący. Suma wyrazów tego ciągu jest równa 105. Liczby 𝑥, 𝑦 oraz 𝑧 są – odpowiednio – pierwszym, drugim oraz szóstym wyrazem ciągu arytmetycznego (𝑎𝑛), określonego dla każdej liczby naturalnej 𝑛≥1. Oblicz 𝒙, 𝒚 oraz 𝒛. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.6",
+    "now": "VI.7",
+    "level": "PP",
+    "score": 1.0,
+    "text": "wykorzystuje własności ciągów, w tym arytmetycznych i geometrycznych, do rozwiązywania zadań […]."
+   }
+  ],
+  "codes_2024": [
+   "VI.7"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Dany jest trójkąt 𝐴𝐵𝐶, który nie jest równoramienny. W tym trójkącie miara kąta 𝐴𝐵𝐶 jest dwa razy większa od miary kąta 𝐵𝐴𝐶. Wykaż, że długości boków tego trójkąta spełniają warunek |𝑨𝑪|𝟐= |𝑩𝑪|𝟐+ |𝑨𝑩| ⋅|𝑩𝑪|",
+  "requirements": [
+   {
+    "cited": "VIII.R3",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "9",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Dany jest kwadrat 𝐴𝐵𝐶𝐷 o boku długości 𝑎. Punkt 𝐸 jest środkiem boku 𝐶𝐷. Przekątna 𝐵𝐷 dzieli trójkąt 𝐴𝐶𝐸 na dwie figury: 𝐴𝐺𝐹 oraz 𝐶𝐸𝐹𝐺 (zobacz rysunek). Oblicz pola figur 𝑨𝑮𝑭 oraz 𝑪𝑬𝑭𝑮. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VIII.7",
+    "now": "VIII.7",
+    "level": "PP",
+    "score": 0.6,
+    "text": "stosuje twierdzenia: Talesa, o dwusiecznej kąta […]."
+   }
+  ],
+  "codes_2024": [
+   "VIII.7"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "10",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐬𝐢𝐧(𝟒𝒙) −𝐬𝐢𝐧(𝟐𝒙) = 𝟒𝐜𝐨𝐬𝟐𝒙−𝟑 w zbiorze [𝟎, 𝟐𝝅]. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 0.3,
+    "text": "rozwiązuje równania trygonometryczne o stopniu trudności nie większym niż w przykładzie 4 cos 2𝑥cos 5𝑥= 2 cos 7𝑥+ 1."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "11",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) środek 𝑆 okręgu o promieniu √5 leży na prostej o równaniu 𝑦= 𝑥+ 1. Przez punkt 𝐴= (1, 2), którego odległość od punktu 𝑆 jest większa od √5, poprowadzono dwie proste styczne do tego okręgu w punktach – odpowiednio – 𝐵 i 𝐶. Pole czworokąta 𝐴𝐵𝑆𝐶 jest równe 15. Oblicz współrzędne punktu 𝑺. Rozważ wszystkie przypadki. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "IX.3",
+    "now": "IX.3",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza odległość dwóch punktów w układzie współrzędnych;"
+   },
+   {
+    "cited": "IX.5",
+    "now": "IX.3",
+    "level": "PP",
+    "score": 0.75,
+    "text": "oblicza odległość punktu od prostej."
+   },
+   {
+    "cited": "IX.R1",
+    "now": "IX.2",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się równaniem prostej w postaci ogólnej na płaszczyźnie […]."
+   }
+  ],
+  "codes_2024": [
+   "IX.2",
+   "IX.3"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "12",
+  "points": 6,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie wartości parametru 𝒎, dla których równanie 𝒙𝟐−(𝟑𝒎+ 𝟏) ⋅𝒙+ 𝟐𝒎𝟐+ 𝒎+ 𝟏= 𝟎 ma dwa różne rozwiązania rzeczywiste 𝒙𝟏 , 𝒙𝟐 spełniające warunek 𝒙𝟏 𝟑+ 𝒙𝟐 𝟑+ 𝟑⋅𝒙𝟏⋅𝒙𝟐⋅(𝒙𝟏+ 𝒙𝟐−𝟑) ≤𝟑𝒎−𝟕 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.88,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami, w szczególności wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy "
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "13.1",
+  "points": 2,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że pole 𝑷 powierzchni całkowitej graniastosłupa w zależności od długości 𝒂 krawędzi podstawy graniastosłupa jest określone wzorem 𝑷(𝒂) = 𝒂𝟐⋅√𝟑 𝟐 + 𝟏𝟑𝟖𝟐𝟒√𝟑 𝒂",
+  "requirements": [
+   {
+    "cited": "X.4",
+    "now": "X.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza objętości i pola powierzchni graniastosłupów […]."
+   }
+  ],
+  "codes_2024": [
+   "X.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2024-maj-matura",
+  "task": "13.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Pole 𝑃 powierzchni całkowitej graniastosłupa w zależności od długości 𝑎 krawędzi podstawy graniastosłupa jest określone wzorem 𝑃(𝑎) = 𝑎2 ⋅√3 2 + 13824√3 𝑎 dla 𝑎∈(0, 8√3 ]. Wyznacz długość krawędzi podstawy tego z rozważanych graniastosłupów, którego pole powierzchni całkowitej jest najmniejsze. Oblicz to najmniejsze pole. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu i ilorazu;"
+   },
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "1",
+  "points": 3,
+  "general": [
+   "I",
+   "III"
+  ],
+  "proof": false,
+  "statement": "Sklep AGD prowadzi sprzedaż wysyłkową pralek. Prawdopodobieństwo uszkodzenia podczas transportu pralki wysłanej przez ten sklep do klienta jest równe 0,02. Oblicz prawdopodobieństwo zdarzenia 𝑨 polegającego na tym, że spośród 𝟏𝟎 pralek wysłanych dziesięciu klientom przez ten sklep co najwyżej jedna ulegnie uszkodzeniu podczas transportu. Wynik zapisz w postaci ułamka dziesiętnego w zaokrągleniu do",
+  "requirements": [
+   {
+    "cited": "XII.R2",
+    "now": "XII.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje schemat Bernoullego."
+   }
+  ],
+  "codes_2024": [
+   "XII.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "2",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że jeżeli 𝒂= 𝐥𝐨𝐠𝟐𝟏𝟒 oraz 𝒃= 𝐥𝐨𝐠√𝟐𝟐𝟕, to 𝐥𝐨𝐠𝟕𝟓𝟒= 𝒃 + 𝟐 𝟐𝒂 − 𝟐 .",
+  "requirements": [
+   {
+    "cited": "I.9",
+    "now": "I.9",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje związek logarytmowania z potęgowaniem, posługuje się wzorami na logarytm iloczynu, logarytm ilorazu i logarytm potęgi."
+   },
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   }
+  ],
+  "codes_2024": [
+   "I.9",
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozważamy wszystkie liczby naturalne sześciocyfrowe, w których zapisie dziesiętnym iloczyn cyfr jest liczbą parzystą mniejszą od 5. Oblicz, ile jest wszystkich takich liczb sześciocyfrowych. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XI.R1",
+    "now": "XI.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza liczbę możliwych sytuacji, spełniających określone kryteria, z wykorzystaniem reguły mnożenia i dodawania (także łącznie) oraz wzorów na liczbę: permutacji, kombinacji i wariacji."
+   }
+  ],
+  "codes_2024": [
+   "XI.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Dany jest prostokąt 𝐴𝐵𝐶𝐷, w którym |𝐴𝐵| = 2 ⋅|𝐴𝐷|. Na bokach 𝐴𝐵, 𝐵𝐶, 𝐶𝐷 oraz 𝐷𝐴 tego prostokąta obrano punkty – odpowiednio – 𝐾, 𝐿, 𝑀 oraz 𝑁 (przy czym każdy z tych punktów leży na dokładnie jednym boku prostokąta 𝐴𝐵𝐶𝐷). Czworokąt 𝐾𝐿𝑀𝑁 jest trapezem prostokątnym (zobacz rysunek), a wysokość 𝐿𝑀 tego trapezu jest równoległa do przekątnej 𝐵𝐷 prostokąta. Wykaż, że stosunek pola trójkąta 𝑴𝑫𝑵 do pola tr",
+  "requirements": [
+   {
+    "cited": "VIII.11",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "5",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie wartości parametru 𝒎, dla których równanie 𝒙𝟐+ 𝟐𝒎𝒙+ 𝟐𝒎−𝟏= 𝟎 ma dwa różne rozwiązania rzeczywiste 𝒙𝟏 , 𝒙𝟐 spełniające warunek 𝒎(𝒙𝟏 𝟐+ 𝒙𝟐 𝟐) = 𝟑𝒎⋅𝒙𝟏⋅𝒙𝟐+ 𝟐 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami […]."
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "6",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐜𝐨𝐬(𝟐𝒙) + 𝟐𝐜𝐨𝐬𝟐(𝟑𝒙) + 𝐜𝐨𝐬(𝟒𝒙) = 𝟎 w przedziale [𝟎, 𝝅]. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania trygonometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Na czworokącie wypukłym 𝐴𝐵𝐶𝐷 o bokach długości: |𝐴𝐵| = 3, |𝐵𝐶| = 3, |𝐶𝐷| = 5 oraz |𝐷𝐴| = 8, opisano okrąg. Oblicz promień tego okręgu. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "Wielomian 𝑓 zmiennej rzeczywistej 𝑥 jest określony wzorem 𝑓(𝑥) = 𝑥3 + 𝑎𝑥2 + 𝑏𝑥+ 𝑐, gdzie 𝑎, 𝑏, 𝑐∈ℝ. Liczba (−2) jest miejscem zerowym tego wielomianu. W kartezjańskim układzie współrzędnych (𝑥, 𝑦) styczna do wykresu wielomianu 𝑓 w punkcie 𝐴 o pierwszej współrzędnej równej (−2) przecina ten wykres w punkcie 𝑃= (1, 9). Wyznacz wzór wielomianu 𝒇. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R3",
+    "now": "XIII.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "[…] podaje interpretację geometryczną i fizyczną pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R3"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "9",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Ciąg (𝑎𝑛), określony dla każdej liczby naturalnej 𝑛≥1, jest arytmetyczny i rosnący. W tym ciągu 𝑎6 = 15 oraz 𝑎15 = 𝑎3 ⋅(𝑎8 −6). Ciąg (𝑏𝑛), określony dla każdej liczby naturalnej 𝑛≥1, jest geometryczny i 𝑏1 = 𝑎11 oraz 𝑏2 = 𝑎6. Oblicz sumę wszystkich wyrazów ciągu (𝒃𝒏). Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.R2",
+    "now": "VI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+   }
+  ],
+  "codes_2024": [
+   "VI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "10",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Dany jest ostrosłup prawidłowy trójkątny 𝐴𝐵𝐶𝐷 o podstawie 𝐴𝐵𝐶. Płaszczyzna zawierająca krawędź 𝐴𝐵 podstawy i prostopadła do krawędzi bocznej 𝐶𝐷 przecina tę krawędź w punkcie 𝐸, przy czym |𝐶𝐸| |𝐷𝐸| = 3 11 . Oblicz stosunek pola powierzchni całkowitej tego ostrosłupa do pola podstawy 𝑨𝑩𝑪. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "X.5",
+    "now": "X.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza objętości i pola graniastosłupów, ostrosłupów […]."
+   },
+   {
+    "cited": "X.R2",
+    "now": "X.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza przekroje sześcianu i ostrosłupów prawidłowych […]."
+   }
+  ],
+  "codes_2024": [
+   "X.5",
+   "X.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "11",
+  "points": 6,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) dany jest równoległobok 𝐴𝐵𝐶𝐷 o wierzchołkach 𝐴= (−8, −1) i 𝐷= (−13, 9) oraz środku symetrii 𝑀= (−9 2 , 1). Okrąg 𝒪 przechodzi przez początek tego układu i jest styczny do prostych zawierających boki 𝐴𝐵 i 𝐵𝐶 tego równoległoboku. Druga współrzędna środka okręgu 𝒪 jest liczbą ujemną. Wyznacz równanie okręgu 𝓞. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "IX.R1",
+    "now": "IX.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "znajduje punkty wspólne prostej i okręgu;"
+   },
+   {
+    "cited": "IX.R4",
+    "now": "IX.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza równanie prostej prostopadłej do zadanej prostej i prostej stycznej do zadanego okręgu."
+   },
+   {
+    "cited": "VIII.4",
+    "now": "VIII.4",
+    "level": "PP",
+    "score": 1.0,
+    "text": "korzysta z własności kątów i przekątnych w prostokątach, równoległobokach, rombach i trapezach."
+   }
+  ],
+  "codes_2024": [
+   "IX.R1",
+   "IX.R4",
+   "VIII.4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "12.1",
+  "points": 2,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że objętość 𝑽 graniastosłupa w zależności od długości 𝒂 krawędzi podstawy jest określona wzorem 𝑽(𝒂) = 𝟔𝒂−𝟏 𝟖𝒂𝟑",
+  "requirements": [
+   {
+    "cited": "X.5",
+    "now": "X.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza objętości i pola powierzchni graniastosłupów […]."
+   }
+  ],
+  "codes_2024": [
+   "X.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2025-czerwiec-matura",
+  "task": "12.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Objętość 𝑉 graniastosłupa w zależności od długości 𝑎 krawędzi podstawy jest określona wzorem 𝑉(𝑎) = 6𝑎−1 8 𝑎3 dla 𝑎∈(0, 4√3). Wyznacz długość krawędzi podstawy tego z rozważanych graniastosłupów, którego objętość jest największa. Oblicz tę największą objętość. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu, ilorazu […];"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R6",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "II"
+  ],
+  "proof": false,
+  "statement": "W warunkach laboratoryjnych obserwowano dynamikę wzrostu liczebności populacji pewnego gatunku bakterii. Liczebność 𝑁 populacji bakterii zmienia się w czasie zgodnie z zależnością wykładniczą 𝑁(𝑡) = 𝑁0 ⋅𝑘𝑡 dla 𝑡≥0 gdzie: 𝑁0 – liczebność populacji w chwili 𝑡= 0 rozpoczęcia obserwacji, 𝑘 – stała dodatnia, charakterystyczna dla danego gatunku bakterii i dla warunków przeprowadzenia obserwacji, 𝑡 – cz",
+  "requirements": [
+   {
+    "cited": "V.14",
+    "now": "V.14",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się funkcjami wykładniczą i logarytmiczną […] do opisu i interpretacji zagadnień związanych z zastosowaniami praktycznymi."
+   }
+  ],
+  "codes_2024": [
+   "V.14"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "2",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że dla każdej dodatniej liczby rzeczywistej 𝒂 i dla każdej dodatniej liczby rzeczywistej 𝒃 takich, że 𝒃≠𝟏 𝟐𝒂, prawdziwa jest nierówność (𝒂+ 𝟐𝒃)𝟑> 𝟖𝒂𝟐𝒃+ 𝟏𝟔𝒂𝒃𝟐",
+  "requirements": [
+   {
+    "cited": "II.R5",
+    "now": "II.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "korzysta ze wzorów na: […] (𝑎+ 𝑏)𝑛 […]."
+   }
+  ],
+  "codes_2024": [
+   "II.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "W trójkącie równobocznym 𝐴𝐵𝐶 punkt 𝐷 leży na boku 𝐵𝐶. Stosunek pola trójkąta 𝐴𝐵𝐷 do pola trójkąta 𝐴𝐷𝐶 jest równy √3−1 2 . Oblicz miarę kąta 𝑫𝑨𝑪. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R8",
+    "now": "VII.R8",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza kąty trójkąta i długości jego boków przy odpowiednich danych (rozwiązuje trójkąty)."
+   }
+  ],
+  "codes_2024": [
+   "VII.R8"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Doświadczenie losowe polega na czterokrotnym rzucie symetryczną sześcienną kostką do gry, która na każdej ściance ma inną liczbę oczek – od jednego oczka do sześciu oczek. Oblicz prawdopodobieństwo zdarzenia polegającego na tym, że otrzymamy co najmniej jeden raz sześć oczek, pod warunkiem że otrzymamy dokładnie dwa razy pięć oczek. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XII.R1",
+    "now": "XII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza prawdopodobieństwo warunkowe […]."
+   }
+  ],
+  "codes_2024": [
+   "XII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "5",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż nierówność |𝒙−𝟐| −𝟐⋅|𝒙+ 𝟑| < −𝟐 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R4",
+    "now": "III.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania i nierówności z wartością bezwzględną."
+   }
+  ],
+  "codes_2024": [
+   "III.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "6",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Ciąg (𝑎𝑛), określony dla każdej liczby naturalnej 𝑛≥1, jest geometryczny i zbieżny. W tym ciągu 𝑎1 + 𝑎3 = 20 i 𝑎1 2 + 𝑎3 2 = 328. Oblicz sumę wszystkich wyrazów tego ciągu. Rozważ wszystkie przypadki. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.R2",
+    "now": "VI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+   }
+  ],
+  "codes_2024": [
+   "VI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "W trapezie 𝐴𝐵𝐶𝐷 o podstawach 𝐴𝐵 i 𝐶𝐷 punkt 𝐸 jest środkiem ramienia 𝐴𝐷, a punkt 𝐹 jest środkiem ramienia 𝐵𝐶 trapezu. Stosunek pola trapezu 𝐸𝐹𝐶𝐷 do pola trapezu 𝐴𝐵𝐹𝐸 jest równy 1 2 . Wykaż, że |𝑪𝑫| |𝑨𝑩| = 𝟏 𝟓 .",
+  "requirements": [
+   {
+    "cited": "VIII.11",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "8",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) dane są okręgi 𝒪1 oraz 𝒪2 o równaniach: • 𝒪1: (𝑥−1)2 + (𝑦+ 3)2 = 5 • 𝒪2: (𝑥−2)2 + (𝑦−4)2 = 45. Te okręgi przecinają się w punktach 𝐴 oraz 𝐵. Punkt 𝐴 ma pierwszą współrzędną dodatnią. Punkt 𝑀 spełnia warunek 𝐴𝑀 ⃗⃗⃗⃗⃗⃗ = −2 ⋅𝐵𝑀 ⃗⃗⃗⃗⃗⃗ . Oblicz współrzędne punktów 𝑨, 𝑩 oraz 𝑴. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "IX.R2",
+    "now": "IX.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "znajduje punkty wspólne dwóch okręgów;"
+   },
+   {
+    "cited": "IX.R3",
+    "now": "IX.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "zna pojęcie wektora i oblicza jego współrzędne oraz długość, dodaje wektory i mnoży wektor przez liczbę, oba te działania wykonuje zarówno analitycznie, jak i geometrycznie."
+   }
+  ],
+  "codes_2024": [
+   "IX.R2",
+   "IX.R3"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "9",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝟑𝐜𝐨𝐬𝟐𝒙+ √𝟑𝐬𝐢𝐧(𝟐𝒙) −𝟑𝐬𝐢𝐧𝟐𝒙= 𝟎 w przedziale [−𝝅, 𝝅]. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania trygonometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "10",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Podstawą ostrosłupa 𝐴𝐵𝐶𝐷𝑆 jest kwadrat 𝐴𝐵𝐶𝐷. Krawędź boczna 𝑆𝐴 jest wysokością ostrosłupa, natomiast krawędź podstawy ma długość 3√34. Cosinus kąta 𝛽 między ścianami bocznymi 𝐶𝐷𝑆 i 𝐵𝐶𝑆 tego ostrosłupa jest równy (−9 25). Oblicz pole powierzchni bocznej tego ostrosłupa. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "X.3",
+    "now": "X.3",
+    "level": "PP",
+    "score": 1.0,
+    "text": "rozpoznaje w […] ostrosłupach kąty między odcinkami […] oraz kąty między ścianami, oblicza miary tych kątów;"
+   },
+   {
+    "cited": "X.5",
+    "now": "X.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza […] pola powierzchni […] ostrosłupów […]."
+   }
+  ],
+  "codes_2024": [
+   "X.3",
+   "X.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "11",
+  "points": 6,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Funkcja 𝑓 jest określona wzorem 𝑓(𝑥) = (2 −𝑚)𝑥2 −2(2𝑚+ 1)𝑥+ 𝑚+ 8 dla każdej liczby rzeczywistej 𝑥, gdzie 𝑚 jest liczbą rzeczywistą różną od 2. Wyznacz wszystkie wartości parametru 𝒎, dla których funkcja 𝒇 ma dokładnie dwa miejsca zerowe 𝒙𝟏 oraz 𝒙𝟐 tego samego znaku, które spełniają warunek (𝒙𝟏−𝒙𝟐)𝟐≤𝟏𝟖𝟎 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 0.33,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami […]. Więcej arkuszy znajdziesz na stronie: arkusze.pl === PAGE 44 === Egzamin maturalny z ma"
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "12.1",
+  "points": 2,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że objętość 𝑽 stożka, jako funkcja wysokości 𝒉 stożka, wyraża się wzorem 𝑽(𝒉) = 𝝅 𝟑⋅ 𝟐𝟓𝒉𝟑 𝒉𝟐−𝟐𝟓",
+  "requirements": [
+   {
+    "cited": "X.5",
+    "now": "X.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza objętości […] stożka […]."
+   }
+  ],
+  "codes_2024": [
+   "X.5"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2025-maj-matura",
+  "task": "12.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Objętość 𝑉 stożka, jako funkcja wysokości ℎ stożka, wyraża się wzorem 𝑉(ℎ) = 𝜋 3 ⋅ 25ℎ3 ℎ2 −25 dla ℎ∈(5, +∞). Wyznacz wysokość tego z rozważanych stożków, którego objętość jest najmniejsza. Oblicz tę najmniejszą objętość. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu, ilorazu […];"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R6",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "I",
+   "III"
+  ],
+  "proof": false,
+  "statement": "Dane są liczby rzeczywiste 𝑎 oraz 𝑏: 𝑎= 16 1 2 ⋅ log4 36−2⋅log4 3 𝑏= log2 9 ⋅log3 5 ⋅log5 8 Oblicz wartość ilorazu 𝒂 𝟐𝒃 . Wynik zapisz w postaci 𝟑𝒌, gdzie 𝒌∈ℤ. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "I.R1",
+    "now": "I.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzór na zamianę podstawy logarytmu."
+   }
+  ],
+  "codes_2024": [
+   "I.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "2",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozważamy wszystkie dziewięciocyfrowe kody, które spełniają jednocześnie następujące warunki: • na pierwszym miejscu kodu znajduje się cyfra 2 • cyfra 4 występuje w kodzie dokładnie trzy razy • cyfra 8 występuje dokładnie dwa razy • pozostałe cyfry kodu są parami różnymi liczbami nieparzystymi. Oblicz liczbę wszystkich takich kodów. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XI.R1",
+    "now": "XI.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza liczbę możliwych sytuacji, spełniających określone kryteria, z wykorzystaniem reguły mnożenia i dodawania (także łącznie) oraz wzorów na liczbę: permutacji, kombinacji i wariacji."
+   }
+  ],
+  "codes_2024": [
+   "XI.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Funkcja 𝑓 jest określona wzorem 𝑓(𝑥) = 𝑎𝑥2 + 𝑥 𝑥 − 1 dla każdej liczby rzeczywistej 𝑥≠1. Wyznacz wszystkie wartości 𝒂, dla których pochodna funkcji 𝒇 w punkcie 𝒙= 𝒂 jest równa (−𝟏 𝟐𝒂). Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu, ilorazu i funkcji złożonej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że dla każdej liczby rzeczywistej 𝒙 i dla każdej liczby rzeczywistej 𝒚 prawdziwa jest nierówność 𝒙𝒚+ 𝒙+ 𝒚≤𝒙𝟐+ 𝒚𝟐+ 𝟏",
+  "requirements": [
+   {
+    "cited": "II.1",
+    "now": "II.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje wzory skróconego mnożenia na: (𝑎+ 𝑏)2, (𝑎−𝑏)2, 𝑎2 −𝑏2."
+   }
+  ],
+  "codes_2024": [
+   "II.1"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "5",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Odcinek 𝐶𝐷 jest wysokością trójkąta równoramiennego 𝐴𝐵𝐶, w którym |𝐴𝐶| = |𝐵𝐶|. Prosta 𝑝 jest prostopadła do boku 𝐵𝐶 i przecina ten bok w punkcie 𝐿. Ta prosta przecina wysokość 𝐶𝐷 w punkcie 𝐾 oraz przecina bok 𝐴𝐶 w punkcie różnym od 𝐴. Wykaż, że |∡𝑪𝑨𝑲| = |∡𝑲𝑫𝑳|.",
+  "requirements": [
+   {
+    "cited": "VIII.11",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   },
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11",
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "6",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Chleb sprzedawany w pewnym supermarkecie pochodzi z trzech piekarni: 𝒫1, 𝒫2, 𝒫3. Stosunek liczby bochenków chleba dostarczonego przez piekarnie 𝒫1, 𝒫2 oraz 𝒫3 do tego supermarketu jest – odpowiednio – równy 2 ∶3 ∶4. Liczba bochenków chleba razowego dostarczonego do tego supermarketu z piekarni: • 𝒫1 stanowi 10% liczby wszystkich bochenków chleba dostarczonego z tej piekarni • 𝒫2 stanowi 12% liczby",
+  "requirements": [
+   {
+    "cited": "XII.R1",
+    "now": "XII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza prawdopodobieństwo warunkowe i stosuje wzór Bayesa, stosuje twierdzenie o prawdopodobieństwie całkowitym."
+   }
+  ],
+  "codes_2024": [
+   "XII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Nieskończony ciąg geometryczny (𝑎𝑛) jest określony dla każdej liczby naturalnej 𝑛≥1. Suma wszystkich wyrazów tego ciągu jest równa 14. Suma sześcianów wszystkich wyrazów ciągu (𝑎𝑛) jest równa 392. Wyznacz wzór ogólny na 𝒏-ty wyraz ciągu (𝒂𝒏). Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.R2",
+    "now": "VI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+   }
+  ],
+  "codes_2024": [
+   "VI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Trzywyrazowy ciąg (𝑥, 𝑦, 𝑧) jest geometryczny. Jeżeli w tym ciągu pomniejszymy trzeci wyraz o 4, a pozostałe wyrazy pozostawimy bez zmian, to otrzymamy ciąg arytmetyczny. Jeżeli drugi i trzeci wyraz tak otrzymanego ciągu arytmetycznego pomniejszymy o 1, to otrzymamy nowy ciąg geometryczny. Oblicz 𝒙, 𝒚 oraz 𝒛. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.5",
+    "now": "VI.5",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje wzór na 𝑛-ty wyraz i na sumę 𝑛 początkowych wyrazów ciągu arytmetycznego;"
+   },
+   {
+    "cited": "VI.6",
+    "now": "VI.6",
+    "level": "PP",
+    "score": 1.0,
+    "text": "stosuje wzór na 𝑛-ty wyraz i na sumę 𝑛 początkowych wyrazów ciągu geometrycznego."
+   }
+  ],
+  "codes_2024": [
+   "VI.5",
+   "VI.6"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "9",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Pole czworokąta 𝐴𝐵𝐶𝐷 wpisanego w okrąg jest równe 18. Boki 𝐴𝐵 i 𝐵𝐶 są prostopadłe, a ponadto |𝐴𝐵| = 4 oraz |𝐵𝐶| = 7. Oblicz obwód tego czworokąta. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "10",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐬𝐢𝐧𝒙+ 𝐬𝐢𝐧(𝟐𝒙) −𝐜𝐨𝐬𝒙= 𝟏 𝟐 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania trygonometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "11",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie wartości parametru 𝒎, dla których równanie 𝒙𝟐+ 𝒎𝒙+ 𝒎= 𝟎 ma dwa różne rozwiązania rzeczywiste 𝒙𝟏 oraz 𝒙𝟐 spełniające warunek 𝒙𝟏 𝟒+ 𝒙𝟐 𝟒+ 𝟒⋅𝒙𝟏 𝟑⋅𝒙𝟐 𝟑≥𝟑 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R3",
+    "now": "III.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+   },
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami […]."
+   }
+  ],
+  "codes_2024": [
+   "III.R3",
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "12",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Ostrosłup prawidłowy czworokątny 𝐴𝐵𝐶𝐷𝑆 o podstawie 𝐴𝐵𝐶𝐷 ma objętość równą 36√3. Ten ostrosłup przecięto płaszczyzną 𝛾, która: • jest prostopadła do ściany bocznej 𝐶𝐷𝑆 ostrosłupa • przechodzi przez środek 𝐾 krawędzi 𝐴𝐷 oraz środek 𝐿 krawędzi 𝐵𝐶 • przecina krawędź boczną 𝐶𝑆 w punkcie 𝑀 oraz krawędź boczną 𝐷𝑆 w punkcie 𝑁 • tworzy z płaszczyzną podstawy 𝐴𝐵𝐶𝐷 kąt o mierze 30°. Przekrój 𝐾𝐿𝑀𝑁 wyznaczony ",
+  "requirements": [
+   {
+    "cited": "X.2",
+    "now": "X.2",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się pojęciem kąta między prostą a płaszczyzną oraz pojęciem kąta dwuściennego między półpłaszczyznami."
+   },
+   {
+    "cited": "X.R2",
+    "now": "X.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza przekroje sześcianu i ostrosłupów prawidłowych oraz oblicza ich pola, także z wykorzystaniem trygonometrii."
+   }
+  ],
+  "codes_2024": [
+   "X.2",
+   "X.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "13.1",
+  "points": 2,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że pole 𝑷 trójkąta 𝑨𝑩𝑪 w zależności od współczynnika kierunkowego 𝒂 prostej 𝑨𝑩 jest określone wzorem 𝑷(𝒂) = −𝒂𝟐+ 𝟒𝒂−𝟒 𝟐𝒂",
+  "requirements": [
+   {
+    "cited": "IX.1",
+    "now": "IX.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "[…] znajduje punkt wspólny dwóch prostych […];"
+   },
+   {
+    "cited": "IX.2",
+    "now": "IX.2",
+    "level": "PP",
+    "score": 1.0,
+    "text": "posługuje się równaniami prostych na płaszczyźnie […]."
+   }
+  ],
+  "codes_2024": [
+   "IX.1",
+   "IX.2"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2026-czerwiec-matura",
+  "task": "13.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Pole 𝑃 trójkąta 𝐴𝐵𝐶 w zależności od współczynnika kierunkowego 𝑎 prostej 𝐴𝐵 jest określone wzorem 𝑃(𝑎) = −𝑎2 + 4𝑎−4 2𝑎 dla 𝑎< 0. Wyznacz równanie prostej zawierającej przeciwprostokątną 𝑨𝑩 tego z rozważanych trójkątów, który ma najmniejsze pole. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu, ilorazu […];"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R6",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 0.29,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej. Więcej arkuszy znajdziesz na stronie: arkusze.pl === PAGE 30 === Egzamin maturalny z matematyki na poziomie rozszerzonym – termin dodatkow"
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "1",
+  "points": 2,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Oblicz granicę 𝐥𝐢𝐦 𝒏→+∞ (𝒏 + 𝟐 𝒏 − 𝟏) 𝟏 𝟐𝒏𝟑−𝟒𝒏+ 𝟕 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XI.R2",
+    "now": "XI.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje współczynnik dwumianowy (symbol Newtona) i jego własności […]."
+   },
+   {
+    "cited": "VI.R1",
+    "now": "VI.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza granice ciągów, korzystając z […] twierdzeń o granicach sumy, różnicy, iloczynu i ilorazu ciągów zbieżnych […]."
+   }
+  ],
+  "codes_2024": [
+   "VI.R1",
+   "XI.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "2",
+  "points": 3,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Ze zbioru ośmiu liczb {1, 2, 3, 4, 5, 6, 7, 8} losujemy bez zwracania osiem razy po jednej liczbie. Wylosowane liczby ustawiamy w ciąg zgodnie z kolejnością losowania. Oblicz prawdopodobieństwo zdarzenia 𝑨 polegającego na tym, że wylosowane liczby utworzą ciąg, w którym iloczyn każdych trzech kolejnych wyrazów będzie liczbą podzielną przez 𝟑. Wynik podaj w postaci nieskracalnego ułamka zwykłego. Z",
+  "requirements": [
+   {
+    "cited": "XII.1",
+    "now": "XII.1",
+    "level": "PP",
+    "score": 1.0,
+    "text": "oblicza prawdopodobieństwo w modelu klasycznym."
+   }
+  ],
+  "codes_2024": [
+   "XII.1"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "3",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że dla każdej dodatniej liczby rzeczywistej 𝒙 i dla każdej dodatniej liczby rzeczywistej 𝒚 prawdziwa jest nierówność 𝟏 𝒙+ 𝟏 𝒚 ≤ 𝒙 𝒚𝟐+ 𝒚 𝒙𝟐",
+  "requirements": [
+   {
+    "cited": "II.R5",
+    "now": "II.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "korzysta ze wzorów na: 𝑎3 + 𝑏3 […]."
+   }
+  ],
+  "codes_2024": [
+   "II.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "4",
+  "points": 3,
+  "general": [
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Punkty 𝐾 i 𝐿 są środkami – odpowiednio – boków 𝐴𝐵 i 𝐵𝐶 kwadratu 𝐴𝐵𝐶𝐷 o boku długości 𝑎. Punkt 𝑀 jest takim punktem na boku 𝐵𝐶, że odcinki 𝐷𝐾 i 𝐾𝑀 są prostopadłe. Odcinek 𝐴𝐿 przecina odcinki 𝐷𝐾 oraz 𝐷𝑀 w punktach – odpowiednio – 𝑃 oraz 𝑄 (zobacz rysunek). Wykaż, że |𝑷𝑸| = √𝟓 𝟓𝒂.",
+  "requirements": [
+   {
+    "cited": "VIII.8",
+    "now": "VIII.8",
+    "level": "PP",
+    "score": 1.0,
+    "text": "korzysta z cech podobieństwa trójkątów;"
+   },
+   {
+    "cited": "VIII.11",
+    "now": "VIII.11",
+    "level": "PP",
+    "score": 1.0,
+    "text": "przeprowadza dowody geometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VIII.11",
+   "VIII.8"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "5",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż nierówność |𝟐𝒙−𝟔| −|𝒙𝟐−𝟗| < 𝟎 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R4",
+    "now": "III.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania i nierówności z wartością bezwzględną."
+   }
+  ],
+  "codes_2024": [
+   "III.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "6",
+  "points": 4,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Dany jest ciąg arytmetyczny (𝑎𝑛) o skończonej liczbie wyrazów. Liczba wyrazów tego ciągu jest większa od 6. Pierwszy wyraz tego ciągu jest równy 1, a ostatni wyraz tego ciągu jest równy (−2025). Drugi, trzeci i szósty wyraz tego ciągu tworzą – w podanej kolejności – ciąg geometryczny. Oblicz sumę wszystkich wyrazów ciągu (𝒂𝒏). Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VI.7",
+    "now": "VI.7",
+    "level": "PP",
+    "score": 1.0,
+    "text": "wykorzystuje własności ciągów, w tym arytmetycznych i geometrycznych, do rozwiązywania zadań, również osadzonych w kontekście praktycznym."
+   }
+  ],
+  "codes_2024": [
+   "VI.7"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "7",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Rozwiąż równanie 𝐬𝐢𝐧(𝟔𝒙) −𝟐𝐬𝐢𝐧(𝟐𝒙) = 𝟎 Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VII.R6",
+    "now": "VII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje równania trygonometryczne."
+   }
+  ],
+  "codes_2024": [
+   "VII.R6"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "8",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W ostrosłupie prawidłowym trójkątnym 𝐴𝐵𝐶𝑆 podstawa 𝐴𝐵𝐶 jest trójkątem równobocznym. Długość okręgu opisanego na podstawie 𝐴𝐵𝐶 jest równa 6√2𝜋, a cosinus kąta między krawędziami bocznymi 𝑆𝐵 i 𝑆𝐶 jest równy 5 9 . Oblicz długość krawędzi podstawy 𝑨𝑩𝑪 oraz cosinus kąta między ścianami bocznymi 𝑺𝑨𝑪 i 𝑺𝑩𝑪 tego ostrosłupa. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "X.R2",
+    "now": "X.R2",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza przekroje […] ostrosłupów prawidłowych oraz oblicza ich pola, także z wykorzystaniem trygonometrii."
+   }
+  ],
+  "codes_2024": [
+   "X.R2"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "9",
+  "points": 5,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W kartezjańskim układzie współrzędnych (𝑥, 𝑦) punkty 𝐴= (1, −1) oraz 𝐵= (4, 0) są wierzchołkami trójkąta 𝐴𝐵𝐶, w którym |𝐶𝐴| = |𝐶𝐵|. Jedno z ramion trójkąta 𝐴𝐵𝐶 zawiera się w prostej o równaniu 𝑥+ 2𝑦−4 = 0. Na boku 𝐴𝐶 tego trójkąta obrano taki punkt 𝑀, że |𝐴𝑀| ∶|𝑀𝐶| = 1 ∶4. Wyznacz równanie okręgu, który ma środek w punkcie 𝑴 i przechodzi przez punkt 𝑪. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "IX.R3",
+    "now": "IX.R3",
+    "level": "PR",
+    "score": 1.0,
+    "text": "zna pojęcie wektora i oblicza jego współrzędne oraz długość, dodaje wektory i mnoży wektor przez liczbę, oba te działania wykonuje zarówno analitycznie, jak i geometrycznie;"
+   },
+   {
+    "cited": "IX.R4",
+    "now": "IX.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "wyznacza równanie prostej prostopadłej do zadanej prostej i prostej stycznej do zadanego okręgu."
+   }
+  ],
+  "codes_2024": [
+   "IX.R3",
+   "IX.R4"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "10",
+  "points": 5,
+  "general": [
+   "III"
+  ],
+  "proof": false,
+  "statement": "Wyznacz wszystkie rzeczywiste wartości parametru 𝒎, gdzie 𝒎≠𝟎, dla których funkcja kwadratowa 𝒇 określona wzorem 𝒇(𝒙) = 𝒎𝟐⋅𝒙𝟐−𝟐𝒎𝒙−𝒎+ 𝟏 ma dwa różne miejsca zerowe 𝒙𝟏 oraz 𝒙𝟐 należące do przedziału (−𝟐, 𝟐). Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "III.R5",
+    "now": "III.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami […]."
+   }
+  ],
+  "codes_2024": [
+   "III.R5"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "11",
+  "points": 6,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "W czworokącie 𝐴𝐵𝐶𝐷 są dane: |𝐴𝐵| = 9, |𝐴𝐷| = 10 oraz |∡𝐵𝐴𝐷| = 60°. W ten czworokąt wpisano okrąg oraz na tym czworokącie opisano okrąg (zobacz rysunek). Oblicz długości boków 𝑩𝑪 i 𝑪𝑫 oraz pole czworokąta 𝑨𝑩𝑪𝑫. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "VIII.R1",
+    "now": "VIII.R1",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu."
+   }
+  ],
+  "codes_2024": [
+   "VIII.R1"
+  ],
+  "pr_only": true
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "12.1",
+  "points": 3,
+  "general": [
+   "II",
+   "IV"
+  ],
+  "proof": true,
+  "statement": "Wykaż, że pole 𝑷 (wyrażone w metrach kwadratowych) trójkątnego kwietnika o podstawie długości 𝒙 metrów jest określone wzorem 𝑷(𝒙) = 𝟐𝒙𝟑 𝒙𝟐−𝟏𝟔",
+  "requirements": [
+   {
+    "cited": "VIII.8",
+    "now": "VIII.8",
+    "level": "PP",
+    "score": 1.0,
+    "text": "korzysta z cech podobieństwa trójkątów."
+   }
+  ],
+  "codes_2024": [
+   "VIII.8"
+  ],
+  "pr_only": false
+ },
+ {
+  "exam": "2026-maj-matura",
+  "task": "12.2",
+  "points": 4,
+  "general": [
+   "IV"
+  ],
+  "proof": false,
+  "statement": "Pole 𝑃 trójkątnego kwietnika o podstawie długości 𝑥 metrów jest określone wzorem 𝑃(𝑥) = 2𝑥3 𝑥2 −16 dla każdego 𝑥∈(4, 10]. Wyznacz długość 𝒙 podstawy trójkątnego kwietnika, dla której pole tego kwietnika jest najmniejsze. Oblicz to najmniejsze pole. Zapisz obliczenia.",
+  "requirements": [
+   {
+    "cited": "XIII.R4",
+    "now": "XIII.R4",
+    "level": "PR",
+    "score": 1.0,
+    "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu, ilorazu […];"
+   },
+   {
+    "cited": "XIII.R5",
+    "now": "XIII.R5",
+    "level": "PR",
+    "score": 1.0,
+    "text": "stosuje pochodną do badania monotoniczności funkcji;"
+   },
+   {
+    "cited": "XIII.R6",
+    "now": "XIII.R6",
+    "level": "PR",
+    "score": 1.0,
+    "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+   }
+  ],
+  "codes_2024": [
+   "XIII.R4",
+   "XIII.R5",
+   "XIII.R6"
+  ],
+  "pr_only": true
+ }
+]

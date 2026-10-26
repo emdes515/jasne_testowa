@@ -288,7 +288,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
               className={`p-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 flaggedTasks[currentTask.id]
                   ? 'bg-amber-500/20 border-amber-500 text-amber-600 dark:text-amber-400'
-                  : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
               }`}
             >
               <Flag className="w-3.5 h-3.5" />
@@ -314,7 +314,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
         <TaskVisualAssetCard task={currentTask} />
 
         {/* Treść pytania */}
-        <div className="text-sm font-semibold text-slate-900 dark:text-white leading-relaxed">
+        <div className="text-sm font-semibold text-slate-900 dark:text-text-strong leading-relaxed">
           {currentTask.question}
         </div>
 
@@ -329,8 +329,8 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 }
                 className={`w-full text-left p-3.5 rounded-xl border text-xs transition-all cursor-pointer ${
                   userSingleChoice[currentTask.id] === optIdx
-                    ? 'border-amber-500 bg-amber-500/10 text-slate-900 dark:text-white font-medium ring-1 ring-amber-500/30'
-                    : 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850'
+                    ? 'border-amber-500 bg-amber-500/10 text-slate-900 dark:text-text-strong font-medium ring-1 ring-amber-500/30'
+                    : 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
                 {opt}
@@ -366,7 +366,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                             className={`px-2.5 py-1 rounded text-xs font-bold cursor-pointer transition-colors ${
                               taskAnswers[i] === true
                                 ? 'bg-amber-500 text-slate-950'
-                                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                             }`}
                           >
                             P
@@ -381,7 +381,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                             className={`px-2.5 py-1 rounded text-xs font-bold cursor-pointer transition-colors ${
                               taskAnswers[i] === false
                                 ? 'bg-amber-500 text-slate-950'
-                                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                             }`}
                           >
                             F
@@ -409,7 +409,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                   ? 'Wpisz notatkę syntetyzującą (60–90 słów na podstawie obu tekstów źródłowych)...'
                   : 'Wpisz swoją odpowiedź...'
               }
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 leading-relaxed font-sans"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 text-xs text-slate-900 dark:text-text-strong placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 leading-relaxed font-sans"
             />
             {currentTask.taskType === 'synthesis_note' && (
               <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1">
@@ -464,7 +464,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 pb-12">
+    <div className="w-full min-w-0 max-w-7xl mx-auto space-y-6 pb-12">
       {/* Pasek Górny Symulatora CKE */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-sm dark:shadow-xl">
         <div className="flex items-center gap-3">
@@ -482,9 +482,9 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <h1 className="text-base sm:text-lg font-bold text-slate-900 dark:text-text-strong flex items-center gap-2">
               Oficjalny Symulator Maturalny Formuła 2023
-              <span className="text-xs px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-300 font-normal border border-rose-500/20 dark:border-rose-500/30">
+              <span className="text-xs px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-300 font-normal border border-rose-500/20 dark:border-rose-500/30 whitespace-nowrap">
                 240 min • 60 pkt
               </span>
             </h1>
@@ -511,7 +511,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           {!isFinished && (
             <button
               onClick={handleFinishExam}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+              className="px-4 min-h-[40px] whitespace-nowrap rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
             >
               Zakończ arkusz
             </button>
@@ -525,16 +525,16 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           onClick={() => setActiveBooklet(1)}
           className={`p-4 rounded-xl border text-left transition-all flex items-center justify-between cursor-pointer ${
             activeBooklet === 1
-              ? 'border-amber-500/80 bg-amber-500/10 text-slate-900 dark:text-white shadow-md'
-              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850'
+              ? 'border-amber-500/80 bg-amber-500/10 text-slate-900 dark:text-text-strong shadow-md'
+              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Zeszyt 1</span>
-            <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Test: Język w użyciu & Epoki</div>
+            <div className="text-sm font-bold text-slate-900 dark:text-text-strong mt-0.5">Test: Język w użyciu & Epoki</div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Zadania 1–{allExamTasks.length} • Pula: 25 punktów</div>
           </div>
-          <span className="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20">
+          <span className="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20 whitespace-nowrap shrink-0">
             25 pkt
           </span>
         </button>
@@ -543,16 +543,16 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           onClick={() => setActiveBooklet(2)}
           className={`p-4 rounded-xl border text-left transition-all flex items-center justify-between cursor-pointer ${
             activeBooklet === 2
-              ? 'border-rose-500/80 bg-rose-500/10 text-slate-900 dark:text-white shadow-md'
-              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850'
+              ? 'border-rose-500/80 bg-rose-500/10 text-slate-900 dark:text-text-strong shadow-md'
+              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">Zeszyt 2</span>
-            <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Wypracowanie maturalne</div>
+            <div className="text-sm font-bold text-slate-900 dark:text-text-strong mt-0.5">Wypracowanie maturalne</div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Wybór tematu • Min. 300 słów lub konspekt</div>
           </div>
-          <span className="text-xs font-mono px-2.5 py-1 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold border border-rose-500/20">
+          <span className="text-xs font-mono px-2.5 py-1 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold border border-rose-500/20 whitespace-nowrap shrink-0">
             35 pkt
           </span>
         </button>
@@ -609,7 +609,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 title="Otwórz pełną czytelnię tekstów źródłowych CKE"
               >
                 <BookOpen className="w-3.5 h-3.5" />
-                <span>📖 Teksty CKE</span>
+                <span>Teksty CKE</span>
               </button>
 
               {allExamTasks.map((t, i) => {
@@ -728,7 +728,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
               <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">
                 Zeszyt 2 • Wypracowanie problemowe (35 pkt)
               </span>
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white mt-1">Wybór Tematu i Strategia Pracy</h2>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-text-strong mt-1">Wybór Tematu i Strategia Pracy</h2>
             </div>
 
             {/* Przełącznik Trybu: Konspekt vs Pełny Tekst */}
@@ -738,7 +738,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   essayMode === 'blueprint'
                     ? 'bg-rose-500 text-white shadow'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 Szybki Konspekt Interaktywny
@@ -748,7 +748,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   essayMode === 'fulltext'
                     ? 'bg-rose-500 text-white shadow'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 Napisz pełne wypracowanie (300+ słów)
@@ -762,12 +762,12 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
               onClick={() => setEssayThemeChoice(1)}
               className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                 essayThemeChoice === 1
-                  ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-white ring-1 ring-rose-500/40'
-                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                  ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-text-strong ring-1 ring-rose-500/40'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
               <span className="text-xs font-bold text-rose-600 dark:text-rose-400">Temat 1 (CKE Maj 2024)</span>
-              <div className="text-sm font-semibold text-slate-900 dark:text-white mt-1">
+              <div className="text-sm font-semibold text-slate-900 dark:text-text-strong mt-1">
                 Bunt i jego konsekwencje dla człowieka.
               </div>
             </button>
@@ -776,12 +776,12 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
               onClick={() => setEssayThemeChoice(2)}
               className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                 essayThemeChoice === 2
-                  ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-white ring-1 ring-rose-500/40'
-                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                  ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-text-strong ring-1 ring-rose-500/40'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
               <span className="text-xs font-bold text-rose-600 dark:text-rose-400">Temat 2 (CKE Maj 2024)</span>
-              <div className="text-sm font-semibold text-slate-900 dark:text-white mt-1">
+              <div className="text-sm font-semibold text-slate-900 dark:text-text-strong mt-1">
                 Jak relacja z drugą osobą kształtuje człowieka?
               </div>
             </button>
@@ -808,8 +808,8 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                       onClick={() => setSelectedThesisIndex(i)}
                       className={`w-full text-left p-3 rounded-lg border text-xs transition-all cursor-pointer ${
                         selectedThesisIndex === i
-                          ? 'border-emerald-500 bg-emerald-500/15 text-emerald-950 dark:text-white font-medium'
-                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                          ? 'border-emerald-500 bg-emerald-500/15 text-emerald-950 dark:text-text-strong font-medium'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                     >
                       {th}
@@ -832,7 +832,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                         className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                           selectedStarBook === book
                             ? 'border-rose-500 bg-rose-500/15 text-rose-800 dark:text-rose-200'
-                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                         }`}
                       >
                         {book}
@@ -856,7 +856,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                       className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                         selectedContext === ctx
                           ? 'border-amber-500 bg-amber-500/15 text-amber-800 dark:text-amber-200'
-                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                     >
                       {ctx}
@@ -882,7 +882,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer ${
                       essayTab === 'czystopis'
                         ? 'bg-rose-500 text-white'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                     }`}
                   >
                     Czystopis (właściwa praca)
@@ -892,7 +892,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer ${
                       essayTab === 'brudnopis'
                         ? 'bg-rose-500 text-white'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                     }`}
                   >
                     Brudnopis (notatki / szkic)
@@ -919,7 +919,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                   value={userEssayText}
                   onChange={(e) => setUserEssayText(e.target.value)}
                   placeholder="Napisz wypracowanie problemowe. Pamiętaj o: tezie, odwołaniu do lektury obowiązkowej z gwiazdką, innym utworze literackim oraz kontekstach..."
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-4 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-rose-500 leading-relaxed font-sans"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-4 text-xs text-slate-900 dark:text-text-strong placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-rose-500 leading-relaxed font-sans"
                 />
               ) : (
                 <textarea
@@ -942,7 +942,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
             <div className="inline-flex p-3 rounded-full bg-emerald-500/20 text-emerald-500 mb-1">
               <Award className="w-8 h-8" />
             </div>
-            <h2 className="text-2xl font-black text-slate-900 dark:text-white">Wynik Symulacji Egzaminacyjnej CKE</h2>
+            <h2 className="text-2xl font-black text-slate-900 dark:text-text-strong">Wynik Symulacji Egzaminacyjnej CKE</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Formuła 2023 • Próg zdawalności: 30% (18 punktów)
             </p>
@@ -963,14 +963,14 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
             </div>
             <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-50 dark:from-emerald-950/60 to-white dark:to-slate-900 border border-emerald-500/40">
               <div className="text-xs text-emerald-700 dark:text-emerald-300 font-semibold">Wynik Całkowity</div>
-              <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
+              <div className="text-2xl font-black text-slate-900 dark:text-text-strong mt-1">
                 {examResult.total} / 60 pkt ({examResult.percent}%)
               </div>
             </div>
           </div>
 
           <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-2 text-slate-700 dark:text-slate-300">
-            <div className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <div className="font-bold text-slate-900 dark:text-text-strong flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
               <span>Status egzaminu: {examResult.passed ? 'ZDANY (Gratulacje!)' : 'NIEZDANY'}</span>
             </div>
@@ -984,7 +984,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
               <button
                 type="button"
                 onClick={onExit}
-                className="px-6 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold text-xs hover:opacity-90 transition cursor-pointer shadow-md"
+                className="px-6 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-text-strong dark:text-slate-950 font-bold text-xs hover:opacity-90 transition cursor-pointer shadow-md"
               >
                 Wróć do pulpitu
               </button>

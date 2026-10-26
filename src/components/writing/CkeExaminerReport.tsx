@@ -159,7 +159,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
                 }}
                 className={`cursor-pointer transition-all duration-200 inline rounded-sm px-1 py-0.5 mx-0.5 border-b-2 ${
                   isSelected
-                    ? 'bg-primary/20 border-primary text-white font-medium ring-2 ring-primary/40'
+                    ? 'bg-primary/20 border-primary text-text-strong font-medium ring-2 ring-primary/40'
                     : 'bg-amber-500/10 hover:bg-amber-500/20 border-amber-400 text-amber-100'
                 }`}
                 title="Kliknij, aby zobaczyć uwagę egzaminatora"
@@ -186,7 +186,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
               <button
                 type="button"
                 onClick={() => setSelectedAnnotationIndex(null)}
-                className="text-text-muted hover:text-white text-xs font-semibold px-2 py-0.5 rounded-lg hover:bg-white/5 cursor-pointer"
+                className="text-text-muted hover:text-text-strong text-xs font-semibold px-2 py-0.5 rounded-lg hover:bg-veil cursor-pointer"
               >
                 Zamknij
               </button>
@@ -254,7 +254,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
               )}
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-black text-white font-display tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-black text-text-strong font-display tracking-tight">
               {gradeTitle || `${score} / ${maxPoints} PKT – Raport Egzaminacyjny`}
             </h2>
 
@@ -266,8 +266,8 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
           </div>
 
           {/* Główny widget punktacji */}
-          <div className="flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-[#070A0F]/80 border border-surface-border shrink-0 text-center min-w-[150px] shadow-inner">
-            <div className="text-3xl sm:text-4xl font-black font-display text-white tracking-tight flex items-baseline justify-center gap-1">
+          <div className="flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-surface-bg/80 border border-surface-border shrink-0 text-center min-w-[150px] shadow-inner">
+            <div className="text-3xl sm:text-4xl font-black font-display text-text-strong tracking-tight flex items-baseline justify-center gap-1">
               <span className={scorePercent >= 80 ? 'text-emerald-400' : scorePercent >= 50 ? 'text-primary' : 'text-rose-400'}>
                 {score}
               </span>
@@ -286,8 +286,8 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
             onClick={() => setActiveTab('report')}
             className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer flex items-center gap-1.5 shrink-0 ${
               activeTab === 'report'
-                ? 'bg-primary text-[#070A0F] shadow-sm'
-                : 'text-text-secondary hover:text-white hover:bg-white/5'
+                ? 'bg-primary text-on-primary shadow-sm'
+                : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
           >
             <Lightbulb size={15} />
@@ -299,8 +299,8 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
             onClick={() => setActiveTab('criteria')}
             className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer flex items-center gap-1.5 shrink-0 ${
               activeTab === 'criteria'
-                ? 'bg-primary text-[#070A0F] shadow-sm'
-                : 'text-text-secondary hover:text-white hover:bg-white/5'
+                ? 'bg-primary text-on-primary shadow-sm'
+                : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
           >
             <Award size={15} />
@@ -312,8 +312,8 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
             onClick={() => setActiveTab('text')}
             className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer flex items-center gap-1.5 shrink-0 ${
               activeTab === 'text'
-                ? 'bg-primary text-[#070A0F] shadow-sm'
-                : 'text-text-secondary hover:text-white hover:bg-white/5'
+                ? 'bg-primary text-on-primary shadow-sm'
+                : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
           >
             <FileText size={15} />
@@ -349,7 +349,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
             <div className="p-5 sm:p-6 rounded-2xl bg-surface-card border border-surface-border space-y-3">
               <div className="flex items-center gap-2">
                 <Zap size={18} className="text-amber-400" />
-                <h3 className="text-sm font-black text-white uppercase tracking-wider font-display">
+                <h3 className="text-sm font-black text-text-strong uppercase tracking-wider font-display">
                   Podnieś wynik na 100%: Modelowe Ulepszenie Zdania
                 </h3>
               </div>
@@ -379,7 +379,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
 
               {modelImprovement.explanation && (
                 <p className="text-xs text-text-secondary mt-2 bg-white/[0.02] p-2.5 rounded-lg border border-surface-border/50">
-                  💡 <strong>Dlaczego to działa lepiej:</strong> {modelImprovement.explanation}
+                  <strong>Dlaczego to działa lepiej:</strong> {modelImprovement.explanation}
                 </p>
               )}
             </div>
@@ -456,7 +456,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
               return (
                 <div key={key} className="p-5 rounded-2xl bg-surface-card border border-surface-border space-y-3">
                   <div className="flex items-center justify-between gap-4">
-                    <h4 className="text-sm font-bold text-white font-sans">
+                    <h4 className="text-sm font-bold text-text-strong font-sans">
                       {meta.title}
                     </h4>
                     <div className="flex items-center gap-2 shrink-0">
@@ -499,7 +499,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
                           return (
                             <div key={bp.pointIndex} className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border/60 text-xs space-y-1">
                               <div className="flex items-center justify-between gap-1">
-                                <span className="font-bold text-white">Kropka {bp.pointIndex}: {bp.label}</span>
+                                <span className="font-bold text-text-strong">Kropka {bp.pointIndex}: {bp.label}</span>
                                 <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold border ${statusConfig.badge}`}>
                                   {statusConfig.label}
                                 </span>
@@ -540,7 +540,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
               triggerHaptic('medium');
               onRetryOrEdit();
             }}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-surface-border hover:border-primary/50 text-text-secondary hover:text-white font-bold text-xs sm:text-sm transition cursor-pointer active:scale-95"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-surface-border hover:border-primary/50 text-text-secondary hover:text-text-strong font-bold text-xs sm:text-sm transition cursor-pointer active:scale-95"
           >
             <RotateCcw size={16} />
             Popraw tekst w edytorze
@@ -554,7 +554,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
               triggerHaptic('success');
               onContinue();
             }}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-[#070A0F] font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-primary/20 active:scale-95 ml-auto"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-primary/20 active:scale-95 ml-auto"
           >
             Kontynuuj
             <ArrowRight size={16} />

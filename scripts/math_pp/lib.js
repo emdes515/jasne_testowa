@@ -296,6 +296,33 @@ export function pf(o) {
   };
 }
 
+/**
+ * Zadanie otwarte (poziom rozszerzony) oceniane etapami z zasad oceniania CKE.
+ * o = { title, q, stages:[[pkt, etykieta, kryterium]], zero?:[], steps[], trap, tip, answer, proof? }
+ *  - stages: rosnąco, ostatni etap = komplet punktów
+ *  - answer: odpowiedź końcowa (LaTeX w $...$)
+ */
+export function open(o) {
+  const pts = o.stages.map(([p]) => p);
+  if (!pts.length || pts.some((p, i) => !Number.isInteger(p) || p <= (i ? pts[i - 1] : 0))) {
+    throw new Error(`open: etapy muszą mieć rosnące punkty w: ${o.q}`);
+  }
+  if (!o.answer || !o.steps?.length) throw new Error(`open: brak odpowiedzi lub kroków w: ${o.q}`);
+  return {
+    kind: 'open',
+    title: o.title,
+    q: o.q,
+    stages: o.stages,
+    zero: o.zero || [],
+    steps: o.steps,
+    trap: o.trap,
+    tip: o.tip,
+    answer: o.answer,
+    proof: Boolean(o.proof),
+    diagram: o.diagram
+  };
+}
+
 /** Zamienia wynik konstruktora na finalny obiekt zadania (tasowanie opcji, wyjaśnienie). */
 export function finalize(raw, meta, r) {
   const base = {
@@ -317,6 +344,25 @@ export function finalize(raw, meta, r) {
       content: raw.q,
       correct_answer: ansStr,
       explanation: explain(raw.steps, raw.trap, `Prawidłowa odpowiedź to **${ansStr}**.`),
+      matura_tip: raw.tip,
+      ...(raw.diagram ? { diagram: raw.diagram } : {})
+    };
+  }
+  if (raw.kind === 'open') {
+    const maxPoints = raw.stages[raw.stages.length - 1][0];
+    const rubric_stages = raw.stages.map(([points, label, criterion]) => ({ points, label, criterion }));
+    return {
+      ...base,
+      points: maxPoints,
+      maxPoints,
+      type: raw.proof ? 'OPEN_PROOF' : 'OPEN_CALCULATION',
+      content: raw.q,
+      correct_answer: raw.answer,
+      rubric_stages,
+      ...(raw.zero.length ? { zero_rules: raw.zero } : {}),
+      scoring_key: [...rubric_stages.map((s) => `${s.points} pkt – ${s.criterion}`), `Odpowiedź: ${raw.answer}`].join('\n'),
+      official_solution_steps: raw.steps.map((description, i) => ({ step_num: i + 1, description })),
+      explanation: explain(raw.steps, raw.trap, `Odpowiedź: ${raw.answer}`),
       matura_tip: raw.tip,
       ...(raw.diagram ? { diagram: raw.diagram } : {})
     };

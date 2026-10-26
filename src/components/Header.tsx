@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
 import { formatPromoSeconds } from '../services/promotionService';
-import { useTheme } from '../services/themeManager';
+import { useTheme, LIGHT_THEME_READY } from '../services/themeManager';
 import { JasneLogo } from './ui/JasneLogo';
 
 export interface HeaderProps {
@@ -30,6 +30,12 @@ export interface HeaderProps {
   onOpenGuestPromo?: () => void;
   onOpenDevHub?: () => void;
   onOpenBlikModal?: () => void;
+}
+
+/** Skraca duże salda na wąskim nagłówku mobilnym: 12 500 → 12,5k */
+function formatCompactCoins(coins: number): string {
+  if (coins < 10000) return String(coins);
+  return `${(Math.floor(coins / 100) / 10).toLocaleString('pl-PL')}k`;
 }
 
 export function Header({ 
@@ -97,7 +103,7 @@ export function Header({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-surface-bg/90 backdrop-blur-2xl border-b border-surface-border px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between relative shadow-lg select-none">
+    <header className="sticky top-0 z-40 bg-surface-bg/90 backdrop-blur-2xl border-b border-surface-border px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 shadow-lg select-none">
       {/* LEWA STRONA: Klikalny Brand & Logo JASNE. (widoczny tylko na mobile/tablecie, na PC ukryty bo jest w stałym sidebarze) */}
       <button 
         id="header-brand-logo"
@@ -110,7 +116,7 @@ export function Header({
         aria-label="Pulpit główny JASNE."
       >
         <JasneLogo variant="icon" size={24} glow={true} className="group-hover:scale-105 transition-transform duration-200 shrink-0" />
-        <div className="flex flex-col text-left min-w-0">
+        <div className="hidden xs:flex flex-col text-left min-w-0">
           <span className="text-xs sm:text-base font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
             JASNE<span className="text-primary">.</span>
           </span>
@@ -123,25 +129,26 @@ export function Header({
       {/* CENTRUM: Selektor przedmiotu + Przycisk Lobby */}
       <div className="flex items-center gap-1 sm:gap-1.5 min-w-0 shrink">
         {/* MOBILNY KOMPAKTOWY PRZEŁĄCZNIK PRZEDMIOTU (< 640px) */}
-        <div className="sm:hidden relative shrink-0">
+        <div className="sm:hidden relative min-w-0">
           <button
             type="button"
             onClick={() => {
               triggerHaptic('light');
               setIsMobileSubjectSheetOpen(true);
             }}
-            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full bg-surface-card border border-primary/40 text-text-primary text-xs font-bold transition-all active:scale-95 shadow-xs shrink-0"
+            aria-label={`Przedmiot: ${activeSubjectInfo.label}. Zmień przedmiot`}
+            className="tap-44 flex items-center gap-1 px-2.5 h-9 max-w-full rounded-full bg-surface-card border border-primary/40 text-text-primary text-xs font-bold transition-all active:scale-95 shadow-xs min-w-0"
           >
             {isMathActive ? (
-              <span className="w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
-                <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <span className="w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary text-text-accent inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+                <svg className="w-3.5 h-2.5 text-text-accent" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 11.5l3 4 4.5-12.5h12.5" />
                   <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
                 </svg>
               </span>
             ) : isPolActive ? (
               <span
-                className="w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+                className="w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-text-accent"
                 style={{
                   fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
                 }}
@@ -149,7 +156,7 @@ export function Header({
                 P
               </span>
             ) : (
-              <span className="w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+              <span className="w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
                 <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
                   <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
                   <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />
@@ -159,7 +166,11 @@ export function Header({
                 </svg>
               </span>
             )}
-            <span className="text-amber-200 font-extrabold text-[11px] truncate max-w-[70px] xs:max-w-[95px]">{activeSubjectInfo.shortLabel}</span>
+            {/* Pełna nazwa mieści się nawet na 360px; skrót tylko gdy miejsce zabiera przycisk DEV */}
+            <span className={`${onOpenDevHub ? 'hidden xs:inline' : ''} text-amber-200 font-extrabold text-xs truncate min-w-0`}>{activeSubjectInfo.shortLabel}</span>
+            {onOpenDevHub && (
+              <span className="xs:hidden text-amber-200 font-extrabold text-xs">{activeSubjectInfo.shortLabel.slice(0, 3)}</span>
+            )}
             <ChevronDown size={11} className="text-text-muted shrink-0" />
           </button>
         </div>
@@ -186,8 +197,8 @@ export function Header({
                 transition={{ type: 'spring', stiffness: 440, damping: 30 }}
               />
             )}
-            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
-              <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary text-text-accent inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+              <svg className="w-3.5 h-2.5 text-text-accent" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 11.5l3 4 4.5-12.5h12.5" />
                 <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
               </svg>
@@ -217,7 +228,7 @@ export function Header({
               />
             )}
             <span
-              className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+              className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-text-accent"
               style={{
                 fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
               }}
@@ -248,7 +259,7 @@ export function Header({
                 transition={{ type: 'spring', stiffness: 440, damping: 30 }}
               />
             )}
-            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
               <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
                 {/* Przekątne - podkład krzyża św. Andrzeja */}
                 <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
@@ -338,7 +349,7 @@ export function Header({
       {/* PRAWA STRONA: Skarbiec i Profil gracza */}
       <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
         {/* MOBILNA ZINTEGROWANA PIGUŁKA GAMIFIKACJI (< 640px) */}
-        <div className="sm:hidden flex items-center bg-surface-card border border-white/10 rounded-full px-1.5 py-0.5 shadow-sm text-xs font-mono font-bold shrink-0">
+        <div className="sm:hidden flex items-center h-9 bg-surface-card border border-surface-border rounded-full px-0.5 shadow-sm text-xs font-mono font-bold shrink-0">
           {/* Serca */}
           <button
             type="button"
@@ -346,14 +357,13 @@ export function Header({
               triggerHaptic('light');
               setShowHeartsPopup(prev => !prev);
             }}
-            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-rose-400 active:scale-95 transition"
+            className="tap-44 flex items-center gap-1 px-1.5 h-full rounded-full text-rose-400 active:scale-95 transition"
             title={`Serca: ${heartsData.hearts}/${heartsData.maxHearts}`}
+            aria-label={heartsData.isPro ? 'Serca: bez limitu' : `Serca: ${heartsData.hearts} z ${heartsData.maxHearts}`}
           >
-            <Heart size={12} className={heartsData.hearts > 0 ? "text-rose-500 fill-rose-500" : "text-rose-500"} />
-            <span className="text-[11px] leading-none font-black">{heartsData.isPro ? '∞' : heartsData.hearts}</span>
+            <Heart size={13} className={heartsData.hearts > 0 ? "text-rose-500 fill-rose-500" : "text-rose-500"} />
+            <span className="text-xs leading-none font-black tabular-nums">{heartsData.isPro ? '∞' : heartsData.hearts}</span>
           </button>
-
-          <span className="text-white/15 text-[10px] select-none">•</span>
 
           {/* Streak */}
           <button
@@ -362,14 +372,13 @@ export function Header({
               triggerHaptic('light');
               if (onProfileClick) onProfileClick();
             }}
-            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[#F97316] active:scale-95 transition"
+            className="tap-44 flex items-center gap-1 px-1.5 h-full rounded-full text-[#F97316] active:scale-95 transition"
             title={`Passa: ${state.streakDays || 0} dni`}
+            aria-label={`Passa: ${state.streakDays || 0} dni z rzędu`}
           >
-            <Flame size={12} className="text-[#F97316] fill-[#F97316]" />
-            <span className="text-[11px] leading-none font-black">{state.streakDays || 0}</span>
+            <Flame size={13} className="text-[#F97316] fill-[#F97316]" />
+            <span className="text-xs leading-none font-black tabular-nums">{state.streakDays || 0}</span>
           </button>
-
-          <span className="text-white/15 text-[10px] select-none">•</span>
 
           {/* Monety */}
           <button
@@ -380,16 +389,17 @@ export function Header({
                 onOpenBlikModal();
               }
             }}
-            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-primary active:scale-95 transition"
+            className="tap-44 flex items-center gap-1 px-1.5 h-full rounded-full text-primary active:scale-95 transition"
             title={`Monety: ${state.coins}`}
+            aria-label={`Monety: ${state.coins}. Doładuj`}
           >
-            <Coins size={12} className="text-primary" />
-            <span className="text-[11px] leading-none font-black">{state.coins}</span>
+            <Coins size={13} className="text-primary" />
+            <span className="text-xs leading-none font-black tabular-nums">{formatCompactCoins(state.coins)}</span>
           </button>
         </div>
 
         {/* Wskaźnik Serc (Desktop >= 640px) */}
-        <div className="relative hidden sm:block">
+        <div className="sm:relative">
           <button 
             id="header-hearts-button"
             onClick={() => {
@@ -424,7 +434,7 @@ export function Header({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full right-0 mt-2 z-50 w-72 bg-surface-elevated border border-surface-border rounded-2xl p-4 shadow-2xl text-left"
+                  className="absolute top-full right-3 sm:right-0 mt-2 z-50 w-72 max-w-[calc(100vw-1.5rem)] bg-surface-elevated border border-surface-border rounded-2xl p-4 shadow-2xl text-left"
                 >
                   <div className="flex items-center justify-between pb-3 border-b border-surface-border">
                     <div className="flex items-center gap-1.5">
@@ -478,7 +488,7 @@ export function Header({
                         className={`w-full py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-between transition ${
                           state.coins >= HEARTS_REFILL_COIN_COST
                             ? 'bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-emerald-300 cursor-pointer'
-                            : 'bg-white/5 border border-white/5 text-slate-500 cursor-not-allowed opacity-75'
+                            : 'bg-veil border border-hairline-soft text-slate-500 cursor-not-allowed opacity-75'
                         }`}
                       >
                         <span>Uzupełnij do pełna</span>
@@ -495,7 +505,7 @@ export function Header({
                           setShowHeartsPopup(false);
                           onOpenParentSponsor();
                         }}
-                        className="w-full py-2.5 px-3 rounded-xl text-xs font-black bg-gradient-to-r from-[#FF8800] to-[#FFB800] hover:brightness-110 text-slate-950 flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md shadow-amber-500/20"
+                        className="w-full py-2.5 px-3 rounded-xl text-xs font-black bg-gradient-to-r from-[#FF8800] to-primary hover:brightness-110 text-slate-950 flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md shadow-amber-500/20"
                       >
                         <Users size={14} className="fill-slate-950" />
                         <span>Poproś rodzica o PRO (BLIK)</span>
@@ -558,7 +568,8 @@ export function Header({
         )}
 
         {/* Przełącznik Motywu (Szybki 1-tap na desktopie, na mobile w profilu) */}
-        <button 
+{LIGHT_THEME_READY && (
+                <button 
           id="header-theme-toggle"
           type="button"
           onClick={() => {
@@ -575,6 +586,7 @@ export function Header({
             <Moon size={15} className="text-amber-600 hover:-rotate-12 transition-transform duration-200" />
           )}
         </button>
+        )}
 
         {/* Wskaźnik 3: Profil & Poziom Gracza */}
         <button 
@@ -585,11 +597,12 @@ export function Header({
           }}
           onMouseEnter={() => setShowXpTooltip(true)}
           onMouseLeave={() => setShowXpTooltip(false)}
-          className="flex items-center gap-1.5 sm:gap-2 p-0.5 sm:p-1 sm:pl-1 sm:pr-2.5 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm shrink-0"
+          aria-label="Twój profil i postęp XP"
+          className="tap-44 flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1 sm:pl-1 sm:pr-2.5 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm shrink-0"
           title="Twój profil i postęp XP"
         >
           {/* Avatar z subtelnym bursztynowym obwodem */}
-          <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-[#FFB800] to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
+          <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-primary to-jasne-dark p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
             <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center">
               <User size={12} className="text-primary sm:w-[13px] sm:h-[13px]" />
             </div>
@@ -612,12 +625,12 @@ export function Header({
               triggerHaptic('medium');
               onOpenDevHub();
             }}
-            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 text-[10px] sm:text-xs font-black shadow-[0_0_12px_rgba(16,185,129,0.25)] transition-all cursor-pointer active:scale-95 shrink-0"
+            className="tap-44 flex items-center justify-center gap-1 sm:gap-1.5 w-8 h-8 sm:w-auto sm:h-auto sm:px-3 sm:py-1.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 text-[10px] sm:text-xs font-black shadow-[0_0_12px_rgba(16,185,129,0.25)] transition-all cursor-pointer active:scale-95 shrink-0"
             title="Panel Deweloperski (Pełny Dostęp do Wszystkich Zasobów)"
             aria-label="Panel Deweloperski"
           >
-            <Terminal size={11} className="text-emerald-400 animate-pulse sm:w-[13px] sm:h-[13px]" />
-            <span className="font-mono tracking-wider font-black">DEV</span>
+            <Terminal size={13} className="text-emerald-400" />
+            <span className="hidden sm:inline font-mono tracking-wider font-black">DEV</span>
           </button>
         )}
       </div>
@@ -629,7 +642,7 @@ export function Header({
         title={`Postęp poziomu: ${currentXpInLevel}/1000 XP (${Math.round(xpPercent)}%)`}
       >
         <div 
-          className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] transition-all duration-700 shadow-[0_0_8px_rgba(255,184,0,0.7)]"
+          className="h-full bg-gradient-to-r from-jasne-dark to-primary transition-all duration-700 shadow-[0_0_8px_rgba(255,184,0,0.7)]"
           style={{ width: `${xpPercent}%` }}
         />
       </div>
@@ -666,7 +679,7 @@ export function Header({
               </div>
               <div className="w-full h-1.5 bg-surface-bg rounded-full overflow-hidden mb-2">
                 <div 
-                  className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] rounded-full shadow-[0_0_8px_#FFB800]" 
+                  className="h-full bg-gradient-to-r from-jasne-dark to-primary rounded-full shadow-[0_0_8px_#FFB800]" 
                   style={{ width: `${xpPercent}%` }}
                 />
               </div>
@@ -697,20 +710,20 @@ export function Header({
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 350 }}
-              className="relative z-10 w-full bg-[#0E1522] border-t border-white/10 rounded-t-3xl p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl space-y-3.5"
+              className="relative z-10 w-full bg-surface-panel border-t border-hairline rounded-t-3xl p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl space-y-3.5"
             >
               {/* Uchwyt do przeciągania */}
               <div className="w-10 h-1 bg-white/20 rounded-full mx-auto -mt-1 mb-1" />
               
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-extrabold text-white">Wybierz Przedmiot Maturalny</h3>
+                  <h3 className="text-sm font-extrabold text-text-strong">Wybierz Przedmiot Maturalny</h3>
                   <p className="text-[11px] text-text-muted">Formuła 2023 • Poziom Podstawowy CKE</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsMobileSubjectSheetOpen(false)}
-                  className="p-1.5 rounded-full bg-white/5 text-text-muted hover:text-white"
+                  className="p-1.5 rounded-full bg-veil text-text-muted hover:text-text-strong"
                 >
                   <X size={16} />
                 </button>
@@ -725,19 +738,19 @@ export function Header({
                   className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
                     isMathActive
                       ? 'bg-amber-500/15 border-amber-500/50 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
-                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                      : 'bg-white/[0.03] border-hairline-soft hover:bg-white/[0.06]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-xl bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 shadow-xs">
-                      <svg className="w-4 h-3.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <span className="w-8 h-8 rounded-xl bg-surface-bg border border-primary text-text-accent inline-flex items-center justify-center shrink-0 shadow-xs">
+                      <svg className="w-4 h-3.5 text-text-accent" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M2 11.5l3 4 4.5-12.5h12.5" />
                         <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
                       </svg>
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-white">Matematyka</span>
+                        <span className="font-extrabold text-sm text-text-strong">Matematyka</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">180 min</span>
                       </div>
                       <span className="text-[11px] text-text-muted">15 działów • 75 lekcji • 1500 zadań</span>
@@ -757,12 +770,12 @@ export function Header({
                   className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
                     isPolActive
                       ? 'bg-rose-500/15 border-rose-500/50 shadow-[0_0_15px_rgba(244,63,94,0.15)]'
-                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                      : 'bg-white/[0.03] border-hairline-soft hover:bg-white/[0.06]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <span
-                      className="w-8 h-8 rounded-xl bg-[#070A0F] border border-rose-500 inline-flex items-center justify-center shrink-0 text-base font-bold italic text-rose-400 shadow-xs"
+                      className="w-8 h-8 rounded-xl bg-surface-bg border border-rose-500 inline-flex items-center justify-center shrink-0 text-base font-bold italic text-rose-400 shadow-xs"
                       style={{
                         fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
                       }}
@@ -771,7 +784,7 @@ export function Header({
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-white">Język Polski</span>
+                        <span className="font-extrabold text-sm text-text-strong">Język Polski</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300">240 min</span>
                       </div>
                       <span className="text-[11px] text-text-muted">Epoki literackie • Lektury obowiązkowe • Matura ustna</span>
@@ -791,11 +804,11 @@ export function Header({
                   className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
                     isEngActive
                       ? 'bg-sky-500/15 border-sky-500/50 shadow-[0_0_15px_rgba(56,189,248,0.15)]'
-                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                      : 'bg-white/[0.03] border-hairline-soft hover:bg-white/[0.06]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-xl bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                    <span className="w-8 h-8 rounded-xl bg-surface-bg border border-primary inline-flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
                       <svg className="w-5 h-3.5 block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
                         <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
                         <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />
@@ -806,7 +819,7 @@ export function Header({
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-white">Język Angielski</span>
+                        <span className="font-extrabold text-sm text-text-strong">Język Angielski</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300">120 min</span>
                       </div>
                       <span className="text-[11px] text-text-muted">Gramatyka CKE • Środki językowe • Słownictwo</span>

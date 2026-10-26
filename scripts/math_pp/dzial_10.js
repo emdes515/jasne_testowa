@@ -1,4 +1,5 @@
 import { T, mc, num, pf, pill, fr, par, sq, lin, xm, m, need, gcd, isSquare } from './lib.js';
+import { figPoints } from './figures.js';
 
 const P = (x, y) => m(`(${x}, ${y})`);
 const Pf = (xn, xd, yn, yd) => m(`\\left(${fr(xn, xd)}, ${fr(yn, yd)}\\right)`);
@@ -18,6 +19,7 @@ const midPoint = (r) => {
   const [x1, y1, x2, y2] = [r.int(-9, 9), r.int(-9, 9), r.int(-9, 9), r.int(-9, 9)];
   need((x1 !== x2 || y1 !== y2) && x1 + x2 !== 0 && y1 + y2 !== 0);
   return mc({
+    diagram: figPoints([{ x: x1, y: y1, label: 'A' }, { x: x2, y: y2, label: 'B' }]),
     title: 'Środek odcinka',
     q: T`W kartezjańskim układzie współrzędnych $(x, y)$ dane są punkty $A = (${x1}, ${y1})$ oraz $B = (${x2}, ${y2})$. Środkiem odcinka $AB$ jest punkt`,
     ok: Pf(x1 + x2, 2, y1 + y2, 2),
@@ -34,6 +36,7 @@ const segLength = (r) => {
   const [x2, y2] = [x1 + sx * dx, y1 + sy * dy];
   const d2 = dx * dx + dy * dy;
   return mc({
+    diagram: figPoints([{ x: x1, y: y1, label: 'A' }, { x: x2, y: y2, label: 'B' }]),
     title: 'Długość odcinka',
     q: T`W kartezjańskim układzie współrzędnych $(x, y)$ dane są punkty $A = (${x1}, ${y1})$ oraz $B = (${x2}, ${y2})$. Długość odcinka $AB$ jest równa`,
     ok: m(sq(d2)),
@@ -49,6 +52,7 @@ const segOtherEnd = (r) => {
   need(x1 !== sx || y1 !== sy);
   const [x2, y2] = [2 * sx - x1, 2 * sy - y1];
   return mc({
+    diagram: figPoints([{ x: x1, y: y1, label: 'A' }, { x: sx, y: sy, label: 'S' }]),
     title: 'Drugi koniec odcinka',
     q: T`Punkt $S = (${sx}, ${sy})$ jest środkiem odcinka $AB$, w którym $A = (${x1}, ${y1})$. Punkt $B$ ma współrzędne`,
     ok: P(x2, y2),
@@ -63,6 +67,7 @@ const segOriginDistance = (r) => {
   const [x, y] = [a * r.pick([1, -1]), b * r.pick([1, -1])];
   const d2 = a * a + b * b;
   return mc({
+    diagram: figPoints([{ x: 0, y: 0, label: 'O' }, { x, y, label: 'P' }]),
     title: 'Odległość punktu od początku układu',
     q: T`W kartezjańskim układzie współrzędnych $(x, y)$ dany jest punkt $P = (${x}, ${y})$. Odległość punktu $P$ od początku układu współrzędnych jest równa`,
     ok: m(sq(d2)),

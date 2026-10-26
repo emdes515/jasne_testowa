@@ -212,26 +212,26 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="bg-[#14151D] border border-white/10 rounded-[28px] w-full max-w-xl h-[85vh] flex flex-col shadow-2xl overflow-hidden"
+          className="bg-[#14151D] border border-hairline rounded-[28px] w-full max-w-xl h-[85vh] flex flex-col shadow-2xl overflow-hidden"
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10 bg-[#1A1B24]">
+          <div className="flex items-center justify-between px-5 py-3.5 border-b border-hairline bg-[#1A1B24]">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
                 <Pen size={16} />
               </div>
               <div>
-                <h3 className="text-white font-bold text-sm">Brudnopis do zadań</h3>
-                <p className="text-[#8B8D98] text-xs">Rysuj lub zapisuj szybkie obliczenia</p>
+                <h3 className="text-text-strong font-bold text-sm">Brudnopis do zadań</h3>
+                <p className="text-text-secondary text-xs">Rysuj lub zapisuj szybkie obliczenia</p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="flex bg-white/5 p-0.5 rounded-lg border border-white/5 text-xs">
+              <div className="flex bg-veil p-0.5 rounded-lg border border-hairline-soft text-xs">
                 <button
                   onClick={() => setMode('draw')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
-                    mode === 'draw' ? 'bg-blue-600 text-white' : 'text-[#8B8D98] hover:text-white'
+                    mode === 'draw' ? 'bg-blue-600 text-white' : 'text-text-secondary hover:text-white'
                   }`}
                 >
                   Rysunek
@@ -239,7 +239,7 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
                 <button
                   onClick={() => setMode('notes')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
-                    mode === 'notes' ? 'bg-blue-600 text-white' : 'text-[#8B8D98] hover:text-white'
+                    mode === 'notes' ? 'bg-blue-600 text-white' : 'text-text-secondary hover:text-white'
                   }`}
                 >
                   Notatki
@@ -248,7 +248,7 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
 
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-[#8B8D98] hover:text-white flex items-center justify-center transition-colors ml-2"
+                className="w-8 h-8 rounded-lg bg-veil hover:bg-veil-strong text-text-secondary hover:text-text-strong flex items-center justify-center transition-colors ml-2"
               >
                 <X size={18} />
               </button>
@@ -257,13 +257,13 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
 
           {/* Tools bar (only in draw mode) */}
           {mode === 'draw' && (
-            <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 border-b border-white/5 bg-[#12131A]">
+            <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 border-b border-hairline-soft bg-[#12131A]">
               {/* Pen / Eraser */}
               <div className="flex items-center gap-1">
                 <button
                   onClick={() => setTool('pen')}
                   className={`p-2 rounded-lg transition-colors ${
-                    tool === 'pen' ? 'bg-blue-600 text-white' : 'text-[#8B8D98] hover:bg-white/5 hover:text-white'
+                    tool === 'pen' ? 'bg-blue-600 text-white' : 'text-text-secondary hover:bg-veil hover:text-white'
                   }`}
                   title="Pióro"
                 >
@@ -272,7 +272,7 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
                 <button
                   onClick={() => setTool('eraser')}
                   className={`p-2 rounded-lg transition-colors ${
-                    tool === 'eraser' ? 'bg-blue-600 text-white' : 'text-[#8B8D98] hover:bg-white/5 hover:text-white'
+                    tool === 'eraser' ? 'bg-blue-600 text-white' : 'text-text-secondary hover:bg-veil hover:text-white'
                   }`}
                   title="Gumka"
                 >
@@ -282,7 +282,7 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
 
               {/* Colors */}
               {tool === 'pen' && (
-                <div className="flex items-center gap-1.5 bg-white/5 px-2 py-1 rounded-lg">
+                <div className="flex items-center gap-1.5 bg-veil px-2 py-1 rounded-lg">
                   {colors.map(c => (
                     <button
                       key={c.hex}
@@ -298,13 +298,13 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
 
               {/* Line width */}
               {tool === 'pen' && (
-                <div className="flex items-center gap-1 bg-white/5 px-1.5 py-0.5 rounded-lg text-xs">
+                <div className="flex items-center gap-1 bg-veil px-1.5 py-0.5 rounded-lg text-xs">
                   {[2, 4, 7].map(w => (
                     <button
                       key={w}
                       onClick={() => setLineWidth(w)}
                       className={`px-2 py-1 rounded font-bold ${
-                        lineWidth === w ? 'bg-white/20 text-white' : 'text-[#8B8D98] hover:text-white'
+                        lineWidth === w ? 'bg-white/20 text-text-strong' : 'text-text-secondary hover:text-text-strong'
                       }`}
                     >
                       {w === 2 ? 'S' : w === 4 ? 'M' : 'L'}
@@ -318,7 +318,7 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
                 <button
                   onClick={handleUndo}
                   disabled={history.length === 0}
-                  className="p-2 rounded-lg text-[#8B8D98] hover:text-white hover:bg-white/5 disabled:opacity-30 transition-colors"
+                  className="p-2 rounded-lg text-text-secondary hover:text-text-strong hover:bg-veil disabled:opacity-30 transition-colors"
                   title="Cofnij"
                 >
                   <Undo2 size={15} />
@@ -354,15 +354,15 @@ export function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProps) {
                   value={notes}
                   onChange={(e) => handleNotesChange(e.target.value)}
                   placeholder="Tu możesz wpisywać swoje równania, założenia lub wyniki cząstkowe...&#10;np. Δ = b² - 4ac = 16 - 12 = 4&#10;x₁ = (-4 - 2) / 2 = -3"
-                  className="w-full flex-1 bg-transparent text-white font-mono text-sm leading-relaxed outline-none resize-none placeholder:text-white/20"
+                  className="w-full flex-1 bg-transparent text-text-strong font-mono text-sm leading-relaxed outline-none resize-none placeholder:text-white/20"
                 />
               </div>
             )}
           </div>
 
           {/* Footer */}
-          <div className="px-5 py-3 border-t border-white/10 bg-[#1A1B24] flex items-center justify-between">
-            <span className="text-xs text-[#8B8D98]">
+          <div className="px-5 py-3 border-t border-hairline bg-[#1A1B24] flex items-center justify-between">
+            <span className="text-xs text-text-secondary">
               {mode === 'draw' ? 'Wszystkie rysunki zostają zachowane w trakcie sesji' : 'Notatki zapisują się automatycznie'}
             </span>
             <button

@@ -290,16 +290,16 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          className="relative w-full max-w-lg bg-[#0C101C] border border-white/10 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden max-h-[90vh]"
+          className="relative w-full max-w-lg bg-[#0C101C] border border-hairline rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden max-h-[90vh]"
         >
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
+          <div className="p-4 sm:p-5 border-b border-hairline flex items-center justify-between bg-white/[0.02]">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl flex items-center justify-center bg-amber-500/20 text-amber-400">
                 <Target size={18} />
               </div>
               <div>
-                <h3 className="text-sm sm:text-base font-black text-white">
+                <h3 className="text-sm sm:text-base font-black text-text-strong">
                   Test Diagnostyczny Poziomu
                 </h3>
                 <p className="text-[11px] text-slate-400">
@@ -310,7 +310,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition border border-white/5 cursor-pointer"
+              className="w-8 h-8 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition border border-hairline-soft cursor-pointer"
             >
               <X size={15} />
             </button>
@@ -337,8 +337,8 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                             isDone
                               ? 'bg-emerald-500/20 border border-emerald-500/50 shadow-[0_0_8px_rgba(16,185,129,0.3)]'
                               : isActive
-                                ? 'bg-amber-500/20 border border-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.5)] ring-1 ring-[#FFB800]/50'
-                                : 'bg-slate-900/80 border border-white/10'
+                                ? 'bg-amber-500/20 border border-primary shadow-[0_0_10px_rgba(255,184,0,0.5)] ring-1 ring-primary/50'
+                                : 'bg-slate-900/80 border border-hairline'
                           }`}
                         >
                           <div
@@ -346,7 +346,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                               isDone
                                 ? 'w-full bg-gradient-to-r from-emerald-500 to-emerald-400'
                                 : isActive
-                                  ? 'w-full bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] animate-pulse'
+                                  ? 'w-full bg-gradient-to-r from-[#FF8800] via-primary to-[#FFE082] animate-pulse'
                                   : 'w-0'
                             }`}
                           />
@@ -357,11 +357,11 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                 </div>
 
                 {/* Question box */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-hairline-soft space-y-2">
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
                     {currentTask.topic}
                   </span>
-                  <div className="text-sm sm:text-base font-medium text-white leading-relaxed">
+                  <div className="text-sm sm:text-base font-medium text-text-strong leading-relaxed">
                     <MathRenderer content={currentTask.question} />
                   </div>
                 </div>
@@ -398,7 +398,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                         <div className="flex items-center gap-3">
                           <span className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
                             isSelected && !isAnswerChecked
-                              ? 'bg-[#FFB800] text-amber-950 font-black border-amber-400'
+                              ? 'bg-jasne text-amber-950 font-black border-amber-400'
                               : isAnswerChecked && isThisCorrect
                               ? 'bg-emerald-500 text-emerald-950 font-black border-emerald-400'
                               : isAnswerChecked && isSelected && !isThisCorrect
@@ -427,9 +427,9 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   <motion.div
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 text-xs text-slate-300 leading-relaxed"
+                    className="p-3.5 rounded-xl bg-slate-900/80 border border-hairline text-xs text-slate-300 leading-relaxed"
                   >
-                    <span className="font-bold text-white block mb-1">Wyjaśnienie:</span>
+                    <span className="font-bold text-text-strong block mb-1">Wyjaśnienie:</span>
                     <MathRenderer content={currentTask.explanation} />
                   </motion.div>
                 )}
@@ -443,7 +443,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                       onClick={handleCheckAnswer}
                       className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition shadow-md cursor-pointer ${
                         selectedOption
-                          ? 'bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black'
+                          ? 'bg-jasne hover:bg-amber-400 text-amber-950 font-black'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed'
                       }`}
                     >
@@ -453,7 +453,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                     <button
                       type="button"
                       onClick={handleNextQuestion}
-                      className="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
+                      className="w-full py-3 rounded-xl bg-veil-strong hover:bg-white/20 text-text-strong font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
                     >
                       <span>{currentIndex < tasks.length - 1 ? 'Kolejne pytanie' : 'Zobacz wynik testu'}</span>
                       <ArrowRight size={16} />
@@ -476,7 +476,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   }`}>
                     {isPassing ? '✓ Prognoza powyżej progu 30%' : '✕ Poniżej progu 30%'}
                   </span>
-                  <h4 className="text-3xl sm:text-4xl font-black text-white font-mono tabular-nums">
+                  <h4 className="text-3xl sm:text-4xl font-black text-text-strong font-mono tabular-nums">
                     {assessedPercent}%
                   </h4>
                   <p className="text-xs text-slate-400 font-semibold mt-0.5">
@@ -484,12 +484,12 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   </p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-left space-y-2 text-xs">
+                <div className="p-4 rounded-2xl bg-white/[0.03] border border-hairline text-left space-y-2 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="text-slate-400">Twój oszacowany poziom:</span>
-                    <span className="font-bold text-white">{levelLabel}</span>
+                    <span className="font-bold text-text-strong">{levelLabel}</span>
                   </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-white/5">
+                  <div className="flex items-center justify-between pt-1 border-t border-hairline-soft">
                     <span className="text-slate-400">Pewność predyktora:</span>
                     <span className="font-bold text-emerald-400">Wysoka (Skalibrowano)</span>
                   </div>
@@ -502,7 +502,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   <button
                     type="button"
                     onClick={handleApplyResult}
-                    className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black shadow-amber-950/50"
+                    className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer bg-jasne hover:bg-amber-400 text-amber-950 font-black shadow-amber-950/50"
                   >
                     <span>Zapisz i zaktualizuj Predyktor</span>
                     <ArrowRight size={16} />
@@ -511,7 +511,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
+                    className="w-full py-2.5 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
                   >
                     <RotateCcw size={13} />
                     <span>Powtórz test diagnostyczny</span>

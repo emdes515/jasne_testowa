@@ -30,7 +30,7 @@ import { PerksVaultSection } from './PerksVaultSection';
 import { JasneLogo } from './ui/JasneLogo';
 import { ShopItem, countTotalClaimable } from '../data/achievements';
 import { triggerHaptic, getLocalDateString, filterActualTaskIds } from '../utils';
-import { useTheme, ThemeMode } from '../services/themeManager';
+import { useTheme, ThemeMode, LIGHT_THEME_READY } from '../services/themeManager';
 
 interface ProfileViewProps {
   userState: UserState;
@@ -163,9 +163,9 @@ export function ProfileView({
               triggerHaptic('light');
               setActiveTab('overview');
             }}
-            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
+            className={`flex-1 min-h-[44px] px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'overview'
-                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                ? 'bg-primary text-on-primary shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
                 : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
@@ -178,9 +178,9 @@ export function ProfileView({
               triggerHaptic('light');
               setActiveTab('achievements');
             }}
-            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 relative cursor-pointer ${
+            className={`flex-1 min-h-[44px] px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 relative cursor-pointer ${
               activeTab === 'achievements'
-                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                ? 'bg-primary text-on-primary shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
                 : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
@@ -188,7 +188,7 @@ export function ProfileView({
             <span>Odznaki</span>
             {claimableCount > 0 && (
               <span className={`w-4 h-4 text-[10px] font-black rounded-full flex items-center justify-center shadow-sm ${
-                activeTab === 'achievements' ? 'bg-[#080B11] text-primary' : 'bg-primary text-[#080B11]'
+                activeTab === 'achievements' ? 'bg-surface-bg text-primary' : 'bg-primary text-on-primary'
               }`}>
                 {claimableCount}
               </span>
@@ -200,9 +200,9 @@ export function ProfileView({
               triggerHaptic('light');
               setActiveTab('perks');
             }}
-            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
+            className={`flex-1 min-h-[44px] px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'perks'
-                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                ? 'bg-primary text-on-primary shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
                 : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
@@ -267,6 +267,7 @@ export function ProfileView({
             </div>
 
             {/* Motyw Aplikacji (Szybki Wybór: Ciemny / Jasny / System) */}
+            {LIGHT_THEME_READY && (
             <div className="bg-surface-card border border-surface-border rounded-[24px] p-4 sm:p-5 shadow-sm">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
@@ -326,6 +327,7 @@ export function ProfileView({
                 </div>
               </div>
             </div>
+            )}
 
             {/* Dynamic Activity Chart (14 Dni Aktywności) */}
             <div className="bg-surface-card border border-surface-border rounded-[24px] p-5 sm:p-6 overflow-hidden shadow-md">
@@ -413,7 +415,7 @@ export function ProfileView({
                   </div>
                   <div className="flex flex-col items-start flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                      <span className="text-sm font-bold text-text-strong group-hover:text-emerald-300 transition-colors">
                         Panel Deweloperski (Super-Admin)
                       </span>
                       <span className="text-[10px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">

@@ -114,6 +114,10 @@ export interface LessonDocument {
   formulaSheet?: any;
   formula_sheet?: any;
   updatedAt?: string;
+  /** Poziom rozszerzony: lekcje PP, które warto powtórzyć wcześniej (bez blokowania). */
+  prereq?: string[];
+  /** Kody wymagań podstawy programowej 2024, np. "III.R5". */
+  requirements?: string[];
 }
 
 export interface UserTopicProgressDocument {

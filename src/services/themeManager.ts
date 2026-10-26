@@ -7,6 +7,15 @@ export const THEME_STORAGE_KEY = 'jasne_theme_mode';
 const THEME_CHANGE_EVENT = 'jasne:theme-change';
 
 /**
+ * Motyw jasny (Solar Luminary) nie jest jeszcze gotowy produkcyjnie: setki komponentów mają
+ * na sztywno wpisane kolory ciemnego motywu (text-white, bg-[#0E1522]…), przez co w jasnym
+ * tytuły znikają na białym tle. Dopóki komponenty nie przejdą na tokeny (text-text-primary,
+ * bg-surface-card), przełączniki motywu są ukryte, a aplikacja startuje w Nocturne Luminary.
+ * Po migracji wystarczy ustawić tę flagę na true.
+ */
+export const LIGHT_THEME_READY = true;
+
+/**
  * Returns the currently stored user theme mode ('dark' | 'light' | 'system').
  * Defaults to 'dark' (Nocturne Luminary) if nothing is saved.
  */
@@ -89,7 +98,16 @@ export function setThemeMode(mode: ThemeMode): void {
 export function initTheme(): () => void {
   if (typeof window === 'undefined') return () => {};
 
-  const currentMode = getStoredThemeMode();
+  let currentMode = getStoredThemeMode();
+  if (!LIGHT_THEME_READY && currentMode !== 'dark') {
+    // Urządzenia, które wcześniej wybrały motyw jasny/systemowy, wracają do ciemnego
+    currentMode = 'dark';
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, 'dark');
+    } catch {
+      // ignore
+    }
+  }
   applyTheme(currentMode);
 
   const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');

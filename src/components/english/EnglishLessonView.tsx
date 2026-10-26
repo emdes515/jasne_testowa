@@ -103,25 +103,26 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#070a0f] text-[#dfe2f1] font-sans pb-28">
+    <div className="min-h-screen bg-surface-bg text-text-soft font-sans pb-28">
       {/* Top Header */}
-      <header className="sticky top-0 z-30 bg-[#070a0f]/95 backdrop-blur-md border-b border-[#141d2e] px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-surface-line px-4 py-3 flex items-center justify-between gap-3">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors cursor-pointer"
+          aria-label="Powrót do modułu"
+          className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-text-strong transition-colors cursor-pointer shrink-0 min-h-[44px]"
         >
           <ArrowLeft size={16} />
-          <span>Powrót do modułu</span>
+          <span className="hidden sm:inline">Powrót do modułu</span>
         </button>
-        <div className="text-center max-w-sm truncate">
-          <span className="text-[10px] font-bold text-[#FFB800] tracking-wider uppercase block">
+        <div className="text-center max-w-sm truncate min-w-0 flex-1">
+          <span className="text-[10px] font-bold text-text-accent tracking-wider uppercase block">
             Język Angielski • Formuła 2023
           </span>
-          <span className="text-xs sm:text-sm font-black text-white truncate block">
+          <span className="text-xs sm:text-sm font-black text-text-strong truncate block">
             {lesson.title}
           </span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400">
+        <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 whitespace-nowrap shrink-0">
           <Clock size={14} className="text-amber-400" />
           <span>{lesson.estimatedMinutes || 6} min</span>
         </div>
@@ -134,18 +135,18 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
         {currentStep === 'theory' && (
           <div className="space-y-6 animate-fadeIn">
             {/* Header / Subtitle */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-[#141d2e] shadow-xl">
-              <div className="flex items-center gap-2 text-[#FFB800] mb-2">
+            <div className="p-5 sm:p-6 rounded-2xl bg-surface-panel border border-surface-line shadow-xl">
+              <div className="flex items-center gap-2 text-text-accent mb-2">
                 <BookOpen size={20} />
                 <span className="text-xs font-bold uppercase tracking-wider">Klucz do tematu</span>
               </div>
-              <h1 className="text-lg sm:text-xl font-black text-white mb-2">{lesson.title}</h1>
+              <h1 className="text-lg sm:text-xl font-black text-text-strong mb-2">{lesson.title}</h1>
               {lesson.subtitle && (
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">{lesson.subtitle}</p>
               )}
 
               {theory?.concept_essence && (
-                <div className="mt-4 pt-4 border-t border-white/5 text-sm sm:text-base leading-relaxed">
+                <div className="mt-4 pt-4 border-t border-hairline-soft text-sm sm:text-base leading-relaxed">
                   <EnglishConceptFormatter content={theory.concept_essence} />
                 </div>
               )}
@@ -153,20 +154,20 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
 
             {/* Modelowe przykłady krok po kroku */}
             {theory?.worked_examples && Array.isArray(theory.worked_examples) && theory.worked_examples.length > 0 && (
-              <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-[#141d2e] space-y-4 shadow-xl">
+              <div className="p-5 sm:p-6 rounded-2xl bg-surface-panel border border-surface-line space-y-4 shadow-xl">
                 <div className="flex items-center gap-2 text-emerald-400">
                   <FileCheck size={18} />
-                  <h2 className="text-sm sm:text-base font-black text-white">Modelowe rozwiązanie CKE</h2>
+                  <h2 className="text-sm sm:text-base font-black text-text-strong">Modelowe rozwiązanie CKE</h2>
                 </div>
                 <div className="space-y-4">
                   {theory.worked_examples.map((ex: any, idx: number) => (
-                    <div key={idx} className="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-2">
+                    <div key={idx} className="p-4 rounded-xl bg-slate-900/60 border border-hairline-soft space-y-2">
                       <div className="text-xs font-bold text-emerald-300">
                         {ex.title || `Przykład ${idx + 1}`}
                       </div>
-                      <div className="text-sm font-semibold text-white">{ex.problem}</div>
+                      <div className="text-sm font-semibold text-text-strong">{ex.problem}</div>
                       {ex.steps && Array.isArray(ex.steps) && (
-                        <div className="space-y-1.5 mt-2 pt-2 border-t border-white/5 text-xs text-slate-300">
+                        <div className="space-y-1.5 mt-2 pt-2 border-t border-hairline-soft text-xs text-slate-300">
                           {ex.steps.map((st: any, sIdx: number) => (
                             <div key={sIdx} className="flex gap-2">
                               <span className="font-bold text-emerald-400 shrink-0">Krok {st.num}:</span>
@@ -176,7 +177,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                         </div>
                       )}
                       {ex.result && (
-                        <div className="mt-2 text-xs font-bold text-[#FFB800] bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20">
+                        <div className="mt-2 text-xs font-bold text-text-accent bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20">
                           Wynik: {ex.result}
                         </div>
                       )}
@@ -219,7 +220,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                 setCurrentStep('practice');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-[#FFB800] to-[#FFA000] text-black font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-[#FFA000] text-black font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
             >
               <span>Przejdź do zadań treningowych ({tasks.length})</span>
               <ChevronRight size={18} />
@@ -235,18 +236,18 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
             {/* Pasek postępu */}
             <div className="flex items-center justify-between text-xs font-bold text-slate-400">
               <span className="flex items-center gap-2">
-                <Zap size={14} className="text-[#FFB800]" />
+                <Zap size={14} className="text-text-accent" />
                 Zadanie {currentTaskIndex + 1} z {tasks.length}
               </span>
-              <span className="text-[#FFB800] bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+              <span className="text-text-accent bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
                 {correctCount} poprawnych
               </span>
             </div>
 
             {/* Karta Zadania */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-[#141d2e] space-y-4 shadow-xl">
+            <div className="p-5 sm:p-6 rounded-2xl bg-surface-panel border border-surface-line space-y-4 shadow-xl">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-bold text-[#FFB800] uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-text-accent uppercase tracking-wider">
                   Zadanie maturalne • {currentTask.type || 'Praktyka'}
                 </span>
                 <span className="text-[10px] font-bold text-slate-400">
@@ -254,13 +255,13 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                 </span>
               </div>
 
-              <div className="text-sm sm:text-base text-white leading-relaxed font-medium">
+              <div className="text-sm sm:text-base text-text-strong leading-relaxed font-medium">
                 {currentTask.question || (currentTask as any).content || ''}
               </div>
 
               {/* Fragment kontekstowy (np. tekst/dialog) */}
               {(currentTask as any).contextText && (
-                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 text-xs sm:text-sm text-slate-300 italic">
+                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-hairline-soft text-xs sm:text-sm text-slate-300 italic">
                   {(currentTask as any).contextText}
                 </div>
               )}
@@ -274,7 +275,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                     const isCorrect = isAnswerChecked && (optKey === currentTask.correctAnswer);
                     const isWrongSelected = isAnswerChecked && isSelected && !isCorrect;
 
-                    let btnStyle = 'bg-white/5 hover:bg-white/10 border-white/10 text-slate-200';
+                    let btnStyle = 'bg-veil hover:bg-veil-strong border-hairline text-slate-200';
                     if (isSelected) {
                       btnStyle = 'bg-amber-500/20 border-amber-500/60 text-amber-200 shadow-md';
                     }
@@ -309,14 +310,14 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                     value={typedAnswer}
                     onChange={(e) => setTypedAnswer(e.target.value)}
                     placeholder="Wpisz brakujące słowo / frazę..."
-                    className="w-full p-3.5 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 text-sm focus:border-amber-500 focus:outline-none"
+                    className="w-full p-3.5 rounded-xl bg-slate-900 border border-hairline text-text-strong placeholder-slate-500 text-sm focus:border-amber-500 focus:outline-none"
                   />
                 </div>
               )}
 
               {/* Wyjaśnienie po sprawdzeniu */}
               {isAnswerChecked && (
-                <div className="p-4 rounded-xl bg-slate-900/90 border border-white/10 space-y-2 text-xs sm:text-sm animate-fadeIn">
+                <div className="p-4 rounded-xl bg-slate-900/90 border border-hairline space-y-2 text-xs sm:text-sm animate-fadeIn">
                   <div className="font-bold flex items-center gap-2">
                     {selectedOption?.trim().toLowerCase() === (currentTask.correctAnswer || '').trim().toLowerCase() ||
                      typedAnswer.trim().toLowerCase() === (currentTask.correctAnswer || '').trim().toLowerCase() ? (
@@ -325,7 +326,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                       </span>
                     ) : (
                       <span className="text-rose-400 flex items-center gap-1.5">
-                        <AlertCircle size={16} /> Wymagana forma: <strong className="text-white">{currentTask.correctAnswer}</strong>
+                        <AlertCircle size={16} /> Wymagana forma: <strong className="text-text-strong">{currentTask.correctAnswer}</strong>
                       </span>
                     )}
                   </div>
@@ -347,7 +348,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                 <button
                   disabled={!selectedOption && !typedAnswer.trim()}
                   onClick={handleCheckAnswer}
-                  className="w-full py-3.5 rounded-xl bg-[#FFB800] disabled:opacity-40 disabled:cursor-not-allowed text-black font-black text-sm shadow-md hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
+                  className="w-full py-3.5 rounded-xl bg-jasne disabled:opacity-40 disabled:cursor-not-allowed text-black font-black text-sm shadow-md hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
                 >
                   Sprawdź odpowiedź
                 </button>
@@ -369,24 +370,24 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
         {/* ========================================================================= */}
         {currentStep === 'completed' && (
           <div className="text-center py-10 space-y-6 animate-scaleIn">
-            <div className="w-20 h-20 mx-auto rounded-3xl bg-amber-500/10 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] shadow-2xl">
+            <div className="w-20 h-20 mx-auto rounded-3xl bg-amber-500/10 border border-primary/30 flex items-center justify-center text-text-accent shadow-2xl">
               <Award size={40} />
             </div>
 
             <div className="space-y-2">
-              <h2 className="text-2xl font-black text-white">Lekcja Ukończona!</h2>
+              <h2 className="text-2xl font-black text-text-strong">Lekcja Ukończona!</h2>
               <p className="text-sm text-slate-400">
-                Opanowałeś koncept: <span className="text-[#FFB800] font-semibold">{lesson.title}</span>
+                Opanowałeś koncept: <span className="text-text-accent font-semibold">{lesson.title}</span>
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
-              <div className="p-4 rounded-xl bg-[#0e1522] border border-[#141d2e]">
+              <div className="p-4 rounded-xl bg-surface-panel border border-surface-line">
                 <span className="text-2xl font-black text-emerald-400 block">{correctCount} / {tasks.length}</span>
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Poprawne zadania</span>
               </div>
-              <div className="p-4 rounded-xl bg-[#0e1522] border border-[#141d2e]">
-                <span className="text-2xl font-black text-[#FFB800] block">+{(correctCount + 1) * 15}</span>
+              <div className="p-4 rounded-xl bg-surface-panel border border-surface-line">
+                <span className="text-2xl font-black text-text-accent block">+{(correctCount + 1) * 15}</span>
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Zdobyte XP</span>
               </div>
             </div>
@@ -394,7 +395,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
             <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto pt-4">
               <button
                 onClick={onBack}
-                className="flex-1 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-sm transition-all cursor-pointer"
+                className="flex-1 py-3.5 rounded-xl bg-veil-strong hover:bg-white/15 text-text-strong font-bold text-sm transition-all cursor-pointer"
               >
                 Wróć do modułu
               </button>
@@ -404,7 +405,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                     const nextId = `eng-lesson-${parseInt(lesson.id.replace(/\D/g, '') || '1') + 1}`;
                     onNextLesson(nextId);
                   }}
-                  className="flex-1 py-3.5 rounded-xl bg-[#FFB800] hover:brightness-110 text-black font-black text-sm shadow-lg transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-1 py-3.5 rounded-xl bg-jasne hover:brightness-110 text-black font-black text-sm shadow-lg transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <span>Kolejna lekcja</span>
                   <ChevronRight size={16} />

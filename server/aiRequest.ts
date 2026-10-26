@@ -28,6 +28,43 @@ function sanitizeRubric(value: unknown): Record<string, unknown> | undefined {
   };
 }
 
+export interface RubricStage {
+  points: number;
+  label: string;
+  criterion: string;
+}
+
+/**
+ * Etapy rozwiązania wg zasad oceniania CKE (poziom rozszerzony: 2–6 pkt).
+ * Zwraca etapy o rosnącej, unikalnej liczbie punktów (nie większej niż maxPoints).
+ */
+export function sanitizeRubricStages(value: unknown, maxPoints: number): RubricStage[] | undefined {
+  if (value === undefined || value === null) return undefined;
+  if (!Array.isArray(value)) {
+    throw badRequest('Pole "rubric_stages" musi być listą etapów.', { field: 'rubric_stages' });
+  }
+  if (value.length > 8) {
+    throw badRequest('Zbyt wiele etapów oceniania (limit 8).', { field: 'rubric_stages', length: value.length });
+  }
+  const stages = value
+    .filter(isRecord)
+    .map((stage, index) => ({
+      points: clampInt(stage.points, 1, 40, 0),
+      label: optionalText(stage.label, 80, `rubric_stages[${index}].label`),
+      criterion: optionalText(stage.criterion, 600, `rubric_stages[${index}].criterion`).trim(),
+    }))
+    .filter(stage => stage.points > 0 && stage.points <= maxPoints && stage.criterion.length > 0)
+    .sort((a, b) => a.points - b.points)
+    .filter((stage, index, all) => index === 0 || stage.points !== all[index - 1].points);
+  return stages.length > 0 ? stages : undefined;
+}
+
+function sanitizeZeroRules(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const rules = value.slice(0, 6).map((rule, index) => optionalText(rule, 300, `zero_rules[${index}]`).trim()).filter(Boolean);
+  return rules.length > 0 ? rules : undefined;
+}
+
 function sanitizeSubQuestions(value: unknown): unknown {
   if (value === undefined || value === null) return undefined;
   if (typeof value === 'string') {
@@ -72,6 +109,8 @@ export function sanitizeAiBody(raw: unknown, kind: AiRequestKind): Record<string
     return sanitized;
   }
 
+  sanitized.rubric_stages = sanitizeRubricStages(body.rubric_stages, sanitized.maxPoints as number);
+  sanitized.zero_rules = sanitizeZeroRules(body.zero_rules);
   sanitized.contextText = optionalText(body.contextText, max, 'contextText');
   sanitized.subQuestions = sanitizeSubQuestions(body.subQuestions);
   sanitized.isPolish = body.isPolish === true;

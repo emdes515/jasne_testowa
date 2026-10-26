@@ -160,13 +160,13 @@ export function DevHubModal({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-display font-black text-base sm:text-lg text-white">
+                <h3 className="font-display font-black text-base sm:text-lg text-text-strong">
                   Panel Deweloperski
                 </h3>
                 <span className={`text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded-full border ${
                   isDevActive 
                     ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]' 
-                    : 'bg-white/5 text-text-muted border-white/10'
+                    : 'bg-veil text-text-muted border-hairline'
                 }`}>
                   {isDevActive ? '● PEŁNY DOSTĘP DEV' : '○ STANDARD'}
                 </span>
@@ -179,7 +179,7 @@ export function DevHubModal({
 
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-text-secondary hover:text-white transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-xl bg-veil hover:bg-veil-strong border border-hairline flex items-center justify-center text-text-secondary hover:text-text-strong transition-colors cursor-pointer"
           >
             <X size={18} />
           </button>
@@ -228,7 +228,7 @@ export function DevHubModal({
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <Zap size={16} className="text-emerald-400" />
-                    <span className="font-bold text-white text-sm">
+                    <span className="font-bold text-text-strong text-sm">
                       Master Switch: Tryb Deweloperski & PRO
                     </span>
                   </div>
@@ -241,7 +241,7 @@ export function DevHubModal({
                   className={`px-4 py-2 rounded-xl font-black text-xs transition-all cursor-pointer shadow-md ${
                     isDevActive
                       ? 'bg-emerald-500 hover:bg-emerald-400 text-black shadow-emerald-500/30'
-                      : 'bg-white/10 hover:bg-white/20 text-white'
+                      : 'bg-veil-strong hover:bg-white/20 text-text-strong'
                   }`}
                 >
                   {isDevActive ? 'WYŁĄCZ' : 'WŁĄCZ PEŁNY DEV'}
@@ -263,7 +263,7 @@ export function DevHubModal({
                       MAX ZASOBY
                     </span>
                   </div>
-                  <h4 className="font-bold text-white text-xs sm:text-sm group-hover:text-amber-300 transition-colors">
+                  <h4 className="font-bold text-text-strong text-xs sm:text-sm group-hover:text-amber-300 transition-colors">
                     99 999 Monet & Gems + 150k XP
                   </h4>
                   <p className="text-[11px] text-text-muted mt-0.5">
@@ -284,7 +284,7 @@ export function DevHubModal({
                       225 LEKCJI
                     </span>
                   </div>
-                  <h4 className="font-bold text-white text-xs sm:text-sm group-hover:text-emerald-300 transition-colors">
+                  <h4 className="font-bold text-text-strong text-xs sm:text-sm group-hover:text-emerald-300 transition-colors">
                     Odblokuj Wszystkie Lekcje Core-4
                   </h4>
                   <p className="text-[11px] text-text-muted mt-0.5">
@@ -314,7 +314,7 @@ export function DevHubModal({
                       INFINITE HEARTS
                     </span>
                   </div>
-                  <h4 className="font-bold text-white text-xs sm:text-sm group-hover:text-rose-300 transition-colors">
+                  <h4 className="font-bold text-text-strong text-xs sm:text-sm group-hover:text-rose-300 transition-colors">
                     Nieskończone Serca (∞)
                   </h4>
                   <p className="text-[11px] text-text-muted mt-0.5">
@@ -348,7 +348,7 @@ export function DevHubModal({
                       MAX PERKS
                     </span>
                   </div>
-                  <h4 className="font-bold text-white text-xs sm:text-sm group-hover:text-blue-300 transition-colors">
+                  <h4 className="font-bold text-text-strong text-xs sm:text-sm group-hover:text-blue-300 transition-colors">
                     99 Zamrożeń Streaku & Tarcze
                   </h4>
                   <p className="text-[11px] text-text-muted mt-0.5">
@@ -365,19 +365,19 @@ export function DevHubModal({
                 <div className="flex flex-wrap items-center gap-2">
                   <button
                     onClick={() => handleAddCoins(5000)}
-                    className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold text-amber-300 border border-amber-500/30 cursor-pointer flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-xl bg-veil hover:bg-veil-strong text-xs font-bold text-amber-300 border border-amber-500/30 cursor-pointer flex items-center gap-1.5"
                   >
                     <Coins size={13} /> +5 000 Monet
                   </button>
                   <button
                     onClick={() => handleAddXp(2500)}
-                    className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold text-emerald-300 border border-emerald-500/30 cursor-pointer flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-xl bg-veil hover:bg-veil-strong text-xs font-bold text-emerald-300 border border-emerald-500/30 cursor-pointer flex items-center gap-1.5"
                   >
                     <Zap size={13} /> +2 500 XP
                   </button>
                   <button
                     onClick={() => handleAddStreak(7)}
-                    className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold text-orange-300 border border-orange-500/30 cursor-pointer flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-xl bg-veil hover:bg-veil-strong text-xs font-bold text-orange-300 border border-orange-500/30 cursor-pointer flex items-center gap-1.5"
                   >
                     <Flame size={13} /> +7 Dni Streaku
                   </button>
@@ -407,7 +407,7 @@ export function DevHubModal({
                     <Calculator size={16} />
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-white">Matematyka: 15 Działów</h5>
+                    <h5 className="font-bold text-xs text-text-strong">Matematyka: 15 Działów</h5>
                     <p className="text-[10px] text-text-muted">Przejdź do kursu matematyki</p>
                   </div>
                 </button>
@@ -426,7 +426,7 @@ export function DevHubModal({
                     <BookOpen size={16} />
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-white">Język Polski: 15 Działów</h5>
+                    <h5 className="font-bold text-xs text-text-strong">Język Polski: 15 Działów</h5>
                     <p className="text-[10px] text-text-muted">Przejdź do kursu polskiego</p>
                   </div>
                 </button>
@@ -445,7 +445,7 @@ export function DevHubModal({
                     <Globe size={16} />
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-white">Język Angielski: 15 Działów</h5>
+                    <h5 className="font-bold text-xs text-text-strong">Język Angielski: 15 Działów</h5>
                     <p className="text-[10px] text-text-muted">Przejdź do kursu angielskiego</p>
                   </div>
                 </button>
@@ -462,7 +462,7 @@ export function DevHubModal({
                     <GraduationCap size={16} />
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-white">Symulator Matury (3 Formaty)</h5>
+                    <h5 className="font-bold text-xs text-text-strong">Symulator Matury (3 Formaty)</h5>
                     <p className="text-[10px] text-text-muted">Ekspresowe, Mini, Pełne</p>
                   </div>
                 </button>
@@ -479,7 +479,7 @@ export function DevHubModal({
                     <Swords size={16} />
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-white">Arena ELO & Pojedynki</h5>
+                    <h5 className="font-bold text-xs text-text-strong">Arena ELO & Pojedynki</h5>
                     <p className="text-[10px] text-text-muted">PvP i rankingi maturalne</p>
                   </div>
                 </button>
@@ -496,7 +496,7 @@ export function DevHubModal({
                     <Trophy size={16} />
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-white">Profil, Sklep & Osiągnięcia</h5>
+                    <h5 className="font-bold text-xs text-text-strong">Profil, Sklep & Osiągnięcia</h5>
                     <p className="text-[10px] text-text-muted">Ekwipunek i statystyki</p>
                   </div>
                 </button>
@@ -512,7 +512,7 @@ export function DevHubModal({
                 </span>
                 <button
                   onClick={handleCopyJson}
-                  className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-[11px] font-bold text-text-secondary hover:text-white flex items-center gap-1 cursor-pointer transition"
+                  className="px-2.5 py-1 rounded-lg bg-veil hover:bg-veil-strong text-[11px] font-bold text-text-secondary hover:text-text-strong flex items-center gap-1 cursor-pointer transition"
                 >
                   {copiedJson ? <CheckCircle2 size={12} className="text-emerald-400" /> : <Copy size={12} />}
                   <span>{copiedJson ? 'Skopiowano!' : 'Kopiuj JSON'}</span>
@@ -564,7 +564,7 @@ export function DevHubModal({
           </div>
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition cursor-pointer"
+            className="px-5 py-2 rounded-xl bg-veil-strong hover:bg-white/20 text-text-strong font-bold text-xs transition cursor-pointer"
           >
             Zamknij
           </button>

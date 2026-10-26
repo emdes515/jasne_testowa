@@ -1,12 +1,17 @@
 // @vitest-environment happy-dom
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, act, cleanup } from '@testing-library/react';
+import { render, screen, act, cleanup, waitFor } from '@testing-library/react';
 import { OpenTaskWorkspace } from '../OpenTaskWorkspace';
 import { SessionRunner } from '../SessionRunner';
 import App from '../../App';
 import { curriculumRepository } from '../../services/curriculumRepository';
 import { __resetDatabaseConnectionForTests, SESSION_STORAGE_KEY } from '../../services/sessionRecoveryService';
+
+// happy-dom odrzuca obietnicę `finished` przy Animation.cancel(), a motion jej nie przechwytuje:
+// animacje WAAPI przerywane przy odmontowaniu App dają nieobsłużony AbortError i vitest kończy się kodem 1
+// mimo zaliczonych testów. Bez Element.prototype.animate motion używa animacji JS, które tego nie robią.
+delete (Element.prototype as { animate?: unknown }).animate;
 
 // Mock dependencies for SessionRunner and App
 vi.mock('../../lib/firebase', () => ({
@@ -56,7 +61,7 @@ describe('Session Recovery Component Integration', () => {
 
       // Verify that the whiteboard toggle is active
       const whiteboardToggle = document.getElementById('toggle-math-whiteboard-mode');
-      expect(whiteboardToggle?.className).toContain('bg-[#FFB800]');
+      expect(whiteboardToggle?.className).toContain('bg-jasne');
 
       // Verify whiteboard tools are present
       const clearBtn = screen.getByTitle('Wyczyść tablicę');
@@ -81,7 +86,7 @@ describe('Session Recovery Component Integration', () => {
 
       // Verify that keyboard toggle button has active styling
       const keyboardToggle = document.getElementById('toggle-math-keyboard-mode');
-      expect(keyboardToggle?.className).toContain('bg-[#FFB800]');
+      expect(keyboardToggle?.className).toContain('bg-jasne');
 
       // Verify user answer preview is displayed
       expect(screen.getByText('Twoja odpowiedź:')).toBeDefined();
@@ -126,7 +131,7 @@ describe('Session Recovery Component Integration', () => {
       );
 
       // Verify that SessionRunner renders Task 3, NOT Task 1!
-      expect(screen.getByText('Zadanie 3')).toBeDefined();
+      expect(screen.getAllByText('Zadanie 3').length).toBeGreaterThan(0);
 
       // Fast-forward debounce timer (300ms)
       await act(async () => {
@@ -322,7 +327,8 @@ describe('Session Recovery Component Integration', () => {
       // 1. Test 'learn' tab restoration
       localStorage.setItem('jasne_active_tab_v1', 'learn');
       const { unmount } = render(<App />);
-      expect(document.getElementById('learn-scroll-content')).not.toBeNull();
+      // Ekran Nauki jest ładowany leniwie (osobny plik), więc czekamy na jego pojawienie się
+      await waitFor(() => expect(document.getElementById('learn-scroll-content')).not.toBeNull(), { timeout: 10000 });
       unmount();
 
       // 2. Test 'arena' tab restoration
@@ -334,7 +340,7 @@ describe('Session Recovery Component Integration', () => {
       // 3. Test 'simulator' tab restoration
       localStorage.setItem('jasne_active_tab_v1', 'simulator');
       const { unmount: unmountSim } = render(<App />);
-      expect(screen.getAllByText(/Symulator/i).length).toBeGreaterThan(0);
+      await waitFor(() => expect(screen.getAllByText(/Symulator/i).length).toBeGreaterThan(0), { timeout: 10000 });
       unmountSim();
 
       // 4. Test fallback to 'dashboard' when no saved tab
@@ -342,7 +348,7 @@ describe('Session Recovery Component Integration', () => {
       const { unmount: unmountDash } = render(<App />);
       expect(screen.getAllByText(/Główny panel|Dashboard/i).length).toBeGreaterThan(0);
       unmountDash();
-    });
+    }, 30_000); // widoki Nauka/Matura ładują się leniwie – przy równoległych testach potrzeba więcej niż domyślne 5 s
   });
 });
 

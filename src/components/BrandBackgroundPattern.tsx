@@ -23,11 +23,12 @@ export function BrandBackgroundPattern() {
       {/* 1. Dynamiczne poświaty radialne (Warm Amber & Midnight Indigo) */}
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_80%_50%_at_15%_15%,rgba(245,158,11,0.07),transparent_50%)]" />
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_80%_50%_at_85%_85%,rgba(30,58,138,0.11),transparent_55%)]" />
-      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgba(15,23,42,0.65),transparent_70%)]" />
+      <div className="absolute inset-0 w-full h-full hidden dark:block bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgba(15,23,42,0.65),transparent_70%)]" />
 
       {/* 2. Naprzemienny wzór wektorowy logo i sygnatury J. */}
       <svg 
-        className="absolute inset-0 w-full h-full opacity-[0.16] dark:opacity-[0.12] transition-opacity duration-300" 
+        className="absolute inset-0 w-full h-full transition-opacity duration-300"
+        style={{ opacity: 'var(--brand-pattern-opacity)' }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>

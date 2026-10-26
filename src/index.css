@@ -1,8 +1,16 @@
 @import "tailwindcss";
+/* Adapter motywu jasnego: jasne odpowiedniki kolorów wpisanych na sztywno w komponentach (plik generowany) */
+@import "./theme-light-adapter.css";
+
+/* Wariant dark: sterowany motywem aplikacji (klasa .dark z themeManager), a nie ustawieniem systemu */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: 'DM Sans', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
+
+  /* Wąskie telefony (360–399px) vs. standardowe (400px+) */
+  --breakpoint-xs: 25rem;
 
   /* Core Surfaces & Backgrounds mapped to runtime CSS variables */
   --color-surface-bg: var(--surface-bg);
@@ -26,6 +34,19 @@
   --color-text-muted: var(--text-muted);
   --color-text-subtle: var(--text-subtle);
   --color-text-accent: var(--text-accent);
+  --color-text-strong: var(--text-strong);
+  --color-text-soft: var(--text-soft);
+  --color-accent-soft: var(--accent-soft);
+
+  /* Panele, linie i delikatne nakładki (odpowiedniki dawnych bg-[#0E1522], border-[#141D2E], white/5, white/10) */
+  --color-surface-panel: var(--surface-card);
+  --color-surface-line: var(--surface-line);
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-veil: var(--veil);
+  --color-veil-strong: var(--veil-strong);
+  --color-surface-raised: var(--surface-raised);
+  --color-on-primary: #080B11; /* ciemny tekst na bursztynowych przyciskach – ten sam w obu motywach */
 
   /* Gamification & Semantic Accents */
   --color-alert-crimson: var(--alert-crimson);
@@ -50,9 +71,9 @@
 :root {
   /* Default: Nocturne Luminary (Dark Mode) */
   --surface-bg: #070A0F;
-  --surface-card: #0F1726;
-  --surface-card-hover: #152238;
-  --surface-elevated: #152238;
+  --surface-card: #0E1522;
+  --surface-card-hover: #141D2E;
+  --surface-elevated: #141D2E;
   --surface-border: rgba(255, 255, 255, 0.12);
   --surface-border-hover: rgba(255, 255, 255, 0.22);
   --surface-border-active: #FFB800;
@@ -69,6 +90,15 @@
   --text-muted: #64748B;
   --text-subtle: #475569;
   --text-accent: #FFB800;
+  --text-strong: #FFFFFF;
+  --text-soft: #DFE2F1;
+  --accent-soft: #FFDCA1;
+  --surface-line: #141D2E;
+  --hairline: rgba(255, 255, 255, 0.10);
+  --hairline-soft: rgba(255, 255, 255, 0.05);
+  --veil: rgba(255, 255, 255, 0.05);
+  --veil-strong: rgba(255, 255, 255, 0.10);
+  --surface-raised: #1E293B;
 
   --alert-crimson: #F43F5E;
   --alert-crimson-bg: rgba(244, 63, 94, 0.12);
@@ -79,6 +109,8 @@
   --formula-border: rgba(255, 184, 0, 0.12);
   --formula-text: #FFFFFF;
   --formula-shadow: 0 0 10px rgba(255, 184, 0, 0.2);
+
+  --brand-pattern-opacity: 0.08;
 
   --jasne: #FFB800;
   --jasne-hover: #FFC72C;
@@ -116,7 +148,16 @@ html.light {
   --text-secondary: #475569;
   --text-muted: #64748B;
   --text-subtle: #94A3B8;
-  --text-accent: #D97706;
+  --text-accent: #B45309; /* tekst akcentowy: ciemniejszy bursztyn (4.9:1 na bieli) niż primary #D97706 (3.2:1) */
+  --text-strong: #0F172A;
+  --text-soft: #1E293B;
+  --accent-soft: #92400E;
+  --surface-line: #E2E8F0;
+  --hairline: rgba(15, 23, 42, 0.12);
+  --hairline-soft: rgba(15, 23, 42, 0.07);
+  --veil: rgba(15, 23, 42, 0.04);
+  --veil-strong: rgba(15, 23, 42, 0.07);
+  --surface-raised: #E2E8F0;
 
   --alert-crimson: #E11D48;
   --alert-crimson-bg: rgba(225, 29, 72, 0.08);
@@ -127,6 +168,8 @@ html.light {
   --formula-border: rgba(217, 119, 6, 0.2);
   --formula-text: #0F172A;
   --formula-shadow: none;
+
+  --brand-pattern-opacity: 0.07;
 
   --jasne: #D97706;
   --jasne-hover: #B45309;
@@ -412,8 +455,10 @@ button, a, input, [role="button"] {
   }
 }
 
+/* UWAGA: animacje wejścia NIE mogą mieć fill-mode "forwards" – zachowany transform/filter
+   tworzy kontekst pozycjonowania i modale `fixed` wewnątrz widoku lądują poza ekranem. */
 .animate-subject-switch {
-  animation: subject-crossfade 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: subject-crossfade 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes fadeIn {
@@ -428,7 +473,7 @@ button, a, input, [role="button"] {
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeIn 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes pageTransition {
@@ -445,7 +490,7 @@ button, a, input, [role="button"] {
 }
 
 .animate-pageTransition {
-  animation: pageTransition 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: pageTransition 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Animacja shake dla błędnej odpowiedzi */
@@ -712,3 +757,89 @@ button, a, input, [role="button"] {
   }
 }
 
+/* =========================================================================
+   MOBILE: czytelność i cele dotykowe
+   ========================================================================= */
+
+/* Powiększa obszar dotyku do min. 44px bez zmiany wyglądu elementu */
+.tap-44 {
+  position: relative;
+}
+.tap-44::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 44px;
+  min-width: 100%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 640px) {
+  /* Dolna granica czytelności na telefonie: 11px (etykiety 10px i 9px są podbijane) */
+  .text-\[10px\],
+  .text-\[9px\] {
+    font-size: 11px;
+  }
+}
+
+/* Dostępność ruchowa (DESIGN.md §4.5) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Przyciski na całą szerokość to na telefonie zawsze akcje główne: min. 44px wysokości */
+  button.w-full,
+  a.w-full {
+    min-height: 44px;
+  }
+}
+
+/* =========================================================================
+   SOLAR LUMINARY – korekty elementów, których nie obejmuje adapter klas
+   ========================================================================= */
+html.light .MafsView {
+  --mafs-bg: #FFFFFF;
+  --mafs-fg: #0F172A;
+  --mafs-origin-color: #475569;
+  --mafs-line-color: rgba(15, 23, 42, 0.12);
+  --grid-line-subdivision-color: rgba(15, 23, 42, 0.05);
+  --mafs-yellow: #D97706;
+  --movable-point-color: #D97706;
+}
+html.light .MafsView .mafs-shadow {
+  stroke: #FFFFFF;
+  filter: none;
+}
+/* Przyciski bursztynowe: lżejszy cień na jasnym tle */
+html.light button[class*="bg-[#FFB800]"],
+html.light button[class*="bg-jasne"],
+html.light .btn-jasne {
+  box-shadow: 0 2px 8px rgba(180, 83, 9, 0.25) !important;
+}
+
+/* Ekrany dotykowe: każdy mały przycisk/link dostaje niewidoczny obszar dotyku min. 44×44 px.
+   :where() ma zerową specyficzność, więc klasy pozycjonowania (absolute/fixed/sticky) wygrywają. */
+@media (pointer: coarse) {
+  :where(button, a, [role="button"]) {
+    position: relative;
+  }
+  :where(button, a, [role="button"])::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
+}

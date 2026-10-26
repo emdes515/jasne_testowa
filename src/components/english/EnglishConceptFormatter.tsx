@@ -27,7 +27,7 @@ export function renderFormattedInline(text: string): React.ReactNode {
     if (part.startsWith('**') && part.endsWith('**')) {
       const bold = part.slice(2, -2);
       return (
-        <strong key={i} className="text-white font-extrabold tracking-wide break-words">
+        <strong key={i} className="text-text-strong font-extrabold tracking-wide break-words">
           {bold}
         </strong>
       );
@@ -232,7 +232,7 @@ export const EnglishConceptFormatter: React.FC<{ content: string }> = ({ content
     <div className="space-y-4">
       {/* 1. INTRO / SENS ZAGADNIENIA (Wzór z polskiego: lewy akcent #FFB800) */}
       {intro && (
-        <section className="p-3.5 sm:p-4 rounded-xl border-l-4 border-l-[#FFB800] border border-white/10 bg-black/40 text-slate-200 text-xs sm:text-sm leading-relaxed shadow-inner min-w-0 overflow-hidden">
+        <section className="p-3.5 sm:p-4 rounded-xl border-l-4 border-l-[#FFB800] border border-hairline bg-black/40 text-slate-200 text-xs sm:text-sm leading-relaxed shadow-inner min-w-0 overflow-hidden">
           <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
             Wprowadzenie & Sens Zagadnienia CKE:
           </span>
@@ -244,7 +244,7 @@ export const EnglishConceptFormatter: React.FC<{ content: string }> = ({ content
 
       {/* 2. GŁÓWNE FILARY WIEDZY CKE (Bento Grid 2-kolumny – czyste kafelki pojęć) */}
       {bentoPoints.length > 0 && (
-        <section className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-emerald-500/20 flex flex-col gap-3.5 shadow-sm min-w-0 overflow-hidden">
+        <section className="rounded-2xl p-4 sm:p-5 bg-surface-panel border border-emerald-500/20 flex flex-col gap-3.5 shadow-sm min-w-0 overflow-hidden">
           <div className="flex items-center justify-between gap-2 flex-wrap min-w-0">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 min-w-0">
               <BookmarkCheck size={16} className="text-emerald-400 shrink-0" />
@@ -259,16 +259,16 @@ export const EnglishConceptFormatter: React.FC<{ content: string }> = ({ content
             {bentoPoints.map((point, pIdx) => (
               <div
                 key={point.id || pIdx}
-                className="rounded-xl p-3.5 sm:p-4 bg-slate-950/70 border border-white/10 flex flex-col justify-between gap-2.5 hover:border-emerald-500/40 transition-colors shadow-sm group min-w-0 overflow-hidden"
+                className="rounded-xl p-3.5 sm:p-4 bg-slate-950/70 border border-hairline flex flex-col justify-between gap-2.5 hover:border-emerald-500/40 transition-colors shadow-sm group min-w-0 overflow-hidden"
               >
                 <div className="space-y-2 min-w-0">
                   {/* Górny pasek: Licznik 01, 02 + Tytuł pojęcia + Pigułka formuły */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2 min-w-0">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-hairline-soft pb-2 min-w-0">
                     <div className="flex items-center gap-2 min-w-0 flex-1">
                       <span className="w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center shrink-0">
                         {String(pIdx + 1).padStart(2, '0')}
                       </span>
-                      <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight break-words min-w-0">
+                      <h4 className="text-xs sm:text-sm font-bold text-text-strong tracking-tight break-words min-w-0">
                         {point.title}
                       </h4>
                     </div>
@@ -306,7 +306,7 @@ export const EnglishConceptFormatter: React.FC<{ content: string }> = ({ content
                       <Zap size={11} className="text-emerald-400 shrink-0" />
                       <span>Przykład maturalny:</span>
                     </span>
-                    <span className="font-medium text-white italic break-words">
+                    <span className="font-medium text-text-strong italic break-words">
                       „{point.example}”
                     </span>
                   </div>
@@ -327,7 +327,7 @@ export const EnglishConceptFormatter: React.FC<{ content: string }> = ({ content
             <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-400">
               Złota zasada maturalna („Z polskiego na nasze”)
             </span>
-            <p className="text-xs sm:text-sm font-semibold text-white leading-relaxed break-words">
+            <p className="text-xs sm:text-sm font-semibold text-text-strong leading-relaxed break-words">
               {renderFormattedInline(goldenRule)}
             </p>
           </div>

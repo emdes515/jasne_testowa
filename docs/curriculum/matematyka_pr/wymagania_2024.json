@@ -1,0 +1,835 @@
+[
+ {
+  "code": "I.1",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "wykonuje działania (dodawanie, odejmowanie, mnożenie, dzielenie, potęgowanie, pierwiastkowanie, logarytmowanie) w zbiorze liczb rzeczywistych;"
+ },
+ {
+  "code": "I.2",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "przeprowadza proste dowody dotyczące podzielności liczb całkowitych i reszt z dzielenia, np.: a) dowód podzielności przez 24 iloczynu czterech kolejnych liczb naturalnych, b) dowód własności: jeśli liczba przy dzieleniu przez 4 daje resztę 3, to nie jest kwadratem liczby całkowitej;"
+ },
+ {
+  "code": "I.3",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "stosuje własności pierwiastków dowolnego stopnia, w tym pierwiastków stopnia nieparzystego z liczb ujemnych;"
+ },
+ {
+  "code": "I.4",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "stosuje związek pierwiastkowania z potęgowaniem oraz prawa działań na potęgach i pierwiastkach;"
+ },
+ {
+  "code": "I.5",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "stosuje monotoniczność potęgowania, w szczególności własności: jeśli x < y oraz a > 1, to ax < ay, zaś gdy x < y i 0 < a < 1, to ax > ay;"
+ },
+ {
+  "code": "I.6",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "posługuje się pojęciem przedziału liczbowego, zaznacza przedziały na osi liczbowej;"
+ },
+ {
+  "code": "I.7",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "stosuje interpretację geometryczną i algebraiczną wartości bezwzględnej, rozwiązuje równania typu: |x + 4| = 5;"
+ },
+ {
+  "code": "I.8",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "wykorzystuje własności potęgowania i pierwiastkowania w sytuacjach praktycznych, w tym do obliczania procentów składanych, zysków z lokat i kosztów kredytów;"
+ },
+ {
+  "code": "I.9",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PP",
+  "text": "stosuje związek logarytmowania z potęgowaniem, posługuje się wzorami na logarytm iloczynu, logarytm ilorazu i logarytm potęgi."
+ },
+ {
+  "code": "I.R1",
+  "section": "I",
+  "section_title": "Liczby rzeczywiste",
+  "level": "PR",
+  "text": "spełnia wymagania określone dla zakresu podstawowego, a ponadto stosuje wzór na zamianę podstawy logarytmu."
+ },
+ {
+  "code": "II.1",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PP",
+  "text": "stosuje wzory skróconego mnożenia na: (a + b)2, (a − b)2, a2 − b2;"
+ },
+ {
+  "code": "II.2",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PP",
+  "text": "dodaje, odejmuje i mnoży wielomiany jednej i wielu zmiennych;"
+ },
+ {
+  "code": "II.3",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PP",
+  "text": "wyłącza poza nawias jednomian z sumy algebraicznej;"
+ },
+ {
+  "code": "II.4",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PP",
+  "text": "mnoży i dzieli wyrażenia wymierne."
+ },
+ {
+  "code": "II.R1",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PR",
+  "text": "dzieli wielomian jednej zmiennej W(x) przez dwumian postaci x − a;"
+ },
+ {
+  "code": "II.R2",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PR",
+  "text": "rozkłada wielomiany na czynniki metodą wyłączania wspólnego czynnika przed nawias oraz metodą grupowania wyrazów;"
+ },
+ {
+  "code": "II.R3",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PR",
+  "text": "znajduje pierwiastki całkowite wielomianu o współczynnikach całkowitych;"
+ },
+ {
+  "code": "II.R4",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PR",
+  "text": "stosuje podstawowe własności trójkąta Pascala oraz następujące własności współczynnika dwumianowego (symbolu Newtona): (𝑛𝑛 0) = 1, (𝑛𝑛 1) = 𝑛𝑛, ( 𝑛𝑛 𝑛𝑛−1) = 𝑛𝑛, (𝑛𝑛 𝑘𝑘) = ( 𝑛𝑛 𝑛𝑛−𝑘𝑘), (𝑛𝑛 𝑘𝑘) + ( 𝑛𝑛 𝑘𝑘+1) = (𝑛𝑛+1 𝑘𝑘+1);"
+ },
+ {
+  "code": "II.R5",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PR",
+  "text": "korzysta ze wzorów na: a3 + b3, a3 − b3, an − bn, (a + b)n i (a − b)n;"
+ },
+ {
+  "code": "II.R6",
+  "section": "II",
+  "section_title": "Wyrażenia algebraiczne",
+  "level": "PR",
+  "text": "dodaje i odejmuje wyrażenia wymierne, np.: 1 𝑥𝑥 +1 − 1 𝑥𝑥, 1 𝑥𝑥+ 1 𝑥𝑥2 + 1 𝑥𝑥3, 𝑥𝑥 + 1 𝑥𝑥 + 2 + 𝑥𝑥 − 1 𝑥𝑥 + 1."
+ },
+ {
+  "code": "III.1",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PP",
+  "text": "przekształca równania i nierówności w sposób równoważny, w tym np. przekształca równoważnie równanie 5 𝑥𝑥 + 1 = 𝑥𝑥 + 3 2𝑥𝑥−1;"
+ },
+ {
+  "code": "III.2",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PP",
+  "text": "interpretuje równania i nierówności liniowe sprzeczne oraz tożsamościowe;"
+ },
+ {
+  "code": "III.3",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PP",
+  "text": "rozwiązuje nierówności liniowe z jedną niewiadomą;"
+ },
+ {
+  "code": "III.4",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PP",
+  "text": "rozwiązuje równania i nierówności kwadratowe;"
+ },
+ {
+  "code": "III.5",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PP",
+  "text": "rozwiązuje równania wielomianowe postaci W(x) = 0 dla wielomianów doprowadzonych do postaci iloczynowej."
+ },
+ {
+  "code": "III.R1",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PR",
+  "text": "rozwiązuje równania wielomianowe postaci W(x) = 0 oraz nierówności wielomianowe typu: W(x) > 0, W(x) ≥ 0, W(x) < 0, W(x) ≤ 0 dla wielomianów doprowadzonych do postaci iloczynowej lub takich, które dają się doprowadzić do postaci iloczynowej metodą wyłączania wspólnego czynnika przed nawias lub metodą grupowania;"
+ },
+ {
+  "code": "III.R2",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PR",
+  "text": "rozwiązuje równania i nierówności wymierne, które dadzą się sprowadzić do równania lub nierówności liniowej lub kwadratowej;"
+ },
+ {
+  "code": "III.R3",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PR",
+  "text": "stosuje wzory Viète’a dla równań kwadratowych;"
+ },
+ {
+  "code": "III.R4",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PR",
+  "text": "rozwiązuje równania i nierówności z wartością bezwzględną;"
+ },
+ {
+  "code": "III.R5",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PR",
+  "text": "analizuje równania i nierówności liniowe z parametrami oraz równania i nierówności kwadratowe z parametrami, w szczególności: wyznacza liczbę rozwiązań w zależności od parametrów, podaje warunki, przy których rozwiązania mają określone znaki bądź należą do określonego przedziału, wyznacza rozwiązania w zależności od parametrów;"
+ },
+ {
+  "code": "III.R6",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PR",
+  "text": "rozwiązuje równania wielomianowe, które dają się doprowadzić do równania kwadratowego, w szczególności równania dwukwadratowe;"
+ },
+ {
+  "code": "III.R7",
+  "section": "III",
+  "section_title": "Równania i nierówności",
+  "level": "PR",
+  "text": "rozwiązuje równania wymierne postaci 𝑉𝑉(𝑥𝑥)/𝑊𝑊(𝑥𝑥)= 0ǡ gdzie wielomiany 𝑉𝑉(𝑥𝑥) i 𝑊𝑊(𝑥𝑥) są zapisane w postaci iloczynowej."
+ },
+ {
+  "code": "IV.1",
+  "section": "IV",
+  "section_title": "Układy równań",
+  "level": "PP",
+  "text": "rozwiązuje układy równań liniowych z dwiema niewiadomymi, podaje interpretację geometryczną układów oznaczonych, nieoznaczonych i sprzecznych;"
+ },
+ {
+  "code": "IV.2",
+  "section": "IV",
+  "section_title": "Układy równań",
+  "level": "PP",
+  "text": "stosuje układy równań do rozwiązywania zadań tekstowych."
+ },
+ {
+  "code": "IV.R1",
+  "section": "IV",
+  "section_title": "Układy równań",
+  "level": "PR",
+  "text": "spełnia wymagania określone dla zakresu podstawowego, a ponadto rozwiązuje układy równań liniowych i kwadratowych z dwiema niewiadomymi, które można sprowadzić do równania kwadratowego lub liniowego, a które nie są trudniejsze niż { 𝑥𝑥2 + 𝑦𝑦2 + 𝑎𝑎𝑎𝑎+ 𝑏𝑏𝑏𝑏= 𝑐𝑐 𝑥𝑥2 + 𝑦𝑦2 + 𝑑𝑑𝑑𝑑+ 𝑒𝑒𝑒𝑒= 𝑓𝑓 ."
+ },
+ {
+  "code": "V.1",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "określa funkcje jako jednoznaczne przyporządkowanie za pomocą opisu słownego, tabeli, wykresu, wzoru (także różnymi wzorami na różnych przedziałach);"
+ },
+ {
+  "code": "V.2",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "oblicza wartość funkcji zadanej wzorem algebraicznym;"
+ },
+ {
+  "code": "V.3",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "odczytuje i interpretuje wartości funkcji określonych za pomocą tabel, wykresów, wzorów itp., również w sytuacjach wielokrotnego użycia tego samego źródła informacji lub kilku źródeł jednocześnie;"
+ },
+ {
+  "code": "V.4",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "odczytuje z wykresu funkcji: dziedzinę, zbiór wartości, miejsca zerowe, przedziały monotoniczności, przedziały, w których funkcja przyjmuje wartości większe (nie mniejsze) lub mniejsze (nie większe) od danej liczby, największe i najmniejsze wartości funkcji (o ile istnieją) w danym przedziale domkniętym oraz argumenty, dla których wartości największe i najmniejsze są przez funkcję przyjmowane;"
+ },
+ {
+  "code": "V.5",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "interpretuje współczynniki występujące we wzorze funkcji liniowej;"
+ },
+ {
+  "code": "V.6",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "wyznacza wzór funkcji liniowej na podstawie informacji o jej wykresie lub o jej własnościach;"
+ },
+ {
+  "code": "V.7",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "szkicuje wykres funkcji kwadratowej zadanej wzorem;"
+ },
+ {
+  "code": "V.8",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "interpretuje współczynniki występujące we wzorze funkcji kwadratowej w postaci ogólnej, kanonicznej i iloczynowej (jeśli istnieje);"
+ },
+ {
+  "code": "V.9",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "wyznacza wzór funkcji kwadratowej na podstawie informacji o tej funkcji lub o jej wykresie;"
+ },
+ {
+  "code": "V.10",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "wyznacza największą i najmniejszą wartość funkcji kwadratowej w przedziale domkniętym;"
+ },
+ {
+  "code": "V.11",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "wykorzystuje własności funkcji liniowej i kwadratowej do interpretacji zagadnień geometrycznych, fizycznych itp., także osadzonych w kontekście praktycznym;"
+ },
+ {
+  "code": "V.12",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "na podstawie wykresu funkcji 𝑦𝑦= 𝑓𝑓(𝑥𝑥) szkicuje wykresy funkcji 𝑦𝑦= 𝑓𝑓(𝑥𝑥−𝑎𝑎), 𝑦𝑦= 𝑓𝑓(𝑥𝑥) + 𝑏𝑏;"
+ },
+ {
+  "code": "V.13",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "posługuje się funkcją 𝑓𝑓(𝑥𝑥) = 𝑎𝑎 𝑥𝑥, w tym jej wykresem, do opisu i interpretacji zagadnień związanych z wielkościami odwrotnie proporcjonalnymi, również w zastosowaniach praktycznych;"
+ },
+ {
+  "code": "V.14",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PP",
+  "text": "posługuje się funkcjami wykładniczą i logarytmiczną, w tym ich wykresami, do opisu i interpretacji zagadnień związanych z zastosowaniami praktycznymi."
+ },
+ {
+  "code": "V.R1",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PR",
+  "text": "na podstawie wykresu funkcji 𝑦𝑦= 𝑓𝑓(𝑥𝑥) rysuje wykresy funkcji 𝑦𝑦= −𝑓𝑓(𝑥𝑥), 𝑦𝑦= 𝑓𝑓(−𝑥𝑥);"
+ },
+ {
+  "code": "V.R2",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PR",
+  "text": "posługuje się złożeniami funkcji;"
+ },
+ {
+  "code": "V.R3",
+  "section": "V",
+  "section_title": "Funkcje",
+  "level": "PR",
+  "text": "dowodzi monotoniczności funkcji zadanej wzorem, jak w przykładzie: wykaż, że funkcja 𝑓𝑓(𝑥𝑥) = 𝑥𝑥−1 𝑥𝑥+2 jest monotoniczna w przedziale (−∞, −2)."
+ },
+ {
+  "code": "VI.1",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PP",
+  "text": "oblicza wyrazy ciągu określonego wzorem ogólnym;"
+ },
+ {
+  "code": "VI.2",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PP",
+  "text": "oblicza początkowe wyrazy ciągów określonych rekurencyjnie;"
+ },
+ {
+  "code": "VI.3",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PP",
+  "text": "w prostych przypadkach bada, czy ciąg jest rosnący, czy malejący;"
+ },
+ {
+  "code": "VI.4",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PP",
+  "text": "sprawdza, czy dany ciąg jest arytmetyczny lub geometryczny;"
+ },
+ {
+  "code": "VI.5",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PP",
+  "text": "stosuje wzór na n-ty wyraz i na sumę n początkowych wyrazów ciągu arytmetycznego;"
+ },
+ {
+  "code": "VI.6",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PP",
+  "text": "stosuje wzór na n-ty wyraz i na sumę n początkowych wyrazów ciągu geometrycznego;"
+ },
+ {
+  "code": "VI.7",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PP",
+  "text": "wykorzystuje własności ciągów, w tym arytmetycznych i geometrycznych, do rozwiązywania zadań, również osadzonych w kontekście praktycznym."
+ },
+ {
+  "code": "VI.R1",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PR",
+  "text": "oblicza granice ciągów, korzystając z granic ciągów typu 1 𝑛𝑛, √𝑎𝑎 𝑛𝑛 oraz twierdzeń o granicach sumy, różnicy, iloczynu i ilorazu ciągów zbieżnych, a także twierdzenia o trzech ciągach;"
+ },
+ {
+  "code": "VI.R2",
+  "section": "VI",
+  "section_title": "Ciągi",
+  "level": "PR",
+  "text": "rozpoznaje zbieżne szeregi geometryczne i oblicza ich sumę."
+ },
+ {
+  "code": "VII.1",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PP",
+  "text": "wykorzystuje definicje funkcji: sinus, cosinus i tangens dla kątów od 0° do 180°, w szczególności wyznacza wartości funkcji trygonometrycznych dla kątów 30°, 45°, 60°;"
+ },
+ {
+  "code": "VII.2",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PP",
+  "text": "korzysta z wzorów sin2 𝛼𝛼+ cos2 𝛼𝛼= 1, tg 𝛼𝛼= sin𝛼𝛼 cos 𝛼𝛼;"
+ },
+ {
+  "code": "VII.3",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PP",
+  "text": "stosuje twierdzenie cosinusów oraz wzór na pole trójkąta 𝑃𝑃= 1 2 ⋅𝑎𝑎⋅𝑏𝑏⋅sin 𝛾𝛾;"
+ },
+ {
+  "code": "VII.4",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PP",
+  "text": "oblicza kąty trójkąta prostokątnego i długości jego boków przy odpowiednich danych (rozwiązuje trójkąty prostokątne, w tym z wykorzystaniem funkcji trygonometrycznych)."
+ },
+ {
+  "code": "VII.R1",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "stosuje miarę łukową, zamienia stopnie na radiany i odwrotnie;"
+ },
+ {
+  "code": "VII.R2",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "posługuje się wykresami funkcji trygonometrycznych: sinus, cosinus, tangens;"
+ },
+ {
+  "code": "VII.R3",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "wykorzystuje okresowość funkcji trygonometrycznych;"
+ },
+ {
+  "code": "VII.R4",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "stosuje wzory redukcyjne dla funkcji trygonometrycznych;"
+ },
+ {
+  "code": "VII.R5",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "korzysta z wzorów na sinus, cosinus i tangens sumy i różnicy kątów, a także na funkcje trygonometryczne kątów podwojonych;"
+ },
+ {
+  "code": "VII.R6",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "rozwiązuje równania trygonometryczne;"
+ },
+ {
+  "code": "VII.R7",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "stosuje twierdzenie sinusów;"
+ },
+ {
+  "code": "VII.R8",
+  "section": "VII",
+  "section_title": "Trygonometria",
+  "level": "PR",
+  "text": "oblicza kąty trójkąta i długości jego boków przy odpowiednich danych (rozwiązuje trójkąty)."
+ },
+ {
+  "code": "VIII.1",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "wyznacza promienie i średnice okręgów, długości cięciw okręgów oraz odcinków stycznych, w tym z wykorzystaniem twierdzenia Pitagorasa;"
+ },
+ {
+  "code": "VIII.2",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "rozpoznaje trójkąty ostrokątne, prostokątne i rozwartokątne przy danych długościach boków (m.in. stosuje twierdzenie odwrotne do twierdzenia Pitagorasa i twierdzenie cosinusów); stosuje twierdzenie: w trójkącie naprzeciw większego kąta wewnętrznego leży dłuższy bok;"
+ },
+ {
+  "code": "VIII.3",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "rozpoznaje wielokąty foremne i korzysta z ich podstawowych własności;"
+ },
+ {
+  "code": "VIII.4",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "korzysta z własności kątów i przekątnych w prostokątach, równoległobokach, rombach i trapezach;"
+ },
+ {
+  "code": "VIII.5",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "stosuje własności kątów wpisanych i środkowych;"
+ },
+ {
+  "code": "VIII.6",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "stosuje wzory na pole wycinka koła i długość łuku okręgu;"
+ },
+ {
+  "code": "VIII.7",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "stosuje twierdzenie Talesa;"
+ },
+ {
+  "code": "VIII.8",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "korzysta z cech podobieństwa trójkątów;"
+ },
+ {
+  "code": "VIII.9",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "wykorzystuje zależności między obwodami oraz między polami figur podobnych;"
+ },
+ {
+  "code": "VIII.10",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "wskazuje podstawowe punkty szczególne w trójkącie: środek okręgu wpisanego w trójkąt, środek okręgu opisanego na trójkącie, ortocentrum, środek ciężkości oraz korzysta z ich własności;"
+ },
+ {
+  "code": "VIII.11",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "przeprowadza dowody geometryczne;"
+ },
+ {
+  "code": "VIII.12",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PP",
+  "text": "stosuje funkcje trygonometryczne do wyznaczania długości odcinków w figurach płaskich oraz obliczania pól figur."
+ },
+ {
+  "code": "VIII.R1",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PR",
+  "text": "stosuje własności czworokątów wpisanych w okrąg i opisanych na okręgu;"
+ },
+ {
+  "code": "VIII.R2",
+  "section": "VIII",
+  "section_title": "Planimetria",
+  "level": "PR",
+  "text": "stosuje twierdzenie odwrotne do twierdzenia Talesa."
+ },
+ {
+  "code": "IX.1",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PP",
+  "text": "rozpoznaje wzajemne położenie prostych na płaszczyźnie na podstawie ich równań, w tym znajduje wspólny punkt dwóch prostych, jeśli taki istnieje;"
+ },
+ {
+  "code": "IX.2",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PP",
+  "text": "posługuje się równaniami prostych na płaszczyźnie, w postaci kierunkowej i ogólnej, w tym wyznacza równanie prostej o zadanych własnościach (takich, jak np. przechodzenie przez dwa dane punkty, znany współczynnik kierunkowy, równoległość do innej prostej);"
+ },
+ {
+  "code": "IX.3",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PP",
+  "text": "oblicza odległość dwóch punktów w układzie współrzędnych;"
+ },
+ {
+  "code": "IX.4",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PP",
+  "text": "posługuje się równaniem okręgu (𝑥𝑥−𝑎𝑎)2 + (𝑦𝑦−𝑏𝑏)2 = 𝑟𝑟2;"
+ },
+ {
+  "code": "IX.5",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PP",
+  "text": "wyznacza obrazy okręgów i wielokątów w symetriach osiowych względem osi układu współrzędnych, symetrii środkowej (o środku w początku układu współrzędnych)."
+ },
+ {
+  "code": "IX.R1",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PR",
+  "text": "znajduje punkty wspólne prostej i okręgu;"
+ },
+ {
+  "code": "IX.R2",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PR",
+  "text": "znajduje punkty wspólne dwóch okręgów;"
+ },
+ {
+  "code": "IX.R3",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PR",
+  "text": "zna pojęcie wektora i oblicza jego współrzędne oraz długość, dodaje wektory i mnoży wektor przez liczbę, oba te działania wykonuje zarówno analitycznie, jak i geometrycznie;"
+ },
+ {
+  "code": "IX.R4",
+  "section": "IX",
+  "section_title": "Geometria analityczna na płaszczyźnie kartezjańskiej",
+  "level": "PR",
+  "text": "wyznacza równanie prostej prostopadłej do zadanej prostej i prostej stycznej do zadanego okręgu."
+ },
+ {
+  "code": "X.1",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PP",
+  "text": "rozpoznaje wzajemne położenie prostych w przestrzeni, w szczególności proste prostopadłe nieprzecinające się;"
+ },
+ {
+  "code": "X.2",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PP",
+  "text": "posługuje się pojęciem kąta między prostą a płaszczyzną oraz pojęciem kąta dwuściennego między półpłaszczyznami;"
+ },
+ {
+  "code": "X.3",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PP",
+  "text": "rozpoznaje w graniastosłupach i ostrosłupach kąty między odcinkami (np. krawędziami, krawędziami i przekątnymi) oraz kąty między ścianami, oblicza miary tych kątów;"
+ },
+ {
+  "code": "X.4",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PP",
+  "text": "rozpoznaje w walcach i w stożkach kąt między odcinkami oraz kąt między odcinkami i płaszczyznami (np. kąt rozwarcia stożka, kąt między tworzącą a podstawą), oblicza miary tych kątów;"
+ },
+ {
+  "code": "X.5",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PP",
+  "text": "oblicza objętości i pola powierzchni graniastosłupów, ostrosłupów, walca, stożka i kuli, również z wykorzystaniem trygonometrii;"
+ },
+ {
+  "code": "X.6",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PP",
+  "text": "wykorzystuje zależność między objętościami brył podobnych."
+ },
+ {
+  "code": "X.R1",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PR",
+  "text": "zna i stosuje twierdzenie o prostej prostopadłej do płaszczyzny i o trzech prostopadłych;"
+ },
+ {
+  "code": "X.R2",
+  "section": "X",
+  "section_title": "Stereometria",
+  "level": "PR",
+  "text": "wyznacza przekroje sześcianu i ostrosłupów prawidłowych oraz oblicza ich pola, także z wykorzystaniem trygonometrii."
+ },
+ {
+  "code": "XI.1",
+  "section": "XI",
+  "section_title": "Kombinatoryka",
+  "level": "PP",
+  "text": "zlicza obiekty w prostych sytuacjach kombinatorycznych;"
+ },
+ {
+  "code": "XI.2",
+  "section": "XI",
+  "section_title": "Kombinatoryka",
+  "level": "PP",
+  "text": "zlicza obiekty, stosując reguły mnożenia i dodawania (także łącznie) dla dowolnej liczby czynności, np.: a) obliczenie, ile jest czterocyfrowych nieparzystych liczb całkowitych dodatnich takich, że w ich zapisie dziesiętnym występuje dokładnie jedna cyfra 1 i dokładnie jedna cyfra 2, b) obliczenie, ile jest czterocyfrowych parzystych liczb całkowitych dodatnich takich, że w ich zapisie dziesiętnym występuje dokładnie jedna cyfra 0 i dokładnie jedna cyfra 1."
+ },
+ {
+  "code": "XI.R1",
+  "section": "XI",
+  "section_title": "Kombinatoryka",
+  "level": "PR",
+  "text": "oblicza liczbę możliwych sytuacji, spełniających określone kryteria, z wykorzystaniem reguły mnożenia i dodawania (także łącznie) oraz wzorów na liczbę: permutacji, kombinacji i wariacji;"
+ },
+ {
+  "code": "XI.R2",
+  "section": "XI",
+  "section_title": "Kombinatoryka",
+  "level": "PR",
+  "text": "stosuje współczynnik dwumianowy (symbol Newtona) i jego własności przy rozwiązywaniu problemów kombinatorycznych."
+ },
+ {
+  "code": "XII.1",
+  "section": "XII",
+  "section_title": "Rachunek prawdopodobieństwa i statystyka",
+  "level": "PP",
+  "text": "oblicza prawdopodobieństwo w modelu klasycznym;"
+ },
+ {
+  "code": "XII.2",
+  "section": "XII",
+  "section_title": "Rachunek prawdopodobieństwa i statystyka",
+  "level": "PP",
+  "text": "oblicza średnią arytmetyczną i średnią ważoną, znajduje medianę i dominantę."
+ },
+ {
+  "code": "XII.R1",
+  "section": "XII",
+  "section_title": "Rachunek prawdopodobieństwa i statystyka",
+  "level": "PR",
+  "text": "oblicza prawdopodobieństwo warunkowe i stosuje wzór Bayesa, stosuje twierdzenie o prawdopodobieństwie całkowitym;"
+ },
+ {
+  "code": "XII.R2",
+  "section": "XII",
+  "section_title": "Rachunek prawdopodobieństwa i statystyka",
+  "level": "PR",
+  "text": "stosuje schemat Bernoullego."
+ },
+ {
+  "code": "XIII.1",
+  "section": "XIII",
+  "section_title": "Optymalizacja i rachunek różniczkowy",
+  "level": "PP",
+  "text": "rozwiązuje zadania optymalizacyjne w sytuacjach dających się opisać funkcją kwadratową."
+ },
+ {
+  "code": "XIII.R1",
+  "section": "XIII",
+  "section_title": "Optymalizacja i rachunek różniczkowy",
+  "level": "PR",
+  "text": "oblicza granice funkcji (w tym jednostronne);"
+ },
+ {
+  "code": "XIII.R2",
+  "section": "XIII",
+  "section_title": "Optymalizacja i rachunek różniczkowy",
+  "level": "PR",
+  "text": "stosuje własność Darboux do uzasadniania istnienia miejsca zerowego funkcji;"
+ },
+ {
+  "code": "XIII.R3",
+  "section": "XIII",
+  "section_title": "Optymalizacja i rachunek różniczkowy",
+  "level": "PR",
+  "text": "stosuje definicję pochodnej funkcji, podaje interpretację geometryczną i fizyczną pochodnej;"
+ },
+ {
+  "code": "XIII.R4",
+  "section": "XIII",
+  "section_title": "Optymalizacja i rachunek różniczkowy",
+  "level": "PR",
+  "text": "oblicza pochodną funkcji potęgowej o wykładniku rzeczywistym oraz oblicza pochodną, korzystając z twierdzeń o pochodnej sumy, różnicy, iloczynu, ilorazu i funkcji złożonej;"
+ },
+ {
+  "code": "XIII.R5",
+  "section": "XIII",
+  "section_title": "Optymalizacja i rachunek różniczkowy",
+  "level": "PR",
+  "text": "stosuje pochodną do badania monotoniczności funkcji;"
+ },
+ {
+  "code": "XIII.R6",
+  "section": "XIII",
+  "section_title": "Optymalizacja i rachunek różniczkowy",
+  "level": "PR",
+  "text": "rozwiązuje zadania optymalizacyjne z zastosowaniem pochodnej."
+ }
+]

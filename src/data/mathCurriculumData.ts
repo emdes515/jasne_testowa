@@ -72,6 +72,8 @@ export function normalizeMathTaskForRunner(task: any, lessonId: string, topicId:
   const isNumeric = task.type === 'NUMERIC_INPUT';
   // Zadania prawda/fałsz: SessionRunner ocenia każde stwierdzenie osobno (pole `statements`)
   const isTrueFalse = task.type === 'TRUE_FALSE' && Array.isArray(task.statements);
+  // Zadania otwarte (poziom rozszerzony): ocena etapami CKE (`rubric_stages`) – samoocena albo egzaminator AI
+  const isOpen = task.type === 'OPEN_CALCULATION' || task.type === 'OPEN_PROOF';
 
   // Format options
   let options = undefined;
@@ -98,8 +100,19 @@ export function normalizeMathTaskForRunner(task: any, lessonId: string, topicId:
     id: task.id || `math-task-${lessonId}-${Math.random().toString(36).substring(7)}`,
     lessonId,
     topicId,
-    type: isNumeric ? 'NUMERIC_INPUT' : isTrueFalse ? 'TRUE_FALSE' : 'SINGLE_CHOICE',
+    type: isOpen ? task.type : isNumeric ? 'NUMERIC_INPUT' : isTrueFalse ? 'TRUE_FALSE' : 'SINGLE_CHOICE',
     statements: isTrueFalse ? task.statements : undefined,
+    ...(isOpen
+      ? {
+          rubric_stages: task.rubric_stages,
+          zero_rules: task.zero_rules,
+          scoring_key: task.scoring_key,
+          officialKey: task.scoring_key,
+          official_solution_steps: task.official_solution_steps,
+          maxPoints: task.points
+        }
+      : {}),
+    requirements: task.requirements,
     title: task.title || 'Zadanie w stylu maturalnym',
     question: questionText,
     content: questionText,

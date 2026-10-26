@@ -1,4 +1,5 @@
 import { T, mc, num, pf, pill, fr, par, sq, m, need, gcd, isSquare } from './lib.js';
+import { figRightTriangle, figSas } from './figures.js';
 
 const TIP_DEF = 'Karta wzorów, str. 10: $\\sin\\alpha = \\frac{a}{c}$, $\\cos\\alpha = \\frac{b}{c}$, $\\operatorname{tg}\\alpha = \\frac{a}{b}$ ($a$ – przyprostokątna naprzeciw kąta, $b$ – przy kącie, $c$ – przeciwprostokątna).';
 const TIP_ONE = 'Karta wzorów, str. 12: $\\sin^2\\alpha + \\cos^2\\alpha = 1$ oraz $\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}$.';
@@ -31,6 +32,7 @@ const defFromSides = (r) => {
   const val = { sin: [opp, c], cos: [adj, c], tg: [opp, adj] }[fn];
   const name = fn === 'tg' ? tg : `\\${fn}`;
   return mc({
+    diagram: figRightTriangle({ leg1: adj, leg2: opp, hyp: c, angleB: 'α' }),
     title: 'Funkcje trygonometryczne z długości boków',
     q: T`W trójkącie prostokątnym przyprostokątne mają długości $${a}$ i $${b}$, a przeciwprostokątna ma długość $${c}$. Kąt $\alpha$ leży naprzeciwko przyprostokątnej o długości $${opp}$. Wtedy $${name}\alpha$ jest równy`,
     ok: m(fr(val[0], val[1])),
@@ -90,6 +92,7 @@ const defNeedPythagoras = (r) => {
   const adj = smaller ? b : a;
   const val = fn === 'sin' ? [opp, c] : [adj, c];
   return mc({
+    diagram: figRightTriangle({ leg1: b, leg2: a }),
     title: 'Najpierw Pitagoras, potem funkcja',
     q: T`Przyprostokątne trójkąta prostokątnego mają długości $${a}$ i $${b}$. ${fn === 'sin' ? 'Sinus' : 'Cosinus'} ${smaller ? 'mniejszego' : 'większego'} z kątów ostrych tego trójkąta jest równy`,
     ok: m(fr(val[0], val[1])),
@@ -154,6 +157,7 @@ const valTriangle3060 = (r) => {
   const ask30 = r.bool();
   const half = c / 2;
   return mc({
+    diagram: figRightTriangle({ hyp: c, angleB: '30°', leg1: ask30 ? undefined : '?', leg2: ask30 ? '?' : undefined }),
     title: 'Trójkąt 30°, 60°, 90°',
     q: T`W trójkącie prostokątnym jeden z kątów ostrych ma miarę $30^\circ$, a przeciwprostokątna ma długość $${c}$. Przyprostokątna leżąca naprzeciwko kąta $${ask30 ? 30 : 60}^\circ$ ma długość`,
     ok: m(ask30 ? `${half}` : `${half}\\sqrt{3}`),
@@ -429,6 +433,7 @@ const areaSine = (r) => {
   const den = para ? d : 2 * d;
   const ok = rootFrac(coef, n, den);
   return mc({
+    diagram: para ? undefined : figSas({ a, b, g }),
     title: para ? 'Pole równoległoboku z sinusem' : 'Pole trójkąta z sinusem',
     q: para ? T`Boki równoległoboku mają długości $${a}$ i $${b}$, a kąt między nimi ma miarę $${g}^\circ$. Pole tego równoległoboku jest równe` : T`Dwa boki trójkąta mają długości $${a}$ i $${b}$, a kąt między nimi ma miarę $${g}^\circ$. Pole tego trójkąta jest równe`,
     ok: m(ok),
@@ -454,6 +459,7 @@ const cosineLawSide = (r) => {
   need(exact || !isSquare(c2));
   const ok = sq(c2);
   return mc({
+    diagram: figSas({ a, b, g, c: '?' }),
     title: 'Twierdzenie cosinusów: trzeci bok',
     q: T`Dwa boki trójkąta mają długości $${a}$ i $${b}$, a kąt między nimi ma miarę $${g}^\circ$. Trzeci bok tego trójkąta ma długość`,
     ok: m(ok),

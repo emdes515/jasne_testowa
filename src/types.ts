@@ -387,6 +387,13 @@ export interface TaskHints {
   hint_cost?: { level_1: number; level_2: number } | number;
 }
 
+/** Etap rozwiązania wg zasad oceniania CKE; `points` to liczba punktów za osiągnięcie tego etapu. */
+export interface RubricStage {
+  points: number;
+  label: string;
+  criterion: string;
+}
+
 export interface MathTaskItem {
   id: string;
   type: TaskType;
@@ -424,6 +431,13 @@ export interface MathTaskItem {
   cardinalData?: CardinalDetectorTaskData;
   argumentBuilderData?: ArgumentBuilderTaskData;
   synthesisData?: SynthesisCondenserTaskData;
+  /** Zadania otwarte PR: etapy rosnąco, ostatni etap = maxPoints. */
+  rubric_stages?: RubricStage[];
+  /** Reguły z klucza CKE, które zerują etap lub całe zadanie. */
+  zero_rules?: string[];
+  /** Wiązka zadań CKE (np. „Wykaż, że P(x) = …” + optymalizacja). */
+  bundle_id?: string;
+  requirements?: string[];
 }
 
 export interface AiTaskEvaluationResult {

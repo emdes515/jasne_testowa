@@ -267,7 +267,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             <span className="font-bold tracking-wide uppercase text-[11px]">Arena 2.0 • Tryb Multiplayer Live</span>
           </div>
 
-          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-slate-400 text-xs font-mono">
+          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-hairline text-slate-400 text-xs font-mono">
             <Terminal size={12} className="text-emerald-400" />
             <span>Silnik: Real-time WebSocket CKE</span>
           </div>
@@ -373,7 +373,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             <span>Radar aktywacji: Wyszukiwanie rywali w całej Polsce...</span>
           </div>
 
-          <h1 className="font-display font-black text-2xl sm:text-4xl text-white tracking-tight leading-tight mb-3">
+          <h1 className="font-display font-black text-2xl sm:text-4xl text-text-strong tracking-tight leading-tight mb-3">
             Szybkie starcia 1v1 na żywo.{' '}
             <span className="text-emerald-400 font-black">
               Dostępne wkrótce!
@@ -398,7 +398,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
             <div className="flex items-center gap-2">
               <Cpu size={16} className="text-emerald-400" />
-              <span className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+              <span className="text-xs font-bold text-text-strong uppercase tracking-wider font-mono">
                 Postęp wdrożenia silnika 1v1
               </span>
             </div>
@@ -422,15 +422,15 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
 
           {/* Quick checklist pills */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] font-mono text-slate-300">
-            <div className="flex items-center gap-1.5 bg-white/[0.02] p-1.5 rounded-lg border border-white/5">
+            <div className="flex items-center gap-1.5 bg-white/[0.02] p-1.5 rounded-lg border border-hairline-soft">
               <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
               <span className="truncate">Zegar CKE: 100%</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white/[0.02] p-1.5 rounded-lg border border-white/5">
+            <div className="flex items-center gap-1.5 bg-white/[0.02] p-1.5 rounded-lg border border-hairline-soft">
               <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
               <span className="truncate">Baza Zadań: 100%</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white/[0.02] p-1.5 rounded-lg border border-white/5">
+            <div className="flex items-center gap-1.5 bg-white/[0.02] p-1.5 rounded-lg border border-hairline-soft">
               <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
               <span className="truncate">Ligi ELO: 100%</span>
             </div>
@@ -465,7 +465,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                       VIP
                     </span>
                   </div>
-                  <h3 className="font-display font-bold text-white text-base sm:text-lg mb-1">
+                  <h3 className="font-display font-bold text-text-strong text-base sm:text-lg mb-1">
                     Odbierz darmowy bilet przedpremierowy
                   </h3>
                   <p className="text-xs text-slate-300 leading-relaxed max-w-md">
@@ -498,18 +498,18 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                       {ticketNumber}
                     </span>
                   </div>
-                  <h3 className="font-display font-bold text-white text-base">
+                  <h3 className="font-display font-bold text-text-strong text-base">
                     Jesteś na liście pierwszeństwa Sezonu 1!
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 mt-1.5 text-[11px] text-emerald-200/80">
                     <span className="bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded">
-                      💰 +100 Żetonów w Skarbcu
+                      +100 Żetonów w Skarbcu
                     </span>
                     <span className="bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded">
-                      🛡️ +1 Tarcza ELO
+                      +1 Tarcza ELO
                     </span>
                     <span className="bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded">
-                      🎖️ Tytuł: Pionier Areny 2025
+                      Tytuł: Pionier Areny
                     </span>
                   </div>
                 </div>
@@ -521,7 +521,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                 className={`px-4 py-2.5 rounded-xl border text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
                   notificationsEnabled
                     ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
-                    : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+                    : 'bg-veil border-hairline text-slate-400 hover:text-text-strong'
                 }`}
               >
                 {notificationsEnabled ? (
@@ -548,7 +548,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-emerald-400 block mb-1">
               Zapowiedź Nowego Modułu
             </span>
-            <h2 className="font-display font-bold text-xl sm:text-2xl text-white">
+            <h2 className="font-display font-bold text-xl sm:text-2xl text-text-strong">
               Czego możesz się spodziewać w pełnej wersji?
             </h2>
           </div>
@@ -626,17 +626,17 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
           <div className="flex flex-col gap-1 text-center sm:text-left">
             <span className="text-xs text-text-muted font-mono">Twój stan konta do Sezonu 1:</span>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-1.5">
-              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-white/10 shadow-sm">
+              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-hairline shadow-sm">
                 <Trophy size={15} className="text-amber-400 shrink-0" />
                 <span className="text-xs text-slate-300 font-bold">ELO:</span>
                 <span className="text-base font-black text-amber-400 font-display tabular-nums tracking-tight">{userRating}</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-white/10 shadow-sm">
+              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-hairline shadow-sm">
                 <ShieldCheck size={15} className="text-sky-400 shrink-0" />
                 <span className="text-xs text-slate-300 font-bold">Tarcze:</span>
                 <span className="text-base font-black text-sky-400 font-display tabular-nums tracking-tight">{userShields}x</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-white/10 shadow-sm">
+              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-hairline shadow-sm">
                 <Zap size={15} className="text-emerald-400 shrink-0" />
                 <span className="text-xs text-slate-300 font-bold">Żetony:</span>
                 <span className="text-base font-black text-emerald-400 font-display tabular-nums tracking-tight">{userTokens}</span>
@@ -653,9 +653,9 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                     triggerHaptic('light');
                     onNavigate('nauka');
                   }}
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-veil hover:bg-veil-strong border border-hairline text-slate-200 text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <GraduationCap size={15} className="text-[#FFB800]" />
+                  <GraduationCap size={15} className="text-text-accent" />
                   <span>Trenuj w Mapie Wiedzy</span>
                 </button>
 

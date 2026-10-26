@@ -13,6 +13,28 @@ import {
   buildPolishSynthesisEvaluationPrompt,
 } from '../prompts/evaluation.prompt';
 import { evaluateFallback } from './fallbackEvaluator.service';
+import type { RubricStage } from '../aiRequest';
+
+/** Wynik modelu zaokrąglony w dół do progu najwyższego osiągniętego etapu (CKE nie zna punktów „pomiędzy”). */
+export const snapScoreToStage = (score: number, stages: RubricStage[]): number =>
+  stages.reduce((best, stage) => (stage.points <= score && stage.points > best ? stage.points : best), 0);
+
+/** Odpowiedź, gdy nie ma ewaluatora: klient nie zabiera serca i proponuje samoocenę etapami. */
+const evaluationUnavailable = (maxPts: number) => ({
+  score: 0,
+  maxPoints: maxPts,
+  isPassed: false,
+  evaluationFailed: true,
+  provider: 'none',
+  gradeTitle: `Ocena wstrzymana (0 / ${maxPts} PKT)`,
+  summary: 'Egzaminator AI jest chwilowo niedostępny, więc odpowiedź nie została oceniona.',
+  mentorComment: 'Nie udało się połączyć z egzaminatorem AI. Twoja próba NIE została uznana za błędną — spróbuj sprawdzić odpowiedź ponownie.',
+  strengths: [],
+  errors: ['Brak połączenia z modułem oceny.'],
+  ckeFeedback: 'Ocena wstrzymana z powodu błędu połączenia.',
+  suggestion: 'Spróbuj ponownie za chwilę.',
+  hintForNextAttempt: '',
+});
 
 /**
  * Strict Matura Task Evaluation Logic (OpenRouter -> Gemini -> Rubric fallback)
@@ -31,10 +53,13 @@ export const evaluateTaskLogic = async (body: any) => {
     maxPoints,
     studentImage,
     ai_tutor_rubric,
+    rubric_stages,
+    zero_rules,
     attemptCount = 1,
   } = body;
 
   const maxPts = maxPoints || 2;
+  const rubricStages: RubricStage[] = Array.isArray(rubric_stages) ? rubric_stages : [];
   const isFirstAttempt = attemptCount === 1;
   let keyCriterion = '';
   const rawKey = scoring_key || scoringKey || officialKey || '';
@@ -136,6 +161,8 @@ export const evaluateTaskLogic = async (body: any) => {
     subQuestions,
     keyCriterion,
     aiTutorRubric: ai_tutor_rubric,
+    rubricStages,
+    zeroRules: Array.isArray(zero_rules) ? zero_rules : undefined,
     attemptCount,
     cleanAnswer,
     hasImage,
@@ -144,6 +171,10 @@ export const evaluateTaskLogic = async (body: any) => {
   const finalizeResult = (parsedObj: any, usageData: any) => {
     if (!parsedObj || typeof parsedObj.score !== 'number') return null;
     parsedObj.score = Math.min(maxPts, Math.max(0, Math.round(parsedObj.score)));
+    if (rubricStages.length > 0) {
+      parsedObj.score = snapScoreToStage(parsedObj.score, rubricStages);
+      parsedObj.stageReached = parsedObj.score;
+    }
     parsedObj.maxPoints = maxPts;
     parsedObj.isPassed = typeof parsedObj.isPassed === 'boolean'
       ? parsedObj.isPassed
@@ -298,15 +329,25 @@ export const gradeWithFallback = async (body: Record<string, unknown>) => {
   const maxPts = typeof body.maxPoints === 'number' ? body.maxPoints : 2;
   const cleanAnswer = typeof body.studentAnswer === 'string' ? body.studentAnswer.trim() : '';
   const keyCriterion = String(body.scoring_key || body.scoringKey || body.officialKey || '');
+  // Zadania z etapami CKE (2–6 pkt) nie są oceniane rubryką słów kluczowych – bez AI uczeń ocenia się sam etapami.
+  const hasStages = Array.isArray(body.rubric_stages) && body.rubric_stages.length > 0;
 
   try {
     const result = await evaluateTaskLogic(body);
+    // Model nie odpowiedział (timeout / pusta odpowiedź) i wynik pochodzi z rubryki słów kluczowych:
+    // to nie jest ocena egzaminatora AI, więc klient musi o tym wiedzieć.
+    if (result?.usage?.model === 'rubric-fallback') {
+      if (hasStages) return evaluationUnavailable(maxPts);
+      return { ...result, evaluationFailed: true, provider: 'rubric-fallback' };
+    }
     return { ...result, provider: 'ai' };
   } catch (error) {
     logger.warn('ai_grade_failed', {
       error: error instanceof Error ? error.message : String(error),
     });
   }
+
+  if (hasStages) return evaluationUnavailable(maxPts);
 
   try {
     const isEnglish = Boolean(
@@ -329,20 +370,6 @@ export const gradeWithFallback = async (body: Record<string, unknown>) => {
     logger.error('ai_grade_fallback_failed', {
       error: fallbackError instanceof Error ? fallbackError.message : String(fallbackError),
     });
-    return {
-      score: 0,
-      maxPoints: maxPts,
-      isPassed: false,
-      evaluationFailed: true,
-      provider: 'none',
-      gradeTitle: `Ocena wstrzymana (0 / ${maxPts} PKT)`,
-      summary: 'Egzaminator AI jest chwilowo niedostępny, więc odpowiedź nie została oceniona.',
-      mentorComment: 'Nie udało się połączyć z egzaminatorem AI. Twoja próba NIE została uznana za błędną — spróbuj sprawdzić odpowiedź ponownie.',
-      strengths: [],
-      errors: ['Brak połączenia z modułem oceny.'],
-      ckeFeedback: 'Ocena wstrzymana z powodu błędu połączenia.',
-      suggestion: 'Spróbuj ponownie za chwilę.',
-      hintForNextAttempt: '',
-    };
+    return evaluationUnavailable(maxPts);
   }
 };

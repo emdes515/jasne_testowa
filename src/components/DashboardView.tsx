@@ -424,7 +424,7 @@ export function DashboardView({
                     ? 'bg-[#F97316] text-white shadow-sm border border-[#F97316]'
                     : m.isTargetToday
                     ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/10 shadow-sm'
-                    : 'bg-surface-elevated/80 border border-white/10 text-slate-400'
+                    : 'bg-surface-elevated/80 border border-hairline text-slate-400'
                 }`}
                 title={m.fullLabel}
               >
@@ -439,9 +439,9 @@ export function DashboardView({
               <span 
                 className={`text-[10px] font-bold text-center leading-none truncate max-w-full ${
                   m.isCompleted 
-                    ? 'text-[#EA580C]' 
+                    ? 'text-streak-flame' 
                     : m.isTargetToday 
-                    ? 'text-white font-extrabold' 
+                    ? 'text-text-strong font-extrabold' 
                     : 'text-text-muted'
                 }`}
               >
@@ -499,12 +499,12 @@ export function DashboardView({
                 <div 
                   className={`relative z-10 w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                     isActive
-                      ? 'text-white'
-                      : 'bg-white/5 text-text-muted group-hover:text-text-primary'
+                      ? 'text-text-strong'
+                      : 'bg-veil text-text-muted group-hover:text-text-primary'
                   }`}
                   style={isActive ? {
                     backgroundColor: accentColor,
-                    color: accentColor === '#FFB800' ? '#080B11' : '#FFFFFF'
+                    color: accentColor === '#F43F5E' ? '#FFFFFF' : '#080B11'
                   } : undefined}
                 >
                   <SubIcon size={13} />
@@ -529,7 +529,7 @@ export function DashboardView({
           })}
 
           {/* Kafelek kolejnych przedmiotów w przygotowaniu na końcu rzędu */}
-          <div className="hidden sm:flex items-center gap-2 text-[11px] text-text-muted bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap">
+          <div className="hidden sm:flex items-center gap-2 text-[11px] text-text-muted bg-white/[0.02] border border-hairline-soft px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap">
             <span className="font-bold text-text-muted uppercase tracking-wider text-[10px]">Wkrótce:</span>
             <span className="text-text-secondary font-medium">Biologia</span>
             <span className="text-slate-600">•</span>
@@ -559,7 +559,7 @@ export function DashboardView({
               <motion.div
                 key={`hero-${selectedSubjectKey}`}
                 initial={{ y: 8, opacity: 0, filter: 'blur(4px)' }}
-                animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                animate={{ y: 0, opacity: 1, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
                 transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
                 onClick={handleResumeClick}
                 className="bg-surface-card border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-lg group cursor-pointer"
@@ -580,7 +580,7 @@ export function DashboardView({
                     <span 
                       className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-md uppercase tracking-wider"
                       style={{
-                        color: accentColor,
+                        color: accentColor === '#FFB800' ? 'var(--text-accent)' : `color-mix(in srgb, ${accentColor} 65%, var(--text-primary))`,
                         backgroundColor: `${accentColor}18`,
                         border: `1px solid ${accentColor}35`
                       }}
@@ -612,12 +612,12 @@ export function DashboardView({
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-bg border border-surface-border text-xs font-medium text-text-secondary">
                       <FileText size={13} className="text-text-muted" />
-                      <span>{nextUp ? `${nextUp.totalCount} zadania` : '4 zadania'}</span>
+                      <span>{nextUp ? `Cel: ${nextUp.totalCount} poprawne` : 'Powtórka'}</span>
                     </span>
                     <span 
                       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold"
                       style={{
-                        color: accentColor,
+                        color: accentColor === '#FFB800' ? 'var(--text-accent)' : `color-mix(in srgb, ${accentColor} 65%, var(--text-primary))`,
                         backgroundColor: `${accentColor}12`,
                         border: `1px solid ${accentColor}25`
                       }}
@@ -638,10 +638,11 @@ export function DashboardView({
                     id="dashboard-resume-learning-button"
                     type="button"
                     onClick={handleResumeClick}
-                    className="shrink-0 font-display font-black text-xs sm:text-sm py-3 px-6 sm:px-7 rounded-xl transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap self-stretch sm:self-auto hover:brightness-105 active:scale-[0.98]"
+                    className="shrink-0 font-display font-black text-sm min-h-[48px] py-3 px-6 sm:px-7 rounded-xl transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap self-stretch sm:self-auto hover:brightness-105 active:scale-[0.98]"
                     style={{
                       backgroundColor: accentColor,
-                      color: accentColor === '#FFB800' ? '#070A0F' : '#FFFFFF',
+                      // jasne akcenty (bursztyn, błękit angielskiego) wymagają ciemnego tekstu; na karminie zostaje biały
+                      color: accentColor === '#F43F5E' ? '#FFFFFF' : '#070A0F',
                       boxShadow: accentColor === '#FFB800' ? '0 0 25px rgba(255,184,0,0.35)' : '0 0 25px rgba(244,63,94,0.35)'
                     }}
                   >
@@ -716,7 +717,7 @@ export function DashboardView({
                       onNavigate?.('simulator', 'maraton');
                     }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-amber-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-hairline hover:border-amber-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider">Tryb 1</span>
@@ -740,7 +741,7 @@ export function DashboardView({
                       onNavigate?.('simulator', 'exam_setup');
                     }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-purple-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-hairline hover:border-purple-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider">Tryb 2</span>
@@ -764,7 +765,7 @@ export function DashboardView({
                       onNavigate?.('simulator', 'full_exams');
                     }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-sky-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-hairline hover:border-sky-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-sky-400 uppercase tracking-wider">Tryb 3</span>
@@ -774,7 +775,7 @@ export function DashboardView({
                     {selectedSubjectKey === 'pol' ? 'Pełny Egzamin (240m)' : 'Pełne Arkusze'}
                   </div>
                   <div className="text-[11px] text-text-muted mt-0.5">
-                    {selectedSubjectKey === 'pol' ? 'Test + Wypracowanie • 60 pkt' : 'Maj/Czerwiec 2015–2024'}
+                    {selectedSubjectKey === 'pol' ? 'Test + Wypracowanie • 60 pkt' : 'Maj, czerwiec i sierpień 2023–2024'}
                   </div>
                 </button>
               </div>
@@ -824,7 +825,7 @@ export function DashboardView({
           >
             <div className="flex items-center justify-center mb-2.5 px-0.5">
               <div className="flex items-center gap-2">
-                <BarChart3 size={15} className="text-[#FFB800]" />
+                <BarChart3 size={15} className="text-text-accent" />
                 <h3 className="text-sm font-bold text-slate-200 text-center">
                   Twoje postępy
                 </h3>
@@ -833,26 +834,26 @@ export function DashboardView({
 
             <div 
               id="dashboard-study-stats-panel"
-              className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3"
+              className="grid grid-cols-3 gap-2 sm:gap-3"
             >
               {/* KARTA 1: UKOŃCZONE ZADANIA */}
               <motion.div 
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-emerald-500/25 rounded-2xl p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-emerald-500/25 rounded-2xl px-2 py-3 sm:p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
               >
-                <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
                   <CheckCircle2 size={16} strokeWidth={2.2} />
                 </div>
 
                 <div className="w-full flex flex-col items-center text-center">
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center tabular-nums font-mono">
+                  <div className="font-display font-bold text-xl sm:text-3xl text-text-primary tracking-tight leading-none text-center tabular-nums font-mono">
                     {masteredTasksCount}
                   </div>
                   <div className="mt-1.5 flex flex-col items-center text-center">
                     <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight text-center">
-                      Ukończone zadania
+                      <span className="sm:hidden">Zadania</span><span className="hidden sm:inline">Ukończone zadania</span>
                     </span>
-                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
+                    <span className="hidden sm:block text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
                       W wybranym programie
                     </span>
                   </div>
@@ -876,12 +877,12 @@ export function DashboardView({
                   }
                 }}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className={`bg-surface-card hover:bg-surface-card-hover border rounded-2xl p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group select-none ${
+                className={`bg-surface-card hover:bg-surface-card-hover border rounded-2xl px-2 py-3 sm:p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group select-none ${
                   onOpenMistakesBank ? 'cursor-pointer hover:border-amber-500/40 hover:shadow-md border-surface-border' : 'cursor-default border-surface-border'
                 }`}
                 title={onOpenMistakesBank ? "Kliknij, aby otworzyć Bank Błędów i sesję rehabilitacyjną" : undefined}
               >
-                <div className="absolute top-3.5 right-3.5">
+                <div className="hidden sm:block absolute top-3.5 right-3.5">
                   {totalMistakes > 0 ? (
                     <span className="text-[10px] font-extrabold text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full flex items-center gap-1 animate-pulse">
                       <span>{totalMistakes} {totalMistakes === 1 ? 'błąd' : totalMistakes < 5 ? 'błędy' : 'błędów'}</span>
@@ -893,12 +894,12 @@ export function DashboardView({
                   )}
                 </div>
 
-                <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
+                <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0 mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
                   <Zap size={16} strokeWidth={2.2} />
                 </div>
 
                 <div className="w-full flex flex-col items-center text-center">
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center tabular-nums font-mono">
+                  <div className="font-display font-bold text-xl sm:text-3xl text-text-primary tracking-tight leading-none text-center tabular-nums font-mono">
                     {accuracyPercent}%
                   </div>
                   <div className="mt-1.5 flex flex-col items-center text-center">
@@ -912,7 +913,7 @@ export function DashboardView({
                         </span>
                       )}
                     </div>
-                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
+                    <span className="hidden sm:block text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
                       {totalMistakes > 0 ? `${totalMistakes} do powtórki` : '0 błędów'}
                     </span>
                   </div>
@@ -922,21 +923,21 @@ export function DashboardView({
               {/* KARTA 3: CZAS NAUKI */}
               <motion.div 
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-amber-500/25 rounded-2xl p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-amber-500/25 rounded-2xl px-2 py-3 sm:p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
               >
-                <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
                   <Clock size={16} strokeWidth={2.2} />
                 </div>
 
                 <div className="w-full flex flex-col items-center text-center">
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none whitespace-nowrap text-center tabular-nums font-mono">
+                  <div className="font-display font-bold text-xl sm:text-3xl text-text-primary tracking-tight leading-none whitespace-nowrap text-center tabular-nums font-mono">
                     {studyTimeValue} <span className="text-xs sm:text-sm font-medium text-text-muted font-sans">{studyTimeUnit}</span>
                   </div>
                   <div className="mt-1.5 flex flex-col items-center text-center">
                     <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight text-center">
                       Czas nauki
                     </span>
-                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
+                    <span className="hidden sm:block text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
                       W tym tygodniu
                     </span>
                   </div>

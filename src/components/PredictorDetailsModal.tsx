@@ -81,16 +81,16 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="relative w-full max-w-md bg-[#0C101C] border border-white/10 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden"
+            className="relative w-full max-w-md bg-[#0C101C] border border-hairline rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden"
           >
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
+          <div className="p-4 sm:p-5 border-b border-hairline flex items-center justify-between bg-white/[0.02]">
             <div className="flex items-center gap-2.5">
               <div className={`w-8 h-8 rounded-xl flex items-center justify-center ${isPol ? 'bg-rose-500/20 text-rose-400' : 'bg-amber-500/20 text-amber-400'}`}>
                 <TrendingUp size={16} />
               </div>
               <div>
-                <h3 className="text-sm sm:text-base font-black text-white leading-tight">
+                <h3 className="text-sm sm:text-base font-black text-text-strong leading-tight">
                   Twój Szacowany Wynik
                 </h3>
                 <p className="text-[11px] text-slate-400">
@@ -101,7 +101,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer border border-white/5"
+              className="w-8 h-8 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition cursor-pointer border border-hairline-soft"
               aria-label="Zamknij"
             >
               <X size={15} />
@@ -109,7 +109,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
           </div>
 
           {/* Subject Switcher Bar inside modal */}
-          <div className="p-3 bg-black/30 border-b border-white/5">
+          <div className="p-3 bg-black/30 border-b border-hairline-soft">
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
               {getCkeAvailableSubjects().map((sub) => {
                 const isActive = sub.key === currentSubjectKey || sub.id === subjectId;
@@ -133,9 +133,9 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
                     }}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                       isActive
-                        ? 'text-white shadow-sm'
+                        ? 'text-text-strong shadow-sm'
                         : sub.isAvailable
-                        ? 'text-slate-400 hover:text-white hover:bg-white/5'
+                        ? 'text-slate-400 hover:text-text-strong hover:bg-veil'
                         : 'text-slate-600 opacity-50 cursor-not-allowed'
                     }`}
                     style={isActive ? {
@@ -156,8 +156,8 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
           {/* Main Content: Prosty wynik procentowy i krótki komentarz */}
           <div className="p-5 flex flex-col gap-4">
             {/* Wynik */}
-            <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/5 text-center">
-              <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+            <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent border border-hairline-soft text-center">
+              <span className="text-4xl sm:text-5xl font-black text-text-strong tracking-tight">
                 {baseResult.predictedPercent}%
               </span>
               <span className="text-xs sm:text-sm font-semibold text-slate-400 mt-1">
@@ -186,8 +186,8 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
             </div>
 
             {/* Bardzo krótki, zwięzły komentarz */}
-            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-xs text-slate-300 leading-relaxed">
-              <span className="font-bold text-white block mb-1">Podsumowanie:</span>
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-hairline-soft text-xs text-slate-300 leading-relaxed">
+              <span className="font-bold text-text-strong block mb-1">Podsumowanie:</span>
               {commentText}
             </div>
 
@@ -205,7 +205,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
                     onClose();
                     onOpenDiagnostic();
                   }}
-                  className="px-3.5 py-2 rounded-xl bg-[#FFB800] hover:bg-amber-400 active:scale-95 text-amber-950 font-black text-xs shrink-0 cursor-pointer transition-all shadow-md"
+                  className="px-3.5 py-2 rounded-xl bg-jasne hover:bg-amber-400 active:scale-95 text-amber-950 font-black text-xs shrink-0 cursor-pointer transition-all shadow-md"
                 >
                   Rozpocznij ›
                 </button>
@@ -239,7 +239,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
                 triggerHaptic('light');
                 onClose();
               }}
-              className="w-full py-3 rounded-xl bg-white/10 hover:bg-white/15 active:scale-98 text-white font-bold text-xs tracking-wide transition cursor-pointer"
+              className="w-full py-3 rounded-xl bg-veil-strong hover:bg-white/15 active:scale-98 text-text-strong font-bold text-xs tracking-wide transition cursor-pointer"
             >
               Wróć do nauki
             </button>

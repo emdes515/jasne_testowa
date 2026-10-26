@@ -141,7 +141,7 @@ export const DailyChallengesWidget: React.FC<DailyChallengesWidgetProps> = ({
         </div>
 
         {timeLeftStr && (
-          <div className="flex items-center gap-1 text-[11px] text-text-muted font-mono bg-white/[0.03] border border-white/5 px-2 py-1 rounded-lg">
+          <div className="flex items-center gap-1 text-[11px] text-text-muted font-mono bg-white/[0.03] border border-hairline-soft px-2 py-1 rounded-lg">
             <Clock size={11} className="text-amber-400/80" />
             <span>{timeLeftStr}</span>
           </div>
@@ -149,7 +149,7 @@ export const DailyChallengesWidget: React.FC<DailyChallengesWidgetProps> = ({
       </div>
 
       {/* Pasek Postępu Dnia */}
-      <div className="w-full bg-surface-elevated h-1.5 rounded-full overflow-hidden mb-3.5 border border-white/5">
+      <div className="w-full bg-surface-elevated h-1.5 rounded-full overflow-hidden mb-3.5 border border-hairline-soft">
         <motion.div 
           className="h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full"
           initial={{ width: 0 }}
@@ -172,7 +172,7 @@ export const DailyChallengesWidget: React.FC<DailyChallengesWidgetProps> = ({
                   ? 'bg-emerald-950/15 border-emerald-500/25 opacity-80'
                   : isReadyToClaim
                     ? 'bg-amber-500/10 border-amber-400/40 shadow-sm animate-pulse'
-                    : 'bg-white/[0.02] border-white/5 hover:border-white/10'
+                    : 'bg-white/[0.02] border-hairline-soft hover:border-hairline'
               }`}
             >
               {/* Ikona + Treść */}
@@ -182,7 +182,7 @@ export const DailyChallengesWidget: React.FC<DailyChallengesWidgetProps> = ({
                     ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-400'
                     : isReadyToClaim
                       ? 'bg-amber-500/20 border-amber-400/50 text-amber-300'
-                      : 'bg-white/5 border-white/5 text-text-muted'
+                      : 'bg-veil border-hairline-soft text-text-muted'
                 }`}>
                   {ch.id === 'warmup' && <Flame size={14} />}
                   {ch.id === 'sniper' && <Target size={14} />}
@@ -221,7 +221,7 @@ export const DailyChallengesWidget: React.FC<DailyChallengesWidgetProps> = ({
                     <span>+{ch.rewardCoins}</span>
                   </button>
                 ) : (
-                  <div className="flex items-center gap-1 text-[11px] font-bold text-amber-300/80 bg-white/5 border border-white/5 px-2 py-1 rounded-lg">
+                  <div className="flex items-center gap-1 text-[11px] font-bold text-amber-300/80 bg-veil border border-hairline-soft px-2 py-1 rounded-lg">
                     <Coins size={11} className="text-amber-400" />
                     <span>+{ch.rewardCoins}</span>
                   </div>

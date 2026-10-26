@@ -21,6 +21,25 @@ export interface CkeFormulaItem {
   cke_page?: string;
   pageNumber?: number | string;
   diagram?: MathDiagramData | PlotData | NumberLineData;
+  /** 'PR' – wzór potrzebny dopiero na poziomie rozszerzonym (karta CKE jest wspólna dla obu poziomów). */
+  level?: 'PP' | 'PR';
+}
+
+// Funkcje stoją przed CKE_FORMULA_TOPICS, bo scripts/sync_cke_formulas.cjs wykonuje plik od tej stałej do końca.
+/**
+ * Katalog z Firestore uzupełniony o wzory z paczki, których w nim jeszcze nie ma
+ * (np. wzory PR dodane przed aktualizacją `system/ckeFormulas`). Wpis z Firestore wygrywa przy tym samym id.
+ */
+export function withLocalCkeFormulas(remote: CkeFormulaItem[]): CkeFormulaItem[] {
+  if (remote.length === 0) return CKE_FORMULAS_DATA;
+  const ids = new Set(remote.map(f => f.id));
+  return [...remote, ...CKE_FORMULAS_DATA.filter(f => !ids.has(f.id))];
+}
+
+export function withLocalCkeFormulaTopics(remote: { id: string; name: string }[]): { id: string; name: string }[] {
+  if (remote.length <= 1) return CKE_FORMULA_TOPICS;
+  const ids = new Set(remote.map(t => t.id));
+  return [...remote, ...CKE_FORMULA_TOPICS.filter(t => !ids.has(t.id))];
 }
 
 export const CKE_FORMULA_TOPICS = [
@@ -33,7 +52,8 @@ export const CKE_FORMULA_TOPICS = [
   { id: 'planimetria', name: 'Planimetria' },
   { id: 'geometria', name: 'Geometria Analityczna' },
   { id: 'stereometria', name: 'Stereometria' },
-  { id: 'prawdopodobienstwo', name: 'Kombinatoryka i Statystyka' }
+  { id: 'prawdopodobienstwo', name: 'Kombinatoryka i Statystyka' },
+  { id: 'analiza', name: 'Granice i Pochodne' }
 ];
 
 export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
@@ -976,5 +996,294 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     keywords: ['średnia', 'mediana', 'statystyka', 'wartość środkowa'],
     cke_page: 'str. 29–30',
     pageNumber: 29
+  },
+
+  // 9. Poziom rozszerzony (strony sprawdzone w wybrane_wzory_matematyczne_EM2023.pdf)
+  {
+    id: 'f-pr-log-zamiana',
+    topicId: 'logarytmy-procenty',
+    topicName: 'Logarytmy i Procenty',
+    title: 'Zamiana podstawy logarytmu',
+    formula: '\\log_a b = \\frac{\\log_c b}{\\log_c a}',
+    subFormulas: [
+      { label: 'Zamiana podstawy', formula: '\\log_a b = \\frac{\\log_c b}{\\log_c a}' },
+      { label: 'W szczególności', formula: '\\log_a b = \\frac{1}{\\log_b a}' }
+    ],
+    explanation: 'Dla $a > 0$, $a \\ne 1$, $b > 0$, $b \\ne 1$ oraz $c > 0$, $c \\ne 1$. Przykład: $\\log_8 4 = \\frac{\\log_2 4}{\\log_2 8} = \\frac{2}{3}$.',
+    goldenRule: 'Z polskiego na nasze: różne podstawy? Przejdź na jedną wspólną – najczęściej tę, która jest potęgą obu liczb.',
+    ckeTrap: '$\\frac{\\log_c b}{\\log_c a}$ to NIE jest $\\log_c \\frac{b}{a}$ – iloraz logarytmów nie jest logarytmem ilorazu.',
+    keywords: ['zamiana podstawy', 'logarytm', 'podstawa logarytmu'],
+    cke_page: 'str. 6',
+    pageNumber: 6,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-symbol-newtona',
+    topicId: 'prawdopodobienstwo',
+    topicName: 'Kombinatoryka i Statystyka',
+    title: 'Silnia i symbol Newtona',
+    formula: '\\binom{n}{k} = \\frac{n!}{k!\\,(n-k)!}',
+    subFormulas: [
+      { label: 'Silnia', formula: 'n! = 1 \\cdot 2 \\cdot \\ldots \\cdot n, \\quad 0! = 1' },
+      { label: 'Symbol Newtona', formula: '\\binom{n}{k} = \\frac{n!}{k!\\,(n-k)!}' },
+      { label: 'Symetria', formula: '\\binom{n}{k} = \\binom{n}{n-k}' },
+      { label: 'Trójkąt Pascala', formula: '\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}' }
+    ],
+    explanation: 'Dla liczb całkowitych $0 \\le k \\le n$. Przykład: $\\binom{5}{2} = \\frac{5 \\cdot 4}{2} = 10$.',
+    goldenRule: 'Z polskiego na nasze: $\\binom{n}{k}$ = „na ile sposobów wybiorę $k$ rzeczy z $n$, gdy kolejność nie gra roli”.',
+    ckeTrap: '$\\binom{n}{2} = \\frac{n(n-1)}{2}$, a nie $n(n-1)$ – dzielisz przez $2!$, bo para $\\{A, B\\}$ to to samo co $\\{B, A\\}$.',
+    keywords: ['silnia', 'symbol Newtona', 'współczynnik dwumianowy', 'trójkąt Pascala'],
+    cke_page: 'str. 6',
+    pageNumber: 6,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-dwumian-szesciany',
+    topicId: 'potegi-pierwiastki',
+    topicName: 'Potęgi i Pierwiastki',
+    title: 'Dwumian Newtona i wzory stopnia trzeciego',
+    formula: 'a^3 \\pm b^3 = (a \\pm b)(a^2 \\mp ab + b^2)',
+    subFormulas: [
+      { label: 'Sześcian sumy', formula: '(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3' },
+      { label: 'Suma sześcianów', formula: 'a^3 + b^3 = (a + b)(a^2 - ab + b^2)' },
+      { label: 'Różnica sześcianów', formula: 'a^3 - b^3 = (a - b)(a^2 + ab + b^2)' },
+      { label: 'Różnica n-tych potęg', formula: 'a^n - b^n = (a - b)(a^{n-1} + a^{n-2}b + \\ldots + b^{n-1})' },
+      { label: 'Dwumian Newtona', formula: '(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k' }
+    ],
+    explanation: 'Przykład: $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$. Drugi nawias nie ma pierwiastków ($\\Delta < 0$).',
+    goldenRule: 'Mnemonik znaków: w $a^3 \\pm b^3$ pierwszy nawias ma TEN SAM znak, środek nawiasu kwadratowego – PRZECIWNY.',
+    ckeTrap: '$a^2 - ab + b^2$ to NIE jest $(a - b)^2$ – brakuje dwójki przy $ab$, więc tego się dalej nie rozkłada.',
+    keywords: ['sześcian sumy', 'suma sześcianów', 'różnica sześcianów', 'dwumian Newtona'],
+    cke_page: 'str. 7',
+    pageNumber: 7,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-szereg-geometryczny',
+    topicId: 'ciagi',
+    topicName: 'Ciągi Liczbowe',
+    title: 'Suma nieskończonego ciągu geometrycznego (szereg)',
+    formula: 'S = \\frac{a_1}{1 - q}, \\quad |q| < 1',
+    subFormulas: [
+      { label: 'Suma szeregu', formula: '\\lim_{n \\to \\infty} S_n = \\frac{a_1}{1 - q}' },
+      { label: 'Warunek zbieżności', formula: '|q| < 1' }
+    ],
+    explanation: 'Przykład: $1 + \\frac{1}{2} + \\frac{1}{4} + \\ldots = \\frac{1}{1 - \\frac{1}{2}} = 2$.',
+    goldenRule: 'Z polskiego na nasze: kolejne kawałki maleją tak szybko, że cała nieskończona suma „dobija” do konkretnej liczby.',
+    ckeTrap: 'Zanim użyjesz wzoru, ZAPISZ warunek $|q| < 1$ i sprawdź go – w zadaniach z parametrem CKE punktuje osobno ten warunek.',
+    keywords: ['szereg geometryczny', 'suma nieskończona', 'zbieżność', 'iloraz'],
+    cke_page: 'str. 9',
+    pageNumber: 9,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-granice-ciagow',
+    topicId: 'ciagi',
+    topicName: 'Ciągi Liczbowe',
+    title: 'Granice ciągów: działania i twierdzenie o trzech ciągach',
+    formula: '\\lim_{n \\to \\infty} (a_n \\pm b_n) = a \\pm b',
+    subFormulas: [
+      { label: 'Suma i różnica', formula: '\\lim_{n \\to \\infty} (a_n \\pm b_n) = a \\pm b' },
+      { label: 'Iloczyn', formula: '\\lim_{n \\to \\infty} (a_n \\cdot b_n) = a \\cdot b' },
+      { label: 'Iloraz (b ≠ 0)', formula: '\\lim_{n \\to \\infty} \\frac{a_n}{b_n} = \\frac{a}{b}' },
+      { label: 'Trzy ciągi', formula: 'a_n \\le b_n \\le c_n,\\; a_n \\to g,\\; c_n \\to g \\;\\Rightarrow\\; b_n \\to g' }
+    ],
+    explanation: 'Twierdzenia działają tylko dla ciągów ZBIEŻNYCH. Przykład: $\\lim \\frac{3n^2 + 1}{n^2 - 5} = \\lim \\frac{3 + \\frac{1}{n^2}}{1 - \\frac{5}{n^2}} = 3$.',
+    goldenRule: 'Dziel licznik i mianownik przez najwyższą potęgę $n$ z mianownika – wtedy widać granicę.',
+    ckeTrap: 'Nie wolno „podstawić $n = \\infty$”. Zapis $\\frac{\\infty}{\\infty} = 1$ to błąd – trzeba przekształcić wyrażenie.',
+    keywords: ['granica ciągu', 'trzy ciągi', 'zbieżność', 'lim'],
+    cke_page: 'str. 10',
+    pageNumber: 10,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-trygo-suma-katow',
+    topicId: 'trygonometria',
+    topicName: 'Trygonometria',
+    title: 'Funkcje trygonometryczne sumy i różnicy kątów',
+    formula: '\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta',
+    subFormulas: [
+      { label: 'Sinus sumy/różnicy', formula: '\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta' },
+      { label: 'Cosinus sumy/różnicy', formula: '\\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta' },
+      { label: 'Tangens sumy/różnicy', formula: '\\operatorname{tg}(\\alpha \\pm \\beta) = \\frac{\\operatorname{tg}\\alpha \\pm \\operatorname{tg}\\beta}{1 \\mp \\operatorname{tg}\\alpha\\operatorname{tg}\\beta}' }
+    ],
+    explanation: 'Przykład: $\\sin 75^\\circ = \\sin(45^\\circ + 30^\\circ) = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$.',
+    goldenRule: 'Sinus „miesza” (sin·cos), cosinus „trzyma pary” (cos·cos, sin·sin) i ODWRACA znak.',
+    ckeTrap: '$\\sin(\\alpha + \\beta) \\ne \\sin\\alpha + \\sin\\beta$. Sprawdź: $\\sin 90^\\circ = 1$, a $\\sin 45^\\circ + \\sin 45^\\circ = \\sqrt{2}$.',
+    keywords: ['suma kątów', 'różnica kątów', 'sinus sumy', 'cosinus sumy'],
+    cke_page: 'str. 12',
+    pageNumber: 12,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-trygo-podwojony',
+    topicId: 'trygonometria',
+    topicName: 'Trygonometria',
+    title: 'Kąt podwojony, wzory redukcyjne i okresowość',
+    formula: '\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha',
+    subFormulas: [
+      { label: 'Sinus kąta podwojonego', formula: '\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha' },
+      { label: 'Cosinus kąta podwojonego', formula: '\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha = 2\\cos^2\\alpha - 1 = 1 - 2\\sin^2\\alpha' },
+      { label: 'Redukcja (180° − α)', formula: '\\sin(180^\\circ - \\alpha) = \\sin\\alpha, \\quad \\cos(180^\\circ - \\alpha) = -\\cos\\alpha' },
+      { label: 'Redukcja (90° − α)', formula: '\\sin(90^\\circ - \\alpha) = \\cos\\alpha, \\quad \\cos(90^\\circ - \\alpha) = \\sin\\alpha' },
+      { label: 'Okresowość', formula: '\\sin(\\alpha + k \\cdot 360^\\circ) = \\sin\\alpha, \\quad \\cos(\\alpha + k \\cdot 360^\\circ) = \\cos\\alpha' }
+    ],
+    explanation: 'Trzy postacie $\\cos 2\\alpha$ wybieraj tak, żeby w równaniu została jedna funkcja: tylko $\\sin$ albo tylko $\\cos$. Pozostałe wzory redukcyjne i wzory na sumy oraz iloczyny funkcji są na tej samej stronie karty.',
+    goldenRule: 'W równaniu z $\\cos 2x$ i $\\sin x$ użyj $\\cos 2x = 1 - 2\\sin^2 x$ – dostaniesz równanie kwadratowe ze zmienną $t = \\sin x$.',
+    ckeTrap: '$\\sin 2\\alpha \\ne 2\\sin\\alpha$. Dla $\\alpha = 90^\\circ$: $\\sin 180^\\circ = 0$, a $2\\sin 90^\\circ = 2$.',
+    keywords: ['kąt podwojony', 'wzory redukcyjne', 'okresowość', 'sin 2x', 'cos 2x'],
+    cke_page: 'str. 13',
+    pageNumber: 13,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-tw-sinusow',
+    topicId: 'trygonometria',
+    topicName: 'Trygonometria',
+    title: 'Twierdzenie sinusów',
+    formula: '\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R',
+    subFormulas: [
+      { label: 'Twierdzenie sinusów', formula: '\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R' }
+    ],
+    explanation: '$R$ – promień okręgu opisanego na trójkącie. Przykład: $a = 6$, $\\alpha = 30^\\circ$, więc $2R = \\frac{6}{\\frac{1}{2}} = 12$, czyli $R = 6$.',
+    goldenRule: 'Z polskiego na nasze: masz bok i kąt NAPRZECIWKO niego? To sinusy. Masz dwa boki i kąt MIĘDZY nimi? To cosinusy.',
+    ckeTrap: 'Z $\\sin\\beta = \\frac{1}{2}$ wynikają DWA kąty: $30^\\circ$ albo $150^\\circ$. Sprawdź, czy oba mieszczą się w trójkącie.',
+    keywords: ['twierdzenie sinusów', 'okrąg opisany', 'promień R', 'rozwiązywanie trójkątów'],
+    cke_page: 'str. 14',
+    pageNumber: 14,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-czworokat-okrag',
+    topicId: 'planimetria',
+    topicName: 'Planimetria',
+    title: 'Czworokąt wpisany w okrąg i opisany na okręgu',
+    formula: '\\alpha + \\gamma = \\beta + \\delta = 180^\\circ \\qquad a + c = b + d',
+    subFormulas: [
+      { label: 'Okrąg opisany na czworokącie', formula: '\\alpha + \\gamma = \\beta + \\delta = 180^\\circ' },
+      { label: 'Okrąg wpisany w czworokąt wypukły', formula: 'a + c = b + d' }
+    ],
+    explanation: 'Oba warunki działają w dwie strony („wtedy i tylko wtedy”). Przykład: trapez równoramienny zawsze da się wpisać w okrąg.',
+    goldenRule: 'Mnemonik: OPISANY okrąg – sumuj KĄTY naprzeciw siebie. WPISANY okrąg – sumuj BOKI naprzeciw siebie.',
+    ckeTrap: 'Nie myl warunków: równe sumy przeciwległych BOKÓW nie dają okręgu opisanego, tylko wpisany.',
+    keywords: ['czworokąt wpisany', 'czworokąt opisany', 'okrąg opisany', 'okrąg wpisany'],
+    cke_page: 'str. 20',
+    pageNumber: 20,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-wektory',
+    topicId: 'geometria',
+    topicName: 'Geometria Analityczna',
+    title: 'Wektory: współrzędne, długość i działania',
+    formula: '\\overrightarrow{AB} = [x_B - x_A,\\; y_B - y_A]',
+    subFormulas: [
+      { label: 'Współrzędne wektora', formula: '\\overrightarrow{AB} = [x_B - x_A,\\; y_B - y_A]' },
+      { label: 'Suma i mnożenie przez liczbę', formula: '\\vec{u} + \\vec{v} = [u_1 + v_1,\\; u_2 + v_2], \\quad a \\cdot \\vec{u} = [a u_1,\\; a u_2]' },
+      { label: 'Długość wektora', formula: '|\\vec{u}| = \\sqrt{u_1^2 + u_2^2}' }
+    ],
+    explanation: 'Przykład: $A = (1, 2)$, $B = (4, 6)$, więc $\\overrightarrow{AB} = [3, 4]$ i $|\\overrightarrow{AB}| = 5$.',
+    goldenRule: 'Z polskiego na nasze: wektor to „przepis na przesunięcie” – ile w prawo, ile w górę. Zawsze KONIEC minus POCZĄTEK.',
+    ckeTrap: '$\\overrightarrow{AB}$ i $\\overrightarrow{BA}$ mają przeciwne współrzędne. Odejmowanie w złą stronę odwraca kierunek.',
+    keywords: ['wektor', 'współrzędne wektora', 'długość wektora', 'równoległobok'],
+    cke_page: 'str. 23',
+    pageNumber: 23,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-kombinatoryka',
+    topicId: 'prawdopodobienstwo',
+    topicName: 'Kombinatoryka i Statystyka',
+    title: 'Permutacje, kombinacje i wariacje',
+    formula: 'P_n = n!, \\quad C_n^k = \\binom{n}{k}, \\quad V_n^k = \\frac{n!}{(n-k)!}',
+    subFormulas: [
+      { label: 'Permutacje (ustawienia wszystkich)', formula: 'n!' },
+      { label: 'Kombinacje (wybór bez kolejności)', formula: '\\binom{n}{k}' },
+      { label: 'Wariacje bez powtórzeń', formula: '\\frac{n!}{(n-k)!} = n(n-1)\\cdot\\ldots\\cdot(n-k+1)' },
+      { label: 'Wariacje z powtórzeniami', formula: 'n^k' }
+    ],
+    explanation: 'Przykład: z 5 osób wybierasz przewodniczącego i zastępcę – kolejność ma znaczenie, więc $5 \\cdot 4 = 20$.',
+    goldenRule: 'Jedno pytanie: czy zamiana miejscami daje INNY wynik? Tak – wariacje/permutacje. Nie – kombinacje.',
+    ckeTrap: 'Wybór delegacji 3 osób to $\\binom{n}{3}$, a nie $n(n-1)(n-2)$ – delegacja nie ma kolejności.',
+    keywords: ['permutacje', 'kombinacje', 'wariacje', 'silnia'],
+    cke_page: 'str. 26–27',
+    pageNumber: 26,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-bernoulli',
+    topicId: 'prawdopodobienstwo',
+    topicName: 'Kombinatoryka i Statystyka',
+    title: 'Schemat Bernoullego',
+    formula: 'P_n(k) = \\binom{n}{k} p^k (1 - p)^{n-k}',
+    subFormulas: [
+      { label: 'Dokładnie k sukcesów w n próbach', formula: 'P_n(k) = \\binom{n}{k} p^k (1 - p)^{n-k}' }
+    ],
+    explanation: '$p$ – prawdopodobieństwo sukcesu w jednej próbie, próby są niezależne. Przykład: 3 rzuty monetą, dokładnie 2 orły: $\\binom{3}{2} \\cdot \\frac{1}{4} \\cdot \\frac{1}{2} = \\frac{3}{8}$.',
+    goldenRule: '„Co najmniej jeden sukces” licz przez dopełnienie: $1 - (1 - p)^n$.',
+    ckeTrap: 'Bez $\\binom{n}{k}$ liczysz tylko JEDNĄ kolejność sukcesów, np. same orły na początku.',
+    keywords: ['Bernoulli', 'schemat Bernoullego', 'próby niezależne', 'sukces'],
+    cke_page: 'str. 27–28',
+    pageNumber: 28,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-prawd-warunkowe',
+    topicId: 'prawdopodobienstwo',
+    topicName: 'Kombinatoryka i Statystyka',
+    title: 'Prawdopodobieństwo warunkowe, całkowite i wzór Bayesa',
+    formula: 'P(A|B) = \\frac{P(A \\cap B)}{P(B)}',
+    subFormulas: [
+      { label: 'Warunkowe (P(B) > 0)', formula: 'P(A|B) = \\frac{P(A \\cap B)}{P(B)}' },
+      { label: 'Całkowite', formula: 'P(A) = P(A|B_1)P(B_1) + \\ldots + P(A|B_n)P(B_n)' },
+      { label: 'Bayes', formula: 'P(B_k|A) = \\frac{P(A|B_k) \\cdot P(B_k)}{P(A)}' }
+    ],
+    explanation: '$B_1, \\ldots, B_n$ są parami rozłączne, mają dodatnie prawdopodobieństwa i razem dają $\\Omega$. Przykład: dwie urny wybierane z $P = \\frac{1}{2}$, a w nich $P(\\text{biała}) = \\frac{1}{3}$ i $\\frac{2}{3}$, więc $P(\\text{biała}) = \\frac{1}{2}$.',
+    goldenRule: 'Narysuj drzewo: całkowite = suma gałęzi do $A$; Bayes = jedna gałąź podzielona przez tę sumę.',
+    ckeTrap: '$P(A|B) \\ne P(B|A)$. Kolejność w zapisie ma znaczenie – za kreską stoi to, co już WIESZ.',
+    keywords: ['prawdopodobieństwo warunkowe', 'prawdopodobieństwo całkowite', 'Bayes', 'drzewo'],
+    cke_page: 'str. 28',
+    pageNumber: 28,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-pochodna-reguly',
+    topicId: 'analiza',
+    topicName: 'Granice i Pochodne',
+    title: 'Pochodna sumy, iloczynu, ilorazu i funkcji złożonej',
+    formula: '\\left[\\frac{f(x)}{g(x)}\\right]\' = \\frac{f\'(x)g(x) - f(x)g\'(x)}{[g(x)]^2}',
+    subFormulas: [
+      { label: 'Suma i różnica', formula: '[f(x) \\pm g(x)]\' = f\'(x) \\pm g\'(x)' },
+      { label: 'Iloczyn', formula: '[f(x) \\cdot g(x)]\' = f\'(x) g(x) + f(x) g\'(x)' },
+      { label: 'Iloraz (g(x) ≠ 0)', formula: '\\left[\\frac{f(x)}{g(x)}\\right]\' = \\frac{f\'(x)g(x) - f(x)g\'(x)}{[g(x)]^2}' },
+      { label: 'Funkcja złożona', formula: '[g(f(x))]\' = g\'(f(x)) \\cdot f\'(x)' }
+    ],
+    explanation: 'Przykład: $\\left(\\frac{x^2}{x - 1}\\right)\' = \\frac{2x(x - 1) - x^2}{(x - 1)^2} = \\frac{x^2 - 2x}{(x - 1)^2}$.',
+    goldenRule: 'Iloraz – mnemonik „góra-prim razy dół MINUS góra razy dół-prim, przez dół do kwadratu”.',
+    ckeTrap: 'Pochodna ilorazu to NIE iloraz pochodnych. Według zasad oceniania CKE taki błąd daje 0 pkt za całe zadanie.',
+    keywords: ['pochodna', 'pochodna ilorazu', 'pochodna iloczynu', 'funkcja złożona'],
+    cke_page: 'str. 30',
+    pageNumber: 30,
+    level: 'PR'
+  },
+  {
+    id: 'f-pr-pochodne-styczna',
+    topicId: 'analiza',
+    topicName: 'Granice i Pochodne',
+    title: 'Pochodne wybranych funkcji i równanie stycznej',
+    formula: 'y = f\'(x_0)(x - x_0) + f(x_0)',
+    subFormulas: [
+      { label: 'Potęga', formula: '(x^r)\' = r \\cdot x^{r-1}' },
+      { label: 'Odwrotność', formula: '\\left(\\frac{a}{x}\\right)\' = -\\frac{a}{x^2}' },
+      { label: 'Pierwiastek', formula: '(\\sqrt{x})\' = \\frac{1}{2\\sqrt{x}}' },
+      { label: 'Równanie stycznej w (x₀, f(x₀))', formula: 'y = f\'(x_0)(x - x_0) + f(x_0)' }
+    ],
+    explanation: '$f\'(x_0)$ to współczynnik kierunkowy stycznej. Przykład: $f(x) = x^3$, $x_0 = 1$: $f\'(1) = 3$, styczna $y = 3x - 2$.',
+    goldenRule: 'Optymalizacja w 4 krokach jak w kluczu CKE: pochodna → miejsce zerowe → znak pochodnej (min/max) → wartość funkcji.',
+    ckeTrap: 'Samo $f\'(x) = 0$ to za mało: bez zbadania znaku pochodnej nie wiesz, czy to minimum, czy maksimum (maks. 2 z 4 pkt).',
+    keywords: ['pochodna', 'styczna', 'ekstremum', 'monotoniczność', 'optymalizacja'],
+    cke_page: 'str. 31',
+    pageNumber: 31,
+    level: 'PR'
   }
 ];

@@ -3,12 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { UserState, TabState, UserPerks, BlikCoinPack, DailyChallengeId } from './types';
 import { DashboardView } from './components/DashboardView';
-import { LearnView } from './components/LearnView';
 import { ArenaView } from './components/ArenaView';
-import { MaturaSimulatorView } from './components/MaturaSimulatorView';
 import { ProfileView } from './components/ProfileView';
 import { Navigation } from './components/Navigation';
 import { Header } from './components/Header';
@@ -48,15 +46,23 @@ import { handleFirestoreError, OperationType } from './lib/firestoreErrors';
 import { migrateGuestProgressToUser, hasGuestProgress } from './lib/guestMigration';
 import { normalizeSubjectFirestoreId } from './services/ckeCatalogRepository';
 import { initTheme } from './services/themeManager';
+import { loadEnglishCurriculum } from './data/englishDataLoader';
+import { loadMathCurriculum } from './data/mathDataLoader';
 import { BrandBackgroundPattern } from './components/BrandBackgroundPattern';
+import { ToastHost } from './components/ToastHost';
 import { SubjectLobbyModal } from './components/SubjectLobbyModal';
 import { PolishStudyHub } from './components/polish/PolishStudyHub';
-import { EnglishStudyHub } from './components/english';
+// Ekrany Nauka i Matura ciągną bazę zadań matematyki (ok. 2,9 MB) – ładowane poza startową paczką,
+// żeby Dashboard pojawiał się od razu. Dane dociągają się w tle zaraz po starcie (loadMathCurriculum).
+const LearnView = lazy(() => import('./components/LearnView').then(m => ({ default: m.LearnView })));
+const MaturaSimulatorView = lazy(() => import('./components/MaturaSimulatorView').then(m => ({ default: m.MaturaSimulatorView })));
+// Ekran angielskiego ciągnie bazę 1500 zadań (2,9 MB) – ładowany dopiero po wybraniu przedmiotu
+const EnglishStudyHub = lazy(() => import('./components/english/EnglishStudyHub').then(m => ({ default: m.EnglishStudyHub })));
 import { CkeFormulasModal } from './components/CkeFormulasModal';
 import { EnglishDictionaryModal } from './components/english/EnglishDictionaryModal';
 import { ScratchpadModal } from './components/ScratchpadModal';
 import { DevHubModal } from './components/DevHubModal';
-import { applyFullDeveloperAccess, isDevModeActive, getAllDevTaskIds } from './services/devService';
+import { applyFullDeveloperAccess, isDevModeActive, isDevAccessAllowed, getAllDevTaskIds } from './services/devService';
 import { SubjectId, SubjectKey } from './types';
 import { PolishPartNumber, PolishEpoch, PolishTaskType } from './types/maturaTypes';
 
@@ -248,16 +254,9 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  useEffect(() => {
-    // Pokazuj po 1.2s od wejścia tylko jeśli użytkownik nie przechodzi akurat onboarding
-    if (isGuest && !hasSeenGuestPromoModal() && guestPromoSecondsLeft > 0 && !showGuestPrompt && !isNewUser) {
-      const timeout = setTimeout(() => {
-        setShowGuestPromoModal(true);
-        markGuestPromoModalSeen();
-      }, 1200);
-      return () => clearTimeout(timeout);
-    }
-  }, [isGuest, guestPromoSecondsLeft, showGuestPrompt, isNewUser]);
+  // Voucher powitalny NIE wyskakuje przy wejściu ani tuż po onboardingu (zero tarcia, Time-to-Value < 30 s).
+  // Pokazujemy go raz, po pierwszej ukończonej sesji – w momencie satysfakcji. Stałym przypomnieniem
+  // jest pływająca pigułka z odliczaniem (PromoFloatingPill).
   const [currentSubject, setCurrentSubject] = useState<SubjectId>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_current_subject');
@@ -281,14 +280,29 @@ export default function App() {
     return 'math';
   });
 
+  // Dane matematyki (domyślny przedmiot) dociągamy w tle zaraz po pierwszym renderze
+  useEffect(() => {
+    loadMathCurriculum().catch(() => {});
+  }, []);
+
+  // Dane angielskiego dociągamy w tle, gdy tylko ten przedmiot staje się aktywny
+  useEffect(() => {
+    if (selectedSubjectKey === 'eng' || selectedSubjectKey === 'eng-roz') {
+      loadEnglishCurriculum().catch(() => {});
+    }
+  }, [selectedSubjectKey]);
+
   const handleSelectSubject = (key: SubjectKey) => {
     setSelectedSubjectKey(key);
     const subId: SubjectId = key === 'pol' ? 'polski' : key === 'eng' ? 'angielski' : 'matematyka';
     setCurrentSubject(subId);
     try {
+      // Zdarzenie emitujemy tylko przy realnej zmianie – inaczej nasłuch w DashboardView
+      // (ze starą wartością w domknięciu) odbija wywołanie w nieskończoność.
+      const changed = localStorage.getItem('matura_quest_selected_subject') !== key;
       localStorage.setItem('matura_quest_selected_subject', key);
       localStorage.setItem('matura_quest_current_subject', subId);
-      window.dispatchEvent(new Event('storage'));
+      if (changed) window.dispatchEvent(new Event('storage'));
     } catch {}
     setUserState(prev => ({
       ...prev,
@@ -301,9 +315,10 @@ export default function App() {
     const subKey: SubjectKey = subId === 'polski' ? 'pol' : subId === 'angielski' ? 'eng' : 'math';
     setSelectedSubjectKey(subKey);
     try {
+      const changed = localStorage.getItem('matura_quest_selected_subject') !== subKey;
       localStorage.setItem('matura_quest_current_subject', subId);
       localStorage.setItem('matura_quest_selected_subject', subKey);
-      window.dispatchEvent(new Event('storage'));
+      if (changed) window.dispatchEvent(new Event('storage'));
     } catch {}
     setUserState(prev => ({
       ...prev,
@@ -382,10 +397,10 @@ export default function App() {
           perks: { ...defaultState.perks, ...(parsed.perks || {}) }
         };
       }
-      return applyFullDeveloperAccess(state);
+      return isDevAccessAllowed() ? applyFullDeveloperAccess(state) : state;
     } catch {}
 
-    return applyFullDeveloperAccess(defaultState);
+    return isDevAccessAllowed() ? applyFullDeveloperAccess(defaultState) : defaultState;
   });
 
   useEffect(() => {
@@ -646,11 +661,6 @@ export default function App() {
 
     if (shouldOpenAuth) {
       setTimeout(() => setShowAuthModal(true), 400);
-    } else if (isGuest && guestPromoSecondsLeft > 0) {
-      setTimeout(() => {
-        setShowGuestPromoModal(true);
-        markGuestPromoModalSeen();
-      }, 350);
     } else {
       setReward({
         xp: 15,
@@ -1015,9 +1025,10 @@ export default function App() {
       const origin = (rawOrigin === 'nauka' ? 'learn' : rawOrigin === 'profile' ? 'profil' : rawOrigin) as TabState;
       setCurrentTab(origin);
       setActiveTaskData(null);
-      if (isGuest && guestPromoSecondsLeft > 0) {
+      if (isGuest && guestPromoSecondsLeft > 0 && !hasSeenGuestPromoModal()) {
         setTimeout(() => {
           setShowGuestPromoModal(true);
+          markGuestPromoModalSeen();
         }, 600);
       }
     }
@@ -1406,6 +1417,7 @@ export default function App() {
   return (
     <div className="h-full h-[100dvh] w-full bg-transparent text-text-primary font-sans flex flex-col md:flex-row overflow-hidden selection:bg-primary/20 relative">
       <BrandBackgroundPattern />
+      <ToastHost />
       <AnimatePresence>
         {loading && (
           <LoadingScreen 
@@ -1450,7 +1462,7 @@ export default function App() {
             onLoginClick={handleLoginClick}
             guestPromoSecondsLeft={isGuest ? guestPromoSecondsLeft : 0}
             onOpenGuestPromo={() => setShowGuestPromoModal(true)}
-            onOpenDevHub={() => setShowDevModal(true)}
+            onOpenDevHub={isDevAccessAllowed() ? () => setShowDevModal(true) : undefined}
             onOpenBlikModal={() => setShowBlikCoinModal(true)}
             onUpdateUserState={(updater) => {
               setUserState(prev => {
@@ -1475,7 +1487,8 @@ export default function App() {
             !showAuthModal && 
             !showGuestPrompt && 
             !isNewUser &&
-            !activeTask
+            !activeTask &&
+            !(currentTab === 'simulator' && isSimulatorSessionActive)
           }
         />
         
@@ -1491,6 +1504,7 @@ export default function App() {
             WebkitOverflowScrolling: 'touch'
           }}
         >
+          <Suspense fallback={<LoadingScreen message="Wczytywanie..." subtext="Przygotowuję materiały" />}>
           {activeTask ? (
             <SessionRunner 
               key={activeTaskData?.sessionId || activeTaskData?.lessonId || activeTaskData?.id || 'session-runner'}
@@ -1603,10 +1617,11 @@ export default function App() {
                 )}
                 {(currentTab === 'nauka' || (currentTab as string) === 'learn') && (
                   <AnimatePresence mode="wait">
+                    {/* transitionEnd czyści filtr: pozostawiony blur(0px) tworzy kontekst pozycjonowania i wyrzuca modale `fixed` poza ekran */}
                     <motion.div
                       key={`study-hub-${selectedSubjectKey || 'math'}`}
                       initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
-                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
                       exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
                       transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
                       className="w-full flex-1 flex flex-col"
@@ -1628,6 +1643,7 @@ export default function App() {
                           }}
                         />
                       ) : selectedSubjectKey === 'eng' ? (
+                        <Suspense fallback={<LoadingScreen message="Ładowanie angielskiego..." subtext="Pobieranie bazy zadań CKE" />}>
                         <EnglishStudyHub
                           userState={userState}
                           onCompleteTask={handleEnglishTaskComplete}
@@ -1641,6 +1657,7 @@ export default function App() {
                             setCurrentTab('dashboard');
                           }}
                         />
+                        </Suspense>
                       ) : (
                         <LearnView 
                           userState={userState}
@@ -1703,7 +1720,7 @@ export default function App() {
                     onUseStreakFreeze={handleUseStreakFreeze}
                     onOpenAuthModal={() => setShowAuthModal(true)}
                     onOpenOnboarding={() => setShowGuestPrompt(true)}
-                    onOpenDevHub={() => setShowDevModal(true)}
+                    onOpenDevHub={isDevAccessAllowed() ? () => setShowDevModal(true) : undefined}
                     onOpenBlikModal={() => setShowBlikCoinModal(true)}
                     initialTab={profileInitialTab}
                   />
@@ -1711,6 +1728,7 @@ export default function App() {
               </motion.div>
             </AnimatePresence>
           )}
+          </Suspense>
         </main>
       </div>
 
@@ -1764,7 +1782,7 @@ export default function App() {
         }} 
         promoContext={activeAuthPromo ? {
           promoConfig: activeAuthPromo,
-          timeLeftFormatted: formatPromoSeconds(guestPromoSecondsLeft)
+          timeLeftFormatted: undefined
         } : undefined}
       />
       <DiagnosticTestModal
@@ -1860,13 +1878,13 @@ export default function App() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -24, scale: 0.95 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed top-[max(1rem,env(safe-area-inset-top,1rem))] left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0E1522]/95 border border-[#FFB800]/40 text-[#FFDCA1] shadow-[0_4px_24px_rgba(255,184,0,0.2)] backdrop-blur-md text-xs sm:text-sm font-medium select-none pointer-events-auto"
+            className="fixed top-[max(1rem,env(safe-area-inset-top,1rem))] left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2.5 px-4 py-2 rounded-full bg-surface-panel/95 border border-primary/40 text-accent-soft shadow-[0_4px_24px_rgba(255,184,0,0.2)] backdrop-blur-md text-xs sm:text-sm font-medium select-none pointer-events-auto"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FFB800] animate-pulse shadow-[0_0_8px_rgba(255,184,0,0.8)]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-jasne animate-pulse shadow-[0_0_8px_rgba(255,184,0,0.8)]" />
             <span>Wznowiono przerwaną sesję</span>
             <button 
               onClick={() => setShowResumedSessionBadge(false)}
-              className="ml-1 text-slate-400 hover:text-white transition-colors p-0.5 rounded-full"
+              className="ml-1 text-slate-400 hover:text-text-strong transition-colors p-0.5 rounded-full"
               aria-label="Zamknij powiadomienie"
             >
               <X className="w-3.5 h-3.5" />

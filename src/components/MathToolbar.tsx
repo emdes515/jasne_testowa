@@ -52,13 +52,13 @@ export function MathToolbar({ onInsertSymbol, onInsertTemplate }: MathToolbarPro
   };
 
   return (
-    <div className="flex flex-col gap-2 bg-[#181A24] border border-white/10 rounded-xl p-2.5 my-2 shadow-inner">
+    <div className="flex flex-col gap-2 bg-[#181A24] border border-hairline rounded-xl p-2.5 my-2 shadow-inner">
       <div className="flex items-center justify-between px-1">
         <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-          <Calculator size={13} className="text-[#FFB800]" />
+          <Calculator size={13} className="text-text-accent" />
           <span>Klawiatura Matematyczna</span>
         </span>
-        <span className="text-[10px] text-[#8B8D98]">Kliknij, aby wstawić symbol</span>
+        <span className="text-[10px] text-text-secondary">Kliknij, aby wstawić symbol</span>
       </div>
 
       {/* Symbol buttons grid */}
@@ -69,7 +69,7 @@ export function MathToolbar({ onInsertSymbol, onInsertTemplate }: MathToolbarPro
             type="button"
             onClick={() => handleSymbolClick(item.value)}
             title={item.title}
-            className="px-2.5 py-1.5 bg-[#222533] hover:bg-blue-600/30 hover:border-blue-500/40 border border-white/10 rounded-lg text-xs font-mono text-white font-bold transition-all active:scale-95 shadow-sm min-w-[34px] text-center"
+            className="px-2.5 py-1.5 bg-[#222533] hover:bg-blue-600/30 hover:border-blue-500/40 border border-hairline rounded-lg text-xs font-mono text-white font-bold transition-all active:scale-95 shadow-sm min-w-[34px] text-center"
           >
             {item.label}
           </button>
@@ -78,7 +78,7 @@ export function MathToolbar({ onInsertSymbol, onInsertTemplate }: MathToolbarPro
 
       {/* Quick Templates */}
       <div className="flex items-center gap-1.5 overflow-x-auto pt-1 pb-0.5 scrollbar-none">
-        <span className="text-[10px] text-[#8B8D98] uppercase font-bold shrink-0">Szablony:</span>
+        <span className="text-[10px] text-text-secondary uppercase font-bold shrink-0">Szablony:</span>
         {quickTemplates.map((tpl, idx) => (
           <button
             key={idx}

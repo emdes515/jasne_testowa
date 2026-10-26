@@ -29,9 +29,9 @@ import { MaturaTask } from '../types';
 import { normalizeTask } from '../data/mathTasks';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
 import { POLISH_CURRICULUM_TOPICS, getPolishLessonDocument } from '../data/polishCurriculumData';
-import { ENGLISH_CURRICULUM_TOPICS, ENGLISH_PILLARS, getEnglishLessonDocument } from '../data/englishCurriculumData';
-import { MATH_CURRICULUM_TOPICS, getMathLessonDocument } from '../data/mathCurriculumData';
-import { getBundledCkeExamTasks, getBundledCkeExamSheet } from '../data/math/ckeExamTasks';
+import { ENGLISH_PILLARS } from '../data/english/englishPillars';
+import { loadEnglishCurriculum, getEnglishCurriculumIfLoaded } from '../data/englishDataLoader';
+import { loadMathCurriculum, loadMathRozCurriculum } from '../data/mathDataLoader';
 
 export const DEFAULT_SUBJECT_ID = 'matematyka-podstawowa';
 
@@ -274,8 +274,22 @@ export const curriculumRepository = {
     // 0.1. Język Angielski - 15 Działów CKE Formuła 2023
     if (subjectId === 'jezyk-angielski' || subjectId === 'eng') {
       if (!topicsBySubjectCache.has(subjectId)) {
+        const { ENGLISH_CURRICULUM_TOPICS } = await loadEnglishCurriculum();
         topicsBySubjectCache.set(subjectId, ENGLISH_CURRICULUM_TOPICS);
         for (const t of ENGLISH_CURRICULUM_TOPICS) {
+          topicByIdCache.set(`${subjectId}/${t.id}`, t);
+          topicByIdCache.set(t.id, t);
+        }
+      }
+      return topicsBySubjectCache.get(subjectId)!;
+    }
+
+    // 0.15. Matematyka Rozszerzona – kurs z generatora scripts/math_pr (paczka, 0 odczytów Firestore)
+    if (!isTestEnv && (subjectId === 'matematyka-rozszerzona' || subjectId === 'math-roz')) {
+      if (!topicsBySubjectCache.has(subjectId)) {
+        const { MATH_ROZ_CURRICULUM_TOPICS } = await loadMathRozCurriculum();
+        topicsBySubjectCache.set(subjectId, MATH_ROZ_CURRICULUM_TOPICS);
+        for (const t of MATH_ROZ_CURRICULUM_TOPICS) {
           topicByIdCache.set(`${subjectId}/${t.id}`, t);
           topicByIdCache.set(t.id, t);
         }
@@ -286,8 +300,8 @@ export const curriculumRepository = {
     // 0.2. Matematyka Podstawowa - 15 Działów CKE Formuła 2023
     if (!isTestEnv && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'matematyka' || subjectId === 'math')) {
       if (!topicsBySubjectCache.has(subjectId)) {
-        topicsBySubjectCache.set(subjectId, MATH_CURRICULUM_TOPICS);
-        for (const t of MATH_CURRICULUM_TOPICS) {
+        topicsBySubjectCache.set(subjectId, (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS);
+        for (const t of (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS) {
           topicByIdCache.set(`${subjectId}/${t.id}`, t);
           topicByIdCache.set(t.id, t);
         }
@@ -356,7 +370,7 @@ export const curriculumRepository = {
           const num = t.numericId || 1;
           // Zapewnij, że tematy z Firestore mają pełne metadane lekcji z MATH_CURRICULUM_TOPICS jeśli ich brakuje
           if ((!t.lessons_metadata || t.lessons_metadata.length === 0) && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math')) {
-            const fallbackTopic = MATH_CURRICULUM_TOPICS.find(m => m.id === t.id || m.numericId === num);
+            const fallbackTopic = (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS.find(m => m.id === t.id || m.numericId === num);
             if (fallbackTopic?.lessons_metadata) {
               t.lessons_metadata = fallbackTopic.lessons_metadata;
             }
@@ -379,13 +393,13 @@ export const curriculumRepository = {
 
     // 3. Fallback do wbudowanego kurikulum matematyki Core-4 (Offline-First / Zero latency)
     if (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math') {
-      topicsBySubjectCache.set(subjectId, MATH_CURRICULUM_TOPICS);
-      for (const t of MATH_CURRICULUM_TOPICS) {
+      topicsBySubjectCache.set(subjectId, (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS);
+      for (const t of (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS) {
         topicByIdCache.set(`${subjectId}/${t.id}`, t);
         topicByIdCache.set(t.id, t);
       }
-      saveToCurriculumStorage(storageKey, MATH_CURRICULUM_TOPICS);
-      return MATH_CURRICULUM_TOPICS;
+      saveToCurriculumStorage(storageKey, (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS);
+      return (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS;
     }
 
     return topicsBySubjectCache.get(subjectId) || [];
@@ -416,7 +430,18 @@ export const curriculumRepository = {
 
     // Język Angielski topic resolution
     if (subjectId === 'jezyk-angielski' || subjectId === 'eng' || topicId.startsWith('eng-')) {
+      const { ENGLISH_CURRICULUM_TOPICS } = await loadEnglishCurriculum();
       const found = ENGLISH_CURRICULUM_TOPICS.find(t => t.id === topicId || t.name === topicId || t.title === topicId);
+      if (found) {
+        topicByIdCache.set(cacheKey, found);
+        topicByIdCache.set(topicId, found);
+        return found;
+      }
+    }
+
+    // Matematyka Rozszerzona topic resolution
+    if (subjectId === 'matematyka-rozszerzona' || topicId.startsWith('pr-dzial-')) {
+      const found = (await loadMathRozCurriculum()).MATH_ROZ_CURRICULUM_TOPICS.find(t => t.id === topicId);
       if (found) {
         topicByIdCache.set(cacheKey, found);
         topicByIdCache.set(topicId, found);
@@ -426,7 +451,7 @@ export const curriculumRepository = {
 
     // Matematyka Podstawowa topic resolution
     if (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math' || topicId.startsWith('dzial-')) {
-      const found = MATH_CURRICULUM_TOPICS.find(t => t.id === topicId || t.name === topicId || t.title === topicId || t.numericId === parseInt(topicId.replace(/\D/g, '') || '0', 10));
+      const found = (await loadMathCurriculum()).MATH_CURRICULUM_TOPICS.find(t => t.id === topicId || t.name === topicId || t.title === topicId || t.numericId === parseInt(topicId.replace(/\D/g, '') || '0', 10));
       if (found) {
         topicByIdCache.set(cacheKey, found);
         topicByIdCache.set(topicId, found);
@@ -511,7 +536,7 @@ export const curriculumRepository = {
 
     // 1.6. Język Angielski lesson resolution
     if (subjectId === 'jezyk-angielski' || subjectId === 'eng' || lessonId.startsWith('eng-') || topicId.startsWith('eng-')) {
-      const engDoc = getEnglishLessonDocument(lessonId, topicId);
+      const engDoc = (await loadEnglishCurriculum()).getEnglishLessonDocument(lessonId, topicId);
       if (engDoc) {
         for (const v of variants) {
           lessonCache.set(`${subjectId}/${topicId}/${v}`, engDoc);
@@ -523,9 +548,23 @@ export const curriculumRepository = {
       }
     }
 
+    // 1.65. Matematyka Rozszerzona lesson resolution (przed PP: identyfikatory `math-pr-` nie mogą trafić do kursu podstawowego)
+    if (!isTestEnv && (subjectId === 'matematyka-rozszerzona' || lessonId.startsWith('math-pr-') || topicId.startsWith('pr-dzial-'))) {
+      const rozDoc = (await loadMathRozCurriculum()).getMathRozLessonDocument(topicId, lessonId);
+      if (rozDoc) {
+        for (const v of Array.from(new Set([...variants, ...getLessonKeyVariants(rozDoc.id)]))) {
+          lessonCache.set(`${subjectId}/${topicId}/${v}`, rozDoc);
+          lessonCache.set(`${topicId}/${v}`, rozDoc);
+          lessonByIdCache.set(v, rozDoc);
+          if (subjectId) lessonByIdCache.set(`${subjectId}:${v}`, rozDoc);
+        }
+        return rozDoc;
+      }
+    }
+
     // 1.7. Matematyka lesson resolution
     if (!isTestEnv && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'matematyka' || subjectId === 'math' || topicId.startsWith('dzial-') || lessonId.startsWith('math-') || lessonId.match(/^\d+\.\d+$/))) {
-      const mathDoc = getMathLessonDocument(topicId, lessonId);
+      const mathDoc = (await loadMathCurriculum()).getMathLessonDocument(topicId, lessonId);
       if (mathDoc) {
         const allDocVariants = Array.from(new Set([...variants, ...getLessonKeyVariants(mathDoc.id)]));
         for (const v of allDocVariants) {
@@ -639,7 +678,7 @@ export const curriculumRepository = {
 
     // Fallback do wbudowanego kurikulum matematyki Core-4
     if (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math' || topicId.startsWith('dzial-') || lessonId.startsWith('math-') || lessonId.match(/^\d+\.\d+$/)) {
-      const mathDoc = getMathLessonDocument(topicId, lessonId);
+      const mathDoc = (await loadMathCurriculum()).getMathLessonDocument(topicId, lessonId);
       if (mathDoc) {
         const allDocVariants = Array.from(new Set([...variants, ...getLessonKeyVariants(mathDoc.id)]));
         for (const v of allDocVariants) {
@@ -667,7 +706,7 @@ export const curriculumRepository = {
     if (!lessonId) return null;
     const isEnglish = subjectId === 'jezyk-angielski' || subjectId === 'eng' || lessonId.startsWith('eng-');
     if (isEnglish) {
-      const engDoc = getEnglishLessonDocument(lessonId);
+      const engDoc = getEnglishCurriculumIfLoaded()?.getEnglishLessonDocument(lessonId) ?? null;
       if (engDoc) return engDoc;
     }
 
@@ -759,7 +798,7 @@ export const curriculumRepository = {
     }
 
     if (subjectId === 'jezyk-angielski' || subjectId === 'eng' || lessonId.startsWith('eng-') || (topicId && topicId.startsWith('eng-'))) {
-      const engDoc = getEnglishLessonDocument(lessonId, topicId);
+      const engDoc = (await loadEnglishCurriculum()).getEnglishLessonDocument(lessonId, topicId);
       if (engDoc) return engDoc;
     }
 
@@ -933,7 +972,7 @@ export const curriculumRepository = {
     // Matematyka podstawowa: arkusze CKE są wbudowane w aplikację (zweryfikowane transkrypcje,
     // 0 odczytów z Firestore) – tak samo jak kurikulum matematyki w getTopics/getLesson.
     if (docId === 'matura-podstawowa') {
-      const bundled = getBundledCkeExamTasks();
+      const bundled = (await loadMathCurriculum()).getBundledCkeExamTasks();
       if (bundled.length > 0) {
         ckeExamTasksCache.set(docId, bundled);
         return bundled;
@@ -965,7 +1004,7 @@ export const curriculumRepository = {
     }
 
     // Arkusze matematyki z paczki aplikacji mają pierwszeństwo przed dokumentem w Firestore
-    const bundledSheet = getBundledCkeExamSheet(examId);
+    const bundledSheet = (await loadMathCurriculum()).getBundledCkeExamSheet(examId);
     if (bundledSheet.length > 0) {
       ckeExamTasksCache.set(examId, bundledSheet);
       return bundledSheet;

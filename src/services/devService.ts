@@ -1,6 +1,6 @@
 import { UserState } from '../types';
-import { ALL_MATH_TASKS } from '../data/math/allMathTasks';
-import { ALL_ENGLISH_TASKS } from '../data/english/allEnglishTasks';
+import { getMathCurriculumIfLoaded, loadMathCurriculum } from '../data/mathDataLoader';
+import { getEnglishCurriculumIfLoaded, loadEnglishCurriculum } from '../data/englishDataLoader';
 import { ALL_POLISH_TASKS } from '../data/polish';
 
 export const DEV_STORAGE_KEY = 'jasne_dev_mode_active';
@@ -42,7 +42,13 @@ export function getAllDevEnglishLessons(): string[] {
 }
 
 export function getAllDevMathTaskIds(): string[] {
-  return ALL_MATH_TASKS.map(t => t.id);
+  // Baza matematyki ładuje się leniwie; w trybie dev dociągamy ją w tle i zwracamy to, co już jest.
+  const loaded = getMathCurriculumIfLoaded();
+  if (!loaded) {
+    loadMathCurriculum().catch(() => {});
+    return [];
+  }
+  return loaded.ALL_MATH_TASKS.map(t => t.id);
 }
 
 export function getAllDevPolishTaskIds(): string[] {
@@ -50,7 +56,13 @@ export function getAllDevPolishTaskIds(): string[] {
 }
 
 export function getAllDevEnglishTaskIds(): string[] {
-  return ALL_ENGLISH_TASKS.map(t => t.id);
+  // Baza angielskiego ładuje się leniwie; w trybie dev dociągamy ją w tle i zwracamy to, co już jest.
+  const loaded = getEnglishCurriculumIfLoaded();
+  if (!loaded) {
+    loadEnglishCurriculum().catch(() => {});
+    return [];
+  }
+  return loaded.ALL_ENGLISH_TASKS.map(t => t.id);
 }
 
 export function getAllDevTaskIds(): string[] {
@@ -67,6 +79,23 @@ export function isDevModeActive(): boolean {
   } catch {
     return false;
   }
+}
+
+/**
+ * Czy wolno automatycznie nadać pełny dostęp deweloperski przy starcie aplikacji.
+ * Na produkcji nowy użytkownik MUSI startować z prawdziwą ekonomią (5 serc, 0 monet,
+ * zablokowane lekcje) – inaczej PRO, serca i doładowania BLIK nie mają żadnej wartości.
+ * Dostęp dev dostaje tylko: lokalny serwer deweloperski, urządzenie z już aktywną
+ * flagą albo wejście z parametrem ?dev=1 (testy na telefonie). ?dev=0 wyłącza go zawsze.
+ */
+export function isDevAccessAllowed(): boolean {
+  let devParam: string | null = null;
+  try {
+    devParam = new URLSearchParams(window.location.search).get('dev');
+  } catch {}
+  // ?dev=0 – podgląd doświadczenia prawdziwego, nowego użytkownika także lokalnie
+  if (devParam === '0') return false;
+  return import.meta.env.DEV || isDevModeActive() || devParam === '1';
 }
 
 export function applyFullDeveloperAccess(currentState: UserState): UserState {

@@ -1,4 +1,5 @@
 import { T, mc, num, pf, pill, fr, par, sq, m, need, gcd, isSquare } from './lib.js';
+import { figCuboid, figPyramid, figCylinder, figCone, figSphere } from './figures.js';
 
 const pi = (n, d = 1) => {
   const g = gcd(n, d);
@@ -28,6 +29,7 @@ const prismSquare = (r) => {
   const vol = r.bool();
   const v = vol ? a * a * h : 2 * a * a + 4 * a * h;
   return mc({
+    diagram: figCuboid({ x: a, y: a, z: h }),
     title: vol ? 'Objętość graniastosłupa prawidłowego czworokątnego' : 'Pole powierzchni graniastosłupa prawidłowego czworokątnego',
     q: T`W graniastosłupie prawidłowym czworokątnym krawędź podstawy ma długość $${a}$, a wysokość jest równa $${h}$. ${vol ? 'Objętość' : 'Pole powierzchni całkowitej'} tego graniastosłupa jest ${vol ? 'równa' : 'równe'}`,
     ok: m(v),
@@ -43,6 +45,7 @@ const cube = (r) => {
   const kind = r.int(0, 3);
   if (kind === 0)
     return mc({
+      diagram: figCuboid({ x: a, y: a, z: a, diag: '?' }),
       title: 'Przekątna sześcianu',
       q: T`Krawędź sześcianu ma długość $${a}$. Przekątna tego sześcianu ma długość`,
       ok: m(`${a}\\sqrt{3}`),
@@ -92,6 +95,7 @@ const cuboidDiagonal = (r) => {
   const d2 = x * x + y * y + z * z;
   need(exact || !isSquare(d2));
   return mc({
+    diagram: figCuboid({ x, y, z, diag: '?' }),
     title: 'Przekątna prostopadłościanu',
     q: T`Krawędzie prostopadłościanu wychodzące z jednego wierzchołka mają długości $${x}$, $${y}$ i $${z}$. Przekątna tego prostopadłościanu ma długość`,
     ok: m(sq(d2)),
@@ -143,6 +147,7 @@ const pyrVolume = (r) => {
   const V = (a * a * H) / 3;
   const askH = r.bool();
   return mc({
+    diagram: figPyramid({ a, H: askH ? 'H = ?' : H }),
     title: askH ? 'Wysokość ostrosłupa z objętości' : 'Objętość ostrosłupa prawidłowego czworokątnego',
     q: askH ? T`Podstawą ostrosłupa prawidłowego czworokątnego jest kwadrat o boku $${a}$, a objętość ostrosłupa jest równa $${V}$. Wysokość tego ostrosłupa jest równa` : T`Podstawą ostrosłupa prawidłowego czworokątnego jest kwadrat o boku $${a}$, a wysokość ostrosłupa jest równa $${H}$. Objętość tego ostrosłupa jest równa`,
     ok: m(askH ? H : V),
@@ -158,6 +163,7 @@ const pyrSlantHeight = (r) => {
   const a = 2 * half;
   const kind = r.int(0, 1);
   return mc({
+    diagram: figPyramid({ a, H }),
     title: kind === 0 ? 'Wysokość ściany bocznej ostrosłupa' : 'Pole powierzchni bocznej ostrosłupa',
     q: T`W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $${a}$, a wysokość ostrosłupa jest równa $${H}$. ${kind === 0 ? 'Wysokość ściany bocznej tego ostrosłupa jest równa' : 'Pole powierzchni bocznej tego ostrosłupa jest równe'}`,
     ok: m(kind === 0 ? hb : 2 * a * hb),
@@ -174,6 +180,7 @@ const pyrLateralEdge = (r) => {
   const H = r.int(1, 9);
   const b2 = H * H + 2 * k * k;
   return mc({
+    diagram: figPyramid({ a, H }),
     title: 'Krawędź boczna ostrosłupa',
     q: T`W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $${a}$, a wysokość ostrosłupa jest równa $${H}$. Krawędź boczna tego ostrosłupa ma długość`,
     ok: m(sq(b2)),
@@ -221,6 +228,7 @@ const angleFaceTan = (r) => {
   const H = r.intNot(1, 9, half);
   const a = 2 * half;
   return mc({
+    diagram: figPyramid({ a, H }),
     title: 'Kąt nachylenia ściany bocznej do podstawy',
     q: T`W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $${a}$, a wysokość ostrosłupa jest równa $${H}$. Tangens kąta nachylenia ściany bocznej do płaszczyzny podstawy jest równy`,
     ok: m(fr(H, half)),
@@ -237,6 +245,7 @@ const angleEdgeTan = (r) => {
   const H = r.int(1, 9);
   // tg = H/(k√2) = H√2/(2k)
   return mc({
+    diagram: figPyramid({ a, H }),
     title: 'Kąt nachylenia krawędzi bocznej do podstawy',
     q: T`W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $${a}$, a wysokość ostrosłupa jest równa $${H}$. Tangens kąta nachylenia krawędzi bocznej do płaszczyzny podstawy jest równy`,
     ok: m(rf(H, 2, 2 * k)),
@@ -257,6 +266,7 @@ const angleGivenFindH = (r) => {
   const n = face ? tgv[1] : tgv[1] * 2;
   const ok = rf(half * tgv[0], n, tgv[2]);
   return mc({
+    diagram: figPyramid({ a, H: 'H = ?' }),
     title: 'Wysokość ostrosłupa z kąta nachylenia',
     q: T`W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $${a}$, a ${face ? 'ściana boczna jest nachylona' : 'krawędź boczna jest nachylona'} do płaszczyzny podstawy pod kątem $${ang}^\circ$. Wysokość tego ostrosłupa jest równa`,
     ok: m(ok),
@@ -275,6 +285,7 @@ const angleCuboidDiagonal = (r) => {
   need(fn === 'tg' || isSquare(d2));
   const d = Math.sqrt(d2);
   return mc({
+    diagram: figCuboid({ x: a, y: b, z: c, diag: 'd' }),
     title: 'Kąt nachylenia przekątnej prostopadłościanu',
     q: T`Podstawą prostopadłościanu jest prostokąt o bokach $${a}$ i $${b}$, a wysokość prostopadłościanu jest równa $${c}$. ${fn === 'tg' ? 'Tangens' : 'Sinus'} kąta nachylenia przekątnej prostopadłościanu do płaszczyzny podstawy jest równy`,
     ok: m(fn === 'tg' ? fr(c, dp) : fr(c, d)),
@@ -319,6 +330,7 @@ const solidVolume = (r) => {
   const kind = r.pick(['walec', 'stożek', 'kula-V', 'kula-P']);
   if (kind === 'walec')
     return mc({
+      diagram: figCylinder({ r: rr, h }),
       title: 'Objętość walca',
       q: T`Promień podstawy walca jest równy $${rr}$, a jego wysokość $${h}$. Objętość tego walca jest równa`,
       ok: m(pi(rr * rr * h)),
@@ -330,6 +342,7 @@ const solidVolume = (r) => {
     });
   if (kind === 'stożek')
     return mc({
+      diagram: figCone({ r: rr, h }),
       title: 'Objętość stożka',
       q: T`Promień podstawy stożka jest równy $${rr}$, a jego wysokość $${h}$. Objętość tego stożka jest równa`,
       ok: m(pi(rr * rr * h, 3)),
@@ -341,6 +354,7 @@ const solidVolume = (r) => {
     });
   if (kind === 'kula-V')
     return mc({
+      diagram: figSphere({ r: rr }),
       title: 'Objętość kuli',
       q: T`Promień kuli jest równy $${rr}$. Objętość tej kuli jest równa`,
       ok: m(pi(4 * rr ** 3, 3)),
@@ -351,6 +365,7 @@ const solidVolume = (r) => {
       tip: 'Karta wzorów, str. 26: kula – $V = \\frac{4}{3}\\pi r^3$, $P = 4\\pi r^2$.'
     });
   return mc({
+    diagram: figSphere({ r: rr }),
     title: 'Pole powierzchni kuli',
     q: T`Promień kuli jest równy $${rr}$. Pole powierzchni tej kuli jest równe`,
     ok: m(pi(4 * rr * rr)),
@@ -366,6 +381,7 @@ const coneSlant = (r) => {
   const kind = r.int(0, 2);
   if (kind === 0)
     return mc({
+      diagram: figCone({ r: rr, h, l: '?' }),
       title: 'Tworząca stożka',
       q: T`Promień podstawy stożka jest równy $${rr}$, a wysokość stożka $${h}$. Tworząca tego stożka ma długość`,
       ok: m(l),
@@ -377,6 +393,7 @@ const coneSlant = (r) => {
     });
   if (kind === 1)
     return mc({
+      diagram: figCone({ r: rr, h }),
       title: 'Pole powierzchni bocznej stożka',
       q: T`Promień podstawy stożka jest równy $${rr}$, a wysokość stożka $${h}$. Pole powierzchni bocznej tego stożka jest równe`,
       ok: m(pi(rr * l)),
@@ -387,6 +404,7 @@ const coneSlant = (r) => {
       tip: 'Karta wzorów, str. 26: stożek – $V = \\frac{1}{3}\\pi r^2 h$, $P_b = \\pi r l$.'
     });
   return mc({
+    diagram: figCone({ r: rr, l }),
     title: 'Objętość stożka z tworzącej',
     q: T`Tworząca stożka ma długość $${l}$, a promień jego podstawy jest równy $${rr}$. Objętość tego stożka jest równa`,
     ok: m(pi(rr * rr * h, 3)),
@@ -413,6 +431,7 @@ const cylinderSection = (r) => {
     });
   const h = r.int(2, 10);
   return mc({
+    diagram: figCylinder({ r: rr, h }),
     title: 'Pole powierzchni bocznej walca',
     q: T`Promień podstawy walca jest równy $${rr}$, a wysokość walca $${h}$. Pole powierzchni bocznej tego walca jest równe`,
     ok: m(pi(2 * rr * h)),
@@ -441,6 +460,7 @@ const coneAngle = (r) => {
     const ang = r.pick([30, 45, 60]);
     const ok = { 30: rf(rr, 3, 3), 45: `${rr}`, 60: rf(rr, 3) }[ang];
     return mc({
+      diagram: figCone({ r: rr, h: '?', angle: `${ang}°` }),
       title: 'Wysokość stożka z kąta nachylenia tworzącej',
       q: T`Tworząca stożka jest nachylona do płaszczyzny podstawy pod kątem $${ang}^\circ$, a promień podstawy jest równy $${rr}$. Wysokość tego stożka jest równa`,
       ok: m(ok),
@@ -453,6 +473,7 @@ const coneAngle = (r) => {
   }
   const k = r.pick([2, 3, 4, 5]);
   return mc({
+    diagram: figCone({ r: rr, l: k * rr }),
     title: 'Cosinus kąta nachylenia tworzącej',
     q: T`Promień podstawy stożka jest równy $${rr}$, a tworząca ma długość $${k * rr}$. Cosinus kąta nachylenia tworzącej do płaszczyzny podstawy jest równy`,
     ok: m(fr(1, k)),

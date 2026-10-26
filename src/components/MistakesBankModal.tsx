@@ -47,10 +47,10 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="w-full max-w-lg max-h-[90vh] sm:max-h-[85vh] bg-[#0E131E] border border-white/10 rounded-t-[28px] sm:rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
+          className="w-full max-w-lg max-h-[90vh] sm:max-h-[85vh] bg-[#0E131E] border border-hairline rounded-t-[28px] sm:rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
         >
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#121824] shrink-0">
+          <div className="p-4 sm:p-5 border-b border-hairline flex items-center justify-between bg-[#121824] shrink-0">
             <div className="flex items-center gap-3">
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border ${
                 count > 0 
@@ -60,7 +60,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                 <Target size={20} />
               </div>
               <div>
-                <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                <h2 className="text-base sm:text-lg font-bold text-text-strong tracking-tight flex items-center gap-2">
                   Bank Błędów
                   <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
                     count > 0
@@ -79,7 +79,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
             <button
               id="mistakes-bank-close-button"
               onClick={onClose}
-              className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
+              className="w-9 h-9 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition-colors cursor-pointer shrink-0"
               aria-label="Zamknij"
             >
               <X size={18} />
@@ -97,12 +97,12 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                 <div className="w-16 h-16 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-4 text-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
                   <CheckCircle2 size={32} />
                 </div>
-                <h3 className="text-lg font-bold text-white">Twój Bank Błędów jest czysty!</h3>
+                <h3 className="text-lg font-bold text-text-strong">Twój Bank Błędów jest czysty!</h3>
                 <p className="text-xs sm:text-sm text-slate-400 mt-2 max-w-sm leading-relaxed">
                   Nie masz żadnych zadań oczekujących na poprawę. Wszystkie Twoje dotychczasowe odpowiedzi w sesjach były bezbłędne.
                 </p>
-                <div className="mt-5 p-3.5 rounded-2xl bg-white/5 border border-white/10 text-left max-w-sm w-full">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#FFB800] mb-1">
+                <div className="mt-5 p-3.5 rounded-2xl bg-veil border border-hairline text-left max-w-sm w-full">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-text-accent mb-1">
                     <Zap size={14} />
                     <span>Jak działa Bank Błędów?</span>
                   </div>
@@ -115,7 +115,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                     onClose();
                     onNavigateToLessons();
                   }}
-                  className="mt-6 w-full py-3.5 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.98] transition shadow-[0_0_20px_rgba(255,184,0,0.35)] flex items-center justify-center gap-2 text-sm cursor-pointer"
+                  className="mt-6 w-full py-3.5 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.98] transition shadow-[0_0_20px_rgba(255,184,0,0.35)] flex items-center justify-center gap-2 text-sm cursor-pointer"
                 >
                   <span>Przejdź do Mapy Lekcji</span>
                   <ArrowRight size={16} />
@@ -142,7 +142,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                   {mistakeTasks.map((task, idx) => (
                     <div
                       key={task.id || idx}
-                      className="p-3.5 rounded-xl bg-[#141B26] border border-white/5 flex items-start gap-3 hover:border-white/15 transition-all"
+                      className="p-3.5 rounded-xl bg-[#141B26] border border-hairline-soft flex items-start gap-3 hover:border-white/15 transition-all"
                     >
                       <div className="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                         {idx + 1}
@@ -168,7 +168,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                 </div>
 
                 {/* Actions */}
-                <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
+                <div className="pt-3 border-t border-hairline flex flex-col gap-2.5">
                   <button
                     id="mistakes-bank-start-button"
                     onClick={handleStart}
