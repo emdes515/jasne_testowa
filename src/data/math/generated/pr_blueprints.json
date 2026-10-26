@@ -7298,5 +7298,1786 @@
     }
    }
   ]
+ },
+ {
+  "id": "pr-dzial-13",
+  "numericId": 13,
+  "title": "Kombinatoryka i prawdopodobieństwo",
+  "short_title": "Kombinatoryka i prawdopodobieństwo",
+  "description": "Permutacje, wariacje, kombinacje, symbol Newtona, prawdopodobieństwo warunkowe i całkowite, wzór Bayesa i schemat Bernoullego.",
+  "icon": "PieChart",
+  "color": "#FFB800",
+  "matura_points_range": "3–5 pkt",
+  "importance": "CRITICAL_PEWNIAK",
+  "cke_formula_page": "str. 26–28",
+  "cke_stats": "W 11 z 11 arkuszy CKE 2022–2026, średnio 4,4 pkt na arkusz (prawdopodobieństwo 3,2 pkt, kombinatoryka 1,2 pkt).",
+  "lessons": [
+   {
+    "id": "math-pr-lesson-13-1",
+    "order": 1,
+    "title": "Permutacje, wariacje i kombinacje",
+    "short_title": "Zliczanie",
+    "badge": "Lekcja 13.1",
+    "archetypeCode": "PR13.1",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XI.R1"
+    ],
+    "prereq": [
+     "math-lesson-12-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Zliczając, zadaj dwa pytania: czy kolejność ma znaczenie i czy elementy mogą się powtarzać. Kolejność ważna, bez powtórzeń – wariacje $\\frac{n!}{(n-k)!}$; z powtórzeniami – $n^k$; kolejność nieważna – kombinacje $\\binom{n}{k}$. Ustawienie wszystkich – permutacje $n!$.",
+     "matura_context": "Kombinatoryka (XI.R1) pojawia się w 5 z 11 arkuszy, często jako zadanie z liczbami o zadanych cyfrach za 2–3 pkt.",
+     "plain_polish": "Z polskiego na nasze: Podium (złoto, srebro, brąz) to kolejność – wariacje. Wybór drużyny na wycieczkę to grupa bez kolejności – kombinacje. PIN do telefonu to cyfry z powtórzeniami – $10^4$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Kolejność?",
+       "description": "Tak – wariacje, nie – kombinacje.",
+       "tip": "Różne role = kolejność."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Powtórzenia?",
+       "description": "Tak – $n^k$.",
+       "tip": "Kody, rzuty."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Warunki",
+       "description": "Blok, dopełnienie, pierwsza cyfra ≠ 0.",
+       "tip": "Reguła mnożenia."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Permutacje",
+       "formula": "P_n = n!",
+       "cke_page": "str. 26",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Wariacje",
+       "formula": "V_n^k = \\frac{n!}{(n-k)!}",
+       "cke_page": "str. 26",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Kombinacje",
+       "formula": "C_n^k = \\binom{n}{k}",
+       "cke_page": "str. 26",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Delegacja",
+       "points": "1 pkt",
+       "problem": "Wybór 3 osób spośród 10.",
+       "solution": "1. Kolejność nieważna.\n2. $\\binom{10}{3} = 120$.",
+       "keyInsight": "Kombinacje.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "Kolejność nieważna."
+        }
+       ],
+       "result": "$\\binom{10}{3} = 120$."
+      },
+      {
+       "title": "Cyfry",
+       "points": "2 pkt",
+       "problem": "Ile liczb 5-cyfrowych ma dokładnie dwie cyfry $1$?",
+       "solution": "1. $\\binom{5}{2} \\cdot 9^3$ ciągów.\n2. Minus zaczynające się od $0$: $\\binom{4}{2} \\cdot 9^2$.",
+       "keyInsight": "Zero z przodu odpada.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\binom{5}{2} \\cdot 9^3$ ciągów."
+        }
+       ],
+       "result": "Minus zaczynające się od $0$: $\\binom{4}{2} \\cdot 9^2$."
+      }
+     ],
+     "exam_trap": "Liczba nie może zaczynać się od zera – ciągi z zerem na początku trzeba odjąć albo rozpatrzyć pierwszą cyfrę osobno.",
+     "trap_details": {
+      "fail": "Błąd: „Liczb 5-cyfrowych z dwiema jedynkami jest $\\binom{5}{2} \\cdot 9^3$.”",
+      "win": "Poprawnie: $\\binom{5}{2} \\cdot 9^3 - \\binom{4}{2} \\cdot 9^2$.",
+      "explanation": "Ciąg 01xxx nie jest liczbą pięciocyfrową.",
+      "ckeTip": "Opisz słowami, co liczysz w każdym czynniku – egzaminator punktuje poprawny model, nawet przy błędzie rachunkowym."
+     },
+     "key_points": [
+      "Kolejność i powtórzenia wybierają wzór.",
+      "Reguła mnożenia łączy etapy.",
+      "Pierwsza cyfra ≠ 0."
+     ],
+     "worked_example": {
+      "title": "Delegacja",
+      "points": "1 pkt",
+      "problem": "Wybór 3 osób spośród 10.",
+      "solution": "1. Kolejność nieważna.\n2. $\\binom{10}{3} = 120$.",
+      "keyInsight": "Kombinacje.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "Kolejność nieważna."
+       }
+      ],
+      "result": "$\\binom{10}{3} = 120$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-13-2",
+    "order": 2,
+    "title": "Symbol Newtona i trójkąt Pascala",
+    "short_title": "Symbol Newtona",
+    "badge": "Lekcja 13.2",
+    "archetypeCode": "PR13.2",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XI.R2",
+     "II.R4"
+    ],
+    "prereq": [
+     "math-lesson-12-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Symbol Newtona $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$ to liczba $k$-elementowych podzbiorów zbioru $n$-elementowego. Spełnia $\\binom{n}{k} = \\binom{n}{n-k}$ i $\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$ – to reguła trójkąta Pascala. Liczby z trójkąta są współczynnikami rozwinięcia $(a + b)^n$.",
+     "matura_context": "Symbol Newtona (XI.R2, II.R4) pojawia się w równaniach, dowodach tożsamości i jako narzędzie w schemacie Bernoullego.",
+     "plain_polish": "Z polskiego na nasze: W trójkącie Pascala każda liczba to suma dwóch liczb nad nią. Wiersz $1, 3, 3, 1$ daje $(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Rozpisz",
+       "description": "$\\binom{n}{2} = \\frac{n(n-1)}{2}$.",
+       "tip": "Skracaj silnie."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Równanie",
+       "description": "Doprowadź do kwadratowego.",
+       "tip": "n naturalne."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Dwumian",
+       "description": "Wyraz: $\\binom{n}{k}a^{n-k}b^k$.",
+       "tip": "Uważaj na znak b."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Symbol Newtona",
+       "formula": "\\binom{n}{k} = \\frac{n!}{k!(n-k)!}",
+       "cke_page": "str. 26",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Symetria",
+       "formula": "\\binom{n}{k} = \\binom{n}{n-k}",
+       "cke_page": "str. 26",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Pascal",
+       "formula": "\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}",
+       "cke_page": "str. 26",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Równanie",
+       "points": "2 pkt",
+       "problem": "$\\binom{n}{2} = 28$.",
+       "solution": "1. $n(n-1) = 56$.\n2. $n = 8$.",
+       "keyInsight": "Odrzuć ujemne.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$n(n-1) = 56$."
+        }
+       ],
+       "result": "$n = 8$."
+      },
+      {
+       "title": "Współczynnik",
+       "points": "1 pkt",
+       "problem": "Współczynnik przy $x^2$ w $(x + 2)^4$.",
+       "solution": "1. $\\binom{4}{2} \\cdot 2^2$.\n2. $24$.",
+       "keyInsight": "Potęga drugiego składnika.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\binom{4}{2} \\cdot 2^2$."
+        }
+       ],
+       "result": "$24$."
+      }
+     ],
+     "exam_trap": "$\\binom{n}{1} = n$, a $\\binom{n}{0} = 1$. Pomylenie ich psuje równania z symbolem Newtona.",
+     "trap_details": {
+      "fail": "Błąd: „$\\binom{n}{1} + \\binom{n}{2} = 1 + \\frac{n(n-1)}{2}$.”",
+      "win": "Poprawnie: $\\binom{n}{1} + \\binom{n}{2} = n + \\frac{n(n-1)}{2}$.",
+      "explanation": "Jeden element z n wybierasz na n sposobów.",
+      "ckeTip": "W równaniu z symbolem Newtona zapisz założenie o $n$ (naturalne, $n \\ge k$) i odrzuć rozwiązania spoza dziedziny."
+     },
+     "key_points": [
+      "n(n−1)/2 dla k = 2.",
+      "Symetria i reguła Pascala.",
+      "Dwumian: znak drugiego składnika."
+     ],
+     "worked_example": {
+      "title": "Równanie",
+      "points": "2 pkt",
+      "problem": "$\\binom{n}{2} = 28$.",
+      "solution": "1. $n(n-1) = 56$.\n2. $n = 8$.",
+      "keyInsight": "Odrzuć ujemne.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$n(n-1) = 56$."
+       }
+      ],
+      "result": "$n = 8$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-13-3",
+    "order": 3,
+    "title": "Prawdopodobieństwo warunkowe",
+    "short_title": "Warunkowe",
+    "badge": "Lekcja 13.3",
+    "archetypeCode": "PR13.3",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XII.R1"
+    ],
+    "prereq": [
+     "math-lesson-13-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Prawdopodobieństwo warunkowe $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$ to szansa zdarzenia $A$, gdy wiemy, że zaszło $B$. W modelu klasycznym to $\\frac{|A \\cap B|}{|B|}$: zbiór możliwych wyników zawęża się do $B$. Zdarzenia są niezależne, gdy $P(A \\cap B) = P(A) \\cdot P(B)$.",
+     "matura_context": "Prawdopodobieństwo warunkowe (XII.R1) to nowe wymaganie PR od 2025 r. Typowe zadanie: losowanie z warunkiem za 3 pkt.",
+     "plain_polish": "Z polskiego na nasze: Ktoś mówi ci: „suma oczek jest parzysta”. Od tej chwili liczysz tylko w świecie wyników z parzystą sumą – reszta przestaje istnieć.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Warunek",
+       "description": "Policz wyniki spełniające B.",
+       "tip": "To nowy mianownik."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Część wspólna",
+       "description": "Policz wyniki w A i B.",
+       "tip": "Licznik."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Iloraz",
+       "description": "$P(A|B) = \\frac{|A \\cap B|}{|B|}$.",
+       "tip": "Skróć ułamek."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Warunkowe",
+       "formula": "P(A|B) = \\frac{P(A \\cap B)}{P(B)}",
+       "cke_page": "str. 28",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Suma zdarzeń",
+       "formula": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)",
+       "cke_page": "str. 27",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Niezależność",
+       "formula": "P(A \\cap B) = P(A) \\cdot P(B)"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Kostki",
+       "points": "1 pkt",
+       "problem": "Suma $8$, gdy na obu kostkach różne liczby.",
+       "solution": "1. $|B| = 30$.\n2. $|A \\cap B| = 4$, $P = \\frac{2}{15}$.",
+       "keyInsight": "Mianownik 30, nie 36.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$|B| = 30$."
+        }
+       ],
+       "result": "$|A \\cap B| = 4$, $P = \\frac{2}{15}$."
+      },
+      {
+       "title": "Wzór",
+       "points": "1 pkt",
+       "problem": "$P(A) = \\frac{1}{2}$, $P(B) = \\frac{1}{3}$, $P(A \\cup B) = \\frac{2}{3}$.",
+       "solution": "1. $P(A \\cap B) = \\frac{1}{6}$.\n2. $P(A|B) = \\frac{1}{2}$.",
+       "keyInsight": "Najpierw część wspólna.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$P(A \\cap B) = \\frac{1}{6}$."
+        }
+       ],
+       "result": "$P(A|B) = \\frac{1}{2}$."
+      }
+     ],
+     "exam_trap": "W mianowniku jest liczność zdarzenia WARUNKU, a nie całej przestrzeni $\\Omega$.",
+     "trap_details": {
+      "fail": "Błąd: „$P(A|B) = \\frac{|A \\cap B|}{36}$.”",
+      "win": "Poprawnie: $P(A|B) = \\frac{|A \\cap B|}{|B|}$.",
+      "explanation": "Warunek zawęża zbiór możliwych wyników.",
+      "ckeTip": "Zapisz zdarzenia $A$ i $B$ słowami i ich liczności – za opis modelu jest pierwszy punkt."
+     },
+     "key_points": [
+      "P(A|B) = P(A∩B)/P(B).",
+      "Mianownik: warunek.",
+      "Niezależność ≠ rozłączność."
+     ],
+     "worked_example": {
+      "title": "Kostki",
+      "points": "1 pkt",
+      "problem": "Suma $8$, gdy na obu kostkach różne liczby.",
+      "solution": "1. $|B| = 30$.\n2. $|A \\cap B| = 4$, $P = \\frac{2}{15}$.",
+      "keyInsight": "Mianownik 30, nie 36.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$|B| = 30$."
+       }
+      ],
+      "result": "$|A \\cap B| = 4$, $P = \\frac{2}{15}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-13-4",
+    "order": 4,
+    "title": "Prawdopodobieństwo całkowite i wzór Bayesa",
+    "short_title": "Całkowite i Bayes",
+    "badge": "Lekcja 13.4",
+    "archetypeCode": "PR13.4",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XII.R1"
+    ],
+    "prereq": [
+     "math-lesson-13-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Gdy doświadczenie ma etapy (najpierw wybór urny, potem kula), prawdopodobieństwo wyniku to suma po gałęziach drzewa: $P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2)$. Wzór Bayesa odwraca warunek: $P(B_1|A) = \\frac{P(A|B_1)P(B_1)}{P(A)}$ – udział jednej gałęzi w całym $P(A)$.",
+     "matura_context": "Twierdzenie o prawdopodobieństwie całkowitym i wzór Bayesa (XII.R1) to nowe wymagania PR, typowo za 3–4 pkt.",
+     "plain_polish": "Z polskiego na nasze: Drzewo: z korzenia wychodzą gałęzie „urna I” i „urna II”, z każdej – „biała” i „czarna”. Mnożysz wzdłuż gałęzi, dodajesz końcówki, które cię interesują.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Drzewo",
+       "description": "Pierwszy etap: wybór (urna, maszyna).",
+       "tip": "Wagi gałęzi."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Gałęzie",
+       "description": "Mnóż prawdopodobieństwa wzdłuż ścieżki.",
+       "tip": "P(B_i) · P(A|B_i)."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Suma / Bayes",
+       "description": "Dodaj ścieżki z A; Bayes – jedna ścieżka przez sumę.",
+       "tip": "Odwrócony warunek."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Całkowite",
+       "formula": "P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2)",
+       "cke_page": "str. 28",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Bayes",
+       "formula": "P(B_1|A) = \\frac{P(A|B_1)P(B_1)}{P(A)}",
+       "cke_page": "str. 28",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Przeciwne",
+       "formula": "P(B_2) = 1 - P(B_1)"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Urny",
+       "points": "2 pkt",
+       "problem": "Moneta wybiera urnę: I (2 białe, 2 czarne), II (3 białe, 1 czarna).",
+       "solution": "1. $\\frac{1}{2} \\cdot \\frac{1}{2} + \\frac{1}{2} \\cdot \\frac{3}{4}$.\n2. $P = \\frac{5}{8}$.",
+       "keyInsight": "Mnóż i dodawaj.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{1}{2} \\cdot \\frac{1}{2} + \\frac{1}{2} \\cdot \\frac{3}{4}$."
+        }
+       ],
+       "result": "$P = \\frac{5}{8}$."
+      },
+      {
+       "title": "Bayes",
+       "points": "2 pkt",
+       "problem": "Jak wyżej: kula biała. $P(I|B)$?",
+       "solution": "1. $\\frac{\\frac{1}{4}}{\\frac{5}{8}}$.\n2. $P = \\frac{2}{5}$.",
+       "keyInsight": "Jedna ścieżka przez całość.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{\\frac{1}{4}}{\\frac{5}{8}}$."
+        }
+       ],
+       "result": "$P = \\frac{2}{5}$."
+      }
+     ],
+     "exam_trap": "$P(A|B)$ i $P(B|A)$ to różne liczby. Wzór Bayesa przelicza jedno na drugie przez $P(A)$.",
+     "trap_details": {
+      "fail": "Błąd: „Kula jest biała, więc $P(I|B) = P(B|I)$.”",
+      "win": "Poprawnie: $P(I|B) = \\frac{P(B|I)P(I)}{P(B)}$.",
+      "explanation": "Warunek i zdarzenie zamieniają się rolami.",
+      "ckeTip": "Narysuj drzewo z wagami – egzaminator przyznaje punkt za poprawny model nawet bez końcowego wyniku."
+     },
+     "key_points": [
+      "Drzewo: mnóż wzdłuż, dodawaj końcówki.",
+      "Wagi urn z pierwszego etapu.",
+      "Bayes: ścieżka / całość."
+     ],
+     "worked_example": {
+      "title": "Urny",
+      "points": "2 pkt",
+      "problem": "Moneta wybiera urnę: I (2 białe, 2 czarne), II (3 białe, 1 czarna).",
+      "solution": "1. $\\frac{1}{2} \\cdot \\frac{1}{2} + \\frac{1}{2} \\cdot \\frac{3}{4}$.\n2. $P = \\frac{5}{8}$.",
+      "keyInsight": "Mnóż i dodawaj.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$\\frac{1}{2} \\cdot \\frac{1}{2} + \\frac{1}{2} \\cdot \\frac{3}{4}$."
+       }
+      ],
+      "result": "$P = \\frac{5}{8}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-13-5",
+    "order": 5,
+    "title": "Schemat Bernoullego",
+    "short_title": "Bernoulli",
+    "badge": "Lekcja 13.5",
+    "archetypeCode": "PR13.5",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XII.R2"
+    ],
+    "prereq": [
+     "math-lesson-13-5"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Schemat Bernoullego to $n$ niezależnych powtórzeń tej samej próby z prawdopodobieństwem sukcesu $p$. Prawdopodobieństwo dokładnie $k$ sukcesów: $\\binom{n}{k}p^k(1-p)^{n-k}$ – czynnik $\\binom{n}{k}$ liczy, w których próbach były sukcesy. „Co najmniej jeden” liczysz przez dopełnienie: $1 - (1-p)^n$.",
+     "matura_context": "Schemat Bernoullego (XII.R2) to nowe wymaganie PR – typowe zadanie za 2–4 pkt z kostką, monetą albo testem.",
+     "plain_polish": "Z polskiego na nasze: Trzy rzuty kostką, dwie szóstki: szóstki mogą wypaść w rzutach 1–2, 1–3 albo 2–3. Każdy taki układ ma tę samą szansę $\\left(\\frac{1}{6}\\right)^2 \\cdot \\frac{5}{6}$, a układów jest $\\binom{3}{2} = 3$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Rozpoznaj",
+       "description": "$n$ prób, stałe $p$, niezależność.",
+       "tip": "Sukces = to, o co pytają."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Wzór",
+       "description": "$\\binom{n}{k}p^k(1-p)^{n-k}$.",
+       "tip": "Dla każdego k osobno."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Sumuj",
+       "description": "„Co najmniej” = suma albo dopełnienie.",
+       "tip": "Wybierz krótszą drogę."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Bernoulli",
+       "formula": "P(S_n = k) = \\binom{n}{k}p^k(1-p)^{n-k}",
+       "cke_page": "str. 28",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Co najmniej jeden",
+       "formula": "P(S_n \\ge 1) = 1 - (1-p)^n"
+      },
+      {
+       "name": "Moneta",
+       "formula": "P(S_n = k) = \\frac{\\binom{n}{k}}{2^n}"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Kostka",
+       "points": "1 pkt",
+       "problem": "3 rzuty, dokładnie 2 szóstki.",
+       "solution": "1. $\\binom{3}{2} \\cdot \\frac{1}{36} \\cdot \\frac{5}{6}$.\n2. $\\frac{5}{72}$.",
+       "keyInsight": "Czynnik 3.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\binom{3}{2} \\cdot \\frac{1}{36} \\cdot \\frac{5}{6}$."
+        }
+       ],
+       "result": "$\\frac{5}{72}$."
+      },
+      {
+       "title": "Co najmniej",
+       "points": "2 pkt",
+       "problem": "4 rzuty monetą, co najmniej 1 orzeł.",
+       "solution": "1. $1 - \\left(\\frac{1}{2}\\right)^4$.\n2. $\\frac{15}{16}$.",
+       "keyInsight": "Dopełnienie.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$1 - \\left(\\frac{1}{2}\\right)^4$."
+        }
+       ],
+       "result": "$\\frac{15}{16}$."
+      }
+     ],
+     "exam_trap": "Pominięcie $\\binom{n}{k}$ daje prawdopodobieństwo jednego konkretnego układu sukcesów, a nie wszystkich.",
+     "trap_details": {
+      "fail": "Błąd: „Dwie szóstki w trzech rzutach: $\\left(\\frac{1}{6}\\right)^2 \\cdot \\frac{5}{6}$.”",
+      "win": "Poprawnie: $\\binom{3}{2}\\left(\\frac{1}{6}\\right)^2 \\cdot \\frac{5}{6} = \\frac{5}{72}$.",
+      "explanation": "Szóstki mogą wypaść w różnych rzutach.",
+      "ckeTip": "Zapisz $n$, $k$ i $p$ przed obliczeniem – to pierwszy punkt w kluczu."
+     },
+     "key_points": [
+      "n prób, stałe p.",
+      "Czynnik C(n, k).",
+      "Co najmniej jeden – dopełnienie."
+     ],
+     "worked_example": {
+      "title": "Kostka",
+      "points": "1 pkt",
+      "problem": "3 rzuty, dokładnie 2 szóstki.",
+      "solution": "1. $\\binom{3}{2} \\cdot \\frac{1}{36} \\cdot \\frac{5}{6}$.\n2. $\\frac{5}{72}$.",
+      "keyInsight": "Czynnik 3.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$\\binom{3}{2} \\cdot \\frac{1}{36} \\cdot \\frac{5}{6}$."
+       }
+      ],
+      "result": "$\\frac{5}{72}$."
+     }
+    }
+   }
+  ]
+ },
+ {
+  "id": "pr-dzial-14",
+  "numericId": 14,
+  "title": "Granice, ciągłość i pochodna",
+  "short_title": "Pochodna",
+  "description": "Granice funkcji (także jednostronne), ciągłość i własność Darboux, definicja i reguły różniczkowania, monotoniczność i ekstrema.",
+  "icon": "TrendingUp",
+  "color": "#FFB800",
+  "matura_points_range": "2–4 pkt",
+  "importance": "HIGH",
+  "cke_formula_page": "str. 30–31",
+  "cke_stats": "W 7 z 11 arkuszy CKE 2022–2026, średnio 2,7 pkt na arkusz (XIII.R4 – 16 zadań, 26 pkt łącznie, często jako etap optymalizacji).",
+  "lessons": [
+   {
+    "id": "math-pr-lesson-14-1",
+    "order": 1,
+    "title": "Granica funkcji w punkcie i granice jednostronne",
+    "short_title": "Granica w punkcie",
+    "badge": "Lekcja 14.1",
+    "archetypeCode": "PR14.1",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R1"
+    ],
+    "prereq": [
+     "math-lesson-4-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Granica $\\lim_{x \\to a} f(x)$ to wartość, do której zbliża się $f(x)$, gdy $x$ zbliża się do $a$. Gdy podstawienie daje „zero przez zero”, rozkładasz licznik i mianownik na czynniki i skracasz. Gdy mianownik dąży do $0$, a licznik nie – granice jednostronne są nieskończone, a o znaku decyduje strona.",
+     "matura_context": "Granice funkcji (XIII.R1) to nowe wymaganie PR. Zwykle pojawiają się jako krok w ciągłości lub definicji pochodnej.",
+     "plain_polish": "Z polskiego na nasze: $\\frac{x^2 - 4}{x - 2}$ w punkcie $2$ to „dziura” w wykresie prostej $y = x + 2$. Granica pyta, gdzie ta dziura jest – na wysokości $4$.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Podstaw",
+       "description": "Wynik liczbowy – to granica.",
+       "tip": "Wielomiany od razu."
+      },
+      {
+       "stepNumber": 2,
+       "title": "0/0",
+       "description": "Rozłóż i skróć wspólny czynnik.",
+       "tip": "Potem podstaw."
+      },
+      {
+       "stepNumber": 3,
+       "title": "k/0",
+       "description": "Granice jednostronne ±∞.",
+       "tip": "Znak z licznika i strony."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Skracanie",
+       "formula": "\\lim_{x \\to a}\\frac{(x - a)g(x)}{(x - a)h(x)} = \\frac{g(a)}{h(a)}"
+      },
+      {
+       "name": "Jednostronne",
+       "formula": "\\lim_{x \\to 0^+}\\frac{1}{x} = +\\infty, \\ \\lim_{x \\to 0^-}\\frac{1}{x} = -\\infty"
+      },
+      {
+       "name": "W nieskończoności",
+       "formula": "\\lim_{x \\to \\infty}\\frac{ax^2 + \\ldots}{bx^2 + \\ldots} = \\frac{a}{b}"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "0/0",
+       "points": "1 pkt",
+       "problem": "$\\lim_{x \\to 2}\\frac{x^2 - 4}{x - 2}$.",
+       "solution": "1. $\\frac{(x - 2)(x + 2)}{x - 2} = x + 2$.\n2. Granica $4$.",
+       "keyInsight": "Skróć czynnik.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$\\frac{(x - 2)(x + 2)}{x - 2} = x + 2$."
+        }
+       ],
+       "result": "Granica $4$."
+      },
+      {
+       "title": "Jednostronna",
+       "points": "1 pkt",
+       "problem": "$\\lim_{x \\to 1^-}\\frac{x + 1}{x - 1}$.",
+       "solution": "1. Licznik $\\to 2$, mianownik $\\to 0^-$.\n2. $-\\infty$.",
+       "keyInsight": "Dodatnie przez ujemne zero.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "Licznik $\\to 2$, mianownik $\\to 0^-$."
+        }
+       ],
+       "result": "$-\\infty$."
+      }
+     ],
+     "exam_trap": "Wynik „zero przez zero” nie oznacza, że granica nie istnieje ani że jest równa $0$ – trzeba skrócić czynnik.",
+     "trap_details": {
+      "fail": "Błąd: „Po podstawieniu $x = 2$ do $\\frac{x^2 - 4}{x - 2}$ wychodzi zero przez zero, więc granica nie istnieje.”",
+      "win": "Poprawnie: Po skróceniu $\\lim_{x \\to 2}(x + 2) = 4$.",
+      "explanation": "Wyrażenie nieoznaczone wymaga przekształcenia.",
+      "ckeTip": "Zapisz rozkład na czynniki jawnie – samo podanie wyniku granicy bez przekształcenia może nie dać punktu."
+     },
+     "key_points": [
+      "0/0 – rozłóż i skróć.",
+      "k/0 – nieskończoność ze znakiem.",
+      "Różne granice jednostronne – brak granicy."
+     ],
+     "worked_example": {
+      "title": "0/0",
+      "points": "1 pkt",
+      "problem": "$\\lim_{x \\to 2}\\frac{x^2 - 4}{x - 2}$.",
+      "solution": "1. $\\frac{(x - 2)(x + 2)}{x - 2} = x + 2$.\n2. Granica $4$.",
+      "keyInsight": "Skróć czynnik.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$\\frac{(x - 2)(x + 2)}{x - 2} = x + 2$."
+       }
+      ],
+      "result": "Granica $4$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-14-2",
+    "order": 2,
+    "title": "Ciągłość funkcji i własność Darboux",
+    "short_title": "Ciągłość i Darboux",
+    "badge": "Lekcja 14.2",
+    "archetypeCode": "PR14.2",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R2",
+     "XIII.R1"
+    ],
+    "prereq": [
+     "math-lesson-4-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Funkcja jest ciągła w punkcie $a$, gdy $\\lim_{x \\to a} f(x) = f(a)$. Wielomiany i funkcje wymierne są ciągłe w swoich dziedzinach. Własność Darboux: jeśli $f$ jest ciągła na $\\langle a, b \\rangle$ i $f(a) \\cdot f(b) < 0$, to istnieje $x_0 \\in (a, b)$, w którym $f(x_0) = 0$.",
+     "matura_context": "Własność Darboux (XIII.R2) nie była dotąd cytowana wprost w arkuszach, ale podstawa jej wymaga – służy do dowodów istnienia rozwiązań.",
+     "plain_polish": "Z polskiego na nasze: Jeśli rano jesteś poniżej poziomu morza, a wieczorem powyżej i idziesz bez teleportowania się, to w którymś momencie musiałeś przejść przez poziom zero.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Ciągłość",
+       "description": "Wielomian – zawsze ciągły.",
+       "tip": "Sklejenie: granice równe wartości."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Znaki",
+       "description": "Oblicz $f(a)$ i $f(b)$.",
+       "tip": "Przeciwne znaki?"
+      },
+      {
+       "stepNumber": 3,
+       "title": "Wniosek",
+       "description": "Darboux: istnieje miejsce zerowe.",
+       "tip": "Nazwij twierdzenie."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Ciągłość",
+       "formula": "\\lim_{x \\to a} f(x) = f(a)"
+      },
+      {
+       "name": "Darboux",
+       "formula": "f(a) \\cdot f(b) < 0 \\ \\text{więc} \\ \\text{istnieje} \\ x_0 \\in (a, b): f(x_0) = 0"
+      },
+      {
+       "name": "Sklejenie",
+       "formula": "\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Parametr",
+       "points": "1 pkt",
+       "problem": "$f(x) = x^2$ dla $x < 1$, $mx + 2$ dla $x \\ge 1$.",
+       "solution": "1. $1 = m + 2$.\n2. $m = -1$.",
+       "keyInsight": "Wartości spotykają się w 1.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$1 = m + 2$."
+        }
+       ],
+       "result": "$m = -1$."
+      },
+      {
+       "title": "Darboux",
+       "points": "2 pkt",
+       "problem": "Wykaż, że $x^3 + x - 3 = 0$ ma rozwiązanie w $(1, 2)$.",
+       "solution": "1. $f(1) = -1$, $f(2) = 7$.\n2. Ciągłość + Darboux.",
+       "keyInsight": "Przeciwne znaki.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$f(1) = -1$, $f(2) = 7$."
+        }
+       ],
+       "result": "Ciągłość + Darboux."
+      }
+     ],
+     "exam_trap": "Gdy $f(a)$ i $f(b)$ mają ten sam znak, własność Darboux NIC nie mówi – miejsce zerowe może istnieć albo nie.",
+     "trap_details": {
+      "fail": "Błąd: „$f(0) = 1$, $f(3) = 5$, więc $f$ nie ma miejsca zerowego w $(0, 3)$.”",
+      "win": "Poprawnie: Z takich danych nie można wnioskować o braku miejsca zerowego.",
+      "explanation": "Funkcja może zejść poniżej zera i wrócić.",
+      "ckeTip": "W dowodzie z Darboux napisz wprost: „funkcja jest ciągła (wielomian)” – to warunek twierdzenia."
+     },
+     "key_points": [
+      "Ciągłość: granica = wartość.",
+      "Darboux: przeciwne znaki na końcach.",
+      "Ten sam znak – brak wniosku."
+     ],
+     "worked_example": {
+      "title": "Parametr",
+      "points": "1 pkt",
+      "problem": "$f(x) = x^2$ dla $x < 1$, $mx + 2$ dla $x \\ge 1$.",
+      "solution": "1. $1 = m + 2$.\n2. $m = -1$.",
+      "keyInsight": "Wartości spotykają się w 1.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$1 = m + 2$."
+       }
+      ],
+      "result": "$m = -1$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-14-3",
+    "order": 3,
+    "title": "Definicja pochodnej i styczna",
+    "short_title": "Pochodna i styczna",
+    "badge": "Lekcja 14.3",
+    "archetypeCode": "PR14.3",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R3",
+     "XIII.R4"
+    ],
+    "prereq": [
+     "math-lesson-10-2"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Pochodna $f'(x_0)$ to granica ilorazu różnicowego $\\frac{f(x_0 + h) - f(x_0)}{h}$ przy $h \\to 0$. Geometrycznie – współczynnik kierunkowy stycznej do wykresu w punkcie $(x_0, f(x_0))$, fizycznie – prędkość chwilowa. Styczna: $y = f'(x_0)(x - x_0) + f(x_0)$.",
+     "matura_context": "Interpretacja pochodnej (XIII.R3) to typowe zadanie za 3–4 pkt: równanie stycznej w punkcie albo styczna równoległa do prostej.",
+     "plain_polish": "Z polskiego na nasze: Przybliżaj sieczną przez dwa punkty wykresu, aż punkty się zleją – dostaniesz styczną. Jej nachylenie to pochodna.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Pochodna",
+       "description": "Wzory z karty: $(x^n)' = nx^{n-1}$.",
+       "tip": "Wielomian wyraz po wyrazie."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Punkt",
+       "description": "$f'(x_0)$ i $f(x_0)$.",
+       "tip": "Dwie różne liczby."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Styczna",
+       "description": "$y = f'(x_0)(x - x_0) + f(x_0)$.",
+       "tip": "Uprość do y = ax + b."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Definicja",
+       "formula": "f'(x_0) = \\lim_{h \\to 0}\\frac{f(x_0 + h) - f(x_0)}{h}",
+       "cke_page": "str. 31",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Potęga",
+       "formula": "(x^n)' = nx^{n-1}",
+       "cke_page": "str. 30",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Styczna",
+       "formula": "y = f'(x_0)(x - x_0) + f(x_0)",
+       "cke_page": "str. 31",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Styczna",
+       "points": "2 pkt",
+       "problem": "$f(x) = x^2$ w punkcie $(1, 1)$.",
+       "solution": "1. $f'(1) = 2$.\n2. $y = 2(x - 1) + 1 = 2x - 1$.",
+       "keyInsight": "Pochodna = nachylenie.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$f'(1) = 2$."
+        }
+       ],
+       "result": "$y = 2(x - 1) + 1 = 2x - 1$."
+      },
+      {
+       "title": "Równoległa",
+       "points": "4 pkt",
+       "problem": "Styczne do $x^3 - 2x$ równoległe do $y = x$.",
+       "solution": "1. $3x^2 - 2 = 1$, $x = \\pm 1$.\n2. Dwie styczne: $y = x - 2$ i $y = x + 2$.",
+       "keyInsight": "Dwa punkty styczności.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$3x^2 - 2 = 1$, $x = \\pm 1$."
+        }
+       ],
+       "result": "Dwie styczne: $y = x - 2$ i $y = x + 2$."
+      }
+     ],
+     "exam_trap": "$f(x_0)$ i $f'(x_0)$ to różne liczby – pierwsza to wysokość punktu, druga to nachylenie stycznej.",
+     "trap_details": {
+      "fail": "Błąd: „Styczna w $(1, 1)$ do $y = x^2$: $y = 1 \\cdot x + \\ldots$”",
+      "win": "Poprawnie: Nachylenie to $f'(1) = 2$, a nie $f(1) = 1$.",
+      "explanation": "Nachylenie daje pochodna.",
+      "ckeTip": "Styczna „równoległa do prostej” – zapisz warunek $f'(x_0) = a$ i sprawdź, ile ma rozwiązań."
+     },
+     "key_points": [
+      "f′(x₀) – nachylenie stycznej.",
+      "Styczna: y = f′(x₀)(x − x₀) + f(x₀).",
+      "Równoległa: ten sam współczynnik."
+     ],
+     "worked_example": {
+      "title": "Styczna",
+      "points": "2 pkt",
+      "problem": "$f(x) = x^2$ w punkcie $(1, 1)$.",
+      "solution": "1. $f'(1) = 2$.\n2. $y = 2(x - 1) + 1 = 2x - 1$.",
+      "keyInsight": "Pochodna = nachylenie.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$f'(1) = 2$."
+       }
+      ],
+      "result": "$y = 2(x - 1) + 1 = 2x - 1$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-14-4",
+    "order": 4,
+    "title": "Pochodna iloczynu, ilorazu i funkcji złożonej",
+    "short_title": "Reguły różniczkowania",
+    "badge": "Lekcja 14.4",
+    "archetypeCode": "PR14.4",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R4"
+    ],
+    "prereq": [
+     "math-lesson-6-1"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Pochodna iloczynu: $(fg)' = f'g + fg'$. Ilorazu: $\\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^2}$. Funkcji złożonej: $(f(g(x)))' = f'(g(x)) \\cdot g'(x)$ – pochodna „zewnętrznej” razy pochodna „wewnętrznej”. Pochodna iloczynu NIE jest iloczynem pochodnych.",
+     "matura_context": "Reguły różniczkowania (XIII.R4) to najczęstsze wymaganie z pochodnej: 16 zadań w 11 arkuszach. Błąd we wzorze na iloraz kosztuje 0 pkt za całe zadanie.",
+     "plain_polish": "Z polskiego na nasze: Funkcja złożona to cebula: $(2x + 1)^3$ – najpierw obierasz zewnętrzną warstwę ($3(\\ldots)^2$), potem mnożysz przez pochodną środka ($2$).",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Rozpoznaj",
+       "description": "Iloczyn, iloraz czy złożenie?",
+       "tip": "Albo najpierw wymnóż."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Wzór",
+       "description": "Zastosuj właściwy wzór z karty.",
+       "tip": "Iloraz: minus w liczniku."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Uprość",
+       "description": "Licznik do najprostszej postaci.",
+       "tip": "Mianownik zostaw w kwadracie."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Iloczyn",
+       "formula": "(fg)' = f'g + fg'",
+       "cke_page": "str. 30",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Iloraz",
+       "formula": "\\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^2}",
+       "cke_page": "str. 30",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Złożenie",
+       "formula": "(f(g(x)))' = f'(g(x)) \\cdot g'(x)",
+       "cke_page": "str. 30",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Iloraz",
+       "points": "2 pkt",
+       "problem": "$f(x) = \\frac{x}{x + 1}$.",
+       "solution": "1. $f'(x) = \\frac{1 \\cdot (x + 1) - x \\cdot 1}{(x + 1)^2}$.\n2. $f'(x) = \\frac{1}{(x + 1)^2}$.",
+       "keyInsight": "Kolejność w liczniku.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$f'(x) = \\frac{1 \\cdot (x + 1) - x \\cdot 1}{(x + 1)^2}$."
+        }
+       ],
+       "result": "$f'(x) = \\frac{1}{(x + 1)^2}$."
+      },
+      {
+       "title": "Złożenie",
+       "points": "1 pkt",
+       "problem": "$f(x) = (3x - 1)^2$, $f'(1)$.",
+       "solution": "1. $f'(x) = 2(3x - 1) \\cdot 3$.\n2. $f'(1) = 12$.",
+       "keyInsight": "Razy pochodna środka.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$f'(x) = 2(3x - 1) \\cdot 3$."
+        }
+       ],
+       "result": "$f'(1) = 12$."
+      }
+     ],
+     "exam_trap": "Wzór $\\left(\\frac{f}{g}\\right)' = \\frac{f'}{g'}$ to błąd, za który klucz CKE daje 0 pkt za CAŁE zadanie optymalizacyjne.",
+     "trap_details": {
+      "fail": "Błąd: „$\\left(\\frac{x^2 + 1}{x}\\right)' = \\frac{2x}{1} = 2x$.”",
+      "win": "Poprawnie: $\\frac{2x \\cdot x - (x^2 + 1)}{x^2} = \\frac{x^2 - 1}{x^2}$.",
+      "explanation": "Pochodna ilorazu ma swój wzór.",
+      "ckeTip": "Zapisz wzór na pochodną ilorazu z podstawionymi funkcjami przed upraszczaniem – to osobny etap w kluczu."
+     },
+     "key_points": [
+      "(fg)′ = f′g + fg′.",
+      "(f/g)′ = (f′g − fg′)/g².",
+      "Złożenie: razy pochodna środka."
+     ],
+     "worked_example": {
+      "title": "Iloraz",
+      "points": "2 pkt",
+      "problem": "$f(x) = \\frac{x}{x + 1}$.",
+      "solution": "1. $f'(x) = \\frac{1 \\cdot (x + 1) - x \\cdot 1}{(x + 1)^2}$.\n2. $f'(x) = \\frac{1}{(x + 1)^2}$.",
+      "keyInsight": "Kolejność w liczniku.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$f'(x) = \\frac{1 \\cdot (x + 1) - x \\cdot 1}{(x + 1)^2}$."
+       }
+      ],
+      "result": "$f'(x) = \\frac{1}{(x + 1)^2}$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-14-5",
+    "order": 5,
+    "title": "Monotoniczność i ekstrema",
+    "short_title": "Monotoniczność",
+    "badge": "Lekcja 14.5",
+    "archetypeCode": "PR14.5",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R5"
+    ],
+    "prereq": [
+     "math-lesson-6-3"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Znak pochodnej mówi, jak zachowuje się funkcja: $f' > 0$ – rośnie, $f' < 0$ – maleje. Ekstremum lokalne jest w punkcie, w którym pochodna zmienia znak: z $+$ na $-$ – maksimum, z $-$ na $+$ – minimum. Sam warunek $f'(x_0) = 0$ nie wystarcza.",
+     "matura_context": "Badanie monotoniczności (XIII.R5) to drugi etap zadania optymalizacyjnego i samodzielne zadanie za 3–4 pkt.",
+     "plain_polish": "Z polskiego na nasze: Pochodna to „licznik nachylenia” drogi pod górę: dodatni – idziesz w górę, ujemny – w dół. Szczyt jest tam, gdzie licznik przechodzi z plusa na minus.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Pochodna",
+       "description": "Oblicz $f'(x)$ i rozłóż na czynniki.",
+       "tip": "Dziedzina!"
+      },
+      {
+       "stepNumber": 2,
+       "title": "Znak",
+       "description": "Szkic znaku f′ (parabola, wężyk).",
+       "tip": "Miejsca zerowe f′."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Wnioski",
+       "description": "Przedziały monotoniczności i ekstrema.",
+       "tip": "Wartości f w ekstremach."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Rośnie",
+       "formula": "f'(x) > 0 \\ \\text{więc} \\ f \\ \\text{rośnie}"
+      },
+      {
+       "name": "Maksimum",
+       "formula": "f' \\ \\text{zmienia znak z} + \\text{na} -"
+      },
+      {
+       "name": "Pochodna sześciennej",
+       "formula": "(x^3 + bx^2 + cx)' = 3x^2 + 2bx + c",
+       "cke_page": "str. 30",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Przedziały",
+       "points": "2 pkt",
+       "problem": "$f(x) = x^3 - 3x$.",
+       "solution": "1. $f'(x) = 3(x - 1)(x + 1)$.\n2. Rośnie w $(-\\infty, -1\\rangle$ i $\\langle 1, +\\infty)$, maleje w $\\langle -1, 1 \\rangle$.",
+       "keyInsight": "Znak paraboli.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$f'(x) = 3(x - 1)(x + 1)$."
+        }
+       ],
+       "result": "Rośnie w $(-\\infty, -1\\rangle$ i $\\langle 1, +\\infty)$, maleje w $\\langle -1, 1 \\rangle$."
+      },
+      {
+       "title": "Ekstrema",
+       "points": "2 pkt",
+       "problem": "Jak wyżej.",
+       "solution": "1. Maksimum $f(-1) = 2$.\n2. Minimum $f(1) = -2$.",
+       "keyInsight": "Zmiana znaku.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "Maksimum $f(-1) = 2$."
+        }
+       ],
+       "result": "Minimum $f(1) = -2$."
+      }
+     ],
+     "exam_trap": "Dla $f(x) = x^3$ jest $f'(0) = 0$, ale ekstremum nie ma – pochodna nie zmienia znaku.",
+     "trap_details": {
+      "fail": "Błąd: „$f'(x_0) = 0$, więc w $x_0$ jest minimum.”",
+      "win": "Poprawnie: Sprawdzam znak $f'$ po obu stronach $x_0$.",
+      "explanation": "Ekstremum wymaga zmiany znaku pochodnej.",
+      "ckeTip": "Za samo miejsce zerowe pochodnej bez uzasadnienia, że to ekstremum, klucz daje najwyżej 2 z 4 pkt."
+     },
+     "key_points": [
+      "Znak f′ – monotoniczność.",
+      "Zmiana znaku – ekstremum.",
+      "f′(x₀) = 0 to za mało."
+     ],
+     "worked_example": {
+      "title": "Przedziały",
+      "points": "2 pkt",
+      "problem": "$f(x) = x^3 - 3x$.",
+      "solution": "1. $f'(x) = 3(x - 1)(x + 1)$.\n2. Rośnie w $(-\\infty, -1\\rangle$ i $\\langle 1, +\\infty)$, maleje w $\\langle -1, 1 \\rangle$.",
+      "keyInsight": "Znak paraboli.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$f'(x) = 3(x - 1)(x + 1)$."
+       }
+      ],
+      "result": "Rośnie w $(-\\infty, -1\\rangle$ i $\\langle 1, +\\infty)$, maleje w $\\langle -1, 1 \\rangle$."
+     }
+    }
+   }
+  ]
+ },
+ {
+  "id": "pr-dzial-15",
+  "numericId": 15,
+  "title": "Optymalizacja z pochodną",
+  "short_title": "Optymalizacja",
+  "description": "Model i dziedzina funkcji celu, schemat 4 pkt z pochodną, bryły, figury w układzie współrzędnych i zadania z kontekstem (wiązka 2 + 4).",
+  "icon": "Target",
+  "color": "#FFB800",
+  "matura_points_range": "6 pkt",
+  "importance": "CRITICAL_PEWNIAK",
+  "cke_formula_page": "str. 24–31",
+  "cke_stats": "W 10 z 11 arkuszy CKE 2022–2026, średnio około 6 pkt na arkusz (XIII.R6 – zwykle wiązka 2 + 4 pkt).",
+  "lessons": [
+   {
+    "id": "math-pr-lesson-15-1",
+    "order": 1,
+    "title": "Model, funkcja celu i dziedzina",
+    "short_title": "Model i dziedzina",
+    "badge": "Lekcja 15.1",
+    "archetypeCode": "PR15.1",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R6"
+    ],
+    "prereq": [
+     "math-lesson-15-2"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Zadanie optymalizacyjne zaczyna się od modelu: oznaczasz zmienną, z warunku (objętość, obwód, położenie na wykresie) wyrażasz pozostałe wielkości przez nią, zapisujesz funkcję celu i jej dziedzinę. W arkuszu CKE to często osobne zadanie za 2 pkt: „Wykaż, że $P(x) = \\ldots$”.",
+     "matura_context": "Na maturze PR optymalizacja to zwykle wiązka 2 + 4 pkt; pierwsza część to właśnie model z dziedziną (XIII.R6).",
+     "plain_polish": "Z polskiego na nasze: Masz dwie niewiadome (krawędź i wysokość), a jedną informację (objętość). Ta informacja to „przelicznik”: zamienia wysokość na wyrażenie z krawędzią. Zostaje jedna zmienna.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Zmienna",
+       "description": "Nazwij ją i zaznacz na rysunku.",
+       "tip": "Zwykle długość."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Warunek",
+       "description": "Wyraź resztę przez zmienną.",
+       "tip": "h = V/x²."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Funkcja i dziedzina",
+       "description": "Wzór + dodatnie wymiary.",
+       "tip": "Przedział otwarty."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Prostopadłościan",
+       "formula": "V = x^2h, \\quad P = 2x^2 + 4xh",
+       "cke_page": "str. 24",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Walec",
+       "formula": "V = \\pi r^2h, \\quad P = 2\\pi r^2 + 2\\pi rh",
+       "cke_page": "str. 25",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Prostokąt",
+       "formula": "P = ab, \\quad L = 2a + 2b"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Pudełko",
+       "points": "2 pkt",
+       "problem": "Bez pokrywki, dno kwadratowe, $V = 4$.",
+       "solution": "1. $h = \\frac{4}{x^2}$.\n2. $P(x) = x^2 + \\frac{16}{x}$, $x > 0$.",
+       "keyInsight": "Jedna podstawa.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$h = \\frac{4}{x^2}$."
+        }
+       ],
+       "result": "$P(x) = x^2 + \\frac{16}{x}$, $x > 0$."
+      },
+      {
+       "title": "Dziedzina",
+       "points": "1 pkt",
+       "problem": "Krawędzie sumują się do 48, podstawa kwadratowa.",
+       "solution": "1. $h = 12 - 2x$.\n2. $x \\in (0, 6)$.",
+       "keyInsight": "Wszystkie wymiary dodatnie.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$h = 12 - 2x$."
+        }
+       ],
+       "result": "$x \\in (0, 6)$."
+      }
+     ],
+     "exam_trap": "Brak dziedziny w modelu to najczęstszy powód utraty punktu w części „Wykaż, że…”.",
+     "trap_details": {
+      "fail": "Błąd: „$P(x) = x^2 + \\frac{16}{x}$.” (bez dziedziny)",
+      "win": "Poprawnie: $P(x) = x^2 + \\frac{16}{x}$ dla $x \\in (0, +\\infty)$.",
+      "explanation": "Funkcja celu bez dziedziny nie opisuje sytuacji z zadania.",
+      "ckeTip": "W części „Wykaż, że” przepisz wynik dokładnie w postaci z treści – egzaminator porównuje ją z kluczem."
+     },
+     "key_points": [
+      "Jedna zmienna dzięki warunkowi.",
+      "Dziedzina: wymiary dodatnie.",
+      "Policz ściany i podstawy."
+     ],
+     "worked_example": {
+      "title": "Pudełko",
+      "points": "2 pkt",
+      "problem": "Bez pokrywki, dno kwadratowe, $V = 4$.",
+      "solution": "1. $h = \\frac{4}{x^2}$.\n2. $P(x) = x^2 + \\frac{16}{x}$, $x > 0$.",
+      "keyInsight": "Jedna podstawa.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$h = \\frac{4}{x^2}$."
+       }
+      ],
+      "result": "$P(x) = x^2 + \\frac{16}{x}$, $x > 0$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-15-2",
+    "order": 2,
+    "title": "Schemat 4 pkt: pochodna, zero, znak, wartość",
+    "short_title": "Schemat 4 pkt",
+    "badge": "Lekcja 15.2",
+    "archetypeCode": "PR15.2",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R6",
+     "XIII.R5"
+    ],
+    "prereq": [
+     "math-lesson-15-5"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Klucz CKE punktuje optymalizację w czterech etapach: (1) pochodna funkcji celu, (2) miejsce zerowe pochodnej w dziedzinie, (3) uzasadnienie, że to minimum lub maksimum – znak pochodnej po obu stronach, (4) wartość funkcji i odpowiedź na pytanie z zadania.",
+     "matura_context": "Schemat 4 pkt (XIII.R6) jest stały od 2023 r. Pominięcie uzasadnienia ekstremum ogranicza wynik do 2 z 4 pkt.",
+     "plain_polish": "Z polskiego na nasze: To jak przepis: pochodna – przyrównaj do zera – sprawdź, czy przed i po tym punkcie funkcja maleje i rośnie (albo odwrotnie) – policz wartość. Bez trzeciego kroku przepis jest niedokończony.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Pochodna",
+       "description": "$P'(x)$ – wspólny mianownik.",
+       "tip": "Iloraz: właściwy wzór."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Zero i znak",
+       "description": "Miejsce zerowe w dziedzinie i znak P′.",
+       "tip": "Z − na + to minimum."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Wartość",
+       "description": "P(x₀) i odpowiedź słowami.",
+       "tip": "Jednostki."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Potęga ujemna",
+       "formula": "\\left(\\frac{a}{x}\\right)' = -\\frac{a}{x^2}",
+       "cke_page": "str. 30",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Minimum",
+       "formula": "f' \\ \\text{zmienia znak z} - \\text{na} +"
+      },
+      {
+       "name": "Przedział domknięty",
+       "formula": "\\min \\ \\text{wśród} \\ f(a), f(b), f(x_0)"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Minimum",
+       "points": "4 pkt",
+       "problem": "$f(x) = 2x + \\frac{8}{x}$, $x > 0$.",
+       "solution": "1. $f'(x) = 2 - \\frac{8}{x^2} = 0$, $x = 2$.\n2. Znak: $-$ potem $+$, $f(2) = 8$.",
+       "keyInsight": "Uzasadnij znakiem.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$f'(x) = 2 - \\frac{8}{x^2} = 0$, $x = 2$."
+        }
+       ],
+       "result": "Znak: $-$ potem $+$, $f(2) = 8$."
+      },
+      {
+       "title": "Przedział",
+       "points": "3 pkt",
+       "problem": "$f(x) = x^3 - 3x$ w $\\langle 0, 3 \\rangle$.",
+       "solution": "1. $f(1) = -2$, $f(0) = 0$, $f(3) = 18$.\n2. Najmniejsza: $-2$.",
+       "keyInsight": "Porównaj z końcami.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$f(1) = -2$, $f(0) = 0$, $f(3) = 18$."
+        }
+       ],
+       "result": "Najmniejsza: $-2$."
+      }
+     ],
+     "exam_trap": "Samo $f'(x_0) = 0$ nie dowodzi minimum – trzeba pokazać zmianę znaku pochodnej (albo monotoniczność).",
+     "trap_details": {
+      "fail": "Błąd: „P′(x) = 0 dla x = 2, więc pole jest najmniejsze dla x = 2.”",
+      "win": "Poprawnie: „P′ < 0 dla x < 2 i P′ > 0 dla x > 2, więc w x = 2 jest minimum.”",
+      "explanation": "Punkt krytyczny może być maksimum.",
+      "ckeTip": "Wypisz etapy w kolejności klucza – każdy jest wart 1 pkt, także przy błędzie rachunkowym w kolejnym."
+     },
+     "key_points": [
+      "Pochodna → zero → znak → wartość.",
+      "Bez znaku najwyżej 2/4 pkt.",
+      "Przedział domknięty: sprawdź końce."
+     ],
+     "worked_example": {
+      "title": "Minimum",
+      "points": "4 pkt",
+      "problem": "$f(x) = 2x + \\frac{8}{x}$, $x > 0$.",
+      "solution": "1. $f'(x) = 2 - \\frac{8}{x^2} = 0$, $x = 2$.\n2. Znak: $-$ potem $+$, $f(2) = 8$.",
+      "keyInsight": "Uzasadnij znakiem.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$f'(x) = 2 - \\frac{8}{x^2} = 0$, $x = 2$."
+       }
+      ],
+      "result": "Znak: $-$ potem $+$, $f(2) = 8$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-15-3",
+    "order": 3,
+    "title": "Bryły: prostopadłościan i walec",
+    "short_title": "Optymalizacja brył",
+    "badge": "Lekcja 15.3",
+    "archetypeCode": "PR15.3",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R6",
+     "X.5"
+    ],
+    "prereq": [
+     "math-lesson-11-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "W optymalizacji brył warunek (zwykle objętość) usuwa jedną zmienną: $h = \\frac{V}{x^2}$ albo $h = \\frac{V}{\\pi r^2}$. Funkcja pola ma postać $ax^2 + \\frac{b}{x}$, a jej minimum wyznaczasz pochodną. Przydatne kontrole: sześcian (bryła z pokrywką), walec z $h = 2r$.",
+     "matura_context": "Zadania z bryłami (X.5 + XIII.R6) to najczęstszy kontekst optymalizacji na arkuszach PR – pudełka, puszki, pojemniki.",
+     "plain_polish": "Z polskiego na nasze: Za płaskie pudełko – ogromne dno. Za wysokie – ogromne ściany. Pochodna znajduje złoty środek, w którym materiału jest najmniej.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Wymiary",
+       "description": "Podstawa przez x, wysokość z V.",
+       "tip": "Rysunek bryły."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Pole",
+       "description": "Policz wszystkie ściany.",
+       "tip": "Pokrywka czy bez?"
+      },
+      {
+       "stepNumber": 3,
+       "title": "Pochodna",
+       "description": "Schemat 4 pkt.",
+       "tip": "Wymiary w odpowiedzi."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Pudełko z pokrywką",
+       "formula": "P(x) = 2x^2 + \\frac{4V}{x}"
+      },
+      {
+       "name": "Pudełko bez pokrywki",
+       "formula": "P(x) = x^2 + \\frac{4V}{x}"
+      },
+      {
+       "name": "Walec",
+       "formula": "P(r) = 2\\pi r^2 + \\frac{2V}{r}",
+       "cke_page": "str. 25",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Pudełko",
+       "points": "4 pkt",
+       "problem": "Bez pokrywki, $V = 32$.",
+       "solution": "1. $P'(x) = 2x - \\frac{128}{x^2} = 0$, $x = 4$.\n2. Wymiary $4 \\times 4 \\times 2$.",
+       "keyInsight": "h = V/x².",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$P'(x) = 2x - \\frac{128}{x^2} = 0$, $x = 4$."
+        }
+       ],
+       "result": "Wymiary $4 \\times 4 \\times 2$."
+      },
+      {
+       "title": "Walec",
+       "points": "4 pkt",
+       "problem": "$V = 16\\pi$, najmniejsze pole.",
+       "solution": "1. $P'(r) = 4\\pi r - \\frac{32\\pi}{r^2} = 0$, $r = 2$.\n2. $h = 4$.",
+       "keyInsight": "h = 2r.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$P'(r) = 4\\pi r - \\frac{32\\pi}{r^2} = 0$, $r = 2$."
+        }
+       ],
+       "result": "$h = 4$."
+      }
+     ],
+     "exam_trap": "Gdy podstawa jest prostokątem $x \\times kx$, ściany boczne tworzą DWIE pary o różnych polach.",
+     "trap_details": {
+      "fail": "Błąd: „Podstawa $x \\times 2x$: ściany boczne $4 \\cdot x \\cdot h$.”",
+      "win": "Poprawnie: Ściany: $2 \\cdot xh + 2 \\cdot 2xh = 6xh$.",
+      "explanation": "Pary ścian mają różne krawędzie podstawy.",
+      "ckeTip": "Odpowiedz na pytanie z zadania: gdy pytają o wymiary, podaj wszystkie trzy, nie tylko $x$."
+     },
+     "key_points": [
+      "Wysokość z objętości.",
+      "Policz ściany dokładnie.",
+      "Podaj wszystkie wymiary."
+     ],
+     "worked_example": {
+      "title": "Pudełko",
+      "points": "4 pkt",
+      "problem": "Bez pokrywki, $V = 32$.",
+      "solution": "1. $P'(x) = 2x - \\frac{128}{x^2} = 0$, $x = 4$.\n2. Wymiary $4 \\times 4 \\times 2$.",
+      "keyInsight": "h = V/x².",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$P'(x) = 2x - \\frac{128}{x^2} = 0$, $x = 4$."
+       }
+      ],
+      "result": "Wymiary $4 \\times 4 \\times 2$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-15-4",
+    "order": 4,
+    "title": "Układ współrzędnych i figury płaskie",
+    "short_title": "Figury w układzie",
+    "badge": "Lekcja 15.4",
+    "archetypeCode": "PR15.4",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R6",
+     "IX.2"
+    ],
+    "prereq": [
+     "math-lesson-15-1"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Gdy figura ma wierzchołek na wykresie funkcji, jego współrzędne to $(x, f(x))$ – stąd długości boków i funkcja celu jednej zmiennej. Odległość punktu wykresu od danego punktu minimalizujesz przez kwadrat odległości. Dziedzina wynika z położenia wierzchołka (np. nad osią $Ox$).",
+     "matura_context": "Figury w układzie współrzędnych to drugi typowy kontekst optymalizacji (np. prostokąt pod parabolą, punkt najbliższy wykresu).",
+     "plain_polish": "Z polskiego na nasze: Prawy górny róg prostokąta „jedzie” po paraboli. Gdy idzie w prawo, prostokąt robi się szerszy, ale niższy. Pochodna wskazuje miejsce, gdzie pole jest największe.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "Punkt na wykresie",
+       "description": "$(x, f(x))$.",
+       "tip": "Symetria: bok 2x."
+      },
+      {
+       "stepNumber": 2,
+       "title": "Funkcja celu",
+       "description": "Pole albo kwadrat odległości.",
+       "tip": "Dziedzina."
+      },
+      {
+       "stepNumber": 3,
+       "title": "Schemat 4 pkt",
+       "description": "Pochodna, zero, znak, wartość.",
+       "tip": "Maksimum: z + na −."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Kwadrat odległości",
+       "formula": "d^2 = (x - a)^2 + (f(x) - b)^2",
+       "cke_page": "str. 21",
+       "in_cke_sheet": true
+      },
+      {
+       "name": "Prostokąt pod parabolą",
+       "formula": "P(x) = 2x(c - x^2)"
+      },
+      {
+       "name": "Prosta odcinkowa",
+       "formula": "\\frac{x}{a} + \\frac{y}{b} = 1"
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Parabola",
+       "points": "4 pkt",
+       "problem": "$y = 12 - x^2$, największy prostokąt.",
+       "solution": "1. $P(x) = 24x - 2x^3$, $P' = 24 - 6x^2 = 0$, $x = 2$.\n2. Boki $4 \\times 8$, pole $32$.",
+       "keyInsight": "Maksimum.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$P(x) = 24x - 2x^3$, $P' = 24 - 6x^2 = 0$, $x = 2$."
+        }
+       ],
+       "result": "Boki $4 \\times 8$, pole $32$."
+      },
+      {
+       "title": "Najbliższy punkt",
+       "points": "3 pkt",
+       "problem": "$y = \\sqrt{x}$, punkt $A = (3, 0)$.",
+       "solution": "1. $d^2 = x^2 - 5x + 9$.\n2. $x = \\frac{5}{2}$.",
+       "keyInsight": "Kwadrat odległości.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$d^2 = x^2 - 5x + 9$."
+        }
+       ],
+       "result": "$x = \\frac{5}{2}$."
+      }
+     ],
+     "exam_trap": "Prostokąt symetryczny względem osi $Oy$ ma podstawę $2x$, a nie $x$ – pole wychodzi dwa razy za małe.",
+     "trap_details": {
+      "fail": "Błąd: „$P(x) = x(12 - x^2)$.”",
+      "win": "Poprawnie: $P(x) = 2x(12 - x^2)$.",
+      "explanation": "Wierzchołki leżą w punktach $x$ i $-x$.",
+      "ckeTip": "Podaj współrzędne wierzchołków albo wymiary figury – sama liczba $x$ to nie odpowiedź."
+     },
+     "key_points": [
+      "Wierzchołek (x, f(x)).",
+      "Kwadrat odległości zamiast odległości.",
+      "Dziedzina z położenia punktu."
+     ],
+     "worked_example": {
+      "title": "Parabola",
+      "points": "4 pkt",
+      "problem": "$y = 12 - x^2$, największy prostokąt.",
+      "solution": "1. $P(x) = 24x - 2x^3$, $P' = 24 - 6x^2 = 0$, $x = 2$.\n2. Boki $4 \\times 8$, pole $32$.",
+      "keyInsight": "Maksimum.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "$P(x) = 24x - 2x^3$, $P' = 24 - 6x^2 = 0$, $x = 2$."
+       }
+      ],
+      "result": "Boki $4 \\times 8$, pole $32$."
+     }
+    }
+   },
+   {
+    "id": "math-pr-lesson-15-5",
+    "order": 5,
+    "title": "Kontekst praktyczny: pełna wiązka 2 + 4",
+    "short_title": "Wiązka 2 + 4",
+    "badge": "Lekcja 15.5",
+    "archetypeCode": "PR15.5",
+    "estimated_time_formatted": "~5 min",
+    "requirements": [
+     "XIII.R6",
+     "X.5",
+     "VIII.8"
+    ],
+    "prereq": [
+     "math-lesson-15-4"
+    ],
+    "theory_pill": {
+     "reading_time_minutes": 3.5,
+     "noAutoVisual": true,
+     "concept_essence": "Pełne zadanie optymalizacyjne CKE ma dwie części: a) „Wykaż, że funkcja celu ma wzór…” (model, 2 pkt) i b) „Oblicz…” (schemat z pochodną, 4 pkt). Kontekst praktyczny – koszt, zysk, prędkość, materiał – dodaje jednostki i ceny, ale matematyka pozostaje ta sama.",
+     "matura_context": "Optymalizacja (XIII.R6) jest w 10 z 11 arkuszy PR – średnio około 6 pkt, najwięcej z jednego tematu.",
+     "plain_polish": "Z polskiego na nasze: Koszt materiału to „pole razy cena”. Jeśli dno jest droższe, jego pole mnożysz przez wyższą cenę – reszta to ten sam rachunek co przy zwykłym polu.",
+     "algorithm_steps": [
+      {
+       "stepNumber": 1,
+       "title": "a) Model",
+       "description": "Wymiary, ceny, funkcja, dziedzina.",
+       "tip": "Dokładnie wzór z treści."
+      },
+      {
+       "stepNumber": 2,
+       "title": "b) Pochodna",
+       "description": "Zero w dziedzinie.",
+       "tip": "Usuń stałe czynniki."
+      },
+      {
+       "stepNumber": 3,
+       "title": "b) Uzasadnienie",
+       "description": "Znak pochodnej i odpowiedź.",
+       "tip": "Jednostki."
+      }
+     ],
+     "core_formulas": [
+      {
+       "name": "Koszt",
+       "formula": "K = \\text{cena}_1 \\cdot P_1 + \\text{cena}_2 \\cdot P_2"
+      },
+      {
+       "name": "Średni koszt",
+       "formula": "k(x) = x + \\frac{c}{x}, \\ \\min \\ \\text{dla} \\ x = \\sqrt{c}"
+      },
+      {
+       "name": "Walec otwarty",
+       "formula": "P = \\pi r^2 + 2\\pi rh",
+       "cke_page": "str. 25",
+       "in_cke_sheet": true
+      }
+     ],
+     "worked_examples": [
+      {
+       "title": "Koszt",
+       "points": "6 pkt",
+       "problem": "Walec bez pokrywki, $V = 16\\pi$, dno dwa razy droższe (cena ściany $1$).",
+       "solution": "a) $K(r) = 2\\pi r^2 + \\frac{32\\pi}{r}$.\nb) $K'(r) = 0$ dla $r = 2$, $h = 4$.",
+       "keyInsight": "Cena przy właściwym polu.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "a) $K(r) = 2\\pi r^2 + \\frac{32\\pi}{r}$."
+        }
+       ],
+       "result": "b) $K'(r) = 0$ dla $r = 2$, $h = 4$."
+      },
+      {
+       "title": "Prędkość",
+       "points": "3 pkt",
+       "problem": "$K(v) = 100\\left(\\frac{v}{10} + \\frac{40}{v}\\right)$.",
+       "solution": "1. $K'(v) = 0$ dla $v^2 = 400$.\n2. $v = 20$ km/h.",
+       "keyInsight": "Odrzuć ujemne.",
+       "steps": [
+        {
+         "num": 1,
+         "text": "$K'(v) = 0$ dla $v^2 = 400$."
+        }
+       ],
+       "result": "$v = 20$ km/h."
+      }
+     ],
+     "exam_trap": "Wynik musi należeć do dziedziny i odpowiadać na pytanie z treści (wymiary, prędkość, koszt) – z jednostką.",
+     "trap_details": {
+      "fail": "Błąd: „r = 2.” (bez wysokości, gdy pytano o wymiary)",
+      "win": "Poprawnie: „r = 2 dm, h = 4 dm.”",
+      "explanation": "Odpowiedź musi zawierać wszystkie szukane wielkości.",
+      "ckeTip": "Część a) i b) są oceniane osobno – nawet bez części a) możesz zdobyć 4 pkt w b), korzystając ze wzoru z treści."
+     },
+     "key_points": [
+      "a) Model z dziedziną (2 pkt).",
+      "b) Schemat 4 pkt.",
+      "Jednostki i pełna odpowiedź."
+     ],
+     "worked_example": {
+      "title": "Koszt",
+      "points": "6 pkt",
+      "problem": "Walec bez pokrywki, $V = 16\\pi$, dno dwa razy droższe (cena ściany $1$).",
+      "solution": "a) $K(r) = 2\\pi r^2 + \\frac{32\\pi}{r}$.\nb) $K'(r) = 0$ dla $r = 2$, $h = 4$.",
+      "keyInsight": "Cena przy właściwym polu.",
+      "steps": [
+       {
+        "num": 1,
+        "text": "a) $K(r) = 2\\pi r^2 + \\frac{32\\pi}{r}$."
+       }
+      ],
+      "result": "b) $K'(r) = 0$ dla $r = 2$, $h = 4$."
+     }
+    }
+   }
+  ]
  }
 ]
