@@ -8,6 +8,11 @@ import App from '../../App';
 import { curriculumRepository } from '../../services/curriculumRepository';
 import { __resetDatabaseConnectionForTests, SESSION_STORAGE_KEY } from '../../services/sessionRecoveryService';
 
+// happy-dom odrzuca obietnicę `finished` przy Animation.cancel(), a motion jej nie przechwytuje:
+// animacje WAAPI przerywane przy odmontowaniu App dają nieobsłużony AbortError i vitest kończy się kodem 1
+// mimo zaliczonych testów. Bez Element.prototype.animate motion używa animacji JS, które tego nie robią.
+delete (Element.prototype as { animate?: unknown }).animate;
+
 // Mock dependencies for SessionRunner and App
 vi.mock('../../lib/firebase', () => ({
   auth: { currentUser: null },
